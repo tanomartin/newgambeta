@@ -1,0 +1,257 @@
+
+@media screen and (max-width:1200px) {
+
+    .item-two, .item-three {
+
+        width: 200px;
+    }
+
+
+    .item-two form {
+
+    left: 12px; 
+
+    }
+    .item-two button {
+
+    left:12px;
+
+    }
+
+    .item-three input {
+
+    width:160px;
+    }
+    .item-three button {
+
+        left:6px;
+    }
+
+    .ion-android-checkbox-outline {
+
+
+    padding:68px;
+
+    }
+    .item-three {
+        position:relative;
+        right:50px;
+    }
+} 
+
+@media screen and (max-width:900px){
+
+
+    .contact-1 , .contact-2 {
+        display:block;
+        text-align:center;
+
+    }
+    .contact-1{
+        left:25px;
+        position:relative;
+    }
+    .contact-2 {
+        padding-bottom:30px;
+    }
+    footer .contact {
+        display:block;
+        float:left;
+    }
+
+
+.box-social-foot .container .social  {
+
+
+    padding:0px;
+}
+.box-social-foot .container .social ul li {
+
+
+    padding:22px;
+}
+.box-social-foot .container .social ul {
+
+
+    padding:5px;
+}
+
+
+.footer-img {
+    float:none;
+    position:relative;
+    text-align:center;
+    padding-bottom:20px;
+}
+
+}
+@media screen and (max-width:600px) {
+
+    .section-locations {
+        display:none;
+    }
+    .box-actividades {
+        display:none;
+    }
+
+    .box-social .container .social ul li {
+
+    font-size: 50px;
+    padding:18px;
+
+
+    }
+    .box-logo {
+        display:none;
+    }
+
+    .box-social .container p {
+
+    display:block;
+    top:10px;
+    text-align:center;
+    }
+    .box-social {
+
+    background-color:#00bb77;
+
+}
+    .box-social ul {
+
+    padding-left: 20px
+    }
+
+    nav img {
+
+        max-width:195px;
+        height:auto;
+        padding:10px;
+    }
+
+    .item-one {
+
+    width:100%;
+
+    }
+
+    .item-one h1, .item-one h2, .item-one p {
+
+        color: #FFF;
+        top:0px;
+
+    }
+
+    .read, .inscription {
+
+        top:20px;
+        left:10px;
+
+    }
+
+    .item-two {
+
+        width:100%;
+        margin-top:20px;
+    }
+
+    .item-two select, .item-two button {
+
+    width: 100%;
+    border-radius: 0;
+    }
+
+    .item-two form, .item-two button  {
+
+    left:0px;
+    }
+
+    .item-three {
+
+    width:100%;
+    margin-top:20px;
+    position:relative;
+    left:0;
+    }
+
+    .item-three input, .item-three button {
+
+    width:100%;
+    left:0;
+    }
+    .item-three input {
+    left:-10px;
+    }
+
+
+    .check {
+
+    text-align:center;
+    }
+
+    .section-form {
+
+    width:100%;
+    padding-bottom:40px;
+    }
+
+    .box-form textarea, .box-form-2 textarea {
+    top: 0;
+    width: 100%;
+    right: 0;
+    border-radius: 0px;
+
+    }
+    .box-form .enviar, .box-form-2 .enviar {
+    left:0px;
+    width:100%;
+    padding:15px 0;
+    margin:20px 0;
+
+    }
+    .box-form form input, .box-form-2 form input {
+
+        width:100%;
+        padding: 8px;
+        border-radius: 0px;
+        margin:10px 0px;
+
+    }
+    
+}
+
+
+@media screen and (max-width:359px) {
+
+    .item-one h1 {
+
+    font-size:24px;
+
+    }
+    .item-one h2 {
+
+    font-size:22px;
+
+    }
+    .item-one p {
+
+    font-size:14px;
+
+    }
+    .read, .inscription {
+
+    display:block;
+    margin-top:5px;
+    width:200px;
+
+    }
+
+    .read {
+    background-color:#fa3e5f;
+    }
+
+    .item-two select, .item-two button {
+
+    width: 100%;
+}
+}
+

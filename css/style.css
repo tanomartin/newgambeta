@@ -1,0 +1,770 @@
+/* iría en boostrap.css?? */
+.navbar-default {
+    background-color: #fa3e5f;
+    border-color:#fa3e5f;
+ }
+.navbar-default .navbar-nav>li>a {
+    color: #FFF;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+    color: #fa3e5f;
+    background-color:#FFF;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: #FFF;
+    top: 16px;
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #FFF;
+}
+.navbar {
+    margin-bottom:0px;
+}
+nav .navbar-nav {
+
+	padding-top:15px;
+}
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    text-align:center;
+}
+
+.cuadrado-prueba { /* es una prueba */
+    width:450px;
+    height:250px;
+    background-color:#121212;
+    position:relative;
+    top:145px;
+}
+
+.container {
+
+	max-width:1000px;
+	margin:auto;
+
+}
+.item-one {
+
+    background-image: url("../imagenes/pelota_fuego3.png");
+    background-repeat:no-repeat;
+    background-size:cover;    
+    width: 460px;
+    height: 290px;
+    float: left;
+    position: relative;
+    margin-right: 20px;
+    top:40px;
+
+}
+.item-two {
+
+    width: 235px;
+    height: 290px;
+    background-color: #fa3e5f;
+    display: inline-block;
+    position:relative;
+    top:40px;
+}
+.item-two p {
+
+    color: #FFF;
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+    top: 30px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+} 
+
+.item-two form {
+    position: relative;
+    top: 25px;
+    left: 27px; 
+}
+
+.item-two select {
+
+    padding: 8px;
+    border-radius: 4px;
+    border-style: none;
+    margin-top: 15px;
+    width: 170px;
+}
+
+.item-three {
+
+    width: 235px;
+    height: 290px;
+    background-color: #00bb77;
+    display: inline-block;
+    float: right;
+    position:relative;
+    top:40px;
+}
+
+.item-three p {
+
+	color: #FFF;
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+    top: 30px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+}	
+
+.ion-android-checkbox-outline {
+
+    font-size: 80px;
+    color: #FFF;
+    position: relative;
+    padding: 80px;
+    top: 25px;
+}
+
+.item-three input {
+
+	position: relative;
+    top: 40px;
+    padding: 8px;
+    border-radius: 4px;
+    border-style: none;
+}
+
+.item-three form {
+
+	padding-left:25px;
+}
+
+.item-three button, .item-two button {
+
+    position: relative;
+    top: 60px;
+    left: 27px;
+    background-color:#3a3a3a;
+    color: #FFF;
+    padding: 6px 57px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    border-color:#FFF;
+    font-family: 'Roboto', sans-serif;
+}
+
+.item-one h1, .item-one h2, .item-one p {
+
+    color: #FFF;
+    position: relative;
+    top:50px;
+    left: 0px;
+    background-color: rgba(255, 62, 95, 0.5);
+    display: inline-block;
+}
+
+.inscription {
+
+    position:relative;
+    top:60px;
+    background-color:#fa3e5f;
+    color:#FFF;
+    text-transform:uppercase;
+    border-radius: 5px;
+    padding: 6px 35px;
+    font-family: 'Roboto', sans-serif;
+    border-color:#FFF;
+    left:25px;
+}
+
+.inscription:hover {
+    background-color:#00bb77;
+}
+
+.read {
+
+    position:relative;
+    top:60px;
+    background-color:transparent;
+    color:#FFF;
+    text-transform:uppercase;
+    border-radius: 5px;
+    padding: 6px 35px;
+    font-family: 'Roboto', sans-serif;
+    border-color:#FFF;
+    left:25px;
+
+}
+.read:hover {
+    background-color:#fa3e5f;
+}
+
+/* SE SACA POR AHORA (LINEAS AL LADO DE PALABRA)
+
+.auspiciante:after, .auspiciante:before {
+    content:"";
+    width:30%;
+    height:1px;
+    display:inline-block;
+    background-color:#121212;
+    position:relative;
+    top:-6px; 
+
+}*/
+.auspiciante {
+    text-align:center;
+    padding:40px 0;
+    text-transform: uppercase;
+    color:#fa3e5f;
+    font-family: 'Roboto', sans-serif;
+} 
+
+.box {
+
+    background-color:#fa3e5f;
+}
+
+.box-form {
+    background-color:#FFF;
+
+}
+.box-form-2 {
+    background-color:#fa3e5f;
+
+}
+.box-form-2 form p {
+
+    color:#fff;
+    text-transform: uppercase;
+    font-size:18px;
+    text-align:center;
+    position:relative;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    padding:25px;
+}
+.box-form-2 form input {
+
+    width:280px;
+    position: relative;
+    padding: 8px;
+    border-radius: 4px;
+    margin:10px;
+
+}
+.box-form-2 textarea {
+    position: relative;
+    float: right;
+    top: -230px;
+    right: 20px;
+    height: 220px;
+    width: 280px;
+    border-radius:4px;
+}
+
+.box-form-2 .enviar {
+    background-color: #3a3a3a;
+    color: #FFF;
+    border-radius: 4px;
+    border-style: none;
+    text-align:center;
+    position:relative;
+    padding:15px;
+    left:150px;
+}
+
+.box .container .section-form h3,  .box .container .section-locations h3 {
+
+    color:#FFF;
+    text-transform:uppercase;
+    font-family: 'Roboto', sans-serif;
+    display:block;
+    text-align:center;
+    padding-top: 30px;
+}
+
+.box .container .section-form h6, .box .container .section-locations h6  {
+
+    color:#FFF;
+    font-family: 'Roboto', sans-serif;
+    display:block;
+    text-align:center;
+    padding-bottom: 25px;
+    padding-top: 15px;
+}
+
+.box-form form p {
+
+    color:#fa3e5f;
+    text-transform: uppercase;
+    font-size:18px;
+    text-align:center;
+    position:relative;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    padding:25px;
+}
+
+
+.section-form {
+
+    float:left;
+    width: 600px;
+}
+
+.section-locations {
+
+    float:right;
+}
+
+.box-form form input {
+
+    width:280px;
+    position: relative;
+    padding: 8px;
+    border-radius: 4px;
+    margin:10px;
+
+}
+
+.box-form textarea {
+    position: relative;
+    float: right;
+    top: -230px;
+    right: 20px;
+    height: 220px;
+    width: 280px;
+    border-radius:4px;
+}
+
+.box-form .enviar {
+    background-color: #3a3a3a;
+    color: #FFF;
+    border-radius: 4px;
+    border-style: none;
+    text-align:center;
+    position:relative;
+    padding:15px;
+    left:150px;
+}
+
+.sedes {
+
+    width:320px;
+    margin-top: 0px;
+    color:#121212;
+    padding:37px;
+}
+
+.sedes h2 {
+
+    font-size:25px;
+    text-transform:uppercase;
+    font-weight: 700;
+    font-family: 'Roboto', sans-serif;
+    border-bottom:solid 1px #121212;
+}
+
+
+.box-form-2 .sedes h2 {
+    color:#FFF;
+}
+
+.box-social {
+
+    background-color:#3a3a3a;
+
+}
+
+.social {
+    display:inline-block;
+    padding-left:40px;
+}
+.box-social .container p {
+
+    color:#FFF;
+    display:inline-block;
+    position:relative;
+    top:-10px;
+}
+
+.box-social .container .social ul li {
+    display:inline-block;
+    list-style-type:none;
+    color:#FFF;
+    font-size:50px;
+    padding:30px;
+}
+
+a {
+
+    color:#FFF;
+}
+
+a .ion-social-facebook:hover {
+
+    color:#fa3e5f;
+}
+a .ion-social-twitter:hover {
+
+    color:#fa3e5f;
+}
+a .ion-social-youtube:hover {
+
+    color:#fa3e5f;
+}
+a .ion-social-instagram:hover {
+
+    color:#fa3e5f;
+}
+
+.box-logo {
+
+    display:inline-block;
+    float:right;
+    position:relative;
+    top:25px;
+}
+
+.box-actividades {
+
+    background-color:#00bb77;
+}
+
+.box-actividades .container h2 {
+    text-align:center;
+    text-transform:uppercase;
+    font-family: 'Roboto', sans-serif;
+    color:#FFF;
+    padding-top:30px;
+}
+
+.box-actividades .container .box-entrenamiento button {
+
+    position: relative;
+    left: 30px;
+    background-color: #fb8853;
+    color: #FFF;
+    padding: 5px 35px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    border-color: #FFF;
+    font-family: 'Roboto', sans-serif;
+}
+
+.box-entrenamiento {
+
+    width: 200px;
+    padding-bottom:40px;
+    float:left;
+    padding-top: 25px;
+}
+
+.box-entrenamiento img, .box-arbitro img {
+
+    padding-bottom:20px;
+}
+
+.entrenamiento {
+    float:left;
+    width:45%;
+    display:inline-block;
+}
+
+.box-datos {
+    width: 185px;
+    float:right;
+    padding-top: 25px;
+}
+
+.box-datos h3 {
+    text-transform:uppercase;
+    color:#FFF;
+    font-family: 'Roboto', sans-serif;
+    padding-bottom: 15px;
+}
+
+.box-datos p {
+    color:#FFF;
+    font-family: 'Roboto', sans-serif;
+    padding-bottom: 23px;
+}
+
+.box-datos ul li {
+
+    display:inline-block;
+    list-style-type:none;
+    color:#FFF;
+    font-size:18px;
+    padding:0px 10px;
+    border-right:solid 1px #FFF;
+
+}
+
+.box-datos ul {
+
+    padding:0px;
+}
+
+.box-arbitro {
+
+    width: 200px;
+    padding-bottom:40px;
+    float:left;
+    padding-top: 25px;
+
+}
+
+.arbitro {
+
+    float:right;
+    width:45%;
+    display:inline-block;
+}
+
+.arbitro .box-arbitro button {
+
+    position: relative;
+    left: 30px;
+    background-color: #3a3a3a;
+    color: #FFF;
+    padding: 5px 35px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    border-color: #FFF;
+    font-family: 'Roboto', sans-serif;
+}
+
+.sub-footer {
+
+    background-color:#2E2E2E;
+    text-align:center;
+    color:#FFF;
+    padding:10px;
+}
+.sub-footer-2 {
+
+    background-color:#00bb77;
+    text-align:center;
+    color:#FFF;
+    padding:10px;
+}
+
+.col-lg-3 {
+
+    padding-bottom:50px;
+}
+.box-social-foot {
+
+    background-color:#3a3a3a;
+
+}
+
+.box-social-foot .social {
+    display:inline-block;
+}
+
+.seguinos {
+    color:#FFF;
+    position:relative;
+    top:15px;
+    text-align:center;
+
+}
+
+.box-social-foot .container .social ul li {
+    display:inline-block;
+    list-style-type:none;
+    color:#FFF;
+    font-size:30px;
+    padding:30px;
+}
+
+.table{
+    position:relative;
+    top:40px;
+    font-size:18px;
+    text-align:center;
+}
+.principal-table {
+    background-color:#fb8853;
+    color:#FFF;
+
+}
+
+.table tr:hover{
+    background-color:#fb8853;
+    color:#FFF;
+}
+
+.principal-table .ion-ios-football {
+
+    font-size:20px;
+}
+
+
+footer .contact span, footer .contact p {
+
+    font-size: 15px;
+    display: inline-block;
+    position: relative;
+    top: 0px;
+    padding-top: 10px;
+    color:#fff;
+
+} 
+
+footer .contact {
+    display:inline-block;
+    float:right;
+    padding-top:20px;
+    position:relative;
+}
+
+
+footer .contact p {
+
+    padding-left:10px;
+
+}
+footer {
+
+    padding-top:80px;
+}
+.footer-img {
+    float:left;
+    position:relative;
+    padding-top:25px;
+}
+
+.box-contact {
+
+    background-color:#FFF;    
+
+}
+.box-contact .container .section-form h3,  .box-contact .container .section-locations h3 {
+
+    color:#fa3e5f;
+    text-transform:uppercase;
+    font-family: 'Roboto', sans-serif;
+    display:block;
+    text-align:center;
+    padding-top: 30px;
+}
+
+.box-contact .container .section-form h6, .box-contact .container .section-locations h6  {
+
+    color:#fa3e5f;
+    font-family: 'Roboto', sans-serif;
+    display:block;
+    text-align:center;
+    padding-bottom: 25px;
+    padding-top: 15px;
+}
+
+.reglamento h1 {
+    color:#fa3e5f;
+    padding:30px 0;
+    text-align:center;
+}
+
+.reglamento h3 {
+    color:#fa3e5f;
+    padding:20px 0;
+}
+
+.reglamento h4 {
+    color:#fa3e5f;
+    padding:20px 0;
+}
+
+.row .col-lg-6 h2{
+
+    padding-top:60px;
+    color:#fa3e5f;
+    border-bottom:1px solid #fa3e5f;
+    display:inline-block;
+}
+
+.torneo {
+    width:250px;
+    background-color:#fb8153;
+    padding:30px 0;
+
+}
+
+.container-2 {
+    max-width:600px;
+    float: right;
+    position: relative;
+    display:inline-block;
+
+}
+.section-torneos {
+    width:600px; /* OJO ACÁ CON EL RESPONSIVE.. PONER UN MAX-WIDTH PARA QUE NO SE ROMPA.. O SACARLO Y DEJARSELO AL CONTAINER-2 */
+}
+
+.container-2 .section-torneos h2  {
+    color:#fb8153;
+    padding-bottom:15px;
+    text-align:center;
+    border-bottom:2px solid;
+
+}
+.container-2 .section-torneos span {
+    font-size:35px;
+    color:#fb8153;
+    position:relative;
+    top:60px;
+
+}
+.container-2 h4 {
+    color:#fa3e5f;
+    padding:25px 0;
+
+}
+.col-lg-4 img {
+    padding:20px 0;
+
+}
+.img-torneo, .torneo h4, .torneo p {
+    text-align:center;
+    text-transform:uppercase;
+    color:#FFF;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+}
+.torneo-izq {
+    padding-top:45px;
+    display:inline-block;
+}
+
+.torneo-izq .torneo select {
+    padding: 8px;
+    border-radius: 4px;
+    border-style: none;
+    margin-top: 15px;
+    width: 150px;
+    position:relative;
+    left:50px;
+}
+
+.menu-torneos {
+    display:inline-block;
+}
+.menu-torneos ul li {
+    list-style-type: none;
+    padding:15px 0;
+    border:1px solid #121212;
+    margin-top:10px;
+    width:250px;
+    text-align:center;
+    font-size:'Roboto';
+    font-weight:700;
+
+}
+.menu-torneos ul li:hover {
+    background-color:#fb8153;
+    color:#FFF;
+}
+.menu-torneos ul {
+    padding:0;
+}
