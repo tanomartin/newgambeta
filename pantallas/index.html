@@ -9,9 +9,9 @@
   <link rel="stylesheet"  href="css/media.css">
 	<link rel="stylesheet"  href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 	<link href='https://fonts.googleapis.com/css?family=Roboto:500,700' rel='stylesheet' type='text/css'>
-  <script type="text/javascript" src="js/jquery-2.2.0.min.js"></script>
-  <script type="text/javascript" src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.js"></script>
+  <script type="text/javascript" src="include/js/jquery-2.2.0.min.js"></script>
+  <script type="text/javascript" src="include/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="include/js/jquery.js"></script>
 
 </head>
 <body>
@@ -49,10 +49,10 @@
  			<p>Ingresá tu Torneo</p>
       <form>
             <select name="sede">
-                <option value="">- Sede - </option>
-                <option value="salguero">Costa Salguero</option>
-                <option value="benavidez">Benavidez</option>
-                <option value="caballito">Caballito Norte</option>
+            	<option value="">- Sede - </option>
+            	{% for sede in sedes %}
+					<option value="{{ sede.id }}">{{ sede.nombre }}</option>
+				{% endfor %}
             </select>
             <select name="torneo">
                 <option value="">- Torneo - </option>
@@ -234,7 +234,7 @@
 
 <script>
 $(function() {
-	$("#navbar").load("include/navbar.html");
+	$("#navbar").load("include/html/navbar.html");
 });
 </script>
 
