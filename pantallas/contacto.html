@@ -9,35 +9,12 @@
   <link rel="stylesheet"  href="css/media.css">
 	<link rel="stylesheet"  href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 	<link href='https://fonts.googleapis.com/css?family=Roboto:500,700' rel='stylesheet' type='text/css'>
-  <script type="text/javascript" src="js/jquery-2.2.0.min.js"></script>
-  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="include/js/jquery-2.2.0.min.js"></script>
+  <script type="text/javascript" src="include/js/bootstrap.min.js"></script>
 
 </head>
 <body>
-	<nav class="navbar navbar-default">
-  <div class="container">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a href="index.html"><img src="imagenes/logo.png"></a>
-    </div>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right text-uppercase">
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="torneos.html">Torneos</a></li>
-        <li><a href="nosotros.html">Nosotros</a></li>
-        <li><a href="sedes.html">Sedes</a></li>
-        <li><a href="reglamento.html">Reglamento</a></li>
-        <li><a href="contacto.html">Contacto</a></li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container -->
-</nav>
+	<nav class="navbar navbar-default" id="navbar"></nav>
 
 	  <div class="box-contact">
       <div class="container">
@@ -87,34 +64,14 @@
   </div>
 
 
-<footer>
-
-  <div class="box-social-foot">
-
-  <div class="container">
-      <div class="footer-img"><img src="imagenes/logo.png"></div>
-      <div class="social">
-        <div class="seguinos"><p>Seguinos también en </p></div>
-        <ul>
-          <li><a href="https://www.facebook.com/gambeta.femenina"  target="_blank"><span class="ion-social-facebook"></span></a></li>
-          <li><a href="https://twitter.com/GambetaFemenina"  target="_blank"><span class="ion-social-twitter"></span></a></li>
-          <li><a href="https://www.youtube.com/channel/UC6A5FHuBCrLxNPDszWIgnNA"  target="_blank"><span class="ion-social-youtube"></span></a></li>
-          <li><a href="https://www.instagram.com/gambetafemenina/" target="_blank"><span class="ion-social-instagram"></span></a></li>
-        </ul>
-      </div>
-
-      <div class="contact">
-        <div class="contact-1"><span class="ion-ios-email-outline"></span><p>info@gambetafemenina.com.ar</p></div>
-        <div class="contact-2"><span class="ion-ios-telephone"></span><p>15555333</p></div>
-      </div>
-  </div>
-
-
-<div class="sub-footer-2">
-  <div clas="container">
-    <p>GAMBETA FEMENINA - Todos los derechos reservados - 2016</p>
-  </div>
-</div>
-</footer>
+<footer id="footer"></footer>
 </body>
+
+<script>
+$(function() {
+  $("#navbar").load("include/html/navbar.html");
+  $("#footer").load("include/html/footer.html");
+});
+</script>
+
 </html>
