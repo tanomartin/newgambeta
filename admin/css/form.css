@@ -1,0 +1,35 @@
+/* Style sheet form */
+label{font-weight:bold;}
+.checkbox_container label,.radio_container label{font-weight:normal;}
+.tableless label{display:block;margin-top:1.5em;padding-bottom:3px;}
+.tableless .checkbox_container label,.tableless .radio_container label{display:inline;}
+input[type="text"],input[type="password"],textarea{padding:2px;border:1px solid #ccc;color:#444;}
+/*input[type="text"],input[type="password"]{width:100%;}*/
+textarea{width:95%;height:140px;}
+input[type="text"]:focus,input[type="password"]:focus,textarea:focus{background-color:#fdf7f0;border-color:#e4790f !important;}
+select{padding:1px;border:1px solid #ccc;color:#444;}
+.checkbox_container span,.radio_container span{display:block;}
+.checkbox_container+br,.radio_container+br{display:none;}
+.checkbox_container label,.checkbox_container input{vertical-align:middle;}
+.tableless input[type="checkbox"],x:-moz-any-link{top:-2px;position:relative;}
+.submit_container{margin-top:1em;margin-bottom:1em;}
+form table td{padding-top:3px;padding-bottom:3px;}
+form table td:first-child{padding-top:6px;padding-right:18px;padding-bottom:0;text-align:left; vertical-align:middle}
+.tableform table{width:99%;margin-top:1.5em;margin-bottom:0;}
+.tableform .formbody,.tableless .formbody{width:94%;overflow:hidden;margin-top:1em;margin-bottom:2em;padding:0.5em 1.8em 0.5em 1em;background-color:#f9f9f9;border-left:2px solid #e4790f;}
+.tableless .formbody{padding-top:0;}
+fieldset{margin-top:1em;border-top:1px dotted #ddd;}
+legend{padding-right:6px;background-color:#f9f9f9;color:#e4790f;}
+fieldset table{width:60%;margin-top:1em !important;margin-bottom:1em !important;}
+fieldset table td:first-child{width:140px;text-align:left;}
+span.mandatory{font-weight:bold;color:#c00;}
+p.confirm{font-size:16px;color:#629300;}
+p.error{margin-bottom:6px;font-weight:bold;font-size:11px;color:#c00;}
+input[type="text"].error,input[type="password"].error,textarea.error{background-color:#ffd;border-color:#c00 !important;}
+input.captcha{width:48px;margin-right:6px;}
+span.captcha_text{font-weight:normal;color:#444;}
+*:first-child+html span.captcha_text{top:-3px;position:relative;}
+form .service{margin-bottom:1.5em;}
+form .service h3{margin-top:1.5em;}
+form .service p{text-align:left;line-height:1.5;}
+form .service label{margin-top:6px;}

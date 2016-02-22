@@ -1,0 +1,46 @@
+/* Style sheet english */
+#subheader-index{width:960px;height:340px;margin-top:51px;background:url("../images/header/index-en-trans.png") center top no-repeat;}
+#subheader-discover{width:960px;height:170px;margin-top:51px;background:url("../images/header/discover-en-trans.png") center top no-repeat;}
+#subheader-download{width:960px;height:170px;margin-top:51px;background:url("../images/header/download-en-trans.png") center top no-repeat;}
+#subheader-understand{width:960px;height:170px;margin-top:51px;background:url("../images/header/understand-en-trans.png") center top no-repeat;}
+#subheader-enhance{width:960px;height:170px;margin-top:51px;background:url("../images/header/enhance-en-trans.png") center top no-repeat;}
+#subheader-inquire{width:960px;height:170px;margin-top:51px;background:url("../images/header/inquire-en-trans.png") center top no-repeat;}
+.button{width:160px;height:24px;display:block;margin-left:1em;text-indent:-999em;}
+.home #main .button{margin-left:0;}
+.box .button{margin-right:auto;margin-left:auto;}
+#button-demo{background:url("../images/layout/buttons-en-trans.png") 0px 0px no-repeat;}
+#button-demo:hover{background-position:0px -24px;}
+#button-documentation{background:url("../images/layout/buttons-en-trans.png") -160px 0px no-repeat;}
+#button-documentation:hover{background-position:-160px -24px;}
+#button-repository{background:url("../images/layout/buttons-en-trans.png") -320px 0px no-repeat;}
+#button-repository:hover{background-position:-320px -24px;}
+#button-templates{background:url("../images/layout/buttons-en-trans.png") -480px 0px no-repeat;}
+#button-templates:hover{background-position:-480px -24px;}
+#button-team{background:url("../images/layout/buttons-en-trans.png") -640px 0px no-repeat;}
+#button-team:hover{background-position:-640px -24px;}
+#button-partners{background:url("../images/layout/buttons-en-trans.png") -800px 0px no-repeat;}
+#button-partners:hover{background-position:-800px -24px;}
+#button-meeting08{background:url("../images/layout/buttons-en-trans.png") 0px -48px no-repeat;}
+#button-meeting08:hover{background-position:0px -72px;}
+#button-meeting09{background:url("../images/layout/buttons-en-trans.png") -160px -48px no-repeat;}
+#button-meeting09:hover{background-position:-160px -72px;}
+#button-unix{background:url("../images/layout/buttons-en-trans.png") -320px -48px no-repeat;}
+#button-unix:hover{background-position:-320px -72px;}
+#button-windows{background:url("../images/layout/buttons-en-trans.png") -480px -48px no-repeat;}
+#button-windows:hover{background-position:-480px -72px;}
+#button-community{background:url("../images/layout/buttons-en-trans.png") -640px -48px no-repeat;}
+#button-community:hover{background-position:-640px -72px;}
+#button-tickets{background:url("../images/layout/buttons-en-trans.png") -800px -48px no-repeat;}
+#button-tickets:hover{background-position:-800px -72px;}
+#button-luid{background:url("../images/layout/buttons-en-trans.png") 0px -96px no-repeat;}
+#button-luid:hover{background-position:0px -120px;}
+#button-commercial{background:url("../images/layout/buttons-en-trans.png") -160px -96px no-repeat;}
+#button-commercial:hover{background-position:-160px -120px;}
+#button-frequently{background:url("../images/layout/buttons-en-trans.png") -320px -96px no-repeat;}
+#button-frequently:hover{background-position:-320px -120px;}
+#button-announcements{background:url("../images/layout/buttons-en-trans.png") -480px -96px no-repeat;}
+#button-announcements:hover{background-position:-480px -120px;}
+#button-videos{background:url("../images/layout/buttons-en-trans.png") -640px -96px no-repeat;}
+#button-videos:hover{background-position:-640px -120px;}
+#button-developer{background:url("../images/layout/buttons-en-trans.png") -800px -96px no-repeat;}
+#button-developer:hover{background-position:-800px -120px;}

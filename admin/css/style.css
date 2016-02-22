@@ -1,0 +1,47 @@
+/* start - table */
+table {
+	border-collapse: collapse;
+	margin: 10px 15px;	
+}
+th strong {
+	color: #fff;
+}
+th {
+	background: #306bc1  url(../images/layout/wrapper.png) repeat-x 0 0; 
+	/*height: 35px;*/
+	padding-left: 12px;
+	padding-right: 12px;
+	color: #fff;
+	text-align: left;
+	border: 1px solid #306bc1;
+	border-bottom-width: 2px;
+	size:20px;
+	
+}/*
+tr {
+	height: 32px;
+	background: #fff;	
+}
+
+td {
+	padding-left: 12px;
+	padding-right: 12px;
+	border: 1px solid #E5F0FB; 
+}
+*/
+/* end - table */
+
+/* form elements */
+
+input.button { 
+	font: bold 12px Arial, Sans-serif; 
+	height: 28px;
+	margin: 0;
+	padding: 2px 3px; 
+	color: #fff;
+	background: #E0760E url(../images/layout/wrapper.png) repeat-x 0 0; 
+	border: 1px solid #E0760E;
+	cursor:pointer;
+	
+}
+

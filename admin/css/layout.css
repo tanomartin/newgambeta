@@ -1,0 +1,93 @@
+/* Style sheet layout */
+body{margin-bottom:18px;background:#ddd url("../images/layout/body.jpg") center top no-repeat;}
+#wrapper{background:url("../images/layout/wrapper.png") left top repeat-x;}
+#header{width:970px;margin:0 auto;background:url("../images/layout/header.jpg") center 132px no-repeat;}
+#header .inside{padding-right:5px;padding-left:5px;z-index:999;}
+#container{width:960px;margin:0 auto;padding:0 5px 18px 5px;background-color:#eee;}
+#main,#right{padding-top:6px;}
+#right{background:url("../images/layout/right.jpg") left top no-repeat;min-height:480px;}
+#right .inside{padding-right:10px;padding-left:10px;}
+#footer{width:970px;margin:0 auto;background:#eee url("../images/layout/footer.jpg") center top no-repeat;}
+#footer .inside{overflow:hidden;padding:12px 5px;background:url("../images/layout/footer-inside.jpg") center bottom no-repeat;}
+.g1,.g2,.g3,.g4,.g5,.g6,.g7,.g8,.g9,.g10,.g11,.g12{float:left;display:inline;margin-right:10px;margin-left:10px;}
+.g1{width:60px;}
+.g2{width:140px;}
+.g3{width:220px;}
+.g4{width:300px;}
+.g5{width:380px;}
+.g6{width:460px;}
+.g7{width:540px;}
+.g8{width:620px;}
+.g9{width:700px;}
+.g10{width:780px;}
+.g11{width:860px;}
+.g12{width:940px;}
+.mod_article>.block{margin-right:10px;margin-left:10px;}
+.g1 .block,.g2 .block,.g3 .block,.g4 .block,.g5 .block,.g6 .block,.g7 .block,.g8 .block,.g9 .block,.g10 .block,.g11 .block,.g12 .block{margin-right:0;margin-left:0;}
+.gr{margin-right:20px !important;}
+#logo{top:49px;position:absolute;}
+#search{right:0px;top:6px;position:absolute;text-align:right;}
+#search input{vertical-align:top;}
+#search input.text{width:164px;padding:3px 0 3px 9px;background:url("../images/layout/search-field.png") left top no-repeat;border:0;font-size:11px;}
+#footer h1{padding-bottom:3px;border-bottom:1px dotted #999;font-size:14px;color:#222;}
+#footer p,#footer li,#footer a{font-size:11px;color:#666;line-height:1.5;}
+#footer .news h1{padding-top:1px;padding-left:21px;background:url("../images/icons/rss-trans.png") left center no-repeat;}
+#footer .network h1{padding-top:1px;padding-left:21px;background:url("../images/icons/network-trans.png") left center no-repeat;}
+#footer .casestudy h1{padding-top:1px;padding-left:21px;background:url("../images/icons/casestudy-trans.png") left center no-repeat;}
+#footer .blog h1{padding-top:1px;padding-left:21px;background:url("../images/icons/blog-trans.png") left center no-repeat;}
+#copyright{margin-top:30px;text-align:center;}
+#copyright,#copyright a{font-size:11px;color:#666;}
+#icon-demo h2{padding-left:60px;background:url("../images/icons/demo-trans.png") left center no-repeat;}
+#icon-documentation h2{padding-left:60px;background:url("../images/icons/documentation-trans.png") left center no-repeat;}
+#icon-extensions h2{padding-left:60px;background:url("../images/icons/extensions-trans.png") left center no-repeat;}
+#icon-templates h2{padding-left:60px;background:url("../images/icons/templates-trans.png") left center no-repeat;}
+#icon-team h2{padding-left:60px;background:url("../images/icons/team-trans.png") left center no-repeat;}
+#icon-partners h2{padding-left:60px;background:url("../images/icons/partners-trans.png") left center no-repeat;}
+#icon-editing h2{padding-left:60px;background:url("../images/icons/editing-trans.png") left center no-repeat;}
+#icon-structure h2{padding-left:60px;background:url("../images/icons/structure-trans.png") left center no-repeat;}
+#icon-permissions h2{padding-left:60px;background:url("../images/icons/permissions-trans.png") left center no-repeat;}
+#icon-forms h2{padding-left:60px;background:url("../images/icons/forms-trans.png") left center no-repeat;}
+#icon-search h2{padding-left:60px;background:url("../images/icons/search-trans.png") left center no-repeat;}
+#icon-css h2{padding-left:60px;background:url("../images/icons/css-trans.png") left center no-repeat;}
+#icon-files h2{padding-left:60px;background:url("../images/icons/files-trans.png") left center no-repeat;}
+#icon-news h2{padding-left:60px;background:url("../images/icons/news-trans.png") left center no-repeat;}
+#icon-calendar h2{padding-left:60px;background:url("../images/icons/calendar-trans.png") left center no-repeat;}
+#icon-newsletter h2{padding-left:60px;background:url("../images/icons/newsletter-trans.png") left center no-repeat;}
+#icon-accessibility h2{padding-left:60px;background:url("../images/icons/accessibility-trans.png") left center no-repeat;}
+#icon-liveupdate h2{padding-left:60px;background:url("../images/icons/liveupdate-trans.png") left center no-repeat;}
+#icon-php5 h2{padding-left:60px;background:url("../images/icons/php5-trans.png") left center no-repeat;}
+#icon-support h2{padding-left:30px;background:url("../images/icons/support-trans.png") left center no-repeat;}
+#icon-community h2{padding-left:30px;background:url("../images/icons/community-trans.png") left center no-repeat;}
+#icon-partnerlist h2{padding-left:30px;background:url("../images/icons/partnerlist-trans.png") left center no-repeat;}
+#see-in-action{width:64px;height:64px;left:683px;top:287px;position:absolute;background:url("../images/icons/play-trans.png") left top no-repeat;text-indent:-999em;}
+#see-in-action:hover{background-position:left bottom;}
+.subheader .button{width:64px;height:64px;margin:94px auto 0 auto;}
+#button-features{background:url("../images/icons/buttons-trans.png") 0px top no-repeat;}
+#button-features:hover{background-position:0px bottom;}
+#button-onlinedemo{background:url("../images/icons/buttons-trans.png") -64px top no-repeat;}
+#button-onlinedemo:hover{background-position:-64px bottom;}
+#button-teampage{background:url("../images/icons/buttons-trans.png") -128px top no-repeat;}
+#button-teampage:hover{background-position:-128px bottom;}
+.button-download{background:url("../images/icons/buttons-trans.png") -192px top no-repeat;}
+.button-download:hover{background-position:-192px bottom;}
+#button-userguide{background:url("../images/icons/buttons-trans.png") -256px top no-repeat;}
+#button-userguide:hover{background-position:-256px bottom;}
+#button-devguide{background:url("../images/icons/buttons-trans.png") -320px top no-repeat;}
+#button-devguide:hover{background-position:-320px bottom;}
+#button-books{background:url("../images/icons/buttons-trans.png") -384px top no-repeat;}
+#button-books:hover{background-position:-384px bottom;}
+#button-liveupdate{background:url("../images/icons/buttons-trans.png") -448px top no-repeat;}
+#button-liveupdate:hover{background-position:-448px bottom;}
+#button-extensions{background:url("../images/icons/buttons-trans.png") -512px top no-repeat;}
+#button-extensions:hover{background-position:-512px bottom;}
+#button-variety{background:url("../images/icons/buttons-trans.png") -576px top no-repeat;}
+#button-variety:hover{background-position:-576px bottom;}
+#button-news{background:url("../images/icons/buttons-trans.png") -640px top no-repeat;}
+#button-news:hover{background-position:-640px bottom;}
+#button-faq{background:url("../images/icons/buttons-trans.png") -704px top no-repeat;}
+#button-faq:hover{background-position:-704px bottom;}
+#button-support{background:url("../images/icons/buttons-trans.png") -768px top no-repeat;}
+#button-support:hover{background-position:-768px bottom;}
+.box{width:216px;margin-top:9px;padding-top:6px;padding-bottom:6px;background:#f9f9f9 url("../images/layout/box.jpg") left top repeat-x;border:2px solid #ddd;font-size:12px;border-radius:6px;-moz-border-radius:6px;-webkit-border-radius:6px;}
+.box h2{margin-top:6px;margin-bottom:9px;font-size:18px;}
+.box,.box p{text-align:center;}

@@ -1,0 +1,20 @@
+/* Style sheet partners */
+#partnerlist .list_per_page{width:190px;}
+#partnerlist .list_search{width:45%;}
+#partnerlist select{width:100px;}
+#partnerlist td{padding:12px 6px;background-color:#f9f9f9;border-top:1px solid #ddd;}
+#partnerlist td.col_1{padding:12px;background-color:#fff;}
+#partnerlist td.col_2{min-width:140px;}
+#partnerlist .logo{float:right;}
+#partnerlist h3{margin-top:0;margin-bottom:0;}
+#partnerlist .link a{font-size:12px;color:#808080;}
+#partnerlist .services{margin-top:9px;font-size:11px;}
+#partnerlist .services_details{font-weight:bold;}
+#partnerlist .description{height:92px;overflow:hidden;clear:both;font-size:12px;}
+#partnerlist .contact{margin-top:9px;font-size:11px;}
+#partnerlist .list_partner p img{margin-left:0;}
+#partnerlist span.value{display:none;}
+.avatar_container div.hint{margin:6px 0 0 0;font-size:12px;color:#999;}
+.avatar_container img{padding:3px 6px;background-color:#eee;border:2px solid #bbb;}
+#ctrl_description,#ctrl_helpdesk_timezone{margin-bottom:6px;}
+.mod_personalData #ctrl_description{height:240px !important;}

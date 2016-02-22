@@ -1,0 +1,16 @@
+/* Style sheet print */
+body{font-family:Tahoma,Arial,sans-serif;font-weight:normal;font-size:11pt;color:#000;line-height:1.5;}
+h1{margin-bottom:0.5em;font-size:16pt;}
+h2{margin-bottom:0.25em;font-size:14pt;}
+h3,h4,h5,h6{margin-bottom:0;font-size:12pt;}
+a{text-decoration:none;color:#e4790f;}
+img{border:0px;}
+ul,ol{page-break-before:avoid;}
+li{page-break-inside:avoid;}
+table{margin-bottom:0.5em;border-collapse:collapse;border-spacing:0;font-size:inherit;}
+th{font-weight:bold;}
+th,td{margin:0;padding:1px 2px;text-align:left;vertical-align:top;border:1px solid #999;}
+#copyright{margin-top:1cm;padding-top:0.25cm;border-top:1px solid #999;font-size:8pt;color:#666;}
+#topmenu,#search,#mainmenu,#submenu,#right,.pagination,div.ads,div.bc_bottom,a.anchor{display:none;}
+.invisible,.subheader,.mod_breadcrumb,.mod_booknav,#footer .mod_newslist,#footer .network,#footer .casestudy{display:none;}
+form,fieldset,legend,label,input,select,textarea{display:none;}
