@@ -8,12 +8,12 @@ class Colores {
 	var $nombreColor;
 	var $rgb;
 		
-	function Colorer($id="") {
+	function Colores($id="") {
 		if ($id != "") {
 			$colores = $this->get($id);
-			$this->id = $arbitro[0]["id"]; 
-			$this->nombreColor = $arbitro[0]["nombreColor"];
-			$this->rgb = $arbitro[0]["rgb"];
+			$this->id = $colores[0]["id"]; 
+			$this->nombreColor = $colores[0]["nombreColor"];
+			$this->rgb = $colores[0]["rgb"];
 		}
 	}
 
@@ -48,7 +48,7 @@ class Colores {
 	
 	function modificar() {
 		$db = new Db();
-		$query = "update ga_colores set nombreColor = '".$this->nombreColor."' rgb = '". $this->rgb."' where id = ".$this->id ;		  
+		$query = "update ga_colores set nombreColor = '".$this->nombreColor."', rgb = '". $this->rgb."' where id = ".$this->id ;		  
 		$db->query($query); 
 		$db->close();
 	

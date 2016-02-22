@@ -171,7 +171,7 @@
 											 <tr style="vertical-align:middle" >
 												<td align="left"><?=$datos[$i]["id"]?></td>
 												<td align="left"><?=$datos[$i]["nombreColor"]?></td>     
-												<td align="left" style="color: <?=$datos[$i]["rgb"]?>"><?=$datos[$i]["rgb"]?></td>                        
+												<td align="left" style="color: <?=$datos[$i]["rgb"]?>; font-size: 15px"><b><?=$datos[$i]["rgb"]?></b></td>                        
 						                     	<td nowrap>
 													<a href="javascript:editar(<?=$datos[$i]["id"]?>);"> <img border="0" src="images/icono-editar.gif" alt="editar" title="editar" /></a>
 													<a href="javascript:borrar(<?=$datos[$i]["id"]?>);"><img border="0" src="images/icono-eliminar.gif" alt="eliminar" title="eliminar" /></a>
