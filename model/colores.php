@@ -5,19 +5,22 @@ include_once "mysql.class.php";
 class Colores {
 
 	var $id;
+	var $nombreColor;
 	var $rgb;
 		
 	function Colorer($id="") {
 		if ($id != "") {
 			$colores = $this->get($id);
 			$this->id = $arbitro[0]["id"]; 
-			$this->nombre = $arbitro[0]["rgb"];
+			$this->nombreColor = $arbitro[0]["nombreColor"];
+			$this->rgb = $arbitro[0]["rgb"];
 		}
 	}
 
 	
 	function set($valores){
 		$this->id = ($valores["idreg"])?$valores["idreg"]:$valores["id"]; 
+		$this->nombreColor = $valores["nombreColor"];
 		$this->rgb = $valores["rgb"];
 	}
 	
@@ -29,7 +32,8 @@ class Colores {
 
 	function agregar() {
 		$db = new Db();	
-		$query = "insert into ga_colores(rgb) values ('".$this->rgb."')";
+		$query = "insert into ga_colores(nombreColor,rgb) values ('".$this->nombreColor."','".$this->rgb."')";
+		print($query);
 		$db->query($query); 
 		$db->close();	
 	}
@@ -44,7 +48,7 @@ class Colores {
 	
 	function modificar() {
 		$db = new Db();
-		$query = "update ga_colores set rgb = '". $this->rgb."' where id = ".$this->id ;		  
+		$query = "update ga_colores set nombreColor = '".$this->nombreColor."' rgb = '". $this->rgb."' where id = ".$this->id ;		  
 		$db->query($query); 
 		$db->close();
 	

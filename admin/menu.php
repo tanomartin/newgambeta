@@ -68,6 +68,9 @@
 	        </li>
 			<li>
 		      <a href="#" title="Noticias"    onclick="this.blur(); ir('Noticias', '', 'noticias.php', 'noticias.php')">Noticias</a>
+	        </li>
+	        <li>
+		      <a href="#" title="Colores"    onclick="this.blur(); ir('Colores', '', 'colores.php', 'colores.php')">Colores</a>
 	        </li>             
 	      </ul>
 	    </li>
