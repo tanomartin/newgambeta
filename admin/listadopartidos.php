@@ -121,7 +121,7 @@ for($i = 0; $i < sizeof ( $listadoPartidos ); $i ++) {
 						 		<div class="ce_text block">
 									<h1>Listado de Partidos del <?=$fechaPartidos?> - Sede <?=$sede[0]['nombre']?></h1>
 									<img width="75" border="0" alt="exportar" title="Exportar Excel" onclick="javascript:migrar();" style="cursor: pointer; float: right;" src="images/xls-icon.png" />
-									<a href="listadopartidos.fichas.php?fecha=<?=$fechaPartidos?>&sede=<?=$id_sede?>>" target="_blanck"><img width="75" border="0" alt="fichas" title="Obtener Fichas" style="float: right;" src="images/pdf-icon.png" /></a>
+									<a href="listadopartidos.fichas.php?fecha=<?=$fechaPartidosSql?>&sede=<?=$id_sede?>" target="_blanck"><img width="75" border="0" alt="fichas" title="Obtener Fichas" style="float: right;" src="images/pdf-icon.png" /></a>
 								</div>
 								<div class="mod_listing ce_table listing block" id="partnerlist">
 									<form name="frm_listado" id="frm_listado" action="<?=$_SERVER['PHP_SELF']?>" method="post">

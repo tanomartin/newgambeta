@@ -130,9 +130,9 @@
 							                     <td align="left"><?=$datos[$i]["nombreEquipo"]?></td>
 							                     <td align="left"><?=$datos[$i]["posicion"]?></td>
 							                     <? if($datos[$i]["activa"] == '1') {?>
-							                     		<td style="text-align: center;"><img border="0" src="../img/check.ico" alt="activa" title="activa" style="cursor:pointer" onclick="cambiaractiva('<?=$datos[$i]["idJugadoraEquipo"]?>','0')"/></td>
+							                     		<td style="text-align: center;"><img border="0" src="images/check.ico" alt="activa" title="activa" style="cursor:pointer" onclick="cambiaractiva('<?=$datos[$i]["idJugadoraEquipo"]?>','0')"/></td>
 							                     <? } else { ?>
-														<td style="text-align: center;"><img border="0" src="../img/forbidden.ico" alt="No activa" title="No activa" style="cursor:pointer" onclick="cambiaractiva('<?=$datos[$i]["idJugadoraEquipo"]?>','1')"/></td>
+														<td style="text-align: center;"><img border="0" src="images/forbidden.ico" alt="No activa" title="No activa" style="cursor:pointer" onclick="cambiaractiva('<?=$datos[$i]["idJugadoraEquipo"]?>','1')"/></td>
 												 <? } ?>
 							                     <td nowrap>
 							                     	<a href="javascript:ver(<?=$_POST["id"]?>,<?=$datos[$i]["idJugadoraEquipo"]?>);"> <img border="0" src="images/find-icon.png" alt="ver" title="ver" width="20px" height="20px" /></a>

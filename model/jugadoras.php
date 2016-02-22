@@ -285,6 +285,32 @@ class Jugadoras {
 		return $res;
 	}
 	
+	function getActivasByIdEquipoTorneo($idEquipoTorneo="") {
+		$db = new Db();
+		$query = "Select count(*) as cantidad From ga_jugadoras_equipo je Where
+					je.idEquipoTorneo = $idEquipoTorneo and je.activa = 1";
+		$res = $db->getResults($query, ARRAY_A);
+		$db->close();
+		return $res[0]['cantidad'];
+	}
+	
+	function getReferentesByIdEquipoTorneo($idEquipoTorneo="") {
+		$db = new Db();
+		$query = "Select
+					j.*,
+					je.id as idJugadoraEquipo,
+					je.activa as activa
+				  From
+					ga_jugadoras_equipo je,
+					ga_jugadoras j
+				  Where
+					je.idEquipoTorneo = $idEquipoTorneo and je.envioMail = 1 and
+					je.idJugadora = j.id" ;
+		$res = $db->getResults($query, ARRAY_A);
+		$db->close();
+		return $res;
+	}
+	
 	function cambiarActiva($idJugadorasEquipos, $activo) {
 		$db = new Db();
 		if ($activo == 0) {

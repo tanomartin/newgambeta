@@ -355,7 +355,9 @@ class Fixture {
 	   $db = new Db();
        $query = "Select  
 	   				x.id as idPartido,
-	   				x.horaPartido, 
+	   				x.horaPartido,
+	   				x.idEquipoTorneo1 as idEquipoTorneo1,
+	   				x.idEquipoTorneo2 as idEquipoTorneo2, 
 					f.nombre as nombreFecha, 
 					e1.nombre as equipo1,
 					e1.id as id1,

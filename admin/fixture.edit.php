@@ -177,9 +177,9 @@
 											         	</select>
 												</tr>
 												<tr class="odd">
-													<td class="col_0 col_first"><label for="nombre">Cancha</label><span class="mandatory">*</span></td>
+													<td class="col_0 col_first"><label for="nombre">Cancha</label></td>
 													<td class="col_1 col_last">
-														<input name="cancha" type="text" id="cancha" value="<?php echo $datos[0]["cancha"]; ?>" class="required" size="5" <?= $disabled ?> />
+														<input name="cancha" type="text" id="cancha" value="<?php echo $datos[0]["cancha"]; ?>" size="5" <?= $disabled ?> />
 													</td>
 												</tr>
 												<tr class="odd">
