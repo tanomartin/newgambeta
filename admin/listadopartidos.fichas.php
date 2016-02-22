@@ -48,9 +48,9 @@ foreach ( $listadoPartidos as $partido ) {
 	
 	$pdf->SetFont ( 'Arial', 'B', 15 );
 	$pdf->SetXY ( 5, 45 );
-	$pdf->Cell ( 15, 15, cambiaf_a_normal ( $fechaPartidosSql ) );
+	$pdf->Cell ( 15, 15, cambiaf_a_normal ( $fechaPartidosSql )." - ".$partido ["horaPartido"]);
 	$pdf->SetXY ( 185, 45 );
-	$pdf->Cell ( 15, 15, cambiaf_a_normal ( $fechaPartidosSql ) );
+	$pdf->Cell ( 15, 15, cambiaf_a_normal ( $fechaPartidosSql )." - ".$partido ["horaPartido"]);
 	
 	$pdf->SetFont ( 'Arial', 'B', 15 );
 	$pdf->SetXY ( 125, 45 );

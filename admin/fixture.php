@@ -33,9 +33,9 @@
 			$oObj = new Fixture ();
 			$oObj->set ( $data );
 			if ($_POST ["id"] == "-1") {
-				$oObj->insertar ();
+				$oObj->insertar();
 			} else {
-				$oObj->actualizar ( $files );
+				$oObj->actualizar();
 			}
 			break;
 		

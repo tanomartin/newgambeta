@@ -32,9 +32,17 @@ class Fixture {
 			$this->idSede = $valores[0]["idSede"];
 			$this->cancha = $valores[0]["cancha"];
 			$this->idArbitro = $valores[0]["idArbitro"];
-			$this->golesEquipo1 = $valores[0]["golesEquipo1"];
+			if ($valores[0]["golesEquipo1"] != "") {
+				$this->golesEquipo1 = $valores[0]["golesEquipo1"];
+			} else {
+				$this->golesEquipo1 = -1;
+			}
 			$this->puntajeEquipo1 = ($valores[0]["puntajeEquipo1"])?$valores[0]["puntajeEquipo1"]:0;
-			$this->golesEquipo2 = $valores[0]["golesEquipo2"]; 
+			if ($valores[0]["golesEquipo2"] != "") {
+				$this->golesEquipo2 = $valores[0]["golesEquipo2"];
+			} else {
+				$this->golesEquipo2 = -1;
+			}
 			$this->puntajeEquipo2 = ($valores[0]["puntajeEquipo2"])?$valores[0]["puntajeEquipo2"]:0;
 			$this->suspendido = ($valores[0]["suspendido"]=='on')?1:0; 
 		}
@@ -51,9 +59,17 @@ class Fixture {
 		$this->idSede = $valores["idSede"];
 		$this->cancha = $valores["cancha"];
 		$this->idArbitro = $valores["idArbitro"];
-		$this->golesEquipo1 = $valores["golesEquipo1"]; 
+		if ($valores["golesEquipo1"] != "") {
+			$this->golesEquipo1 = $valores["golesEquipo1"];
+		} else {
+			$this->golesEquipo1 = -1;
+		}
 		$this->puntajeEquipo1 = ($valores["puntajeEquipo1"])?$valores["puntajeEquipo1"]:0;
-		$this->golesEquipo2 = $valores["golesEquipo2"]; 
+		if ($valores["golesEquipo2"] != "") {
+			$this->golesEquipo2 = $valores["golesEquipo2"];
+		} else {
+			$this->golesEquipo2 = -1;
+		}
 		$this->puntajeEquipo2 = ($valores["puntajeEquipo2"])?$valores["puntajeEquipo2"]:0;
 		$this->suspendido = ($valores["suspendido"]=='on')?1:0; 
 	}
@@ -97,7 +113,7 @@ class Fixture {
 		$db->close();	
 	}
 	
-	function actualizar($files) {
+	function actualizar() {
 		$db = new Db();
 		$query = "update 
 					ga_fixture set 
