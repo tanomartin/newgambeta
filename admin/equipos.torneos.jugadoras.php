@@ -15,6 +15,7 @@
 	$datosTorneo = $oEquipo->getRelacionTorneo($_POST["idTorneoEquipo"]);	
 	$oJugadora = new Jugadoras();
 	$jugadoras = $oJugadora->getByEquipoTorneo($_POST["id"], $_POST["idTorneoCat"]);	
+	$catidadActivas = $oJugadora->getCantidadActivaByEquipoTorneo($_POST["id"], $_POST["idTorneoCat"]);	
 ?>
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
@@ -85,9 +86,10 @@
 					<div class="mod_article block" id="register">
 						<div class="ce_text block">
 							<h1>Jugadoras de
-							 <font color="#e4790f"><?=$equipo[0]['nombre']." [".$datosTorneo[0]['torneo'] ." - ".$datosTorneo[0]['categoria']."]" ?></font></h1>
+							 <font color="#e4790f"><?=$equipo[0]['nombre']." [".$datosTorneo[0]['torneo'] ." - ".$datosTorneo[0]['categoria']."]" ?></font> - Activas: <font color="#e4790f"><?=$catidadActivas?></font></h1>
 						</div>
 						<div align="right" style="margin-right:20px" >
+						
             				<input class="button" onclick="javascript:importarJugadoras()" type="button" value="Importar Jugadoras Desde Ficha" />
            				</div>
 						<div class="mod_listing ce_table listing block" id="partnerlist">
@@ -132,18 +134,18 @@
 												<tr>
 							                     <td align="left"><?=$jugadoras[$i]["nombre"]?></td>
 							                     <td align="left"><?=$jugadoras[$i]["email"]?></td>
-												 <? if($jugadoras[$i]["activa"] == '1') {?>
-							                     		<td style="text-align: center;"><img border="0" src="../img/check.ico" alt="activa" title="activa" style="cursor:pointer" onclick="cambiaractiva('<?=$jugadoras[$i]["idJugadoraEquipo"]?>','0')"/></td>
+												 <? if($jugadoras[$i]["activa"] == '1') { $cantidad++;?>
+							                     		<td style="text-align: center;"><img border="0" src="images/check.ico" alt="activa" title="activa" style="cursor:pointer" onclick="cambiaractiva('<?=$jugadoras[$i]["idJugadoraEquipo"]?>','0')"/></td>
 							                     <? } else { ?>
-														<td style="text-align: center;"><img border="0" src="../img/forbidden.ico" alt="No activa" title="No activa" style="cursor:pointer" onclick="cambiaractiva('<?=$jugadoras[$i]["idJugadoraEquipo"]?>','1')"/></td>
+														<td style="text-align: center;"><img border="0" src="images/forbidden.ico" alt="No activa" title="No activa" style="cursor:pointer" onclick="cambiaractiva('<?=$jugadoras[$i]["idJugadoraEquipo"]?>','1')"/></td>
 												 <? } ?>
 												 <td style="text-align: center;">
 												 <? if($jugadoras[$i]["activa"] == '1') {
 													 	if($jugadoras[$i]["envioMail"] == '1') {?>
-								                     		<img border="0" src="../img/check.ico" alt="activa" title="activa" style="cursor:pointer" onclick="activarenvio('<?=$jugadoras[$i]["idJugadoraEquipo"]?>','0')"/>
+								                     		<img border="0" src="images/check.ico" alt="activa" title="activa" style="cursor:pointer" onclick="activarenvio('<?=$jugadoras[$i]["idJugadoraEquipo"]?>','0')"/>
 								                     <? } else {
 								                     		if($jugadoras[$i]["email"] != '') {?>
-																<img border="0" src="../img/forbidden.ico" alt="No activa" title="No activa" style="cursor:pointer" onclick="activarenvio('<?=$jugadoras[$i]["idJugadoraEquipo"]?>','1')"/>
+																<img border="0" src="images/forbidden.ico" alt="No activa" title="No activa" style="cursor:pointer" onclick="activarenvio('<?=$jugadoras[$i]["idJugadoraEquipo"]?>','1')"/>
 													 	<? }
 								                     	} 
 													}?>
