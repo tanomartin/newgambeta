@@ -143,12 +143,12 @@ for($i = 0; $i < sizeof ( $listadoPartidos ); $i ++) {
 													<td><?=$partido["arbitro"]?></td>
 													<td style="text-align: center">
 													 <? if ($partido["confirmacion"] == "OK") { ?>
-													 		<img width="25" border="0" alt="reserva" title="Confirmado" src="../img/check.ico" />
+													 		<img width="25" border="0" alt="reserva" title="Confirmado" src="images/check.ico" />
 													 <?	} elseif ($partido["confirmacion"] == "") { ?>
-													 		<img width="25" border="0" alt="reserva" title="Sin Confirmacion" src="../img/forbidden.ico" />
+													 		<img width="25" border="0" alt="reserva" title="Sin Confirmacion" src="images/forbidden.ico" />
 													 <?	} else { ?> 
 															<font color="#0000FF"><?=$partido["confirmacion"]?></font> 
-															<img width="25" border="0" alt="reserva" title="Sin Confirmacion" src="../img/blue-check-icon.png" />
+															<img width="25" border="0" alt="reserva" title="Sin Confirmacion" src="images/blue-check-icon.png" />
 													 <?	} ?>
 										 			</td>
 												</tr>

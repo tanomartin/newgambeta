@@ -32,9 +32,9 @@ class Fixture {
 			$this->idSede = $valores[0]["idSede"];
 			$this->cancha = $valores[0]["cancha"];
 			$this->idArbitro = $valores[0]["idArbitro"];
-			$this->golesEquipo1 = ($valores[0]["golesEquipo1"])?$valores[0]["golesEquipo1"]:-1;
+			$this->golesEquipo1 = $valores[0]["golesEquipo1"];
 			$this->puntajeEquipo1 = ($valores[0]["puntajeEquipo1"])?$valores[0]["puntajeEquipo1"]:0;
-			$this->golesEquipo2 = ($valores[0]["golesEquipo2"])?$valores[0]["golesEquipo2"]:-1; 
+			$this->golesEquipo2 = $valores[0]["golesEquipo2"]; 
 			$this->puntajeEquipo2 = ($valores[0]["puntajeEquipo2"])?$valores[0]["puntajeEquipo2"]:0;
 			$this->suspendido = ($valores[0]["suspendido"]=='on')?1:0; 
 		}
@@ -51,9 +51,9 @@ class Fixture {
 		$this->idSede = $valores["idSede"];
 		$this->cancha = $valores["cancha"];
 		$this->idArbitro = $valores["idArbitro"];
-		$this->golesEquipo1 = ($valores["golesEquipo1"])?$valores["golesEquipo1"]:-1; 
+		$this->golesEquipo1 = $valores["golesEquipo1"]; 
 		$this->puntajeEquipo1 = ($valores["puntajeEquipo1"])?$valores["puntajeEquipo1"]:0;
-		$this->golesEquipo2 = ($valores["golesEquipo2"])?$valores["golesEquipo2"]:-1; 
+		$this->golesEquipo2 = $valores["golesEquipo2"]; 
 		$this->puntajeEquipo2 = ($valores["puntajeEquipo2"])?$valores["puntajeEquipo2"]:0;
 		$this->suspendido = ($valores["suspendido"]=='on')?1:0; 
 	}
