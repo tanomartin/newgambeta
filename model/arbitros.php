@@ -7,7 +7,9 @@ class Arbitros {
 	var $id;
 	var $nombre;
 	var $telefono;
-		
+	
+	var $base;
+	
 	function Arbitros($id="") {
 		if ($id != "") {
 			$arbitro = $this->get($id);
@@ -15,6 +17,7 @@ class Arbitros {
 			$this->nombre = $arbitro[0]["nombre"];
 			$this->telefono = $arbitro[0]["telefono"];
 		}
+		$this->base = new Db();
 	}
 
 	
@@ -31,41 +34,36 @@ class Arbitros {
 		
 
 	function agregar() {
-		$db = new Db();	
+		$db = $this->base;
 		$query = "insert into ga_arbitros(nombre, telefono) values ("."'".$this->nombre."'".","."'".$this->telefono."'".")" ;
 		$db->query($query); 
-		$db->close();	
 	}
 
 
 	function eliminar() {
-		$db = new Db();
+		$db = $this->base;
 		$query = "delete from ga_arbitros where id = ".$this->id ; 
 		$db->query($query); 
-		$db->close();
 	}
 	
 	function modificar() {
-		$db = new Db();
+		$db = $this->base;
 		$query = "update ga_arbitros set nombre = '". $this->nombre."', telefono = '". $this->telefono."' where id = ".$this->id ;		  
 		$db->query($query); 
-		$db->close();
-	
 	}
 	
 	function get($id="") {
-		$db = new Db();
+		$db = $this->base;
 		$query = "Select c.* from ga_arbitros c where 1=1 " ;
 		if ($id != "") {
 			$query .= " and c.id = '$id' ";
 		}
 		$res = $db->getResults($query, ARRAY_A); 
-		$db->close();
 		return $res;
 	}
 	
 	function getPaginado($filtros, $inicio, $cant, &$total) {
-		$db = new Db();
+		$db = $this->base;
 		$query = "Select SQL_CALC_FOUND_ROWS c.* from ga_arbitros c where 1=1 ";
 		if (trim($filtros["fnombre"]) != "")		 
 			$query.= " and c.nombre like '%".strtoupper($_REQUEST["fnombre"])."%'";		  
@@ -73,7 +71,6 @@ class Arbitros {
 		$datos = $db->getResults($query, ARRAY_A); 
 		$cant_reg = $db->getResults("SELECT FOUND_ROWS() cant", ARRAY_A); 
 		$total = ceil( $cant_reg[0]["cant"] / $cant );
-		$db->close();
 		return $datos;	
 	}
 	

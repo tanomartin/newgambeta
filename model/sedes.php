@@ -6,7 +6,9 @@ class Sedes {
 
 	var $id;
 	var $nombre;
-		
+	
+	var $base;
+	
 	function Sedes($id="") {
 		if ($id != "") {
 			$sede = $this->get($id);
@@ -14,6 +16,7 @@ class Sedes {
 			$this->nombre = $sede[0]["nombre"];
 
 		}
+		$this->base = new Db();
 	}
 
 	
@@ -32,7 +35,7 @@ class Sedes {
 		
 
 	function agregar() {
-		$db = new Db();
+		$db = $this->base;
 				
 		$query = "insert into ga_sedes(
 				  nombre
@@ -40,7 +43,7 @@ class Sedes {
 		"'".$this->nombre."'".
 		")" ;
 		$db->query($query); 
-		$db->close();
+		
 			
 			
 	}
@@ -48,30 +51,30 @@ class Sedes {
 
 	function eliminar() {
 	
-		$db = new Db();
+		$db = $this->base;
 
 		$query = "delete from ga_sedes where id = ".$this->id ;
 				  
 		$db->query($query); 
-		$db->close();
+		
 	
 	}
 	
 	function modificar() {
 
-		$db = new Db();
+		$db = $this->base;
 		$query = "update ga_sedes set 
 		          nombre  = '". $this->nombre."'
 				  where id = ".$this->id ;
 				  
 		$db->query($query); 
-		$db->close();
+		
 	
 	}
 	
 	function get($id="") {
 	
-		$db = new Db();
+		$db = $this->base;
 		$query = "Select c.* from ga_sedes c where 1=1 " ;
 		
 		if ($id != "") {
@@ -81,14 +84,14 @@ class Sedes {
 
 		$res = $db->getResults($query, ARRAY_A); 
 	
-		$db->close();
+		
 		
 		return $res;
 	
 	}
 
 	function getById($id, $output = OBJECT) {
-		$db = new Db();
+		$db = $this->base;
 
 		$query = "Select c.*
 				  From ga_sedes c
@@ -96,7 +99,7 @@ class Sedes {
 
 		$oCat = $db->getRow($query,"",$output); 
 
-		$db->close();
+		
 		return $oCat;
 
 	}
@@ -104,7 +107,7 @@ class Sedes {
 
 	function getPaginado($filtros, $inicio, $cant, &$total) {
 
-		$db = new Db();
+		$db = $this->base;
 		$query = "Select SQL_CALC_FOUND_ROWS  c.* 
 				   from ga_sedes c 
 				  where 1=1 ";
@@ -121,7 +124,7 @@ class Sedes {
 	
 		$total = ceil( $cant_reg[0]["cant"] / $cant );
 
-		$db->close();
+		
 
 		return $datos;	
 

@@ -12,13 +12,16 @@ class Posiciones {
 	var $logoMenu;
 	var $orden;
 	var $activo;
-		
+	
+	var $base;
+	
 	function Posiciones($id="") {
 		if ($id != "") {
 			$valores = $this->get($id);
 			$this->id = $valores[0]["id"]; 
 			$this->nombre = $valores[0]["nombre"];
 		}
+		$this->base = new Db();
 	}
 
 	function set($valores){
@@ -32,44 +35,44 @@ class Posiciones {
 	}
 		
 	function insertar($files) {
-		$db = new Db();
+		$db = $this->base;
 		$query = "insert into ga_posiciones(nombre) values ("."'".$this->nombre."')";
 		$this->id = $db->query($query); 	
-		$db->close();
+		
 	}
 
 
 	function eliminar() {
-		$db = new Db();	
+		$db = $this->base;	
 		$query = "delete from ga_posiciones where id = ".$this->id ;
 		$db->query($query); 
-		$db->close();
+		
 	
 	}
 	
 	function actualizar($files) {
-		$db = new Db();
+		$db = $this->base;
 		$query = "update ga_posiciones set nombre = '". $this->nombre."' where id = ".$this->id ;			  
 		$db->query($query); 
-		$db->close();
+		
 	}
 	
 	function get($id="") {
-		$db = new Db();
+		$db = $this->base;
 		$query = "Select * from ga_posiciones" ;
 		if ($id != "") {
 			$query .= " where id = '$id' ";
 		}
 		$query .= " order by id";  
 		$res = $db->getResults($query, ARRAY_A); 
-		$db->close();
+		
 		return $res;
 	}
 
 	function getPaginado($filtros, $inicio, $cant, &$total) {
 		$orden = ($filtros["filter_order"])?$filtros["filter_order"]:"p.nombre";
 		$dir = ($filtros["filter_order_Dir"])?$filtros["filter_order_Dir"]:"asc"; 
-		$db = new Db();
+		$db = $this->base;
 		$query = "Select SQL_CALC_FOUND_ROWS  p.*
 		          From ga_posiciones p
 				  where  1 = 1";
@@ -79,7 +82,7 @@ class Posiciones {
 		$datos = $db->getResults($query, ARRAY_A); 	
 		$cant_reg = $db->getResults("SELECT FOUND_ROWS() cant", ARRAY_A); 
 		$total = ceil( $cant_reg[0]["cant"] / $cant );
-		$db->close();
+		
 		return $datos;	
 	}
 

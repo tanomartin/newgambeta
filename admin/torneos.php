@@ -259,8 +259,8 @@
 									 <? } else { 
 										 	$total = count($datos);	
 											$tt = $total - 1;
+											$oObj = new TorneoCat();
 											for ( $i = 0; $i < $total; $i++ ) {
-												$oObj = new TorneoCat();
 												$aCategorias = $oObj->getByTorneoSub($datos[$i]["id"]);?>
 											<tr>
                     							<td align="left" style="text-align: inherit; color: <?=$datos[$i]["rgb"]?>"><img align="middle" width="80px" height="80px" src="../logos/<?=$datos[$i]["logoPrincipal"]?>" /><b><?=$datos[$i]["nombre"]?></b></td>

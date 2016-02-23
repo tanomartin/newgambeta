@@ -12,6 +12,8 @@ class Torneos {
 	var $activo;
 	var $idColor;
 	
+	var $base;
+	
 	function Torneos($id = "") {
 		if ($id != "") {
 			$valores = $this->get ( $id );
@@ -24,6 +26,7 @@ class Torneos {
 			$this->activo = ($valores [0] ["activo"] == 'on') ? 1 : 0;
 			$this->idColor = $valores [0] ["idColor"];
 		}
+		$this->base = new Db();
 	}
 	
 	function set($valores) {
@@ -43,7 +46,7 @@ class Torneos {
 	}
 	
 	function insertar($files) {
-		$db = new Db ();
+		$db = $this->base;
 		$query = "select max( orden ) as orden from ga_torneos";
 		$max = $db->getRow ( $query );
 		$max_orden = $max->orden + 1;
@@ -61,11 +64,11 @@ class Torneos {
 					  where id = " . $this->id;
 			$db->query ( $query );
 		}
-		$db->close ();
+		
 	}
 	
 	function eliminar() {
-		$db = new Db ();
+		$db = $this->base;
 		$query = "select * from ga_torneos_categorias where id_torneo = " . $this->id . " and id_padre != 0";
 		$res = $db->getResults ( $query, ARRAY_A );
 		if (sizeof ( $res ) > 0) {
@@ -86,11 +89,11 @@ class Torneos {
 		$db->query ( $query );
 		$query = "delete from ga_torneos where id = " . $this->id;
 		$db->query ( $query );
-		$db->close ();
+		
 	}
 	
 	function actualizar($files) {
-		$db = new Db ();
+		$db = $this->base;
 		$this->fechaInicio = eregi_replace ( "/", "-", $this->mysql_fecha ( $this->fechaInicio ) );
 		$this->fechaFin = eregi_replace ( "/", "-", $this->mysql_fecha ( $this->fechaFin ) );
 		$query = "update ga_torneos set 
@@ -109,23 +112,23 @@ class Torneos {
 					  where id = " . $this->id;
 			$db->query ( $query );
 		}
-		$db->close ();
+		
 	}
 	
 	function get($id = "") {
-		$db = new Db ();
+		$db = $this->base;
 		$query = "Select t.*, c.rgb from ga_torneos t, ga_colores c where t.idColor = c.id";
 		if ($id != "") {
 			$query .= " and t.id = '$id' ";
 		}
 		$query .= " order by orden";
 		$res = $db->getResults ( $query, ARRAY_A );
-		$db->close ();
+		
 		return $res;
 	}
 	
 	function getPaginado($filtros) {
-		$db = new Db ();
+		$db = $this->base;
 		$query = "Select p.*, c.rgb
 		          From ga_torneos p, ga_colores c
 				  where  1 = 1 and p.idColor = c.id";
@@ -133,7 +136,7 @@ class Torneos {
 			$query .= " and p.nombre like '%" . strtoupper ( $filtros ["fnombre"] ) . "%'";
 		$query .= " order by orden";
 		$datos = $db->getResults ( $query, ARRAY_A );
-		$db->close ();
+		
 		return $datos;
 	}
 	
@@ -149,15 +152,15 @@ class Torneos {
 	}
 	
 	function cambiarActivo($id, $valor) {
-		$db = new Db ();
+		$db = $this->base;
 		$query = "update ga_torneos set activo = '" . $valor . "'		  
 					  where id = " . $id;
 		$db->query ( $query );
-		$db->close ();
+		
 	}
 	
 	function cambiarOrden($pos, $orden) {
-		$db = new Db ();
+		$db = $this->base;
 		$nueva_pos = $pos + $orden;
 		$query = "update ga_torneos set orden = -100  where orden = " . $nueva_pos;
 		$db->query ( $query );
@@ -165,27 +168,27 @@ class Torneos {
 		$db->query ( $query );
 		$query = "update ga_torneos set orden = " . $pos . "  where orden = -100";
 		$db->query ( $query );
-		$db->close ();
+		
 	}
 	
 	function getByCant($cant) {
-		$db = new Db ();
+		$db = $this->base;
 		$query = "Select * From ga_torneos  where activo = 1";
 		$query .= " Order by orden LIMIT 0,$cant";
 		$aTorneo = $db->getResults ( $query, ARRAY_A );
-		$db->close ();
+		
 		return $aTorneo;
 	}
 	
 	function getByTorneoCat($idTorneoCat) {
-		$db = new Db ();
+		$db = $this->base;
 		$query = "Select t.*, tc.*, c.rgb From 
 								ga_torneos  t, 
 								ga_torneos_categorias tc, 
 								ga_colores c where tc.id_torneo = t.id and 
 								t.idColor = c.id and tc.id = " . $idTorneoCat;
 		$oTorneo = $db->getRow ( $query );
-		$db->close ();
+		
 		return $oTorneo;
 	}
 }

@@ -12,6 +12,8 @@ class Resultados {
 	var $tarjeta_roja;
 	var $mejor_jugadora;
 	
+	var $base;
+	
 	function Resultados($idFixture="") {
 		if ($idFixture != "") {
 			$valores = $this->get($idFixture);
@@ -22,6 +24,7 @@ class Resultados {
 			$this->tarjeta_roja = ($valores[0]["tarjeta_roja"])?$valores[0]["tarjeta_roja"]:0;
 			$this->mejor_jugadora = $valores[0]["mejor_jugadora"];
 		}
+		$this->base = new Db();
 	}
 
 	function set($valores){
@@ -39,7 +42,7 @@ class Resultados {
 	}
 		
 	function insertar() {
-		$db = new Db();
+		$db = $this->base;
 		if ( ($this->goles != 0) || ($this->tarjeta_amarilla != 0) || ($this->tarjeta_roja != 0) || ($this->mejor_jugadora != 'N') ){
 			$query = "insert into ga_resultados(idFixture,idJugadoraEquipo,
 				goles,tarjeta_amarilla,tarjeta_roja,mejor_jugadora
@@ -52,25 +55,25 @@ class Resultados {
 				"'".$this->mejor_jugadora."')";
 			$db->query($query); 
 		}
-		$db->close();
+		
 	}
 
 	function borrarByIdFixture($idFixture) {
-		$db = new Db();	
+		$db = $this->base;	
 		$query = "delete from ga_resultados where idFixture = ".$idFixture ;
 		$db->query($query); 
-		$db->close();
+		
 	}
 	
 	function borrarByIdJugadoraEquipo($idJugadoraEquipo) {
-		$db = new Db();
+		$db = $this->base;
 		$query = "delete from ga_resultados where idJugadoraEquipo = ".$idJugadoraEquipo;
 		$db->query($query);
-		$db->close();
+		
 	}
 	
 	function actualizar() {
-		$db = new Db();
+		$db = $this->base;
 		if (($this->goles != 0) || ($this->tarjeta_amarilla != 0) || ($this->tarjeta_roja != 0 || ($this->mejor_jugadora != 'N')) ){
 			$query = "update ga_resultados set 
 		          idJugadoraEquipo = '". $this->idJugadoraEquipo."',		
@@ -81,11 +84,11 @@ class Resultados {
 				  and idJugadora = ".$this->idJugadora ;	  
 			$db->query($query); 
 		}	
-		$db->close();
+		
 	}
 	
 	function get($idFixture="",$idJugadoraEquipo="") {
-		$db = new Db();	
+		$db = $this->base;	
 		$query = "Select e.* from ga_resultados e where 1 = 1 " ;
 		if ($idFixture != "") {
 			$query .= " and e.idFixture = '$idFixture' ";
@@ -95,13 +98,13 @@ class Resultados {
 		}
 		$query .= " order by e.idJugadoraEquipo";
 		$res = $db->getResults($query, ARRAY_A); 
-		$db->close();	
+			
 		return $res;
 	}
 
 	//TODO VER
 	function goleadoras($idTorneoCat) {
-		$db = new Db();
+		$db = $this->base;
 		$query = "select r.idJugadoraEquipo, j.nombre, e.nombre as nombreEquipo, SUM(r.goles) as goles, count(*) as partidos
 					from ga_resultados r
 					inner join ga_fixture fx on r.idFixture = fx.id
@@ -114,12 +117,12 @@ class Resultados {
 					where f.idTorneoCat = ".$idTorneoCat."
 					GROUP BY idJugadora, j.nombre order by 4 desc LIMIT 0,15";	  
 		$res = $db->getResults($query, ARRAY_A); 
-		$db->close();
+		
 		return $res;	
 	}
 	
 	function getTarjetasByIdJugadoraEquipo($idJugadoraEquipo="") {
-		$db = new Db();
+		$db = $this->base;
 		$query = "Select 
 					j.nombre, sum(tarjeta_amarilla) amarillas, sum(tarjeta_roja) rojas
 				  from 
@@ -127,7 +130,7 @@ class Resultados {
 				  where 
 				  	je.id = '$idJugadoraEquipo' and je.id = r.idJugadoraEquipo and je.idJugadora = j.id";
 		$res = $db->getResults($query, ARRAY_A); 
-		$db->close();
+		
 		return $res;
 	}
 }
