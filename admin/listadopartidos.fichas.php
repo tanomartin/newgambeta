@@ -26,8 +26,12 @@ $pdf = new FPDF ( 'L', 'mm', 'Legal' );
 foreach ( $listadoPartidos as $partido ) {
 	$pdf->AddPage ();
 	$pdf->SetFont ( 'Arial', 'B', 14 );
+	$pdf->SetXY ( 5, 5 );
+	$pdf->Cell ( 80, 15, $partido['equipo1'], 0, 0 );
 	$pdf->SetXY ( 89, 5 );
 	$pdf->Cell ( 80, 15, "Pago: ", 1, 1 );
+	$pdf->SetXY ( 185, 5 );
+	$pdf->Cell ( 80, 15, $partido['equipo2'], 0, 0 );
 	$pdf->SetXY ( 267, 5 );
 	$pdf->Cell ( 80, 15, "Pago: ", 1, 1 );
 	$pdf->SetXY ( 178, 5 );

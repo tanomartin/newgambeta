@@ -236,7 +236,6 @@ class Jugadoras {
 					et.id = je.idEquipoTorneo and
 					je.idJugadora = j.id and 
 					et.idEquipo = e.id";
-		$query .= " order by je.idPosicion";
 		$res = $db->getResults($query, ARRAY_A);
 		
 		return $res;
@@ -272,7 +271,6 @@ class Jugadoras {
 				  Where
 					je.idEquipoTorneo = $idEquipoTorneo and
 					je.idJugadora = j.id" ;
-		$query .= " order by je.idPosicion";
 		$res = $db->getResults($query, ARRAY_A);
 		
 		return $res;
@@ -328,7 +326,6 @@ class Jugadoras {
 				  from ga_jugadoras_equipo je left join ga_resultados r on je.id = r.idJugadoraEquipo, ga_jugadoras j
 				  where (idFixture = ". $idFixture. " or idFixture is null) 
 				  and je.idEquipoTorneo = ".$idEquipoTorneo." and je.idJugadora = j.id";
-		$query .= " order by je.idPosicion";
 		$res = $db->getResults($query, ARRAY_A);
 		
 		return $res;
