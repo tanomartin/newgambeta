@@ -79,8 +79,7 @@ nav .navbar-nav {
 
 .item-two form {
     position: relative;
-    top: 25px;
-    left: 27px; 
+    left: 35px; 
 }
 
 .item-two select {
@@ -88,7 +87,7 @@ nav .navbar-nav {
     padding: 8px;
     border-radius: 4px;
     border-style: none;
-    margin-top: 15px;
+    margin-top: 5px;
     width: 170px;
 }
 
@@ -114,22 +113,24 @@ nav .navbar-nav {
     font-weight: 700;
 }	
 
-.ion-android-checkbox-outline {
+.ion-android-checkbox-outline, .ion-ios-football-outline {
 
     font-size: 80px;
     color: #FFF;
     position: relative;
     padding: 80px;
-    top: 25px;
+    top: 10px;
 }
+
 
 .item-three input {
 
 	position: relative;
-    top: 40px;
+    top: 2px;
     padding: 8px;
     border-radius: 4px;
     border-style: none;
+    margin-bottom:5px;
 }
 
 .item-three form {
@@ -140,7 +141,6 @@ nav .navbar-nav {
 .item-three button, .item-two button {
 
     position: relative;
-    top: 60px;
     left: 27px;
     background-color:#3a3a3a;
     color: #FFF;
@@ -150,7 +150,13 @@ nav .navbar-nav {
     border-color:#FFF;
     font-family: 'Roboto', sans-serif;
 }
-
+.item-two button{
+    top: 20px;
+    left:35px;
+}
+.item-three button {
+    top:15px;
+}
 .item-one h1, .item-one h2, .item-one p {
 
     color: #FFF;
@@ -271,6 +277,7 @@ nav .navbar-nav {
     left:150px;
 }
 
+
 .box .container .section-form h3,  .box .container .section-locations h3 {
 
     color:#FFF;
@@ -345,13 +352,16 @@ nav .navbar-nav {
     padding:15px;
     left:150px;
 }
+.box-form .enviar:hover {
+    background-color:#fa3e5f;
+}
 
 .sedes {
 
     width:320px;
     margin-top: 0px;
     color:#121212;
-    padding:37px;
+    padding:39px;
 }
 
 .sedes h2 {
@@ -750,7 +760,7 @@ footer {
 .menu-torneos {
     display:inline-block;
 }
-.menu-torneos ul li {
+.menu-torneos ul li button {
     list-style-type: none;
     padding:15px 0;
     border:1px solid #121212;
@@ -759,12 +769,80 @@ footer {
     text-align:center;
     font-size:'Roboto';
     font-weight:700;
+    color:#121212;
+    background-color:#FFF;
 
 }
-.menu-torneos ul li:hover {
+
+.menu-torneos ul li button:hover {
     background-color:#fb8153;
     color:#FFF;
 }
+.menu-torneos ul li  {
+    list-style-type: none;
+}
 .menu-torneos ul {
     padding:0;
+}
+
+.modal-body h3{
+    text-align:center;
+    color:#fa3e5f;
+
+}
+
+.modal-title {
+    text-align:center;
+}
+
+.modal-body input {
+    display: block;
+    width: 100%;
+    margin: 10px 0px;
+    padding: 8px;
+    border-radius: 4px;
+    margin-bottom: 5px;
+
+}
+
+.modal-body textarea {
+    display: block;
+    width: 100%;
+    margin: 10px 0px;
+    padding: 8px;
+    border-radius: 4px;
+    margin-bottom: 5px;
+}
+
+.modal-body .enviar {
+    background-color: #3a3a3a;
+    color: #FFF;
+    border-radius: 4px;
+    border-style: none;
+    text-align:center;
+    position:relative;
+    padding:15px;
+}
+
+.modal-body .enviar:hover {
+    background-color:#fa3e5f;
+} 
+.formulario-modal {
+    text-align:center;
+
+}
+
+.btn-primary {
+    color: #121212;
+    background-color: #FFF;
+    border-style:none; 
+    padding: 24px 0;
+
+
+}
+
+.btn-primary:hover,.btn-primary:focus {
+    color: #121212;
+    background-color: #FFF;
+    border-style:none;
 }
