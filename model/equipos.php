@@ -7,6 +7,7 @@ class Equipos {
 
 	var $id;
 	var $nombre;
+	var $dt;
 	var $foto;
 	var $descripcion;
 	
@@ -17,7 +18,8 @@ class Equipos {
 		if ($id != "") {
 			$valores = $this->get($id);
 			$this->id = $valores[0]["id"]; 
-			$this->nombre = $valores[0]["nombre"];			
+			$this->nombre = $valores[0]["nombre"];		
+			$this->dt = $valores[0]["dt"];
 			$this->foto = $valores[0]["foto"]; 
 			$this->descripcion = $valores[0]["descripcion"];
 		}
@@ -25,7 +27,8 @@ class Equipos {
 
 	function set($valores){
 		$this->id = $valores["id"]; 
-		$this->nombre = $valores["nombre"];			
+		$this->nombre = $valores["nombre"];		
+		$this->dt = $valores["dt"];
 		$this->descripcion = $valores["descripcion"];
 		$this->foto = $valores["foto"]; 	
 	}
@@ -37,10 +40,9 @@ class Equipos {
 		
 	function insertar($files) {
 		$db = $this->base;
-		$query = "insert into ga_equipos(
-				nombre,descripcion
-				) values (".
-				"'".$this->nombre."',".								
+		$query = "insert into ga_equipos(nombre,dt,descripcion) values (".
+				"'".$this->nombre."',".
+				"'".$this->dt."',".
 				"'".$this->descripcion."')";
 		$this->id = $db->query($query); 
 		if(is_uploaded_file($_FILES['foto']['tmp_name'])) {
@@ -69,6 +71,7 @@ class Equipos {
 		$db = $this->base;
 		$query = "update ga_equipos set 
 		          nombre = '". $this->nombre."',
+		          dt = '". $this->dt."',
 		          descripcion = '". $this->descripcion."'
 				  where id = ".$this->id ;				  
 		$db->query($query); 

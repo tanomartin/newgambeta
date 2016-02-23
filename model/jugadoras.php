@@ -130,19 +130,16 @@ class Jugadoras {
       					 e.nombre as nombreEquipo,
        					 t.nombre as torneo,
        					 c.nombrePagina as categoria,
-      					 p.nombre as posicion,
       					 je.activa
 		        from ga_jugadoras j, 
 		        	 ga_jugadoras_equipo je, 
 		        	 ga_equipos_torneos et, 
-		        	 ga_equipos e, 
-		        	 ga_posiciones p, 
+		        	 ga_equipos e,
 		        	 ga_torneos_categorias tc,
 		        	 ga_torneos t,
 		        	 ga_categorias c
 				where j.id = $id and 
-					  j.id = je.idJugadora and 
-					  je.idPosicion = p.id and 
+					  j.id = je.idJugadora and
 		              je.idEquipoTorneo = et.id and 
 				      et.idEquipo = e.id and
 					  et.idTorneoCat = tc.id and
@@ -161,19 +158,16 @@ class Jugadoras {
 						 e.id as idEquipo,
 						 t.id as idTorneo,
 						 c.id as idCategoria,
-						 p.id as idPosicion,
 						 je.activa
 				  from  ga_jugadoras j,
 						ga_jugadoras_equipo je,
 						ga_equipos_torneos et,
 						ga_equipos e,
-						ga_posiciones p,
 						ga_torneos_categorias tc,
 						ga_torneos t,
 						ga_categorias c
 				where 	je.id = $idJugadoraEquipo and
 						je.idJugadora = j.id and
-						je.idPosicion = p.id and
 						je.idEquipoTorneo = et.id and
 						et.idEquipo = e.id and
 						et.idTorneoCat = tc.id and
@@ -199,7 +193,6 @@ class Jugadoras {
 		$query = "insert into ga_jugadoras_equipo values ('DEFAULT',".
 				"'".$datos['id']."',".
 				"'".$datos['idEquipoTorneo']."',".
-				"'".$datos['idPosicion']."',".
 				"'".$activo."',".
 				"'".$envioMail."')";
 		$db->query($query);
@@ -219,7 +212,7 @@ class Jugadoras {
 			$envioMail = 0;
 		}
 		$query = "update ga_jugadoras_equipo 
-					set idEquipoTorneo = ".$datos['idEquipoTorneo'].", idPosicion = ".$datos['idPosicion'].", activa = ".$activo.", envioMail = ".$envioMail." 
+					set idEquipoTorneo = ".$datos['idEquipoTorneo'].", activa = ".$activo.", envioMail = ".$envioMail." 
 							where id = ".$datos['idJugadoraEquipo']." and idJugadora = ".$datos['id'];
 		$db->query($query);
 		
@@ -232,20 +225,17 @@ class Jugadoras {
 					e.nombre as equipo, 
 					je.id as idJugadoraEquipo, 
 					je.activa as activa,
-					je.envioMail as envioMail,
-					p.nombre as posicion
+					je.envioMail as envioMail
 				  From 
 				  	ga_equipos_torneos et,
 					ga_jugadoras_equipo je, 
-					ga_posiciones p,
 					ga_jugadoras j,
 					ga_equipos e
 			      Where 
 					et.idEquipo = $idEquipo and et.idTorneoCat = $idTorneoCat and
 					et.id = je.idEquipoTorneo and
 					je.idJugadora = j.id and 
-					et.idEquipo = e.id and
-					je.idPosicion = p.id";
+					et.idEquipo = e.id";
 		$query .= " order by je.idPosicion";
 		$res = $db->getResults($query, ARRAY_A);
 		

@@ -87,8 +87,12 @@
 											      <tr class="odd">
 											        <td class="col_0 col_first"><label for="nombre">Nombre</label><span class="mandatory">*</span></td>
 											        <td class="col_1 col_last"><input name="nombre" id="nombre" class="required text" maxlength="50" type="text" value="<?=$datos[0]["nombre"]?>" size="50"  <?= $disabled ?>></td>
-											      </tr>  
+											      </tr> 
 											      <tr class="even">
+											        <td class="col_0 col_first"><label for="nombre">D.T.</label></td>
+											        <td class="col_1 col_last"><input name="dt" id="dt" maxlength="50" type="text" value="<?=$datos[0]["dt"]?>" size="50"  <?= $disabled ?>></td>
+											      </tr> 
+											      <tr class="odd">
 											        <td class="col_0 col_first"><label for="nombre">Foto</label></td>
 											        <td class="col_1 col_last">
 											        	<? if ( $disabled  == "" ) { ?>

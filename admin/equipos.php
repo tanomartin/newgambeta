@@ -279,7 +279,8 @@
 
 								<table style="width: 928px">
 									<tr>
-										<th>Nombre</th>    
+										<th>Nombre</th>
+										<th>D.T.</th>     
 										<th>Foto</th>            
 										<th width="10%">Opciones</th>
 									</tr>
@@ -291,6 +292,7 @@
 										for ( $i = 0; $i < $total; $i++ ) { ?>
 									<tr>
 					                     <td align="left"><?=$datos[$i]["nombre"]?></td>
+					                     <td align="left"><?=$datos[$i]["dt"]?></td>
 										 <td width="100">
 										  <? if($datos[$i]['foto']) { ?>
 								          	<img src="../thumb/phpThumb.php?src=../fotos_equipos/<?= $datos[$i]['foto']?>" width="100" height="69"/>

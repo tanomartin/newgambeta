@@ -114,7 +114,7 @@ foreach ( $listadoPartidos as $partido ) {
 	$pdf->SetXY (5, 104 );
 	$pdf->Cell (13, 7, "Subcapitana: ".$referentes1[1]['nombre']);
 	$pdf->SetXY (5, 110 );
-	$pdf->Cell (13, 7, "DT: ");
+	$pdf->Cell (13, 7, "DT: ".$partido['dt1']);
 	$pdf->SetXY (143, 110 );
 	$pdf->Cell (13, 7, "Jugadoras: ".$oJugadora->getActivasByIdEquipoTorneo($partido['idEquipoTorneo1']));
 	
@@ -124,7 +124,7 @@ foreach ( $listadoPartidos as $partido ) {
 	$pdf->SetXY (185, 104 );
 	$pdf->Cell (13, 7, "Subcapitana: ".$referentes2[1]['nombre']);
 	$pdf->SetXY (185, 110 );
-	$pdf->Cell (13, 7, "DT: ");
+	$pdf->Cell (13, 7, "DT: ".$partido['dt2']);
 	$pdf->SetXY (323, 110 );
 	$pdf->Cell (13, 7, "Jugadoras: ".$oJugadora->getActivasByIdEquipoTorneo($partido['idEquipoTorneo2']));
 	
