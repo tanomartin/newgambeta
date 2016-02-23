@@ -8,8 +8,9 @@ class Usuario_adm {
 	var $apellido;
 	var $esAdmin;
 	var $base;
+	
 	function Usuario_adm() {
-		$this->base = new Db ();
+		$this->base = new Db();
 	}
 	
 	/**

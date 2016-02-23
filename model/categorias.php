@@ -10,15 +10,12 @@ class Categorias {
 	var $base;
 	
 	function Categorias($id="") {
-
+		$this->base= new Db();
 		if ($id != "") {
 			$categoria = $this->get($id);
 			$this->id = $categoria[0]["id"]; 
 			$this->nombrePagina = $categoria[0]["nombrePagina"];
-
 		}
-		
-		$this->base= new Db();
 	}
 
 	

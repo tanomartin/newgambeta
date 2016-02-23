@@ -41,10 +41,10 @@ foreach ( $_POST as $key => $value ) {
 	}
 }
 
+$oJugadora = new Jugadoras ();
 foreach ( $jugadorasNuevas as $jugadora ) {
-	$oJugadora = new Jugadoras ();
 	$oJugadora->set($jugadora);
-	$oJugadora->insertar(NULL);	
+	$oJugadora->insertar();	
 	$asocEquipo = array (
 			'id' => $oJugadora->id,
 			'idEquipoTorneo' => $_POST ['idTorneoEquipo'],
@@ -54,10 +54,9 @@ foreach ( $jugadorasNuevas as $jugadora ) {
 	$oJugadora->insertarequipo ($asocEquipo);
 }
 
-foreach ( $jugadorasExistentes as $jugadora ) {
-	$oJugadora = new Jugadoras ();
+foreach ( $jugadorasExistentes as $jugadora ) {	
 	$oJugadora->set($jugadora);
-	$oJugadora->actualizar(NULL);
+	$oJugadora->actualizar();
 	$asocEquipo = array (
 			'id' => $oJugadora->id,
 			'idEquipoTorneo' => $_POST ['idTorneoEquipo'],

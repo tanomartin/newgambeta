@@ -12,6 +12,7 @@ class TorneoCat {
 	var $base;
 	
 	function TorneoCat($id="") {
+		$this->base = new Db();
 		if ($id != "") {
 			$valores = $this->get($id);
 			$this->id = $valores[0]["id_torneo_categoria"]; 
@@ -19,7 +20,6 @@ class TorneoCat {
 			$this->id_categoria = $valores[0]["id_categoria"]; 
 			$this->id_padre = -1;
 		}
-		$this->base = new Db();
 	}
 
 	function set($valores){

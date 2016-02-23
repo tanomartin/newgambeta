@@ -147,7 +147,7 @@ foreach ( $equiposTorneo as $equipo ) {
 									<div align="center" style="float: left">
 										<table id="mail" style="width: 450px">
 											<tr>
-												<th><img width="15" border="0" alt="reserva" title="Con Reserva" src="../img/forbidden.ico" /> Equipos</th>
+												<th><img width="15" border="0" alt="reserva" title="Con Reserva" src="images/forbidden.ico" /> Equipos</th>
 												<th>Email</th>
 												<th>S</th>
 												<th width="8%"></th>
@@ -176,7 +176,7 @@ foreach ( $equiposTorneo as $equipo ) {
 																<img border="0" title="Reenviar" src="images/reenvio.png" id="info" alt="info" width="20px" height="20px" />
 															</a>
 												    <? } else { ?>
-															<img border="0" src="../img/forbidden.ico" id="info" alt="info" width="20px" height="20px" />
+															<img border="0" src="images/forbidden.ico" id="info" alt="info" width="20px" height="20px" />
 													<? } ?>
 												</tr>	
 											<? }

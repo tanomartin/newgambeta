@@ -9,13 +9,12 @@ class HorasCancha {
 	var $base;
 		
 	function HorasCancha($id="") {
-
+		$this->base = new Db();
 		if ($id != "") {
 			$valores = $this->get($id);
 			$this->id = $valores[0]["id"]; 
 			$this->descripcion = $descripcion[0]["nombre"];			
 		}
-		$this->base = new Db();
 	}
 	
 	function get($id="") {

@@ -10,13 +10,12 @@ class Sedes {
 	var $base;
 	
 	function Sedes($id="") {
+		$this->base = new Db();
 		if ($id != "") {
 			$sede = $this->get($id);
 			$this->id = $sede[0]["id"]; 
 			$this->nombre = $sede[0]["nombre"];
-
 		}
-		$this->base = new Db();
 	}
 
 	

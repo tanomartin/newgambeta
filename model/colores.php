@@ -11,13 +11,13 @@ class Colores {
 	var $base;
 		
 	function Colores($id="") {
+		$this->base = new Db();
 		if ($id != "") {
 			$colores = $this->get($id);
 			$this->id = $colores[0]["id"]; 
 			$this->nombreColor = $colores[0]["nombreColor"];
 			$this->rgb = $colores[0]["rgb"];
 		}
-		$this->base = new Db();
 	}
 
 	

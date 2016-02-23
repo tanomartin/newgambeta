@@ -19,13 +19,12 @@ class Correos {
 	var $base;
 		
 	function Correos($valores="") {
+		$this->base = new Db();
 		$this->correo = $valores["correo"]; 
 		$this->cuerpo = $valores["cuerpo"]; 
 		$this->equipoId = $valores["equipoId"]; 
 		$this->equipoNombre = $valores["equipoNombre"]; 
-		$this->asunto = $valores["asunto"];
-
-		$this->base = new Db();
+		$this->asunto = $valores["asunto"];	
 	}
 	
 	function enviar() {

@@ -15,6 +15,7 @@ class Resultados {
 	var $base;
 	
 	function Resultados($idFixture="") {
+		$this->base = new Db();
 		if ($idFixture != "") {
 			$valores = $this->get($idFixture);
 			$this->idFixture = $valores[0]["idFixture"]; 
@@ -23,8 +24,7 @@ class Resultados {
 			$this->tarjeta_amarilla = ($valores[0]["tarjeta_amarilla"])?$valores[0]["tarjeta_amarilla"]:0; 
 			$this->tarjeta_roja = ($valores[0]["tarjeta_roja"])?$valores[0]["tarjeta_roja"]:0;
 			$this->mejor_jugadora = $valores[0]["mejor_jugadora"];
-		}
-		$this->base = new Db();
+		}	
 	}
 
 	function set($valores){

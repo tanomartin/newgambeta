@@ -16,12 +16,12 @@ class Posiciones {
 	var $base;
 	
 	function Posiciones($id="") {
+		$this->base = new Db();
 		if ($id != "") {
 			$valores = $this->get($id);
 			$this->id = $valores[0]["id"]; 
 			$this->nombre = $valores[0]["nombre"];
 		}
-		$this->base = new Db();
 	}
 
 	function set($valores){

@@ -12,7 +12,9 @@ class Noticias {
 	var $posicion;
 	var $idTorneoCat;
 	var $base;
+	
 	function Noticias($id = "") {
+		$this->base = new Db ();
 		if ($id != "") {
 			$valores = $this->get ( $id );
 			$this->id = $valores [0] ["id"];
@@ -22,7 +24,6 @@ class Noticias {
 			$this->posicion = $valores [0] ["posicion"];
 			$this->idTorneoCat = $valores [0] ["idTorneoCat"];
 		}
-		$this->base = new Db ();
 	}
 	
 	/**
@@ -31,8 +32,7 @@ class Noticias {
 	 * @param requestParam $oParametro        	
 	 */
 	function set($aParametro) {
-		if ($aParametro) {
-			
+		if ($aParametro) {	
 			$this->id = $aParametro ["id"];
 			$this->titulo = $aParametro ["titulo"];
 			$this->desarrollo = $aParametro ["desarrollo"];

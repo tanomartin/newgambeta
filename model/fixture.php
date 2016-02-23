@@ -22,6 +22,7 @@ class Fixture {
     var $base;
    
 	function Fixture($id="") {
+		$this->base = new Db();
 		if ($id != "") {
 			$valores = $this->get($id);
 			$this->id = $valores[0]["id"]; 
@@ -48,8 +49,6 @@ class Fixture {
 			$this->puntajeEquipo2 = ($valores[0]["puntajeEquipo2"])?$valores[0]["puntajeEquipo2"]:0;
 			$this->suspendido = ($valores[0]["suspendido"]=='on')?1:0; 
 		}
-		
-		$this->base = new Db();
 	}
 	
 	function set($valores){	

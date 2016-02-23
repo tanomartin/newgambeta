@@ -13,6 +13,7 @@ class Equipos {
 	var $base;
 	
 	function Equipos($id="") {
+		$this->base = new Db();
 		if ($id != "") {
 			$valores = $this->get($id);
 			$this->id = $valores[0]["id"]; 
@@ -20,14 +21,13 @@ class Equipos {
 			$this->foto = $valores[0]["foto"]; 
 			$this->descripcion = $valores[0]["descripcion"];
 		}
-		$this->base = new Db();
 	}
 
 	function set($valores){
 		$this->id = $valores["id"]; 
 		$this->nombre = $valores["nombre"];			
 		$this->descripcion = $valores["descripcion"];
-		$this->foto = $valores["foto"]; 
+		$this->foto = $valores["foto"]; 	
 	}
 	
 	function _setById($id) {		

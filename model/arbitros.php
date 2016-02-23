@@ -11,13 +11,13 @@ class Arbitros {
 	var $base;
 	
 	function Arbitros($id="") {
+		$this->base = new Db();
 		if ($id != "") {
 			$arbitro = $this->get($id);
 			$this->id = $arbitro[0]["id"]; 
 			$this->nombre = $arbitro[0]["nombre"];
 			$this->telefono = $arbitro[0]["telefono"];
 		}
-		$this->base = new Db();
 	}
 
 	

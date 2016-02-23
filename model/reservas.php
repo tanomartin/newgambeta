@@ -14,7 +14,7 @@ class Reservas {
 	var $base;
 
 	function Reservas($id="") {
-
+		$this->base = new Db();
 		if ($id != "") {
 			$valores = $this->getReservaById($id);
 			$this->id = $valores[0]["id"]; 
@@ -23,7 +23,6 @@ class Reservas {
 			$this->fecha_libre = $valores[0]["fecha_libre"]; 
 			$this->observacion = $valores[0]["observacion"];
 		}
-		$this->base = new Db();
 	}
 
 	function getReservaById($id="") {

@@ -15,6 +15,7 @@ class Jugadoras {
 	var $base;
 
 	function Jugadoras($id="") {
+		$this->base = new Db();
 		if ($id != "") {
 			$valores = $this->get($id);
 			$this->id = $valores[0]["id"];
@@ -25,7 +26,6 @@ class Jugadoras {
 			$this->foto = $valores[0]["foto"];
 			$this->telefono = $valores[0]["telefono"];
 		}
-		$this->base = new Db();
 	}
 
 

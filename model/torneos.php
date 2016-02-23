@@ -15,6 +15,7 @@ class Torneos {
 	var $base;
 	
 	function Torneos($id = "") {
+		$this->base = new Db();
 		if ($id != "") {
 			$valores = $this->get ( $id );
 			$this->id = $valores [0] ["id"];
@@ -26,7 +27,6 @@ class Torneos {
 			$this->activo = ($valores [0] ["activo"] == 'on') ? 1 : 0;
 			$this->idColor = $valores [0] ["idColor"];
 		}
-		$this->base = new Db();
 	}
 	
 	function set($valores) {

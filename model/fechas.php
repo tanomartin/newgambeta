@@ -14,6 +14,7 @@ class Fechas {
 	var $base;
 	
 	function Fechas($id="") {
+		$this->base = new Db();
 		if ($id != "") {
 			$valores = $this->get($id);
 			$this->id = $valores[0]["id"]; 
@@ -22,7 +23,6 @@ class Fechas {
 			$this->fechaIni = cambiaf_a_mysql($valores[0]["fechaIni"]); 
 			$this->fechaFin = cambiaf_a_mysql($valores[0]["fechaFin"]);
 		}
-		$this->base = new Db();
 	}
 
 	
