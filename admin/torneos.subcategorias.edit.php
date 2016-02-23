@@ -2,6 +2,11 @@
 	include_once "../model/torneos.php";
 	include_once "../model/categorias.php";
   	$operacion = "Alta";
+  	if (!isset( $_SESSION['usuario'])) {
+  		header("Location: index.php");
+  		exit;
+  	}
+  	
 	if ($_POST["id_torneo_categoria"] != -1) {
 		$operacion = "Modificaci&oacute;n";
 	}

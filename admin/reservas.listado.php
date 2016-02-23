@@ -4,7 +4,7 @@
 	include_once "../model/reservas.php";
 	include_once "../model/equipos.php";
 
-	if(!session_is_registered("usuario")){
+	if (!isset( $_SESSION['usuario'])) {
 		header("Location: index.php");
 		exit;
 	}
@@ -140,7 +140,7 @@
 									<div align="center" style="float:left">
 										<table id="conReserva" style="width: 450px">
 												<tr>
-													<th><img width="15" border="0" alt="reserva" title="Con Reserva" src="../img/check.ico"/> Con Reserva</th>
+													<th><img width="15" border="0" alt="reserva" title="Con Reserva" src="images/check.ico"/> Con Reserva</th>
 													<th>Detalle</th>
 													<th width="8%"></th>
 												</tr>
@@ -189,7 +189,7 @@
 									<div align="center" style="float:right">
 										<table id="sinReserva" style="width: 450px">
 												<tr>
-													<th><img width="15" border="0" alt="reserva" title="Sin Reserva" src="../img/forbidden.ico"/> Sin Reserva</th>
+													<th><img width="15" border="0" alt="reserva" title="Sin Reserva" src="images/forbidden.ico"/> Sin Reserva</th>
 													<th width="8%"></th>
 												</tr>
 											

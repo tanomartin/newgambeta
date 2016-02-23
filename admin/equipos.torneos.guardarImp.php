@@ -1,5 +1,10 @@
 <?
 include_once "../model/jugadoras.php";
+if (!isset( $_SESSION['usuario'])) {
+	header("Location: index.php");
+	exit;
+}
+
 $jugadorasNuevas = array();
 $jugadorasExistentes = array();
 foreach ( $_POST as $key => $value ) {

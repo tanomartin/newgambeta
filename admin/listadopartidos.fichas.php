@@ -7,9 +7,9 @@ include_once "../model/sedes.php";
 include_once "../model/jugadoras.php";
 
 
-if (! session_is_registered ( "usuario" )) {
-	header ( "Location: index.php" );
-	exit ();
+if (!isset( $_SESSION['usuario'])) {
+	header("Location: index.php");
+	exit;
 }
 
 $fechaPartidosSql = $_GET ['fecha'];

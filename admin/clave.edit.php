@@ -1,12 +1,11 @@
 <?	include_once "include/config.inc.php";
 	include_once CLASS_MODEL_ . "usuario_adm.php";
-
-	if(!session_is_registered("usuario")){
+	
+	if (!isset( $_SESSION['usuario'])) {
 		header("Location: index.php");
 		exit;
 	}
-
-
+	
 	if(isset($_POST['ok'])) {
 		$oObj = new Usuario_adm();
 		$oObj -> usuario = $_SESSION['usuario'];

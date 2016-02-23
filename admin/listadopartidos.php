@@ -6,11 +6,10 @@ include_once "../model/sedes.php";
 include_once "../model/fixture.php";
 include_once "../model/categorias.php";
 
-if (! session_is_registered ( "usuario" )) {
-	header ( "Location: index.php" );
-	exit ();
+if (!isset( $_SESSION['usuario'])) {
+	header("Location: index.php");
+	exit;
 }
-
 $menu = "Secciones";
 
 $fechaPartidos = $_POST ['fechaPartido'];

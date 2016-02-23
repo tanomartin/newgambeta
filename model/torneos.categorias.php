@@ -190,8 +190,10 @@ class TorneoCat {
 				  where id_padre <> 0";
 		if ($id != "")	
 			$query.= " and  tc.id = ". $id;	
-		if (trim($filtros["ftorneo"]) != "" ) 
-			$query.= " and t.nombre like '%".strtoupper($filtros["ftorneo"])."%'";	
+		if ($filtro != "") {
+			if (trim($filtros["ftorneo"]) != "" ) 
+				$query.= " and t.nombre like '%".strtoupper($filtros["ftorneo"])."%'";
+		}		
 		$query.= " order by   t.nombre, c.nombrePagina ";	
 		$aDatos = $db->getResults($query, ARRAY_A); 
 		$db->close();	

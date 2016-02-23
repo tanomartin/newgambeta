@@ -6,9 +6,9 @@ include_once "../model/fechas.php";
 include_once "../model/equipos.php";
 include_once "../model/jugadoras.php";
 include_once "../model/resultados.php";
-if (! session_is_registered ( "usuario" )) {
-	header ( "Location: index.php" );
-	exit ();
+if (!isset( $_SESSION['usuario'])) {
+	header("Location: index.php");
+	exit;
 }
 $operacion = "Resultado";
 $oFixture = new Fixture();

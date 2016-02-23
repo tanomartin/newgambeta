@@ -1,10 +1,11 @@
 <?	include_once "include/fechas.php";
 	include_once "../model/torneos.php";	
 	include_once "../model/colores.php";
-	if(!session_is_registered("usuario")){
+	if (!isset( $_SESSION['usuario'])) {
 		header("Location: index.php");
 		exit;
 	}
+	
 	$operacion = "Alta";
 	$fechaInicio = date("j/n/Y");
 	$fechaFin = date("j/n/Y");

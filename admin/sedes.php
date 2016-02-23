@@ -1,7 +1,7 @@
 <?	include_once "include/config.inc.php";
 	include_once "../model/sedes.php";
 	
-	if(!session_is_registered("usuario")){
+	if (!isset( $_SESSION['usuario'])) {
 		header("Location: index.php");
 		exit;
 	}

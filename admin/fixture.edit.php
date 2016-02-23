@@ -8,9 +8,9 @@
 	include_once "../model/sedes.php";
 	include_once "../model/arbitros.php";
 	include_once "../model/fckeditor.class.php";
-	if (! session_is_registered ( "usuario" )) {
-		header ( "Location: index.php" );
-		exit ();
+	if (!isset( $_SESSION['usuario'])) {
+		header("Location: index.php");
+		exit;
 	}
 	$operacion = "Alta";
 	if ($_POST ["id"] != - 1) {

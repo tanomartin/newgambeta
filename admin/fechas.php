@@ -3,7 +3,7 @@
 	include_once "../model/fechas.php";
 	include_once "../model/fixture.php";
 	include_once "../model/torneos.categorias.php";
-	if(!session_is_registered("usuario")){
+	if (!isset( $_SESSION['usuario'])) {
 		header("Location: index.php");
 		exit;
 	}

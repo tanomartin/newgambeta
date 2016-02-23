@@ -410,6 +410,7 @@ class Fixture {
 				  order 
 				    by x.horaPartido ASC";
 		$datos = $db->getResults($query, ARRAY_A); 
+		print($query);
 		$db->close();
 		return $datos;	
 	}

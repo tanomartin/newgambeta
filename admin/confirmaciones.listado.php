@@ -7,9 +7,9 @@ include_once "../model/reservas.php";
 include_once "../model/fixture.php";
 include_once "../model/equipos.php";
 
-if (! session_is_registered ( "usuario" )) {
-	header ( "Location: index.php" );
-	exit ();
+if (!isset( $_SESSION['usuario'])) {
+	header("Location: index.php");
+	exit;
 }
 
 $menu = "Secciones";
@@ -168,27 +168,27 @@ foreach ( $equiposTorneo as $equipo1 ) {
 														<a href="javascript:confirmacion('<?= $partido['id'] ?>','<?=$partido['idEquipo1']?>','eliminar');">
 															<img width="25" border="0" alt="reserva" title="Eliminar Confirmacion" src="images/reenvio.png" />
 														</a> 
-														<img width="25" border="0" alt="reserva" title="Confirmado" src="../img/check.ico" /></td>
+														<img width="25" border="0" alt="reserva" title="Confirmado" src="images/check.ico" /></td>
 												<? } else { ?>
 													<td nowrap>
 														<a href="javascript:confirmacion('<?= $partido['id'] ?>','<?=$partido['idEquipo1']?>','confirmar');">
 															<img width="25" border="0" alt="reserva" title="Confirmar" src="images/icono-up.gif" />
 														</a> 
-														<img width="25" border="0" alt="reserva" title="Sin Confirmacion" src="../img/forbidden.ico" /></td>
+														<img width="25" border="0" alt="reserva" title="Sin Confirmacion" src="images/forbidden.ico" /></td>
 												<? } ?>
 													<td style="text-align: center; font-size: 16px"><?=$partido['equipo1'] ?>
 														<font color="#FF0000"> VS </font> <?=$partido['equipo2']?> <br />(<?=$partido['horaPartido'] ?>)
 													</td>
 												<? if ($oFixture -> partidoConfirmado($partido['id'],$partido['idEquipo2'])) { ?>
 														<td nowrap>
-															<img width="25" border="0" alt="reserva" title="Confirmado" src="../img/check.ico" /> 
+															<img width="25" border="0" alt="reserva" title="Confirmado" src="images/check.ico" /> 
 															<a href="javascript:confirmacion('<?= $partido['id'] ?>','<?=$partido['idEquipo2']?>','eliminar');">
 																<img width="25" border="0" alt="reserva" title="Eliminar Confirmacion" src="images/reenvio.png" />
 															</a>
 														</td>
 												<? } else {?>
 														<td nowrap>
-															<img width="25" border="0" alt="reserva" title="Sin Confirmacion" src="../img/forbidden.ico" /> 
+															<img width="25" border="0" alt="reserva" title="Sin Confirmacion" src="images/forbidden.ico" /> 
 															<a href="javascript:confirmacion('<?= $partido['id'] ?>','<?=$partido['idEquipo2']?>','confirmar');">
 																<img width="25" border="0" alt="reserva" title="Confirmar" src="images/icono-up.gif" />
 															</a>

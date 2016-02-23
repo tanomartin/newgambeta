@@ -94,10 +94,7 @@
 		  <ul style="visibility: visible; opacity: 1;" class="level_2">
 		    <li class="first">
 		      <a href="#" title="Fixture"  class="first"  onclick="this.blur(); ir('Fixture', '', 'fixture.php', 'fixture.php')">Fixture</a>
-	        </li>
-		    <li >
-		      <a href="#" title="Equipos Ideales"  class="last"  onclick="this.blur(); ir('Equipos Ideales', '', 'equipoIdeal.php', 'equipoIdeal.php')">Equipos Ideales</a>
-	        </li>          
+	        </li>        
 	      </ul>
 	    </li> 
 	 <? } ?>

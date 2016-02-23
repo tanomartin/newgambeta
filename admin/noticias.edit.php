@@ -3,10 +3,14 @@
 	include_once "../model/torneos.php";
 	include_once "../model/torneos.categorias.php";	
    //instancio editor
-
-
-  $operacion = "Alta";
-  $fecha = date("j/n/Y");
+	
+	if (!isset( $_SESSION['usuario'])) {
+		header("Location: index.php");
+		exit;
+	}
+	
+    $operacion = "Alta";
+    $fecha = date("j/n/Y");
 
 	$id_torneo ="";
 	$datos[0]["idTorneoCat"] = -1;
@@ -139,7 +143,7 @@
             <td class="col_1 col_last"> 
                  <input name="fecha" type="text" id="fecha" value="<?php echo $fecha;?>" size="8" readonly="readonly" />
                 <a href="javascript:show_calendar('document.form_alta.fecha', document.form_alta.fecha.value);">
-                        <img src="../_js/calendario2/cal.gif" width="16" height="16" border="0" />
+                        <img src="_js/calendario2/cal.gif" width="16" height="16" border="0" />
 				</a>                        
             </td>
       </tr>

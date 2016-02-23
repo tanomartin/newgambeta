@@ -1,6 +1,12 @@
 <?
 include_once "include/config.inc.php";
 require_once "include/PHPExcel/PHPExcel.php";
+
+if (!isset( $_SESSION['usuario'])) {
+	header("Location: index.php");
+	exit;
+}
+
 $inputFileName = $_FILES ['ficha'] ['tmp_name'];
 $objPHPExcel = PHPExcel_IOFactory::load ( $inputFileName );
 
