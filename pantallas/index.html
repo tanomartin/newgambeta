@@ -60,7 +60,7 @@
                 <option value="0">- Categoria -</option>
             </select>
       </form>
-      <button>Entrar</button>
+      <button id="entrar">Entrar</button>
  		</div>
  		<div class="item-three">
  			<p>Reservá tu horario</p>
@@ -136,22 +136,12 @@
           <h6>Muchas Gracias.</h6>
             <div class="box-form">
                 <div class="sedes">
+                  {% for sede in sedes %}
                   <div>
-                      <h2>Costa Salguero</h2>
+                      <h2>{{ sede.nombre }}</h2>
                       <p>Breve Descripcion</p>
                   </div>
-                  <div>
-                      <h2>Benavidez</h2>
-                      <p>Breve Descripcion</p>
-                  </div>
-                  <div>
-                      <h2>Caballito Norte</h2>
-                      <p>Breve Descripcion</p>
-                  </div>
-                  <div>
-                      <h2>Sede 4</h2>
-                      <p>Breve Descripcion</p>
-                  </div>
+                  {% endfor %}
                 </div>
             </div>
         </div>
@@ -231,6 +221,13 @@ $(document).ready(function(){
 	        	$("#categoria").html(data);
 	        });            
 	    });
+	})
+	
+	$("#entrar").click(function () {
+		var idTorneo = $("#torneo").val();
+		var idTorneoCat = $("#categoria").val();
+		var	redirec = "torneos.php?idTorneo="+idTorneo+"&idTorneoCat="+idTorneoCat;
+		window.location.href = redirec;
 	})
 });
 
