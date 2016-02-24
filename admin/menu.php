@@ -42,19 +42,6 @@
 	        </li>           
 	      </ul>
 	    </li> 
-		<li class="<? if( $menu == "Reservas") echo "active"; ?>  submenu "><span class="submenu">Gesti&oacute;n de Fecha</span>
-		  <ul style="visibility: visible; opacity: 1;" class="level_2">
-		    <li class="first"> 
-		      <a href="#" title="Reservas"  class="first"  onclick="this.blur(); ir('Reservas', '', 'reservas.php', 'reservas.php')">Reservas</a>
-	        </li>        
-		    <li >
-		      <a href="#" title="Confirmaciones"  class="first"  onclick="this.blur(); ir('Confirmaciones', '', 'confirmaciones.php', 'confirmaciones.php')">Confirmaciones</a>
-	        </li>        
-			<li >
-		      <a href="#" title="Listado Fecha"  class="first"  onclick="this.blur(); ir('Listado Fecha', '', 'listadopartidos.php', 'listadopartidos.php')">Listado de Partidos</a>
-	        </li>        
-	      </ul>
-	    </li> 
 		<li class=<? if( $menu == "Parametros") echo "active"; ?>><span class="submenu">Par&aacute;metros</span>
 		  <ul style="visibility: visible; opacity: 1;" class="level_2">
 		    <li class="first">
@@ -90,14 +77,24 @@
 	        </li>        
 	      </ul>
 	    </li> 
+	    <li class="<? if( $menu == "Reservas") echo "active"; ?>  submenu "><span class="submenu">Gesti&oacute;n de Fecha</span>
+		  <ul style="visibility: visible; opacity: 1;" class="level_2">
+		    <li class="first"> 
+		      <a href="#" title="Reservas"  class="first"  onclick="this.blur(); ir('Reservas', '', 'reservas.php', 'reservas.php')">Reservas</a>
+	        </li>        
+		    <li >
+		      <a href="#" title="Confirmaciones"  class="first"  onclick="this.blur(); ir('Confirmaciones', '', 'confirmaciones.php', 'confirmaciones.php')">Confirmaciones</a>
+	        </li>        
+			<li >
+		      <a href="#" title="Listado Fecha"  class="first"  onclick="this.blur(); ir('Listado Fecha', '', 'listadopartidos.php', 'listadopartidos.php')">Listado de Partidos</a>
+	        </li>        
+	      </ul>
+	    </li> 
 		<li class="<? if( $_POST["menu"]== "Gestion") echo "active"; ?>  submenu "><span class="submenu">Gesti&oacute;n del Torneo</span>
 		  <ul style="visibility: visible; opacity: 1;" class="level_2">
 		    <li class="first">
 		      <a href="#" title="Fixture"  class="first"  onclick="this.blur(); ir('Fixture', '', 'fixture.php', 'fixture.php')">Fixture</a>
-	        </li>
-		    <li >
-		      <a href="#" title="Equipos Ideales"  class="last"  onclick="this.blur(); ir('Equipos Ideales', '', 'equipoIdeal.php', 'equipoIdeal.php')">Equipos Ideales</a>
-	        </li>          
+	        </li>        
 	      </ul>
 	    </li> 
 	 <? } ?>

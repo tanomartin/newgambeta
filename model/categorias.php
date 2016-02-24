@@ -6,14 +6,15 @@ class Categorias {
 
 	var $id;
 	var $nombrePagina;	
-		
-	function Categorias($id="") {
 
+	var $base;
+	
+	function Categorias($id="") {
+		$this->base= new Db();
 		if ($id != "") {
 			$categoria = $this->get($id);
 			$this->id = $categoria[0]["id"]; 
 			$this->nombrePagina = $categoria[0]["nombrePagina"];
-
 		}
 	}
 
@@ -33,7 +34,7 @@ class Categorias {
 		
 
 	function agregar() {
-		$db = new Db();
+		$db = $this->base;
 				
 		$query = "insert into ga_categorias(
 				nombrePagina		
@@ -41,7 +42,7 @@ class Categorias {
 				"'".$this->nombrePagina."'".		
 				")" ;
 		$db->query($query); 
-		$db->close();
+		
 			
 			
 	}
@@ -49,7 +50,7 @@ class Categorias {
 
 	function eliminar() {
 	
-		$db = new Db();
+		$db = $this->base;
 
 		$query = "delete from ga_categorias where id = ".$this->id ;
 				  
@@ -59,25 +60,25 @@ class Categorias {
 				  
 		$db->query($query); 
 
-$db->close();
+
 	
 	}
 	
 	function modificar() {
 
-		$db = new Db();
+		$db = $this->base;
 		$query = "update ga_categorias set 
 		          nombrePagina 		= '". $this->nombrePagina."' 
 				  where id = ".$this->id ;
 				  
 		$db->query($query); 
-		$db->close();
+		
 	
 	}
 	
 	function get($id="") {
 	
-		$db = new Db();
+		$db = $this->base;
 		$query = "Select c.* from ga_categorias c where 1=1 " ;
 		
 		if ($id != "") {
@@ -87,14 +88,14 @@ $db->close();
 
 		$res = $db->getResults($query, ARRAY_A); 
 	
-		$db->close();
+		
 		
 		return $res;
 	
 	}
 
 	function getById($id, $output = OBJECT) {
-		$db = new Db();
+		$db = $this->base;
 
 		$query = "Select c.*
 				  From ga_categorias c
@@ -102,7 +103,7 @@ $db->close();
 
 		$oCat = $db->getRow($query,"",$output); 
 
-		$db->close();
+		
 		return $oCat;
 
 	}
@@ -110,7 +111,7 @@ $db->close();
 
 	function getPaginado($filtros, $inicio, $cant, &$total) {
 
-		$db = new Db();
+		$db = $this->base;
 		$query = "Select SQL_CALC_FOUND_ROWS  c.* 
 				   from ga_categorias c 
 				  where 1=1 ";
@@ -127,14 +128,14 @@ $db->close();
 	
 		$total = ceil( $cant_reg[0]["cant"] / $cant );
 
-		$db->close();
+		
 
 		return $datos;	
 
 	}
 	
 	function getByCategoriasDisponibles($id, $output = OBJECT) {
-		$db = new Db();
+		$db = $this->base;
 		$query = "Select *
 				  From ga_categorias
 				  where id not in(
@@ -144,13 +145,13 @@ $db->close();
 
 		$aDatos = $db->getResults($query,ARRAY_A); 
 		
-		$db->close();
+		
 		return $aDatos;
 
 	}
 
 	function getBySubCategoriasDisponibles($id, $id_categoria, $output = OBJECT) {
-		$db = new Db();
+		$db = $this->base;
 		$query = "Select *
 				  From ga_categorias
 				  where id not in(
@@ -166,7 +167,7 @@ $db->close();
 
 		$aDatos = $db->getResults($query,ARRAY_A); 
 		
-		$db->close();
+		
 		return $aDatos;
 
 	}

@@ -5,9 +5,9 @@
 	include_once "../model/categorias.php";
 	include_once "../model/horas_cancha.php";
 	include_once "include/config.inc.php";
-	if (! session_is_registered ( "usuario" )) {
-		header ( "Location: index.php" );
-		exit ();
+	if (!isset( $_SESSION['usuario'])) {
+		header("Location: index.php");
+		exit;
 	}
 	$operacion = "Carga Horas de Cancha Disponibles";
 	$oFecha = new Fechas ();

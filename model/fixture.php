@@ -18,8 +18,11 @@ class Fixture {
     var $golesEquipo2;
     var $puntajeEquipo2;
     var $suspendido;
+    
+    var $base;
    
-	function Equipos($id="") {
+	function Fixture($id="") {
+		$this->base = new Db();
 		if ($id != "") {
 			$valores = $this->get($id);
 			$this->id = $valores[0]["id"]; 
@@ -80,7 +83,7 @@ class Fixture {
 	}
 		
 	function insertar() {
-		$db = new Db();
+		$db = $$this->base;
 		$query = "insert into ga_fixture(
 					idEquipoTorneo1,idFecha,idEquipoTorneo2,observaciones,fechaPartido,horaPartido,idSede,cancha,idArbitro,golesEquipo1,puntajeEquipo1,golesEquipo2,puntajeEquipo2,suspendido
 				) values (".
@@ -99,22 +102,22 @@ class Fixture {
 				"'".$this->puntajeEquipo2."',".
 				"'".$this->suspendido."')";
 		$this->id = $db->query($query); 
-		$db->close();
+		
 	}
 
 	function eliminar() {
-		$db = new Db();		
+		$db = $this->base;		
 		$query = "delete from ga_fixture where id = ".$this->id ;
 	  	$db->query($query); 	
 		$query = "delete from ga_resultados where idFixture = ".$this->id ;  
 		$db->query($query); 	
 		$query = "delete from ga_partidos_confirmados where id_partido = ".$this->id ;  
 		$db->query($query); 
-		$db->close();	
+			
 	}
 	
 	function actualizar() {
-		$db = new Db();
+		$db = $this->base;
 		$query = "update 
 					ga_fixture set 
 		          	idFecha = '". $this->idFecha."',		
@@ -131,20 +134,20 @@ class Fixture {
 		          	suspendido = '". $this->suspendido."'
 				  where id = ".$this->id ;			  
 		$db->query($query); 
-		$db->close();
+		
 	}
 	
 	function modicarCampoValor($campo, $valor,$campoWhere, $valorWhere) {
-		$db = new Db();
+		$db = $this->base;
 		$query = "update ga_fixture set ".$campo ." = ".$valor." 
 				  where ". $campoWhere ." = '".$valorWhere."'" ;		  
 		$db->query($query); 
-		$db->close();
+		
 	}
 	
 
 	function get($id="") {
-		$db = new Db();
+		$db = $this->base;
 		$query = "Select e.*, tc.id_torneo, tc.	id_categoria, tc.id as idTorneoCat
 				  from ga_fixture e,  ga_torneos_categorias tc, ga_fechas f
 				  WHERE e.idFecha = f.id AND tc.id = f.idTorneoCat " ;
@@ -153,13 +156,13 @@ class Fixture {
 		}
 		$query .= " order by e.idFecha";
 		$res = $db->getResults($query, ARRAY_A); 
-		$db->close();
+		
 		return $res;
 	}
 
 
 	function getPaginado($filtros, $inicio, $cant, &$total) {
-		$db = new Db();
+		$db = $this->base;
 		$query = "Select SQL_CALC_FOUND_ROWS  
 						x.*, 
 						f.nombre as fecha, 
@@ -187,12 +190,12 @@ class Fixture {
 		$datos = $db->getResults($query, ARRAY_A);
 		$cant_reg = $db->getResults("SELECT FOUND_ROWS() cant", ARRAY_A); 
 		$total = ceil( $cant_reg[0]["cant"] / $cant );
-		$db->close();
+		
 		return $datos;	
 	}
 
 	function getByFecha($fecha){
-		$db = new Db();
+		$db = $this->base;
       	$query = "Select  
       				x.*, 
       				e1.nombre as equipo1,
@@ -219,12 +222,12 @@ class Fixture {
       				f.id=".$fecha;
 		$query.= " order by  fechaPartido";
 		$datos = $db->getResults($query, ARRAY_A); 	
-		$db->close();
+		
 		return $datos;	
 	}
 	
 	function getPromedioGolFecha($fecha){
-		$db = new Db();
+		$db = $this->base;
 		$query = "Select
       				sum(ABS(x.golesEquipo1 - x.golesEquipo2)) / count(*) as promedio
 		          from
@@ -236,13 +239,13 @@ class Fixture {
       				x.golesEquipo1 != -1 and
       				x.golesEquipo2 != -1";
 		$datos = $db->getResults($query, ARRAY_A);
-		$db->close();
+		
 		return $datos;
 	}
 	
 	
 	function getByFechaEquipo($fecha, $idEquipoTorneo){
-		$db = new Db();
+		$db = $this->base;
        	$query = "Select  
        				x.*, e1.nombre as equipo1, e2.nombre as equipo2, s.nombre as sede, f.nombre as nombreFecha, a.nombre as arbitro
 		          from 
@@ -260,12 +263,12 @@ class Fixture {
        				(x.idEquipoTorneo1 =".$idEquipoTorneo." || x.idEquipoTorneo2=".$idEquipoTorneo.")";
 		$query.= " order by  horaPartido DESC";
 		$datos = $db->getResults($query, ARRAY_A); 
-		$db->close();
+		
 		return $datos;	
 	}
 
 	function getByidTorneoCat($idTorneoCat){
-		$db = new Db();
+		$db = $this->base;
        	$query = "Select  x.* 
 		          from 
        				ga_fixture x, ga_fechas f 
@@ -275,12 +278,12 @@ class Fixture {
 				  	golesEquipo1>-1 and golesEquipo2>-1 and 
 				  	f.idTorneoCat = ".$idTorneoCat;
 		$datos = $db->getResults($query, ARRAY_A); 
-		$db->close();
+		
 		return $datos;	
 	}
 
 	function getByEquipoTorneo($idTorneoCat,$idEquipoTorneo){
-		$db = new Db();
+		$db = $this->base;
        	$query = "Select  
        				x.* , e1.nombre as equipo1, e2.nombre as equipo2
 		          from 
@@ -297,15 +300,15 @@ class Fixture {
 				 	f.idTorneoCat = ".$idTorneoCat."
 				  order by idFecha";
 		$datos = $db->getResults($query, ARRAY_A); 
-		$db->close();
+		
 		return $datos;	
 	}
 	
 	function partidoConfirmado($id_partido="", $id_equipo="") {
-		$db = new Db();
+		$db = $this->base;
 		$query = "Select count(*) as cantidad from ga_partidos_confirmados where id_partido = $id_partido and id_equipo = $id_equipo";
 		$res = $db->getRow($query); 
-		$db->close();
+		
 		if($res->cantidad == 0) {
 			return false;
 		} else {
@@ -314,23 +317,23 @@ class Fixture {
 	}
 	
 	function confirmarPartido($id_partido="",$id_equipo="") {
-		$db = new Db();
+		$db = $this->base;
 		$today = date("Y-m-d");
 		$query = "INSERT into ga_partidos_confirmados(id_partido,id_equipo,fecha_confirmado) VALUE (".$id_partido.",".$id_equipo.",'".$today."')";	
 		$res = $db->getRow($query); 
-		$db->close();	
+			
 	}
 	
 	function eliminarcConfirmacionPartido($id_partido="",$id_equipo="") {	
-		$db = new Db();	
+		$db = $this->base;	
 		$today = date("Y-m-d");
 		$query = "DELETE FROM ga_partidos_confirmados WHERE id_partido = $id_partido and id_equipo = $id_equipo";	
 		$res = $db->getRow($query); 
-		$db->close();	
+			
 	}
 	
 	function jugaronEnContra( $id_equipo_torneo1="", $id_equipo_torneo2="" , $idTorneoCat = "", $idFecha = "") {
-		$db = new Db();
+		$db = $this->base;
 		$query = "SELECT 
 					count(*) as cantidad 
 				  FROM 
@@ -340,7 +343,7 @@ class Fixture {
 				  	 p.idEquipoTorneo1 = $id_equipo_torneo2 and p.idEquipoTorneo2 = $id_equipo_torneo1) and 
 					p.idFecha = f.id and golesEquipo1>-1 and golesEquipo2>-1 and p.idFecha != $idFecha and f.idTorneoCat = $idTorneoCat;";	
 		$res = $db->getRow($query); 
-		$db->close();
+		
 		if($res->cantidad == 0) {
 			return false;
 		} else {
@@ -349,7 +352,7 @@ class Fixture {
 	}
 	
 	function juegaEstaFecha( $id_equipo_torneo1="", $id_equipo_torneo2="" , $idTorneoCat = "", $idFecha = "") {
-		$db = new Db();
+		$db = $this->base;
 		$query = "SELECT 
 					count(*) as cantidad 
 				  FROM 
@@ -359,7 +362,6 @@ class Fixture {
 					 p.idEquipoTorneo1 = $id_equipo_torneo2 and p.idEquipoTorneo2 = $id_equipo_torneo1) and 
 					p.idFecha = f.id  and p.idFecha = $idFecha and f.idTorneoCat = $idTorneoCat;";
 		$res = $db->getRow($query); 
-		$db->close();
 		if($res->cantidad == 0) {
 			return false;
 		} else {
@@ -368,7 +370,7 @@ class Fixture {
 	}
 	
 	function getByFechaPartidoSede($fechaPartido, $idSede){
-	   $db = new Db();
+	   $db = $this->base;
        $query = "Select  
 	   				x.id as idPartido,
 	   				x.horaPartido,
@@ -377,8 +379,10 @@ class Fixture {
 					f.nombre as nombreFecha, 
 					e1.nombre as equipo1,
 					e1.id as id1,
+					e1.dt as dt1,
 					e2.nombre as equipo2,
 					e2.id as id2,
+					e2.dt as dt2,
 					x.cancha as cancha,
 					t.nombre as torneo, 
 					c.nombrePagina as categoria,
@@ -410,7 +414,7 @@ class Fixture {
 				  order 
 				    by x.horaPartido ASC";
 		$datos = $db->getResults($query, ARRAY_A); 
-		$db->close();
+		
 		return $datos;	
 	}
 }

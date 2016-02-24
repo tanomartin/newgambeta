@@ -11,8 +11,11 @@ class Jugadoras {
 	var $foto;
 	var $fechaNac;
 	var $telefono;
+	
+	var $base;
 
 	function Jugadoras($id="") {
+		$this->base = new Db();
 		if ($id != "") {
 			$valores = $this->get($id);
 			$this->id = $valores[0]["id"];
@@ -42,7 +45,7 @@ class Jugadoras {
 	}
 
 	function insertar() {
-		$db = new Db();
+		$db = $this->base;
 		$query = "insert into ga_jugadoras(nombre,dni,email,fechaNac,telefono) values (".
 				"'".$this->nombre."',".
 				"'".$this->dni."',".
@@ -50,20 +53,20 @@ class Jugadoras {
 				"'".$this->fechaNac."',".
 				"'".$this->telefono."')";
 		$this->id = $db->query($query);
-		$db->close();
+		
 	}
 
 	function eliminar() {
-		$db = new Db();
+		$db = $this->base;
 		$query = "delete from ga_jugadoras_equipo where idJugadora = ".$this->id ;
 		$db->query($query);
 		$query = "delete from ga_jugadoras where id = ".$this->id ;
 		$db->query($query);
-		$db->close();
+		
 	}
 
 	function actualizar() {
-		$db = new Db();
+		$db = $this->base;
 		$query = "update ga_jugadoras set
 		          nombre = '". $this->nombre."',
 		          dni = '". $this->dni."',
@@ -72,41 +75,41 @@ class Jugadoras {
 				  fechaNac = '". $this->fechaNac."'
 				  where id = ".$this->id ;
 		$db->query($query);
-		$db->close();
+		
 	}
 
 	function get($id="") {
-		$db = new Db();
+		$db = $this->base;
 		$query = "Select j.* from ga_jugadoras j where 1=1 " ;
 		if ($id != "") {
 			$query .= " and j.id = '$id' ";
 		}
 		$query .= " order by j.nombre";
 		$res = $db->getResults($query, ARRAY_A);
-		$db->close();
+		
 		return $res;
 	}
 	
 	function getByDocumento($documento="") {
-		$db = new Db();
+		$db = $this->base;
 		$query = "Select j.* from ga_jugadoras j where dni= ".$documento;
 		$query .= " order by j.nombre";
 		$res = $db->getResults($query, ARRAY_A);
-		$db->close();
+		
 		return $res;
 	}
 	
 	function getByApellido($apellido="", $nombre="") {
-		$db = new Db();
+		$db = $this->base;
 		$query = "Select j.* from ga_jugadoras j where nombre like '%".$apellido."%' and nombre like '%".$nombre."%'";
 		$query .= " order by j.nombre";
 		$res = $db->getResults($query, ARRAY_A);
-		$db->close();
+		
 		return $res;
 	}
 	
 	function getPaginado($filtros, $inicio, $cant, &$total) {
-		$db = new Db();
+		$db = $this->base;
 		$query = "Select SQL_CALC_FOUND_ROWS j.* from ga_jugadoras j where 1=1";
 		if (trim($filtros["fnombre"]) != "")
 			$query.= " and j.nombre like '%".strtoupper($filtros["fnombre"])."%'";
@@ -116,73 +119,67 @@ class Jugadoras {
 		$datos = $db->getResults($query, ARRAY_A);
 		$cant_reg = $db->getResults("SELECT FOUND_ROWS() cant", ARRAY_A);
 		$total = ceil( $cant_reg[0]["cant"] / $cant );
-		$db->close();
+		
 		return $datos;
 	}
 	
 	function getEquiposById($id="") {
-		$db = new Db();
+		$db = $this->base;
 		$query = "Select je.id as idJugadoraEquipo,	 
 						 j.nombre as nombreJugadora,
       					 e.nombre as nombreEquipo,
        					 t.nombre as torneo,
        					 c.nombrePagina as categoria,
-      					 p.nombre as posicion,
       					 je.activa
 		        from ga_jugadoras j, 
 		        	 ga_jugadoras_equipo je, 
 		        	 ga_equipos_torneos et, 
-		        	 ga_equipos e, 
-		        	 ga_posiciones p, 
+		        	 ga_equipos e,
 		        	 ga_torneos_categorias tc,
 		        	 ga_torneos t,
 		        	 ga_categorias c
 				where j.id = $id and 
-					  j.id = je.idJugadora and 
-					  je.idPosicion = p.id and 
+					  j.id = je.idJugadora and
 		              je.idEquipoTorneo = et.id and 
 				      et.idEquipo = e.id and
 					  et.idTorneoCat = tc.id and
 					  tc.id_torneo = t.id and
 					  tc.id_categoria = c.id" ;
 		$res = $db->getResults($query, ARRAY_A);
-		$db->close();
+		
 		return $res;
 	}
 	
 	function getJugadoraEquipo($idJugadoraEquipo="") {
-		$db = new Db();
+		$db = $this->base;
 		$query = "Select je.id as idJugadoraEquipo,
 						 tc.id as idTorneoCat,
 						 j.id as idJugadora,
 						 e.id as idEquipo,
 						 t.id as idTorneo,
 						 c.id as idCategoria,
-						 p.id as idPosicion,
 						 je.activa
 				  from  ga_jugadoras j,
 						ga_jugadoras_equipo je,
 						ga_equipos_torneos et,
 						ga_equipos e,
-						ga_posiciones p,
 						ga_torneos_categorias tc,
 						ga_torneos t,
 						ga_categorias c
 				where 	je.id = $idJugadoraEquipo and
 						je.idJugadora = j.id and
-						je.idPosicion = p.id and
 						je.idEquipoTorneo = et.id and
 						et.idEquipo = e.id and
 						et.idTorneoCat = tc.id and
 						tc.id_torneo = t.id and
 						tc.id_categoria = c.id";
 		$res = $db->getResults($query, ARRAY_A);
-		$db->close();
+		
 		return $res;
 	}
 	
 	function insertarequipo($datos){
-		$db = new Db();
+		$db = $this->base;
 		if (isset($datos['activo'])) {
 			$activo = 1;
 		} else {
@@ -196,15 +193,14 @@ class Jugadoras {
 		$query = "insert into ga_jugadoras_equipo values ('DEFAULT',".
 				"'".$datos['id']."',".
 				"'".$datos['idEquipoTorneo']."',".
-				"'".$datos['idPosicion']."',".
 				"'".$activo."',".
 				"'".$envioMail."')";
 		$db->query($query);
-		$db->close();
+		
 	}
 	
 	function actualizarequipo($datos){
-		$db = new Db();
+		$db = $this->base;
 		if (isset($datos['activo'])) {
 			$activo = 1;
 		} else {
@@ -216,41 +212,37 @@ class Jugadoras {
 			$envioMail = 0;
 		}
 		$query = "update ga_jugadoras_equipo 
-					set idEquipoTorneo = ".$datos['idEquipoTorneo'].", idPosicion = ".$datos['idPosicion'].", activa = ".$activo.", envioMail = ".$envioMail." 
+					set idEquipoTorneo = ".$datos['idEquipoTorneo'].", activa = ".$activo.", envioMail = ".$envioMail." 
 							where id = ".$datos['idJugadoraEquipo']." and idJugadora = ".$datos['id'];
 		$db->query($query);
-		$db->close();
+		
 	}
 	
 	function getByEquipoTorneo($idEquipo="", $idTorneoCat="") {
-		$db = new Db();
+		$db = $this->base;
 		$query = "Select 
 					j.*, 
 					e.nombre as equipo, 
 					je.id as idJugadoraEquipo, 
 					je.activa as activa,
-					je.envioMail as envioMail,
-					p.nombre as posicion
+					je.envioMail as envioMail
 				  From 
 				  	ga_equipos_torneos et,
 					ga_jugadoras_equipo je, 
-					ga_posiciones p,
 					ga_jugadoras j,
 					ga_equipos e
 			      Where 
 					et.idEquipo = $idEquipo and et.idTorneoCat = $idTorneoCat and
 					et.id = je.idEquipoTorneo and
 					je.idJugadora = j.id and 
-					et.idEquipo = e.id and
-					je.idPosicion = p.id";
-		$query .= " order by je.idPosicion";
+					et.idEquipo = e.id";
 		$res = $db->getResults($query, ARRAY_A);
-		$db->close();
+		
 		return $res;
 	}
 	
 	function getCantidadActivaByEquipoTorneo($idEquipo="", $idTorneoCat="") {
-		$db = new Db();
+		$db = $this->base;
 		$query = "Select
 		count(*) as cantidad
 		From
@@ -263,12 +255,12 @@ class Jugadoras {
 		je.activa = 1 and
 		je.idJugadora = j.id";
 		$res = $db->getResults($query, ARRAY_A);
-		$db->close();
+		
 		return $res[0]['cantidad'];
 	}
 	
 	function getByIdEquipoTorneo($idEquipoTorneo="") {
-		$db = new Db();
+		$db = $this->base;
 		$query = "Select
 					j.*,
 					je.id as idJugadoraEquipo,
@@ -279,23 +271,22 @@ class Jugadoras {
 				  Where
 					je.idEquipoTorneo = $idEquipoTorneo and
 					je.idJugadora = j.id" ;
-		$query .= " order by je.idPosicion";
 		$res = $db->getResults($query, ARRAY_A);
-		$db->close();
+		
 		return $res;
 	}
 	
 	function getActivasByIdEquipoTorneo($idEquipoTorneo="") {
-		$db = new Db();
+		$db = $this->base;
 		$query = "Select count(*) as cantidad From ga_jugadoras_equipo je Where
 					je.idEquipoTorneo = $idEquipoTorneo and je.activa = 1";
 		$res = $db->getResults($query, ARRAY_A);
-		$db->close();
+		
 		return $res[0]['cantidad'];
 	}
 	
 	function getReferentesByIdEquipoTorneo($idEquipoTorneo="") {
-		$db = new Db();
+		$db = $this->base;
 		$query = "Select
 					j.*,
 					je.id as idJugadoraEquipo,
@@ -307,42 +298,41 @@ class Jugadoras {
 					je.idEquipoTorneo = $idEquipoTorneo and je.envioMail = 1 and
 					je.idJugadora = j.id" ;
 		$res = $db->getResults($query, ARRAY_A);
-		$db->close();
+		
 		return $res;
 	}
 	
 	function cambiarActiva($idJugadorasEquipos, $activo) {
-		$db = new Db();
+		$db = $this->base;
 		if ($activo == 0) {
 			$query = "update ga_jugadoras_equipo set activa = ".$activo.", envioMail = ".$activo." where id = ".$idJugadorasEquipos;
 		} else {
 			$query = "update ga_jugadoras_equipo set activa = ".$activo." where id = ".$idJugadorasEquipos;
 		}
 		$db->query($query);
-		$db->close();
+		
 	}
 	
 	function borrarEquipo($idJugadorasEquipos) {
-		$db = new Db();
+		$db = $this->base;
 		$query = "delete from ga_jugadoras_equipo where id = ".$idJugadorasEquipos;
 		$db->query($query);
-		$db->close();
+		
 	}
 
 	function getByFixture($idFixture,$idEquipoTorneo) {
-		$db = new Db();
+		$db = $this->base;
 		$query = "Select je.*, r.*, j.nombre
 				  from ga_jugadoras_equipo je left join ga_resultados r on je.id = r.idJugadoraEquipo, ga_jugadoras j
 				  where (idFixture = ". $idFixture. " or idFixture is null) 
 				  and je.idEquipoTorneo = ".$idEquipoTorneo." and je.idJugadora = j.id";
-		$query .= " order by je.idPosicion";
 		$res = $db->getResults($query, ARRAY_A);
-		$db->close();
+		
 		return $res;
 	}
 	
 	function getEstadisticas($idJugadorasEquipos) {
-		$db = new Db();
+		$db = $this->base;
 		$query = "Select 
 					sum(goles) as goles, 
 					sum(tarjeta_amarilla) as amarillas,
@@ -351,33 +341,33 @@ class Jugadoras {
 					ga_resultados 
 			      where idJugadoraEquipo = ".$idJugadorasEquipos;
 		$res = $db->getResults($query, ARRAY_A);
-		$db->close();
+		
 		return $res;
 	}
 	
 	function updateTarjetasGoles($idJugadora="", $idEquipoTorneo="") {
-		$db = new Db();
+		$db = $this->base;
 		$query = "update ga_jugadoras_equipo set
 		          amarillas = amarillas + '". $this->amarillas."',
 		          rojas = rojas + '". $this->rojas."',
 		          observaciones = '". $this->observaciones."'
 				  where idJugadora = ".$idJugadora." and idEquipoTorneo = ".$idEquipoTorneo;
 		print($query);
-		$db->close();
+		
 	}
 	
 	function activarEnvioMail($idJugadorasEquipos, $envio) {
-		$db = new Db();
+		$db = $this->base;
 		$query = "update ga_jugadoras_equipo set envioMail = ".$envio." where id = ".$idJugadorasEquipos;
 		$db->query($query);
-		$db->close();
+		
 	}
 	
 	function jugadoraEnEquipo($idJugadora="", $idEquipoTorneo="") {
-		$db = new Db();
+		$db = $this->base;
 		$query = "Select count(*) as cantidad from ga_jugadoras_equipo where idJugadora = '$idJugadora' and idEquipoTorneo = '$idEquipoTorneo'";
 		$res = $db->getRow($query);
-		$db->close();
+		
 		if($res->cantidad == 0) {
 			return false;
 		} else {

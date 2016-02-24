@@ -1,4 +1,5 @@
 <?php 
+<<<<<<< HEAD
 include_once "include/config.inc.php";
 include_once "model/sedes.php"; 
 include_once "include/templateEngine.inc.php";
@@ -7,8 +8,19 @@ include_once "include/templateEngine.inc.php";
 $oObj = new Sedes();
 $aSedes = $oObj->get(); 
 */
+=======
+include_once 'include/config.inc.php';
+include_once 'include/templateEngine.inc.php';
+include_once 'model/torneos.php';
+include_once 'model/sedes.php';
+$oTorneos = new Torneos();
+$torneos = $oTorneos->get();
+
+$oSedes = new Sedes();
+$sedes = $oSedes->get();
+>>>>>>> bf4b7231a33c29fc7b30e75969b20672bb973b01
 
 // Cargo la plantilla
-$twig->display('index.html',array("sedes" => $aSedes));
+$twig->display('index.html', array("torneos"=> $torneos,"sedes"=> $sedes));
 
 ?>

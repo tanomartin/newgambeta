@@ -15,13 +15,16 @@ class Correos {
 	var $cuerpo;
 	var $equipoId;
 	var $equipoNombre;
+	
+	var $base;
 		
 	function Correos($valores="") {
+		$this->base = new Db();
 		$this->correo = $valores["correo"]; 
 		$this->cuerpo = $valores["cuerpo"]; 
 		$this->equipoId = $valores["equipoId"]; 
 		$this->equipoNombre = $valores["equipoNombre"]; 
-		$this->asunto = $valores["asunto"]; 
+		$this->asunto = $valores["asunto"];	
 	}
 	
 	function enviar() {
@@ -53,7 +56,7 @@ class Correos {
 	}
 	
 	function cargarCorreo($idEquipo= "", $idFecha="", $tabla="") {
-		$db = new Db();
+		$db = $this->base;
 		$today = date('Y-m-d');
 		if ($tabla == "r") {
 			$query = "Insert into ga_correo_reservas(id_equipo,id_fecha,fecha_envio) value ($idEquipo,$idFecha,'$today')";
@@ -62,7 +65,6 @@ class Correos {
 			$query = "Insert into ga_correo_confirmacion(id_equipo,id_fecha,fecha_envio) value ($idEquipo,$idFecha,'$today')";
 		}
 		$db->query($query);
-		$db->close();
 	}
 }
 

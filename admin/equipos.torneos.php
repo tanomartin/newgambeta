@@ -5,10 +5,11 @@
 	include_once "../model/torneos.categorias.php";	
 	include_once "../model/equipos.php";	
     include_once "../model/fckeditor.class.php" ;
-	if(!session_is_registered("usuario")){
+	if (!isset( $_SESSION['usuario'])) {
 		header("Location: index.php");
 		exit;
 	}
+	
 	$oEquipo= new Equipos();
 	$datos = $oEquipo->get($_POST["id"]);
     $torneos = $oEquipo->getTorneos($_POST["id"]);	

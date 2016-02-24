@@ -77,27 +77,17 @@
  			<p>Ingresá tu Torneo</p>
       <div class="foot-ball"><span class="ion-ios-football-outline"></span></div>
       <form>
-            <select name="torneo">
-                <option value="">- Torneo - </option>
-                <option value="SB_M">Sushi Boom (M)</option>
-                <option value="SB_T">Sushi Boom (T)</option>
-                <option value="LH">Liga de Honor</option>
-                <option value="CDF_M">Camisetadefutbol (M) </option>
-                <option value="CDF_T">Camisetadefutbol (T)</option>
-                <option value="F6">Futbol 6</option>
-                <option value="TJ">T. Jueves</option>
-                <option value="FM">Futbol Mixto </option>
-                <option value="TV">T. Viernes</option>
-                <option value="CP">Copa Primavera</option>
+            <select name="torneo" id="torneo">
+                <option value="0">- Torneo -</option>
+                {% for torneo in torneos %}
+                	<option value="{{ torneo.id }}">{{ torneo.nombre }}</option>
+                {% endfor %}
             </select>
-            <select name="categoria">
-                <option value="">- Categoría - </option>
-                <option value="A">"A"</option>
-                <option value="B">"B"</option>
-                <option value="C">"C"</option>
+            <select name="categoria" id="categoria">
+                <option value="0">- Categoria -</option>
             </select>
       </form>
-      <button>Entrar</button>
+      <button id="entrar">Entrar</button>
  		</div>
  		<div class="item-three">
  			<p>Reservá tu horario</p>
@@ -157,10 +147,10 @@
             <div class="box-form">
               <form>
                 <p>Mensaje</p>
-                <input type="text" name"nombre" placeholder="Nombre" required>
-                <input type="text" name"apellido" placeholder="Apellido" required>
-                <input type="email" name"email" placeholder="Dirección de E-mail" required>
-                <input type="number" name"telefono" placeholder="Teléfono" required>
+                <input type="text" name="nombre" placeholder="Nombre" required>
+                <input type="text" name="apellido" placeholder="Apellido" required>
+                <input type="email" name="email" placeholder="Dirección de E-mail" required>
+                <input type="number" name="telefono" placeholder="Teléfono" required>
                   <div>
                       <textarea placeholder="Escribí acá tu mensaje" required></textarea>
                   </div>
@@ -174,6 +164,7 @@
           <h6>Muchas Gracias.</h6>
             <div class="box-form">
                 <div class="sedes">
+                  {% for sede in sedes %}
                   <div>
                       <button  type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalMap1"><h2>Costa Salguero</h2></button>
                           <div class="modal fade" id="myModalMap1" tabindex="-1" role="dialog">
@@ -323,6 +314,25 @@
 $(function() {
 	$("#navbar").load("include/html/navbar.html");
 });
+
+$(document).ready(function(){
+	$("#torneo").change(function () {
+		$("#torneo option:selected").each(function () {
+	    	idTorneo=$(this).val();
+	        $.post("categoria_data.php", { idTorneo: idTorneo }, function(data) {
+	        	$("#categoria").html(data);
+	        });            
+	    });
+	})
+	
+	$("#entrar").click(function () {
+		var idTorneo = $("#torneo").val();
+		var idTorneoCat = $("#categoria").val();
+		var	redirec = "torneos.php?idTorneo="+idTorneo+"&idTorneoCat="+idTorneoCat;
+		window.location.href = redirec;
+	})
+});
+
 </script>
 
 </html>

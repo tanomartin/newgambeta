@@ -10,8 +10,11 @@ class Fechas {
 	var $fechaFin;
 	var $fotoPreview;
 	var $fotoGrande;
-		
+	
+	var $base;
+	
 	function Fechas($id="") {
+		$this->base = new Db();
 		if ($id != "") {
 			$valores = $this->get($id);
 			$this->id = $valores[0]["id"]; 
@@ -38,7 +41,7 @@ class Fechas {
 		
 
 	function insertar($files) {
-		$db = new Db();
+		$db = $this->base;
 		$query = "insert into ga_fechas(
 				idTorneoCat,nombre,fechaIni,fechaFin
 				) values (".
@@ -47,21 +50,19 @@ class Fechas {
 				"'".$this->fechaIni."',".
 				"'".$this->fechaFin."')";
 		$this->id = $db->query($query); 
-		$db->close();
 	}
 
 
 	function eliminar() {
-		$db = new Db();		
+		$db = $this->base;
 		$query = "delete from ga_fechas where id = ".$this->id ;	  
 		$db->query($query); 		
 		$query = "delete from ga_fechas_horas where id_fecha = ".$this->id ;		
 		$db->query($query); 		
-		$db->close();	
 	}
 	
 	function actualizar($files) {
-		$db = new Db();
+		$db = $this->base;
 		$query = "update ga_fechas set 
 		          nombre = '". $this->nombre."',		
 		          idTorneoCat = '". $this->idTorneoCat."',
@@ -69,11 +70,11 @@ class Fechas {
 		          fechaFin = '". $this->fechaFin."'
 				  where id = ".$this->id ;				  
 		$db->query($query); 	
-		$db->close();	
+			
 	}
 	
 	function get($id="") {
-		$db = new Db();		
+		$db = $this->base;		
 		$query = "Select e.*, tc.id_torneo, tc.	id_categoria, tc.id as idTorneoCat,t.nombre as torneo, c.nombrePagina  as categoria
 				  from ga_fechas e, ga_torneos t, ga_torneos_categorias tc, ga_categorias c
 				  where e.idTorneoCat = tc.id and tc.id_torneo = t.id and tc.id_categoria = c.id " ;
@@ -82,12 +83,12 @@ class Fechas {
 		}	
 		$query .= " order by e.nombre";
 		$res = $db->getResults($query, ARRAY_A); 
-		$db->close();		
+				
 		return $res;	
 	}
 
 	function getIdTorneoCat($id="",$orden="") {
-		$db = new Db();	
+		$db = $this->base;	
 		$query = "Select e.*, tc.id_torneo, tc.	id_categoria, tc.id as idTorneoCat,t.nombre as torneo, c.nombrePagina  as categoria
 				  from ga_fechas e, ga_torneos t, ga_torneos_categorias tc, ga_categorias c
 				  where e.idTorneoCat = tc.id and tc.id_torneo = t.id and tc.id_categoria = c.id " ;
@@ -101,7 +102,7 @@ class Fechas {
 		}
 		$query .= $order;	
 		$res = $db->getResults($query, ARRAY_A); 	
-		$db->close();		
+				
 		return $res;	
 	}
 	
@@ -111,7 +112,7 @@ class Fechas {
 	}
 
 	function getPaginado($filtros, $inicio, $cant, &$total) {
-		$db = new Db();
+		$db = $this->base;
 		$query = "Select SQL_CALC_FOUND_ROWS  e.*, t.nombre as torneo, c.nombrePagina as categoria
 		          from ga_fechas e, ga_torneos t, ga_torneos_categorias tc, ga_categorias c
 				  where e.idTorneoCat = tc.id and tc.id_torneo = t.id and tc.id_categoria = c.id ";
@@ -127,25 +128,25 @@ class Fechas {
 		$datos = $db->getResults($query, ARRAY_A); 		
 		$cant_reg = $db->getResults("SELECT FOUND_ROWS() cant", ARRAY_A); 	
 		$total = ceil( $cant_reg[0]["cant"] / $cant );
-		$db->close();
+		
 		return $datos;	
 	}
 
 	
 	function getHorasCancha($id="") {
-		$db = new Db();		
+		$db = $this->base;		
 		$query = "Select f.*, c.descripcion from ga_fechas_horas f, ga_horas_cancha c where f.id_fecha = $id and f.id_horas_cancha = c.id" ;		
 		$datos = $db->getResults($query, ARRAY_A); 
-		$db->close();		
+				
 		return $datos;
 	}
 	
 	function getFechaActiva($id="") {
-		$db = new Db();		
+		$db = $this->base;		
 		$today = date("Y-m-d");		
 		$query = "Select * from ga_fechas f where idTorneoCat = $id and fechaIni <= '$today' and fechaFin >= '$today' limit 1";
 		$datos = $db->getResults($query, ARRAY_A); 	
-		$db->close();	
+			
 		if ($datos[0]!=NULL) {
 			$datos[0]['puedeReservar'] = $this->puedeReservar($datos[0]['fechaIni']);
 		}		
@@ -153,17 +154,17 @@ class Fechas {
 	}
 	
 	function setHorasCancha($id_fecha="",$id_horas_cancha="") {	
-		$db = new Db();	
+		$db = $this->base;	
 		$query = "Insert into ga_fechas_horas(id_fecha, id_horas_cancha) values($id_fecha,$id_horas_cancha)";
 		$db->query($query); 	
-		$db->close();	
+			
 	}
 	
 	function deleteHorasCancha($id_fecha="") {	
-		$db = new Db();	
+		$db = $this->base;	
 		$query = "delete from ga_fechas_horas where id_fecha = $id_fecha";	
 		$db->query($query); 	
-		$db->close();	
+			
 	}
 	
 	function puedeReservar($fechaIni) {

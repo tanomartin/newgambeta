@@ -1,6 +1,6 @@
 <?	include_once "include/config.inc.php";
 	include_once "../model/arbitros.php";
-	if(!session_is_registered("usuario")){
+	if (!isset( $_SESSION['usuario'])) {
 		header("Location: index.php");
 		exit;
 	}
@@ -173,8 +173,10 @@
 												<td align="left"><?=$datos[$i]["nombre"]?></td>     
 												<td align="left"><?=$datos[$i]["telefono"]?></td>                        
 						                     	<td nowrap>
-													<a href="javascript:editar(<?=$datos[$i]["id"]?>);"> <img border="0" src="images/icono-editar.gif" alt="editar" title="editar" /></a>
-													<a href="javascript:borrar(<?=$datos[$i]["id"]?>);"><img border="0" src="images/icono-eliminar.gif" alt="eliminar" title="eliminar" /></a>
+						                     		<? if ($datos[$i]["id"] != 0) { ?>
+															<a href="javascript:editar(<?=$datos[$i]["id"]?>);"> <img border="0" src="images/icono-editar.gif" alt="editar" title="editar" /></a>
+															<a href="javascript:borrar(<?=$datos[$i]["id"]?>);"><img border="0" src="images/icono-eliminar.gif" alt="eliminar" title="eliminar" /></a>
+											 		<? } ?>
 											 	</td>	
 											 </tr>
 										  	<? } 

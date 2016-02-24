@@ -7,11 +7,10 @@ include_once "../model/reservas.php";
 include_once "../model/equipos.php";
 include_once "../model/torneos.categorias.php";
 
-if (! session_is_registered ( "usuario" )) {
-	header ( "Location: index.php" );
-	exit ();
+if (!isset( $_SESSION['usuario'])) {
+	header("Location: index.php");
+	exit;
 }
-
 $menu = "Secciones";
 
 // print_r($_POST);

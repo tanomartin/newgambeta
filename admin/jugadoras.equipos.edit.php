@@ -4,7 +4,7 @@
 	include_once "../model/posiciones.php";
 	include_once "../model/torneos.php";
 	include_once "../model/torneos.categorias.php";
-	if(!session_is_registered("usuario")){
+	if (!isset( $_SESSION['usuario'])) {
 		header("Location: index.php");
 		exit;
 	}
@@ -21,8 +21,6 @@
 		$disabled = "disabled";
 	$oTorneo= new Torneos();
 	$aTorneos = $oTorneo->get();
-	$oPosicion= new Posiciones();
-	$aPosicion = $oPosicion->get();
 ?>
 
 <!DOCTYPE HTML>
@@ -138,18 +136,6 @@
 												       </span>												        
 												     </td>
 											      </tr>  
-											      <tr class="even">
-											        <td class="col_0 col_first"><label for="nombre">Posici&oacute;n</label><span class="mandatory">*</span></td>
-											        <td class="col_1 col_last">
-											         <select name="idPosicion" id='idPosicion' <?= $disabled ?> class="validate-selection" >
-											            <option value="-1">Seleccione una Posici&oacute;n...</option>
-													 	<?php for($i=0;$i<count($aPosicion);$i++) { ?>	
-															<option value="<?php echo $aPosicion[$i]['id'] ?>" <?php if ($datos[0]["idPosicion"] ==   $aPosicion[$i]['id'] ) echo "selected"; ?>><?php echo $aPosicion[$i]['nombre'] ?>
-											                </option>
-											             <?php } ?>	   
-											         	</select>
-											         </td>   
-											      </tr>
 											      <tr class="even">
 											        <td class="col_0 col_first"><label for="activa">Activa</label></td>
 											        <td class="col_1 col_last"><input type="checkbox"  <? if ($datos[0]["activa"] == "1" ) { ?> checked="checked" <? } ?> name="activo" id="activo" <?= $disabled ?> ></td>

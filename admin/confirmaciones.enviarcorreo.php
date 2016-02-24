@@ -2,10 +2,10 @@
 	include_once "../model/fechas.php";
 	include_once "../model/correos.php";
 
-	if(!session_is_registered("usuario")){
+	if (!isset( $_SESSION['usuario'])) {
 		header("Location: index.php");
 		exit;
-	}
+	}	
 	
 	$menu = "Secciones";
 	$idFecha = $_POST['id'];

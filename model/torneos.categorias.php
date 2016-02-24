@@ -8,8 +8,11 @@ class TorneoCat {
 	var $id_torneo;
 	var $id_categoria; 	
 	var $id_padre; 	
-		
+
+	var $base;
+	
 	function TorneoCat($id="") {
+		$this->base = new Db();
 		if ($id != "") {
 			$valores = $this->get($id);
 			$this->id = $valores[0]["id_torneo_categoria"]; 
@@ -33,7 +36,7 @@ class TorneoCat {
 		
 
 	function insertar() {
-		$db = new Db();	
+		$db = $this->base;
 		$query = "insert into ga_torneos_categorias(
 				id_torneo, id_categoria,id_padre
 				) values (".
@@ -42,47 +45,47 @@ class TorneoCat {
 				"'".$this->id_padre."'".				
 				")" ;
 		$id_insertado = $db->query($query); 
-		$db->close();
+		
 		return $id_insertado;
 	}
 
 	function actualizarPadre() {
-		$db = new Db();	
+		$db = $this->base;
 		$query = "update ga_torneos_categorias set id_padre = 0 where id_torneo = ". $this->id_torneo ." and id_categoria = ".$this->id_padre;
 		$db->query($query); 	
-		$db->close();
+		
 		return $id_insertado;
 	}
 
 	function eliminar() {
-		$db = new Db();	
+		$db = $this->base;
 		$query = "delete from ga_torneos_categorias where id = ".$this->id ;
 		$db->query($query); 
-		$db->close();
+		
 	}
 	
 	
 	function get($id="") {
-		$db = new Db();
+		$db = $this->base;
 		$query = "Select * from ga_torneos_categorias" ;
 		if ($id != "") {
 			$query .= " where id = '$id' ";
 		}
 		$res = $db->getResults($query, ARRAY_A); 
-		$db->close();
+		
 		return $res;
 	}
 
 	function getById($id, $output = OBJECT) {
-		$db = new Db();
+		$db = $this->base;
 		$query = "Select * From ga_torneos_categorias u Where id = '".$id."'";
 		$oDatos = $db->getRow($query,"",$output); 
-		$db->close();
+		
 		return $oDatos;
 	}
 	
 	function getByTorneo($id,$order ="") {
-		$db = new Db();
+		$db = $this->base;
 		$query = "Select tc.*, c.nombrePagina
 				  From ga_torneos_categorias tc, ga_categorias c
 				  Where tc.id_categoria = c.id and id_torneo = '".$id."' and id_padre < 1";
@@ -91,12 +94,12 @@ class TorneoCat {
 		else
 			$query.= " order by id_categoria ";	
 		$aDatos = $db->getResults($query, ARRAY_A); 
-		$db->close();
+		
 		return $aDatos;
 	}
 	
 	function getByTorneoSub($id) {
-		$db = new Db();
+		$db = $this->base;
 		$query = "Select tc.*,c.nombrePagina, c1.nombrePagina as nombreCatPagina, IFNULL(c1.id,c.id) as idCat
 				  From ga_torneos_categorias tc 
 				  left join ga_categorias c on tc.id_categoria = c.id
@@ -104,12 +107,12 @@ class TorneoCat {
 				  Where  id_torneo = '".$id."' and id_padre <> 0 ";
 		$query.= " order by idCat,id ";
 		$aDatos = $db->getResults($query, ARRAY_A); 
-		$db->close();
+		
 		return $aDatos;
 	}
 
 	function getByIdCompleto($id) {
-		$db = new Db();
+		$db = $this->base;
 		$query = "Select tc.*,c.nombrePagina,c1.nombrePagina as nombreCatPagina, IFNULL(c1.id,c.id) as idCat, t.nombre as torneo
 				  From ga_torneos_categorias tc 
 				  left join ga_categorias c on tc.id_categoria = c.id
@@ -118,12 +121,12 @@ class TorneoCat {
 				  Where  tc.id = '".$id."' and id_padre <> 0 ";
 		$query.= " order by idCat,tc.id ";
 		$oDatos = $db->getRow($query); 
-		$db->close();
+		
 		return $oDatos;
 	}
 
 	function getByTorneoFechas($id,$order ="") {
-		$db = new Db();
+		$db = $this->base;
 		$query = "Select tc.*, c.nombrePagina,c1.nombrePagina as nombreCatPagina
 				  From ga_torneos_categorias tc left join ga_categorias c
 				  on tc.id_categoria = c.id 
@@ -135,12 +138,12 @@ class TorneoCat {
 		else
 			$query.= " order by id_categoria ";	
 		$aDatos = $db->getResults($query, ARRAY_A); 
-		$db->close();
+		
 		return $aDatos;
 	}
 
 	function getBySubCategorias($id,$idCategoria) {
-		$db = new Db();
+		$db = $this->base;
 		$query = "Select tc.*,c.nombrePagina
 				  From ga_torneos_categorias tc, ga_categorias c
 				  Where tc.id_categoria = c.id and id_torneo = '".$id."' and id_padre = ".$idCategoria;
@@ -149,12 +152,12 @@ class TorneoCat {
 		else
 			$query.= " order by id_categoria ";	
 		$aDatos = $db->getResults($query, ARRAY_A); 
-		$db->close();
+		
 		return $aDatos;
 	}
 	
 	function obtenerIdCat($id,$id_torneo,&$idCatPadre) {
-		$db = new Db();
+		$db = $this->base;
 		$query = "Select tc.*
 				  From ga_torneos_categorias tc
 				  Where id = '".$id."' and id_torneo = ".$id_torneo;	
@@ -174,12 +177,12 @@ class TorneoCat {
 			$oDatos = $db->getRow($query); 
 			$idCatPadre = $oDatos->id;
 		}
-		$db->close();	
+			
 		return $id;
 	}
 
 	function getCategoriasCompletas($id="", $filtros="") {
-		$db = new Db();
+		$db = $this->base;
 		$query = "Select tc.*, c.nombrePagina,c1.nombrePagina as nombreCatPagina, t.nombre as nombreTorneo
 				  From ga_torneos_categorias tc left join ga_categorias c
 				  on tc.id_categoria = c.id 
@@ -190,11 +193,13 @@ class TorneoCat {
 				  where id_padre <> 0";
 		if ($id != "")	
 			$query.= " and  tc.id = ". $id;	
-		if (trim($filtros["ftorneo"]) != "" ) 
-			$query.= " and t.nombre like '%".strtoupper($filtros["ftorneo"])."%'";	
+		if ($filtro != "") {
+			if (trim($filtros["ftorneo"]) != "" ) 
+				$query.= " and t.nombre like '%".strtoupper($filtros["ftorneo"])."%'";
+		}		
 		$query.= " order by   t.nombre, c.nombrePagina ";	
 		$aDatos = $db->getResults($query, ARRAY_A); 
-		$db->close();	
+			
 		return $aDatos;
 	}
 }

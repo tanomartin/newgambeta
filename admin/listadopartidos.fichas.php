@@ -7,9 +7,9 @@ include_once "../model/sedes.php";
 include_once "../model/jugadoras.php";
 
 
-if (! session_is_registered ( "usuario" )) {
-	header ( "Location: index.php" );
-	exit ();
+if (!isset( $_SESSION['usuario'])) {
+	header("Location: index.php");
+	exit;
 }
 
 $fechaPartidosSql = $_GET ['fecha'];
@@ -26,8 +26,12 @@ $pdf = new FPDF ( 'L', 'mm', 'Legal' );
 foreach ( $listadoPartidos as $partido ) {
 	$pdf->AddPage ();
 	$pdf->SetFont ( 'Arial', 'B', 14 );
+	$pdf->SetXY ( 5, 5 );
+	$pdf->Cell ( 80, 15, $partido['equipo1'], 0, 0 );
 	$pdf->SetXY ( 89, 5 );
 	$pdf->Cell ( 80, 15, "Pago: ", 1, 1 );
+	$pdf->SetXY ( 185, 5 );
+	$pdf->Cell ( 80, 15, $partido['equipo2'], 0, 0 );
 	$pdf->SetXY ( 267, 5 );
 	$pdf->Cell ( 80, 15, "Pago: ", 1, 1 );
 	$pdf->SetXY ( 178, 5 );
@@ -114,7 +118,7 @@ foreach ( $listadoPartidos as $partido ) {
 	$pdf->SetXY (5, 104 );
 	$pdf->Cell (13, 7, "Subcapitana: ".$referentes1[1]['nombre']);
 	$pdf->SetXY (5, 110 );
-	$pdf->Cell (13, 7, "DT: ");
+	$pdf->Cell (13, 7, "DT: ".$partido['dt1']);
 	$pdf->SetXY (143, 110 );
 	$pdf->Cell (13, 7, "Jugadoras: ".$oJugadora->getActivasByIdEquipoTorneo($partido['idEquipoTorneo1']));
 	
@@ -124,7 +128,7 @@ foreach ( $listadoPartidos as $partido ) {
 	$pdf->SetXY (185, 104 );
 	$pdf->Cell (13, 7, "Subcapitana: ".$referentes2[1]['nombre']);
 	$pdf->SetXY (185, 110 );
-	$pdf->Cell (13, 7, "DT: ");
+	$pdf->Cell (13, 7, "DT: ".$partido['dt2']);
 	$pdf->SetXY (323, 110 );
 	$pdf->Cell (13, 7, "Jugadoras: ".$oJugadora->getActivasByIdEquipoTorneo($partido['idEquipoTorneo2']));
 	

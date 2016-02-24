@@ -2,10 +2,12 @@
 	include_once "../model/torneos.php";
 	include_once "../model/torneos.categorias.php";
 	include_once "../model/categorias.php";
-	if(!session_is_registered("usuario")){
+	
+	if (!isset( $_SESSION['usuario'])) {
 		header("Location: index.php");
 		exit;
 	}
+	
 
 	$menu = "Secciones";
 
@@ -53,6 +55,11 @@
 
 		case "infoSubcategoria":
 			include("torneos.subcategorias.php");
+			exit;
+			break;
+			
+		case "facturar":
+			include("torneos.facturacion.php");
 			exit;
 			break;
 			
@@ -168,6 +175,13 @@
 			document.frm_listado.id.value = id;
 			document.frm_listado.submit();
 		}
+
+		function facturar(id){
+			document.frm_listado.accion.value = "facturar";
+			document.frm_listado.id.value = id;
+			document.frm_listado.submit();
+			
+		}
 		
 		function borrar(id){
 			if (confirm('Confirma que quiere eliminar el torneo')) {
@@ -190,12 +204,12 @@
 			document.frm_listado.submit();
 		   
 		}
+		
 		function cambiarOrden(pos,orden) {
 			document.frm_listado.pos.value=pos;
 			document.frm_listado.orden.value =orden;
 			document.frm_listado.accion.value = "cambiarOrden";
 			document.frm_listado.submit();
-		   
 		}
 	</script>
 </head>
@@ -257,8 +271,8 @@
 									 <? } else { 
 										 	$total = count($datos);	
 											$tt = $total - 1;
+											$oObj = new TorneoCat();
 											for ( $i = 0; $i < $total; $i++ ) {
-												$oObj = new TorneoCat();
 												$aCategorias = $oObj->getByTorneoSub($datos[$i]["id"]);?>
 											<tr>
                     							<td align="left" style="text-align: inherit; color: <?=$datos[$i]["rgb"]?>"><img align="middle" width="80px" height="80px" src="../logos/<?=$datos[$i]["logoPrincipal"]?>" /><b><?=$datos[$i]["nombre"]?></b></td>
@@ -286,9 +300,10 @@
 							                     </td>
 							                      <td nowrap>
 							                        <a href="javascript:ver(<?=$datos[$i]["id"]?>);"> <img border="0" src="images/find-icon.png" alt="ver" title="ver" width="20px" height="20px" /></a>
-							                        <a href="javascript:editar(<?=$datos[$i]["id"]?>);"> <img border="0" src="images/icono-editar.gif" alt="editar" title="editar" /></a>
+							                        <a href="javascript:editar(<?=$datos[$i]["id"]?>);"> <img border="0" src="images/icono-editar.gif" alt="editar" title="editar" width="20" height="20"/></a>
 												    <a href="javascript:info(<?=$datos[$i]["id"]?>);"><img border="0" src="images/categorias.gif" alt="Categorias" title="Categorias"  width="20" height="20"/></a>
-							                        <a href="javascript:borrar(<?=$datos[$i]["id"]?>);"><img border="0" src="images/icono-eliminar.gif" alt="eliminar" title="eliminar" /></a>
+							                        <a href="javascript:facturar(<?=$datos[$i]["id"]?>);"><img border="0" src="images/icono-factura.png" alt="facturar" title="facturar" width="20" height="20"/></a>
+							                        <a href="javascript:borrar(<?=$datos[$i]["id"]?>);"><img border="0" src="images/icono-eliminar.gif" alt="eliminar" title="eliminar" width="20" height="20"/></a>
 							                       </td>
 							                </tr>
 											<? } 

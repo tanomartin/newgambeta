@@ -4,7 +4,7 @@
 	include_once "../model/reservas.php";
 	include_once "../model/equipos.php";
 
-	if(!session_is_registered("usuario")){
+	if (!isset( $_SESSION['usuario'])) {
 		header("Location: index.php");
 		exit;
 	}
@@ -21,30 +21,27 @@
 
 	$equiposConReserva = array();
 	$equiposSinReserva = array();
-	foreach($equiposTorneo as $equipo) {
-		$tiene = 0;
-		$tuvo_libre = $oEquipo-> tieneFechaLibre($fecha[0]['idTorneoCat'], $equipo['id']);
-		if ($reservas != NULL) {
-			foreach($reservas as $reserva) {
-				if ($reserva['id_equipo'] == $equipo['id']) {
-					$detalle = $oReserva -> getDetalleReservaById($reserva['id_reserva']);
-					$r = $reserva['id_equipo'];
-					$equiposConReserva[$r] = array('id_reserva' => $reserva['id_reserva'],'id_equipo' => $reserva['id_equipo'], 'nombre' => $reserva['nombre'], 'fecha_libre' => $reserva['fecha_libre'], 'observacion' =>  $reserva['observacion'] ,'tuvo_libre' => $tuvo_libre, 'detalle' => $detalle);
-					$tiene = 1;
-				} 
+	if ($equiposTorneo != NULL) {
+		foreach($equiposTorneo as $equipo) {
+			$tiene = 0;
+			$tuvo_libre = $oEquipo-> tieneFechaLibre($fecha[0]['idTorneoCat'], $equipo['id']);
+			if ($reservas != NULL) {
+				foreach($reservas as $reserva) {
+					if ($reserva['id_equipo'] == $equipo['id']) {
+						$detalle = $oReserva -> getDetalleReservaById($reserva['id_reserva']);
+						$r = $reserva['id_equipo'];
+						$equiposConReserva[$r] = array('id_reserva' => $reserva['id_reserva'],'id_equipo' => $reserva['id_equipo'], 'nombre' => $reserva['nombre'], 'fecha_libre' => $reserva['fecha_libre'], 'observacion' =>  $reserva['observacion'] ,'tuvo_libre' => $tuvo_libre, 'detalle' => $detalle);
+						$tiene = 1;
+					} 
+				}
+			}
+			if ($tiene == 0) {
+				$s = $equipo['id'];
+				$equiposSinReserva[$s] = array('id_equipo' => $equipo['id'], 'nombre' => $equipo['nombre'], 'tuvo_libre' => $tuvo_libre);
 			}
 		}
-		if ($tiene == 0) {
-			$s = $equipo['id'];
-			$equiposSinReserva[$s] = array('id_equipo' => $equipo['id'], 'nombre' => $equipo['nombre'], 'tuvo_libre' => $tuvo_libre);
-		}
 	}
-	
-/*	print("<br><br> EQUIPO CON RESERVA <br><br>");
-	var_dump($equiposConReserva);
-	print("<br><br> EQUIPO SIN RESERVA <br><br>");
-	var_dump($equiposSinReserva);
-*/
+
 	?>
     
 <!DOCTYPE HTML>
@@ -140,7 +137,7 @@
 									<div align="center" style="float:left">
 										<table id="conReserva" style="width: 450px">
 												<tr>
-													<th><img width="15" border="0" alt="reserva" title="Con Reserva" src="../img/check.ico"/> Con Reserva</th>
+													<th><img width="15" border="0" alt="reserva" title="Con Reserva" src="images/check.ico"/> Con Reserva</th>
 													<th>Detalle</th>
 													<th width="8%"></th>
 												</tr>
@@ -189,7 +186,7 @@
 									<div align="center" style="float:right">
 										<table id="sinReserva" style="width: 450px">
 												<tr>
-													<th><img width="15" border="0" alt="reserva" title="Sin Reserva" src="../img/forbidden.ico"/> Sin Reserva</th>
+													<th><img width="15" border="0" alt="reserva" title="Sin Reserva" src="images/forbidden.ico"/> Sin Reserva</th>
 													<th width="8%"></th>
 												</tr>
 											
@@ -208,7 +205,7 @@
 										</table>	
 									</div>
 							</div>
-							<? if ($horasFecha != NULL) {?>
+							<? if ($horasFecha != NULL && $equiposTorneo != NULL) {?>
 							<div class="mod_listing ce_table listing block" id="partnerlist">
 								<div align="center">
 									<h1 align="left">Informe de Reservas </h1>

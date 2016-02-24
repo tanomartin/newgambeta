@@ -5,9 +5,11 @@ class HorasCancha {
 
 	var $id;
 	var $descripcion;
+	
+	var $base;
 		
 	function HorasCancha($id="") {
-
+		$this->base = new Db();
 		if ($id != "") {
 			$valores = $this->get($id);
 			$this->id = $valores[0]["id"]; 
@@ -17,13 +19,13 @@ class HorasCancha {
 	
 	function get($id="") {
 	
-		$db = new Db();
+		$db = $this->base;
 		
 		$query = "Select * from ga_horas_cancha where id = $id" ;
 
 		$res = $db->getResults($query, ARRAY_A); 
 	
-		$db->close();
+		
 		
 		return $res;
 	
@@ -31,13 +33,13 @@ class HorasCancha {
 
 	function getHorasDisponibles() {
 		
-		$db = new Db();
+		$db = $this->base;
 		
 		$query = "Select * from ga_horas_cancha" ;
 
 		$res = $db->getResults($query, ARRAY_A); 
 	
-		$db->close();
+		
 		
 		return $res;
 		

@@ -8,10 +8,11 @@
 	include_once "../model/torneos.categorias.php";	
 	include_once "../model/jugadoras.php";	
 
-	if(!session_is_registered("usuario")){
+	if (!isset( $_SESSION['usuario'])) {
 		header("Location: index.php");
 		exit;
 	}
+	
 	$oEquipo= new Equipos();
 	$equipo = $oEquipo->get($_POST["id"]); 
 	$datosTorneo = $oEquipo->getRelacionTorneo($_POST["idTorneoEquipo"]);	
@@ -96,11 +97,12 @@
 									<? } else { 
 										 	$total = count($fechas);	
 											$tt = $total - 1;
+											$oReserva = new Reservas();
+											$oFixture = new Fixture();
 											for ( $i = 0; $i < $total; $i++ ) { ?>
 												<tr>
 							                     <td align="left"><?=$fechas[$i]["nombre"]?><br><?=cambiaf_a_normal($fechas[$i]["fechaIni"])." al ".cambiaf_a_normal($fechas[$i]["fechaFin"])?></td>
-												 <td><? $oReserva = new Reservas();
-														$reserva = $oReserva->getReservaByIdFechaIdEquipo($fechas[$i]["id"],$_POST["id"]);
+												 <td><? $reserva = $oReserva->getReservaByIdFechaIdEquipo($fechas[$i]["id"],$_POST["id"]);
 												 		if ($reserva == NULL) { 
 												 			echo ("SIN RESERVA");
 												 		} else { 
@@ -119,8 +121,7 @@
 															}
 														} ?>
 												 </td>
-												 <td><? $oFixture = new Fixture();
-												 		$partido = $oFixture->getByFechaEquipo($fechas[$i]["id"], $_POST["idTorneoEquipo"]);
+												 <td><? $partido = $oFixture->getByFechaEquipo($fechas[$i]["id"], $_POST["idTorneoEquipo"]);
 												 		if ($partido == NULL) {
 															echo ("SIN PARTIDO");
 														} else {

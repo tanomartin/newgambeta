@@ -6,9 +6,9 @@ include_once "../model/torneos.categorias.php";
 include_once "../model/reservas.php";
 include_once "../model/equipos.php";
 
-if (! session_is_registered ( "usuario" )) {
-	header ( "Location: index.php" );
-	exit ();
+if (!isset( $_SESSION['usuario'])) {
+	header("Location: index.php");
+	exit;
 }
 
 $oFecha = new Fechas ();
@@ -61,7 +61,7 @@ $horas_fecha = $oFecha->getHorasCancha ( $_POST ['id'] );
 		}
 		
 		function controlLibre() {
-			$('#error').html("");
+			document.getElementById("error").innerHTML="";
 			var grupo = document.getElementById("form_alta").horas;
 			var controlCheck = 0;
 			var libre = document.getElementById("libre");
@@ -86,7 +86,7 @@ $horas_fecha = $oFecha->getHorasCancha ( $_POST ['id'] );
 		}
 	
 		function controlHoras() {
-			$('#error').html("");
+			document.getElementById("error").innerHTML="";
 			var libre = document.getElementById("libre");
 			var libregambeta = document.getElementById("libregambeta");
 			var grupo = document.getElementById("form_alta").horas;
@@ -138,7 +138,7 @@ $horas_fecha = $oFecha->getHorasCancha ( $_POST ['id'] );
 		}
 		
 		function validar() {
-			$('#error').html("");
+			document.getElementById("error").innerHTML="";
 			var libre = document.getElementById("libre");
 			var grupo = document.getElementById("form_alta").horas;
 			var libregambeta = document.getElementById("libregambeta");
@@ -160,7 +160,7 @@ $horas_fecha = $oFecha->getHorasCancha ( $_POST ['id'] );
 						}
 					}
 					if (controlCheck < 1) {
-						$('#error').html("* Debe seleccionar como mínimo 1 horas");
+						document.getElementById("error").innerHTML="* Debe seleccionar como mínimo 1 horas";
 						return false;
 					} else {
 						document.form_alta.accion.value = "guardarNueva";		
@@ -176,7 +176,7 @@ $horas_fecha = $oFecha->getHorasCancha ( $_POST ['id'] );
 					}
 				}
 				if (controlCheck < 1) {
-					$('#error').html("* Debe seleccionar como mínimo 1 horas");
+					document.getElementById("error").innerHTML="* Debe seleccionar como mínimo 1 horas";
 					return false;
 				} else {
 					document.form_alta.accion.value = "guardarNueva";		

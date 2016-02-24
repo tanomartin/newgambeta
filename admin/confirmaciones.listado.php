@@ -7,9 +7,9 @@ include_once "../model/reservas.php";
 include_once "../model/fixture.php";
 include_once "../model/equipos.php";
 
-if (! session_is_registered ( "usuario" )) {
-	header ( "Location: index.php" );
-	exit ();
+if (!isset( $_SESSION['usuario'])) {
+	header("Location: index.php");
+	exit;
 }
 
 $menu = "Secciones";
@@ -28,46 +28,48 @@ $reservasLibres = $oReservas->getReservaLibresByIdFecha ( $_POST ['id'] );
 $reservas = $oReservas->getReservaByIdFecha ( $_POST ['id'] );
 
 $i = 0;
-foreach ( $equiposTorneo as $equipo ) {
-	$tienePartido = false;
-	$tieneLibre = false;
-	$id = $equipo ['id'];
-	if ($partidos != NULL) {
-		foreach ( $partidos as $partido ) {
-			if ($id == $partido ['idEquipo1'] || $id == $partido ['idEquipo2']) {
-				$tienePartido = true;
+if ($equiposTorneo != NULL) {
+	foreach ( $equiposTorneo as $equipo ) {
+		$tienePartido = false;
+		$tieneLibre = false;
+		$id = $equipo ['id'];
+		if ($partidos != NULL) {
+			foreach ( $partidos as $partido ) {
+				if ($id == $partido ['idEquipo1'] || $id == $partido ['idEquipo2']) {
+					$tienePartido = true;
+				}
 			}
 		}
-	}
-	if ($reservas != NULL) {
-		foreach ( $reservas as $reserva ) {
-			if ($id == $reserva ['id_equipo'] && $reserva ['fecha_libre'] != 0) {
-				$tieneLibre = true;
+		if ($reservas != NULL) {
+			foreach ( $reservas as $reserva ) {
+				if ($id == $reserva ['id_equipo'] && $reserva ['fecha_libre'] != 0) {
+					$tieneLibre = true;
+				}
 			}
 		}
-	}
-	if (! $tienePartido && ! $tieneLibre) {
-		$equiposSinDefinir [$i] = array (
-				'nombre' => $equipo ['nombre'] 
-		);
-		$i ++;
-	}
-}
-
-$cruce = array ();
-foreach ( $equiposTorneo as $equipo1 ) {
-	foreach ( $equiposTorneo as $equipo2 ) {
-		$jugaron = $oFixture->jugaronEnContra ( $equipo1 ['idEquipoTorneo'], $equipo2 ['idEquipoTorneo'], $fecha [0] ['idTorneoCat'], $_POST ['id'] );
-		$juegaEstaFecha = $oFixture->juegaEstaFecha ( $equipo1 ['idEquipoTorneo'], $equipo2 ['idEquipoTorneo'], $fecha [0] ['idTorneoCat'], $_POST ['id'] );
-		$id = $equipo1 ['idEquipoTorneo'] . $equipo2 ['idEquipoTorneo'];
-		if ($jugaron) {
-			$cruce [$id] = "#CCCCCC";
+		if (! $tienePartido && ! $tieneLibre) {
+			$equiposSinDefinir [$i] = array (
+					'nombre' => $equipo ['nombre'] 
+			);
+			$i ++;
 		}
-		if ($juegaEstaFecha) {
-			$cruce [$id] = "#0000CC";
-		}
-		if ($jugaron && $juegaEstaFecha) {
-			$cruce [$id] = "#FF0000";
+	}
+	
+	$cruce = array ();
+	foreach ( $equiposTorneo as $equipo1 ) {
+		foreach ( $equiposTorneo as $equipo2 ) {
+			$jugaron = $oFixture->jugaronEnContra ( $equipo1 ['idEquipoTorneo'], $equipo2 ['idEquipoTorneo'], $fecha [0] ['idTorneoCat'], $_POST ['id'] );
+			$juegaEstaFecha = $oFixture->juegaEstaFecha ( $equipo1 ['idEquipoTorneo'], $equipo2 ['idEquipoTorneo'], $fecha [0] ['idTorneoCat'], $_POST ['id'] );
+			$id = $equipo1 ['idEquipoTorneo'] . $equipo2 ['idEquipoTorneo'];
+			if ($jugaron) {
+				$cruce [$id] = "#CCCCCC";
+			}
+			if ($juegaEstaFecha) {
+				$cruce [$id] = "#0000CC";
+			}
+			if ($jugaron && $juegaEstaFecha) {
+				$cruce [$id] = "#FF0000";
+			}
 		}
 	}
 }
@@ -168,27 +170,27 @@ foreach ( $equiposTorneo as $equipo1 ) {
 														<a href="javascript:confirmacion('<?= $partido['id'] ?>','<?=$partido['idEquipo1']?>','eliminar');">
 															<img width="25" border="0" alt="reserva" title="Eliminar Confirmacion" src="images/reenvio.png" />
 														</a> 
-														<img width="25" border="0" alt="reserva" title="Confirmado" src="../img/check.ico" /></td>
+														<img width="25" border="0" alt="reserva" title="Confirmado" src="images/check.ico" /></td>
 												<? } else { ?>
 													<td nowrap>
 														<a href="javascript:confirmacion('<?= $partido['id'] ?>','<?=$partido['idEquipo1']?>','confirmar');">
 															<img width="25" border="0" alt="reserva" title="Confirmar" src="images/icono-up.gif" />
 														</a> 
-														<img width="25" border="0" alt="reserva" title="Sin Confirmacion" src="../img/forbidden.ico" /></td>
+														<img width="25" border="0" alt="reserva" title="Sin Confirmacion" src="images/forbidden.ico" /></td>
 												<? } ?>
 													<td style="text-align: center; font-size: 16px"><?=$partido['equipo1'] ?>
 														<font color="#FF0000"> VS </font> <?=$partido['equipo2']?> <br />(<?=$partido['horaPartido'] ?>)
 													</td>
 												<? if ($oFixture -> partidoConfirmado($partido['id'],$partido['idEquipo2'])) { ?>
 														<td nowrap>
-															<img width="25" border="0" alt="reserva" title="Confirmado" src="../img/check.ico" /> 
+															<img width="25" border="0" alt="reserva" title="Confirmado" src="images/check.ico" /> 
 															<a href="javascript:confirmacion('<?= $partido['id'] ?>','<?=$partido['idEquipo2']?>','eliminar');">
 																<img width="25" border="0" alt="reserva" title="Eliminar Confirmacion" src="images/reenvio.png" />
 															</a>
 														</td>
 												<? } else {?>
 														<td nowrap>
-															<img width="25" border="0" alt="reserva" title="Sin Confirmacion" src="../img/forbidden.ico" /> 
+															<img width="25" border="0" alt="reserva" title="Sin Confirmacion" src="images/forbidden.ico" /> 
 															<a href="javascript:confirmacion('<?= $partido['id'] ?>','<?=$partido['idEquipo2']?>','confirmar');">
 																<img width="25" border="0" alt="reserva" title="Confirmar" src="images/icono-up.gif" />
 															</a>
@@ -237,6 +239,7 @@ foreach ( $equiposTorneo as $equipo1 ) {
 							</div>
 							<div class="mod_listing ce_table listing block" id="partnerlist">
 								<div align="center">
+								<?  if ($equiposTorneo != NULL) { ?>
 									<h1 align="left">Cruce de Equipos</h1>
 									<table id="cruces" style="font-size: 8.5px">
 										<tr>
@@ -263,6 +266,7 @@ foreach ( $equiposTorneo as $equipo1 ) {
 										   </tr>
 										<? } ?>
 									</table>
+									<? } ?>
 								</div>
 							</div>
 						</div>

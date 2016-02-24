@@ -10,9 +10,11 @@ class Reservas {
 	var $id_equipo;
 	var $fecha_libre;
 	var $observacion;
+	
+	var $base;
 
 	function Reservas($id="") {
-
+		$this->base = new Db();
 		if ($id != "") {
 			$valores = $this->getReservaById($id);
 			$this->id = $valores[0]["id"]; 
@@ -24,31 +26,31 @@ class Reservas {
 	}
 
 	function getReservaById($id="") {
-		$db = new Db();
+		$db = $this->base;
 		
 		$query = "Select * from ga_reservas r where r.id = '$id'";
 
 		$res = $db->getRow($query); 
 	
-		$db->close();
+		
 		
 		return $res;
 	}
 	
 	function getReservaByIdFecha($id_fecha="") {
-		$db = new Db();
+		$db = $this->base;
 		
 		$query = "Select r.id as id_reserva, e.id as id_equipo, e.nombre, r.fecha_libre, r.observacion from ga_reservas r, ga_equipos e where r.id_fecha = '$id_fecha' and r.id_equipo = e.id";
 
 		$datos = $db->getResults($query, ARRAY_A); 
 	
-		$db->close();
+		
 		
 		return $datos;
 	}
 	
 	function getReservaByIdFechaIdEquipo($id_fecha="", $id_equipo="") {
-		$db = new Db();
+		$db = $this->base;
 	
 		$query = "Select 
 					r.id as id_reserva, e.id as id_equipo, e.nombre, r.fecha_libre, r.observacion
@@ -58,32 +60,32 @@ class Reservas {
 		
 		$datos = $db->getResults($query, ARRAY_A);
 	
-		$db->close();
+		
 	
 		return $datos;
 	}
 	
 	function getReservaLibresByIdFecha($id_fecha="") {
-		$db = new Db();
+		$db = $this->base;
 		
 		$query = "Select r.id as id_reserva, e.id as id_equipo, e.nombre, r.fecha_libre, r.observacion from ga_reservas r, ga_equipos e where r.id_fecha = '$id_fecha' and r.fecha_libre != 0 and r.id_equipo = e.id";
 
 		$datos = $db->getResults($query, ARRAY_A); 
 	
-		$db->close();
+		
 		
 		return $datos;
 	}
 
 	
 	function getDetalleReservaById($id="") {
-		$db = new Db();
+		$db = $this->base;
 		
 		$query = "Select * from ga_detalle_reservas d, ga_horas_cancha c where d.id_reserva = '$id' and d.id_horas_cancha = c.id;";
 
 		$res = $db->getResults($query, ARRAY_A); 
 	
-		$db->close();
+		
 		
 		return $res;
 	}
@@ -96,7 +98,7 @@ class Reservas {
 	}
 	
 	function insertarDetalleReserva($valores) {
-		$db = new Db();
+		$db = $this->base;
 		
 		$query = "insert into ga_detalle_reservas(id_reserva,id_horas_cancha) values (".
 				"'".$valores["id_reserva"]."',".
@@ -104,11 +106,11 @@ class Reservas {
 		
 		$db->query($query);
 		
-		$db->close(); 
+		 
 	}
 	
 	function insertar() {
-		$db = new Db();
+		$db = $this->base;
 
 		$query = "insert into ga_reservas(id_fecha,id_equipo,fecha_libre,observacion) values (".
 				"'".$this->id_fecha."',".
@@ -120,11 +122,11 @@ class Reservas {
 		
 		$this->id = $id;
 		
-		$db->close(); 
+		 
 	}
 	
 	function eliminar($id_reserva) {
-		$db = new Db();
+		$db = $this->base;
 		
 		$query = "delete from ga_detalle_reservas where id_reserva = $id_reserva";
 		
@@ -134,7 +136,7 @@ class Reservas {
 
 		$db->query($query);
 		
-		$db->close(); 
+		 
 	
 	}
 	

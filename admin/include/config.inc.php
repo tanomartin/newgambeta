@@ -16,6 +16,4 @@
 	define( 'DIR_INCLUDES',             "include/" );
 
 
-//include_once("_sesiones.php");
-
 ?>
