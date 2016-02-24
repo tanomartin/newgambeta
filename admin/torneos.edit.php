@@ -86,7 +86,7 @@
 											      <tr class="even">
 											        <td class="col_0 col_first"><label for="nombre">Fecha Inicio</label><span class="mandatory">*</span></td>
 											        <td class="col_1 col_last"> 
-												       <input name="fechaInicio" type="text" id="fechaInicio" value="<?php echo $fechaInicio; ?>" size="8" readonly="readonly" class="required" <?= $disabled ?>/>
+												       <input name="fechaInicio" type="text" id="fechaInicio" value="<?php echo $fechaInicio; ?>" size="10" readonly="readonly" class="required" <?= $disabled ?>/>
 											                <a href="javascript:show_calendar('document.form_alta.fechaInicio', document.form_alta.fechaInicio.value);" <?= $disabled ?> >
 											                        <img src="_js/calendario2/cal.gif" width="16" height="16" border="0" />
 															</a>                        
@@ -94,7 +94,7 @@
 											      <tr class="odd">
 											        <td class="col_0 col_first"><label for="nombre">Fecha Fin</label><span class="mandatory">*</span></td>
 											        <td class="col_1 col_last"> 
-												       <input name="fechaFin" type="text" id="fechaFin" value="<?php echo $fechaFin; ?>" size="8" readonly="readonly" class="required" <?= $disabled ?>/>
+												       <input name="fechaFin" type="text" id="fechaFin" value="<?php echo $fechaFin; ?>" size="10" readonly="readonly" class="required" <?= $disabled ?>/>
 											                <a href="javascript:show_calendar('document.form_alta.fechaFin', document.form_alta.fechaFin.value);" <?= $disabled ?> >
 											                    <img src="_js/calendario2/cal.gif" width="16" height="16" border="0" />
 															</a>                        

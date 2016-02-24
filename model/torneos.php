@@ -50,8 +50,8 @@ class Torneos {
 		$query = "select max( orden ) as orden from ga_torneos";
 		$max = $db->getRow ( $query );
 		$max_orden = $max->orden + 1;
-		$this->fechaInicio = eregi_replace ( "/", "-", $this->mysql_fecha ( $this->fechaInicio ) );
-		$this->fechaFin = eregi_replace ( "/", "-", $this->mysql_fecha ( $this->fechaFin ) );
+		$this->fechaInicio = $this->mysql_fecha( $this->fechaInicio );
+		$this->fechaFin = $this->mysql_fecha ( $this->fechaFin );
 		$query = "insert into ga_torneos(
 				nombre,fechaInicio,fechaFin,orden,idColor,activo
 				) values (" . "'" . $this->nombre . "'," . "'" . $this->fechaInicio . "'," . "'" . $this->fechaFin . "'," . "'" . $max_orden . "'," . "'" . $this->idColor . "'," . "'" . $this->activo . "')";
@@ -94,8 +94,8 @@ class Torneos {
 	
 	function actualizar($files) {
 		$db = $this->base;
-		$this->fechaInicio = eregi_replace ( "/", "-", $this->mysql_fecha ( $this->fechaInicio ) );
-		$this->fechaFin = eregi_replace ( "/", "-", $this->mysql_fecha ( $this->fechaFin ) );
+		$this->fechaInicio = $this->mysql_fecha ( $this->fechaInicio );
+		$this->fechaFin = $this->mysql_fecha ( $this->fechaFin );
 		$query = "update ga_torneos set 
 		          nombre = '" . $this->nombre . "',
 				  fechaInicio = '" . $this->fechaInicio . "',
@@ -142,13 +142,7 @@ class Torneos {
 	
 	function mysql_fecha($fech) {
 		$fech1 = explode ( "/", $fech );
-		if (strlen ( trim ( $fech1 [1] ) ) == 1) {
-			$fech1 [1] = "0" . $fech1 [1];
-		}
-		if (strlen ( trim ( $fech1 [0] ) ) == 1) {
-			$fech1 [0] = "0" . $fech1 [0];
-		}
-		return trim ( $fech1 [2] ) . "/" . trim ( $fech1 [1] ) . "/" . trim ( $fech1 [0] );
+		return trim ( $fech1 [2] ) . "-" . trim ( $fech1 [1] ) . "-" . trim ( $fech1 [0] );
 	}
 	
 	function cambiarActivo($id, $valor) {
