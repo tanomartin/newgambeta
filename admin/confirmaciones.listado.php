@@ -28,46 +28,48 @@ $reservasLibres = $oReservas->getReservaLibresByIdFecha ( $_POST ['id'] );
 $reservas = $oReservas->getReservaByIdFecha ( $_POST ['id'] );
 
 $i = 0;
-foreach ( $equiposTorneo as $equipo ) {
-	$tienePartido = false;
-	$tieneLibre = false;
-	$id = $equipo ['id'];
-	if ($partidos != NULL) {
-		foreach ( $partidos as $partido ) {
-			if ($id == $partido ['idEquipo1'] || $id == $partido ['idEquipo2']) {
-				$tienePartido = true;
+if ($equiposTorneo != NULL) {
+	foreach ( $equiposTorneo as $equipo ) {
+		$tienePartido = false;
+		$tieneLibre = false;
+		$id = $equipo ['id'];
+		if ($partidos != NULL) {
+			foreach ( $partidos as $partido ) {
+				if ($id == $partido ['idEquipo1'] || $id == $partido ['idEquipo2']) {
+					$tienePartido = true;
+				}
 			}
 		}
-	}
-	if ($reservas != NULL) {
-		foreach ( $reservas as $reserva ) {
-			if ($id == $reserva ['id_equipo'] && $reserva ['fecha_libre'] != 0) {
-				$tieneLibre = true;
+		if ($reservas != NULL) {
+			foreach ( $reservas as $reserva ) {
+				if ($id == $reserva ['id_equipo'] && $reserva ['fecha_libre'] != 0) {
+					$tieneLibre = true;
+				}
 			}
 		}
-	}
-	if (! $tienePartido && ! $tieneLibre) {
-		$equiposSinDefinir [$i] = array (
-				'nombre' => $equipo ['nombre'] 
-		);
-		$i ++;
-	}
-}
-
-$cruce = array ();
-foreach ( $equiposTorneo as $equipo1 ) {
-	foreach ( $equiposTorneo as $equipo2 ) {
-		$jugaron = $oFixture->jugaronEnContra ( $equipo1 ['idEquipoTorneo'], $equipo2 ['idEquipoTorneo'], $fecha [0] ['idTorneoCat'], $_POST ['id'] );
-		$juegaEstaFecha = $oFixture->juegaEstaFecha ( $equipo1 ['idEquipoTorneo'], $equipo2 ['idEquipoTorneo'], $fecha [0] ['idTorneoCat'], $_POST ['id'] );
-		$id = $equipo1 ['idEquipoTorneo'] . $equipo2 ['idEquipoTorneo'];
-		if ($jugaron) {
-			$cruce [$id] = "#CCCCCC";
+		if (! $tienePartido && ! $tieneLibre) {
+			$equiposSinDefinir [$i] = array (
+					'nombre' => $equipo ['nombre'] 
+			);
+			$i ++;
 		}
-		if ($juegaEstaFecha) {
-			$cruce [$id] = "#0000CC";
-		}
-		if ($jugaron && $juegaEstaFecha) {
-			$cruce [$id] = "#FF0000";
+	}
+	
+	$cruce = array ();
+	foreach ( $equiposTorneo as $equipo1 ) {
+		foreach ( $equiposTorneo as $equipo2 ) {
+			$jugaron = $oFixture->jugaronEnContra ( $equipo1 ['idEquipoTorneo'], $equipo2 ['idEquipoTorneo'], $fecha [0] ['idTorneoCat'], $_POST ['id'] );
+			$juegaEstaFecha = $oFixture->juegaEstaFecha ( $equipo1 ['idEquipoTorneo'], $equipo2 ['idEquipoTorneo'], $fecha [0] ['idTorneoCat'], $_POST ['id'] );
+			$id = $equipo1 ['idEquipoTorneo'] . $equipo2 ['idEquipoTorneo'];
+			if ($jugaron) {
+				$cruce [$id] = "#CCCCCC";
+			}
+			if ($juegaEstaFecha) {
+				$cruce [$id] = "#0000CC";
+			}
+			if ($jugaron && $juegaEstaFecha) {
+				$cruce [$id] = "#FF0000";
+			}
 		}
 	}
 }
@@ -237,6 +239,7 @@ foreach ( $equiposTorneo as $equipo1 ) {
 							</div>
 							<div class="mod_listing ce_table listing block" id="partnerlist">
 								<div align="center">
+								<?  if ($equiposTorneo != NULL) { ?>
 									<h1 align="left">Cruce de Equipos</h1>
 									<table id="cruces" style="font-size: 8.5px">
 										<tr>
@@ -263,6 +266,7 @@ foreach ( $equiposTorneo as $equipo1 ) {
 										   </tr>
 										<? } ?>
 									</table>
+									<? } ?>
 								</div>
 							</div>
 						</div>
