@@ -141,7 +141,7 @@
           <tr class="even">
         <td class="col_0 col_first"><label for="nombre">Fecha</label></td>
             <td class="col_1 col_last"> 
-                 <input name="fecha" type="text" id="fecha" value="<?php echo $fecha;?>" size="8" readonly="readonly" />
+                 <input name="fecha" type="text" id="fecha" value="<?php echo $fecha;?>" size="10" readonly="readonly" />
                 <a href="javascript:show_calendar('document.form_alta.fecha', document.form_alta.fecha.value);">
                         <img src="_js/calendario2/cal.gif" width="16" height="16" border="0" />
 				</a>                        

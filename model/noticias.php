@@ -12,7 +12,6 @@ class Noticias {
 	var $posicion;
 	var $idTorneoCat;
 	var $base;
-	
 	function Noticias($id = "") {
 		$this->base = new Db ();
 		if ($id != "") {
@@ -28,11 +27,11 @@ class Noticias {
 	
 	/**
 	 * Seteo usuario partiendo del objeto parametro
-	 * 
+	 *
 	 * @param requestParam $oParametro        	
 	 */
 	function set($aParametro) {
-		if ($aParametro) {	
+		if ($aParametro) {
 			$this->id = $aParametro ["id"];
 			$this->titulo = $aParametro ["titulo"];
 			$this->desarrollo = $aParametro ["desarrollo"];
@@ -48,12 +47,12 @@ class Noticias {
 	
 	/**
 	 * Agregar una Novedad
-	 * 
+	 *
 	 * @return id insertado
 	 */
 	function agregar() {
 		$db = $this->base;
-		$this->fecha = eregi_replace ( "/", "-", $this->mysql_fecha ( $this->fecha ) );
+		$this->fecha = $this->mysql_fecha ( $this->fecha );
 		$query = "insert into ga_noticias (
 							titulo,	desarrollo,
 							fecha,posicion,idTorneoCat
@@ -70,7 +69,7 @@ class Noticias {
 	 */
 	function modificar() {
 		$db = $this->base;
-		$this->fecha = eregi_replace ( "/", "-", $this->mysql_fecha ( $this->fecha ) );
+		$this->fecha = $this->mysql_fecha ( $this->fecha );
 		
 		$query = "update ga_noticias set 
 					titulo		    = '" . $this->titulo . "', 
@@ -82,14 +81,11 @@ class Noticias {
 		
 		$db->query ( $query );
 	}
-	
 	function eliminar() {
 		$db = $this->base;
 		$query = "delete from ga_noticias " . " where id = '" . $this->id . "'";
 		$db->query ( $query );
-		
 	}
-	
 	function get($id = "", $output = ARRAY_A) {
 		$db = $this->base;
 		$query = "Select u.*, date_format(fecha,'%e/%c/%Y') as fecha
@@ -100,16 +96,14 @@ class Noticias {
 		$aNovedad = $db->getResults ( $query, $output );
 		return $aNovedad;
 	}
-	
 	function getByPos($pos = 1, $cant = 1) {
 		$db = $this->base;
 		$query = "Select u.*, date_format(fecha,'%e/%c/%Y') as fecha
 					  From ga_noticias u where posicion = " . $pos;
 		$query .= " Order by id desc LIMIT 0,$cant";
-		$aNovedad = $db->getResults ( $query, ARRAY_A );	
+		$aNovedad = $db->getResults ( $query, ARRAY_A );
 		return $aNovedad;
 	}
-	
 	function getByCant($cant, $idTorneoCat = 0) {
 		$db = $this->base;
 		$query = "Select u.*, date_format(fecha,'%e/%c/%Y') as fecha
@@ -118,7 +112,6 @@ class Noticias {
 		$aNovedad = $db->getResults ( $query, ARRAY_A );
 		return $aNovedad;
 	}
-	
 	function getPaginado($filtros, $inicio, $cant, &$total) {
 		$db = $this->base;
 		$query = "Select SQL_CALC_FOUND_ROWS u.*, date_format(fecha,'%e/%c/%Y') as fecha
@@ -132,16 +125,9 @@ class Noticias {
 		$total = ceil ( $cant_reg [0] ["cant"] / $cant );
 		return $datos;
 	}
-	
 	function mysql_fecha($fech) {
 		$fech1 = explode ( "/", $fech );
-		if (strlen ( trim ( $fech1 [1] ) ) == 1) {
-			$fech1 [1] = "0" . $fech1 [1];
-		}
-		if (strlen ( trim ( $fech1 [0] ) ) == 1) {
-			$fech1 [0] = "0" . $fech1 [0];
-		}
-		return trim ( $fech1 [2] ) . "/" . trim ( $fech1 [1] ) . "/" . trim ( $fech1 [0] );
+		return trim ( $fech1 [2] ) . "-" . trim ( $fech1 [1] ) . "-" . trim ( $fech1 [0] );
 	}
 }
 ?>
