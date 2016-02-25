@@ -27,13 +27,14 @@ $oJugadora = new Jugadoras();
 $oResultados = new Resultados();
 $index = 0;
 for($j=0;$j<count($aEquipos);$j++) {
-	$aJugadoras1 = $oJugadora->getByEquipoTorneo($aEquipos[$j]['id'], $idTorneoCat);
-	for ($i=0; $i<count($aJugadoras1); $i++) {
-		$aJugadora = $oJugadora->get($aJugadoras1[$i][id]);
-		$tarj =  $oResultados->getTarjetasByIdJugadoraEquipo($aJugadoras1[$i][idJugadoraEquipo]);
-		if ($tarj[0]['rojas']!=0 ||  $tarj[0]['amarillas']!=0) {		
+	$aJugadoras = $oJugadora->getByEquipoTorneo($aEquipos[$j]['id'], $idTorneoCat);
+	for ($i=0; $i<count($aJugadoras); $i++) {
+		$aJugadora = $oJugadora->get($aJugadoras[$i][id]);
+		$tarj =  $oResultados->getTarjetasByIdJugadoraEquipo($aJugadoras[$i][idJugadoraEquipo]);
+		if ($tarj[0]['rojas']!=0 ||  $tarj[0]['amarillas']!=0) {
+			$equipo = $oJugadora->getJugadoraEquipo($aJugadoras[$i][idJugadoraEquipo]);		
 			$tarjetas[$index][nombre] = $aJugadora[0]['nombre'];
-			$tarjetas[$index][equipo] = $oJugadora->getEquipoByIdAndTorneoCat($aJugadoras1[$i][idJugadoraEquipo],$idTorneoCat);
+			$tarjetas[$index][equipo] = $equipo[0]['nombre'];
 			$tarjetas[$index][amarillas] = $tarj[0]['amarillas'];
 			$tarjetas[$index][rojas] = $tarj[0]['rojas'];
 			$index++;

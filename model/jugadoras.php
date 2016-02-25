@@ -154,6 +154,7 @@ class Jugadoras {
 		$db = $this->base;
 		$query = "Select je.id as idJugadoraEquipo,
 						 tc.id as idTorneoCat,
+						 e.nombre,
 						 j.id as idJugadora,
 						 e.id as idEquipo,
 						 t.id as idTorneo,
@@ -238,24 +239,6 @@ class Jugadoras {
 					et.idEquipo = e.id";
 		$res = $db->getResults($query, ARRAY_A);
 		
-		return $res;
-	}
-	
-	function getEquipoByIdAndTorneoCat($idJugadora="", $idTorneoCat="") {
-		$db = $this->base;
-		$query = "Select
-					e.*,
-					From
-					ga_equipos_torneos et,
-					ga_jugadoras_equipo je,
-					ga_jugadoras j,
-					ga_equipos e
-					Where
-					j.id = $idJugadora and et.idTorneoCat = $idTorneoCat and
-					et.id = je.idEquipoTorneo and
-					je.idJugadora = j.id and
-					et.idEquipo = e.id";
-		$res = $db->getResults($query, ARRAY_A);
 		return $res;
 	}
 	
