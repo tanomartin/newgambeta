@@ -29,5 +29,5 @@ foreach ($aTorneoCat as $categoria) {
 }
 
 // Cargo la plantilla
-$twig->display('torneo-izq.html', array('torneo'=>$atorneo[0], 'categorias' => $aTorneoCat, 'nombreCategoria'=>$nombreCategoriaSelect, 'idTorneoCat' => $idTorneoCat));
+$twig->display('conteiner.html', array('torneo'=>$atorneo[0], 'categorias' => $aTorneoCat, 'nombreCategoria'=>$nombreCategoriaSelect, 'idTorneoCat' => $idTorneoCat));
 ?>

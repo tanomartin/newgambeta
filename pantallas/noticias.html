@@ -8,3 +8,9 @@
 		<p>{{nota.desarrollo}}</p>
 	</div>
 {% endfor %}
+
+{% if noticias == NULL %}
+	<div class="section-torneos">
+		<h4>No existen notas para esta Categoria</h4>
+	</div>
+{% endif %}
