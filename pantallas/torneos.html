@@ -20,17 +20,20 @@
 <body>
 	<nav class="navbar navbar-default" id="navbar"></nav>
 	<div class="container">
+		<input type="hidden" value="{{idTorneo}}" id="idTorneo" name="idTorneo"/>
+		<input type="hidden" value="{{idTorneoCat}}" id="idTorneoCat" name="idTorneoCat"/>
 		<div class="torneo-izq" id="torneo-izq"></div>
 		<div class="container-2"></div>
 	</div>
 	<footer id="footer"></footer>
+	
 </body>
 
 <script>
-	$(function() {
+	$(document).on("ready", function() {
 		$("#navbar").load("include/html/navbar.html");
 		$("#footer").load("include/html/footer.html");
-		$("#torneo-izq").load("include/html/torneo-izq.html");
+		$("#torneo-izq").load("torneo-izq.php", {idTorneo: $("#idTorneo").val(), idTorneoCat: $("#idTorneoCat").val()});
 	});
 </script>
 
