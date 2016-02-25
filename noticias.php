@@ -13,7 +13,6 @@ $oTorneo = new Torneos();
 $atorneo = $oTorneo->get($idTorneo);
 $oTorneoCat = new TorneoCat();
 $aTorneoCat = $oTorneoCat->getByIdCompleto($idTorneoCat);
-
 if ($aTorneoCat->nombreCatPagina == NULL) {
 	$nombreCategoria = $aTorneoCat->nombrePagina;
 } else {
@@ -23,6 +22,6 @@ if ($aTorneoCat->nombreCatPagina == NULL) {
 $oNoticias = new Noticias();
 $aNoticias = $oNoticias->getByCant(5,$idTorneoCat);
 
-$twig->display('noticias.html', array('nombreTorneo'=>$atorneo[0]['nombre'], 'nombreCategoria' => $nombreCategoria, 'noticias' => $aNoticias));
+$twig->display('noticias.html', array('torneo'=>$atorneo[0], 'nombreCategoria' => $nombreCategoria, 'noticias' => $aNoticias));
 
 ?>

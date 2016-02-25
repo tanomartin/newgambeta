@@ -56,15 +56,24 @@ $("#noticias").click(function() {
 });
 
 $("#goleadoras").click(function() {
-	$("#container-2").load("goleadoras.php");
+	var idTorneo = $("#torneo").val();
+	var idTorneoCat = $("#idCategoria").val();
+	var redirec = "goleadoras.php?idTorneo=" + idTorneo + "&idTorneoCat=" + idTorneoCat;
+	$("#container-2").load(redirec);
 });
 
 $("#posiciones").click(function() {
-	$("#container-2").load("posiciones.php");
+	var idTorneo = $("#torneo").val();
+	var idTorneoCat = $("#idCategoria").val();
+	var redirec = "posiciones.php?idTorneo=" + idTorneo + "&idTorneoCat=" + idTorneoCat;
+	$("#container-2").load(redirec);
 });
 
 $("#tarjetas").click(function() {
-	$("#container-2").load("tarjetas.php");
+	var idTorneo = $("#torneo").val();
+	var idTorneoCat = $("#idCategoria").val();
+	var redirec = "tarjetas.php?idTorneo=" + idTorneo + "&idTorneoCat=" + idTorneoCat;
+	$("#container-2").load(redirec);
 });
 
 </script>

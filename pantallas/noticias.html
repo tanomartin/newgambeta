@@ -1,6 +1,6 @@
 <div class="section-torneos">
-	<span class="ion-clipboard"></span>
-	<h2>Noticias - {{ nombreTorneo }} - {{ nombreCategoria }}</h2>
+	<span class="ion-clipboard" style="color: {{ torneo.rgb }}"></span>
+	<h2 style="color: {{ torneo.rgb }}">Noticias - {{ torneo.nombre }} - {{ nombreCategoria }}</h2>
 </div>
 {% for nota in noticias %}
 	<div class="section-torneos">

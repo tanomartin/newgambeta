@@ -1,144 +1,42 @@
 
 
 <div class="section-torneos">
-	<span class="ion-trophy"></span>
-	<h2>Posiciones - Sushi Boom Mañana</h2>
+	<span class="ion-trophy" style="color: {{ torneo.rgb }}"></span>
+	<h2 style="color: {{ torneo.rgb }}">Posiciones - {{ torneo.nombre }} - {{ nombreCategoria }}</h2>
 </div>
 <div class="row">
 	<div clas="col-lg-6">
 		<table class="table ">
-			<tr class="principal-table">
-				<th>P</th>
-				<th>Equipo</th>
-				<th>PTS</th>
-				<th>PJ</th>
-				<th>PG</th>
-				<th>PE</th>
-				<th>PP</th>
-				<th>GF</th>
-				<th>GE</th>
-				<th>DG</th>
-			</tr>
-			<tr>
-				<td>01</td>
-				<td>Gambeta Femenina</td>
-				<td>21</td>
-				<td>9</td>
-				<td>6</td>
-				<td>3</td>
-				<td>0</td>
-				<td>15</td>
-				<td>10</td>
-				<td>5</td>
-			</tr>
-			<tr>
-				<td>02</td>
-				<td>Gambeta Femenina</td>
-				<td>21</td>
-				<td>9</td>
-				<td>6</td>
-				<td>3</td>
-				<td>0</td>
-				<td>15</td>
-				<td>10</td>
-				<td>5</td>
-			</tr>
-			<tr>
-				<td>03</td>
-				<td>Gambeta Femenina</td>
-				<td>21</td>
-				<td>9</td>
-				<td>6</td>
-				<td>3</td>
-				<td>0</td>
-				<td>15</td>
-				<td>10</td>
-				<td>5</td>
-			</tr>
-			<tr>
-				<td>04</td>
-				<td>Gambeta Femenina</td>
-				<td>21</td>
-				<td>9</td>
-				<td>6</td>
-				<td>3</td>
-				<td>0</td>
-				<td>15</td>
-				<td>10</td>
-				<td>5</td>
-			</tr>
-			<tr>
-				<td>05</td>
-				<td>Gambeta Femenina</td>
-				<td>21</td>
-				<td>9</td>
-				<td>6</td>
-				<td>3</td>
-				<td>0</td>
-				<td>15</td>
-				<td>10</td>
-				<td>5</td>
-			</tr>
-			<tr>
-				<td>06</td>
-				<td>Gambeta Femenina</td>
-				<td>21</td>
-				<td>9</td>
-				<td>6</td>
-				<td>3</td>
-				<td>0</td>
-				<td>15</td>
-				<td>10</td>
-				<td>5</td>
-			</tr>
-			<tr>
-				<td>07</td>
-				<td>Gambeta Femenina</td>
-				<td>21</td>
-				<td>9</td>
-				<td>6</td>
-				<td>3</td>
-				<td>0</td>
-				<td>15</td>
-				<td>10</td>
-				<td>5</td>
-			</tr>
-			<tr>
-				<td>08</td>
-				<td>Gambeta Femenina</td>
-				<td>21</td>
-				<td>9</td>
-				<td>6</td>
-				<td>3</td>
-				<td>0</td>
-				<td>15</td>
-				<td>10</td>
-				<td>5</td>
-			</tr>
-			<tr>
-				<td>09</td>
-				<td>Gambeta Femenina</td>
-				<td>21</td>
-				<td>9</td>
-				<td>6</td>
-				<td>3</td>
-				<td>0</td>
-				<td>15</td>
-				<td>10</td>
-				<td>5</td>
-			</tr>
-			<tr>
-				<td>10</td>
-				<td>Gambeta Femenina</td>
-				<td>21</td>
-				<td>9</td>
-				<td>6</td>
-				<td>3</td>
-				<td>0</td>
-				<td>15</td>
-				<td>10</td>
-				<td>5</td>
-			</tr>
+			<thead>
+				<tr class="principal-table" style="background-color: {{ torneo.rgb }} ">
+					<th>P</th>
+					<th>Equipo</th>
+					<th>PTS</th>
+					<th>PJ</th>
+					<th>PG</th>
+					<th>PE</th>
+					<th>PP</th>
+					<th>GF</th>
+					<th>GE</th>
+					<th>DG</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for fila in tabla %}
+					<tr>
+						<td>01</td>
+						<td>{{fila.nombre}}</td>
+						<td>{{fila.puntaje}}</td>
+						<td>{{ fila.par_ganados+fila.par_empatados+fila.par_perdidos }}</td>
+						<td>{{fila.par_ganados}}</td>
+						<td>{{fila.par_empatados}}</td>
+						<td>{{fila.par_perdidos}}</td>
+						<td>{{fila.goles_favor}}</td>
+						<td>{{fila.goles_contra}}</td>
+						<td>{{ fila.goles_favor-fila.goles_contra }}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
 
 		</table>
 	</div>

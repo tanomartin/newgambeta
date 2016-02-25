@@ -1,91 +1,31 @@
 
 
-<div class="section-torneos">
-	<span class="ion-ios-browsers-outline"></span>
-	<h2>Tarjetas - Sushi Boom Mañana</h2>
+<div class="section-torneos" >
+	<span class="ion-ios-browsers-outline " style="color: {{ torneo.rgb }}"></span>
+	<h2 style="color: {{ torneo.rgb }}">Tarjetas - {{ torneo.nombre }} - {{ nombreCategoria }}</h2>
 </div>
 
 <div class="row">
 	<div clas="col-lg-6">
 		<table class="table ">
-			<tr class="principal-table">
-
-				<th>Jugadora</th>
-				<th><img src="imagenes/amarilla.png"></th>
-				<th><img src="imagenes/roja.png"></th>
-				<th>Equipo</th>
-			</tr>
-			<tr>
-
-				<td>Sol Arias</td>
-				<td>3</td>
-				<td>0</td>
-				<td>Televisor Barsa</td>
-			</tr>
-			<tr>
-
-				<td>Gisela Massiello</td>
-				<td>3</td>
-				<td>0</td>
-				<td>Botella Ivess</td>
-			</tr>
-			<tr>
-
-				<td>Karen Castaño</td>
-				<td>2</td>
-				<td>0</td>
-				<td>Desodorante Axe</td>
-			</tr>
-			<tr>
-
-				<td>Daiana Mangafas</td>
-				<td>2</td>
-				<td>0</td>
-				<td>Gambeta 1</td>
-			</tr>
-			<tr>
-
-				<td>Paula Terzián</td>
-				<td>0</td>
-				<td>1</td>
-				<td>Gambeta 2</td>
-			</tr>
-			<tr>
-
-				<td>Carolina Colas</td>
-				<td>0</td>
-				<td>24</td>
-				<td>Gambeta Femenina</td>
-			</tr>
-			<tr>
-
-				<td>Giuliana Currotto</td>
-				<td>1</td>
-				<td>0</td>
-				<td>Larala Lalala</td>
-			</tr>
-			<tr>
-
-				<td>Frida Nelli</td>
-				<td>1</td>
-				<td>1</td>
-				<td>Lero Pueqnt</td>
-			</tr>
-			<tr>
-
-				<td>Lorena Tavella</td>
-				<td>1</td>
-				<td>0</td>
-				<td>Polar Este</td>
-			</tr>
-			<tr>
-
-				<td>Lorna Tavella</td>
-				<td>1</td>
-				<td>0</td>
-				<td>Norte Polar</td>
-			</tr>
-
+			<thead>
+				<tr class="principal-table" style="background-color: {{ torneo.rgb }} ">
+					<th>Jugadora</th>
+					<th><img src="imagenes/amarilla.png"></th>
+					<th><img src="imagenes/roja.png"></th>
+					<th>Equipo</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for fila in tarjetas %}	
+					<tr>
+						<td>{{fila.nombre}}</td>
+						<td>{{fila.amarillas}}</td>
+						<td>{{fila.rojas}}</td>
+						<td>{{fila.equipo}}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
 		</table>
 	</div>
 </div>
