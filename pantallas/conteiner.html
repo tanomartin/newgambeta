@@ -29,12 +29,23 @@
 			<li><button>Resultados</button></li>
 			<li><button id="goleadoras" name="goleadoras">Goleadoras</button></li>
 			<li><button id="posiciones" name="posiciones">Posiciones</button></li>
-			<li><button id="tarjetas" name=""tarjetas"">Tarjetas</button></li>
+			<li><button id="tarjetas" name="tarjetas">Tarjetas</button></li>
 			<li><button>Reservas</button></li>
 		</ul>
 	</div>
 </div>
 <div class="container-2" id="container-2"></div>
+
+<style>
+	.menu-torneos ul li button:hover {
+		background-color: {{ torneo.rgb }};
+	}
+	
+	.table tr:hover{
+    	background-color: {{ torneo.rgb }};
+   		color:#FFF;
+	}
+</style>
 
 <script>
 
