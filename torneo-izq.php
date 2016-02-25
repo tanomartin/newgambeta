@@ -7,10 +7,27 @@ $idTorneo = $_POST['idTorneo'];
 $idTorneoCat = $_POST['idTorneoCat'];
 
 $oTorneo = new Torneos();
-$torneo = $oTorneo->get($idTorneo);
+$atorneo = $oTorneo->get($idTorneo);
 $oTorneoCat = new TorneoCat();
-$aTorneoCat = $oTorneoCat->get($idTorneo);
+$aTorneoCat = $oTorneoCat->getByTorneoSub($idTorneo);
+
+$index=0;
+foreach ($aTorneoCat as $categoria) {
+	$nombreCompleto = $oTorneoCat->getCategoriasCompletas($categoria['id']);
+	$nombreCompleto = $nombreCompleto [0];
+	if ($nombreCompleto ['nombreCatPagina'] == NULL) {
+		$nombreCategoria = $nombreCompleto ['nombrePagina'];
+	} else {
+		$nombreCategoria = $nombreCompleto ['nombreCatPagina'] . " - " . $nombreCompleto ['nombrePagina'];
+	}
+	$aTorneoCat[$index]['nombre'] = $nombreCategoria;
+	if ($categoria['id'] == $idTorneoCat) {
+		$nombreCategoriaSelect = $nombreCategoria;
+	}
+	
+	$index++;
+}
 
 // Cargo la plantilla
-$twig->display('torneo-izq.html', array('torneo'=>$torneo[0], 'categorias' => $aTorneoCat, 'idTorneoCat' => $idTorneoCat));
+$twig->display('torneo-izq.html', array('torneo'=>$atorneo[0], 'categorias' => $aTorneoCat, 'nombreCategoria'=>$nombreCategoriaSelect, 'idTorneoCat' => $idTorneoCat));
 ?>
