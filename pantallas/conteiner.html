@@ -1,19 +1,13 @@
 <div class="torneo-izq" id="torneo-izq">
 	<div class="torneo" style="background-color: {{ torneo.rgb }}">
-		<input type="hidden" value="{{torneoseria}}" name="torneo" id="torneo" />
-		<input type="hidden" value="{{idTorneoCat}}" name="idCategoria" id="idCategoria" />
-		<input type="hidden" value="{{nombreCategoria}}" name="nombreCat" id="nombreCat" />
 		<div class="img-torneo">
 			<img src="logos/{{torneo.logoPrincipal}}" width="85px" height="85px">
 		</div>
 		<div>
 			<h4>{{ torneo.nombre }}</h4>
 		</div>
-		<div>
-			<p id="pnombrecategoria">{{ nombreCategoria }}</p>
-		</div>
 		<div>		
-			<select name="categorias" id="categorias">
+			<select name="categorias" id="categorias" style="text-align-last: center;">
 				{% for categoria in categorias %}
 					{% if categoria.id == idTorneoCat %}
 						<option value="{{ categoria.id }}" selected="selected">{{ categoria.nombre }}</option> 
@@ -68,9 +62,8 @@ $("#categorias").change(function() {
 		var idTorneoCat = $("#categorias option:selected").val();
 		var nombreCategoria = $("#categorias option:selected").text();
 		var torneo = $("#torneo").val();
-		
-		$("#pnombrecategoria").html(nombreCategoria);
-		$("#idCategoria").val(idTorneoCat);
+
+		$("#idTorneoCat").val(idTorneoCat);
 		$("#nombreCat").val(nombreCategoria);
 			
 		var redirec = "dafault.php";
@@ -81,7 +74,7 @@ $("#categorias").change(function() {
 
 $("#noticias").click(function() {
 	var torneo = $("#torneo").val();
-	var idTorneoCat = $("#idCategoria").val();
+	var idTorneoCat = $("#idTorneoCat").val();
 	var nombreCategoria = $("#nombreCat").val();
 	
 	var redirec = "noticias.php";
@@ -90,7 +83,7 @@ $("#noticias").click(function() {
 
 $("#goleadoras").click(function() {
 	var torneo = $("#torneo").val();
-	var idTorneoCat = $("#idCategoria").val();
+	var idTorneoCat = $("#idTorneoCat").val();
 	var nombreCategoria = $("#nombreCat").val();
 	
 	var redirec = "goleadoras.php";
@@ -99,7 +92,7 @@ $("#goleadoras").click(function() {
 
 $("#posiciones").click(function() {
 	var torneo = $("#torneo").val();
-	var idTorneoCat = $("#idCategoria").val();
+	var idTorneoCat = $("#idTorneoCat").val();
 	var nombreCategoria = $("#nombreCat").val();
 	
 	var redirec = "posiciones.php";
@@ -108,7 +101,7 @@ $("#posiciones").click(function() {
 
 $("#tarjetas").click(function() {
 	var torneo = $("#torneo").val();
-	var idTorneoCat = $("#idCategoria").val();
+	var idTorneoCat = $("#idTorneoCat").val();
 	var nombreCategoria = $("#nombreCat").val();
 	
 	var redirec = "tarjetas.php";

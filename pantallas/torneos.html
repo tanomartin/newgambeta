@@ -20,6 +20,9 @@
 <body>
 	<input type="hidden" value="{{idTorneo}}" id="idTorneo" name="idTorneo"/>
 	<input type="hidden" value="{{idTorneoCat}}" id="idTorneoCat" name="idTorneoCat"/>
+	<input type="hidden" value="{{torneo}}" id="torneo" name="torneo"/>
+	<input type="hidden" value="{{categorias}}" id="categoriasSerializado" name="categoriasSerializado"/>
+	<input type="hidden" value="{{nombreCategoria}}" name="nombreCat" id="nombreCat" />
 	
 	<nav class="navbar navbar-default" id="navbar"></nav>
 	<div class="container" id="container"></div>
@@ -30,7 +33,7 @@
 	$(document).on("ready", function() {
 		$("#navbar").load("include/html/navbar.html");
 		$("#footer").load("include/html/footer.html");
-		$("#container").load("conteiner.php", {idTorneo: $("#idTorneo").val(), idTorneoCat: $("#idTorneoCat").val()});	
+		$("#container").load("conteiner.php", {categorias: $("#categoriasSerializado").val(), torneo: $("#torneo").val()});	
 	});
 </script>
 </html>
