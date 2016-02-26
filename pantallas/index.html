@@ -373,9 +373,14 @@
 		$("#entrar").click(function() {
 			var idTorneo = $("#torneo").val();
 			var idTorneoCat = $("#categoria").val();
-			if (idTorneo != 0 && idTorneoCat != 0) {
-				var redirec = "torneos.php?idTorneo=" + idTorneo + "&idTorneoCat=" + idTorneoCat;
-				window.location.href = redirec;
+			if (idTorneo != 0 && idTorneoCat != 0) {			
+				var url = 'torneos.php';
+				var form = $('<form action="' + url + '" method="post">' +
+				  '<input type="text" name="idTorneo" value="' + idTorneo + '" />' +
+				  '<input type="text" name="idTorneoCat" value="' + idTorneoCat + '" />' +
+				  '</form>');
+				$('body').append(form);  // This line is not necessary
+				$(form).submit();
 			} else {
 				$('#modalError').modal('show');
 			}		
