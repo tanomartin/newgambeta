@@ -9,13 +9,16 @@
 			<h4>{{ torneo.nombre }}</h4>
 		</div>
 		<div>
-			<p>{{ nombreCategoria }}</p>
+			<p id="nombreCategoria">{{ nombreCategoria }}</p>
 		</div>
 		<div>
 			<select name="categorias" id="categorias">
-				<option value="0">- Categoria -</option>
 				{% for categoria in categorias %}
-					<option value="{{ categoria.id }}" >{{ categoria.nombre }}</option> 
+					{% if categoria.id == idTorneoCat %}
+						<option value="{{ categoria.id }}" selected="selected">{{ categoria.nombre }}</option> 
+					{% else %}
+						<option value="{{ categoria.id }}">{{ categoria.nombre }}</option> 
+					{% endif %}
 				{% endfor %}
 			</select>
 		</div>
@@ -36,12 +39,6 @@
 </div>
 
 <div class="container-2" id="container-2">
-	<div class="section-torneos">
-    	<span class="ion-help" style="color: {{ torneo.rgb }}"></span>
-    	<h2 style="color: {{ torneo.rgb }}"> DEFAULT - {{ torneo.nombre }} - {{ nombreCategoria }}</h2>
-  	</div>
-  	<div class="section-torneos">
-  	</div>
 </div>
 
 <style>
@@ -57,12 +54,22 @@
 
 <script>
 
+$(document).ready(function() {
+	var idTorneo = $("#torneo").val();
+	var idTorneoCat = $("#idCategoria").val();
+	var redirec = "dafault.php?idTorneo=" + idTorneo + "&idTorneoCat=" + idTorneoCat;
+	$("#container-2").load(redirec);
+});
+
 $("#categorias").change(function() {
 	$("#categorias option:selected").each(function() {
 		var idTorneo = $("#torneo").val();
-		var idTorneoCat = $("#categorias").val();
-		var redirec = "torneos.php?idTorneo=" + idTorneo + "&idTorneoCat=" + idTorneoCat;
-		window.location.href = redirec;
+		var idTorneoCat = $("#categorias option:selected").val();
+		var categoria = $("#categorias option:selected").text();
+		$("#nombreCategoria").html(categoria);
+		$("#idCategoria").val(idTorneoCat);
+		var redirec = "dafault.php?idTorneo=" + idTorneo + "&idTorneoCat=" + idTorneoCat;
+		$("#container-2").load(redirec);
 	});
 });
 
@@ -94,5 +101,7 @@ $("#tarjetas").click(function() {
 	var redirec = "tarjetas.php?idTorneo=" + idTorneo + "&idTorneoCat=" + idTorneoCat;
 	$("#container-2").load(redirec);
 });
+
+
 
 </script>
