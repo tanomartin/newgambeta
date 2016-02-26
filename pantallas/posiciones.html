@@ -22,7 +22,7 @@
 			<tbody>
 				{% for fila in tabla %}
 					<tr>
-						<td>01</td>
+						<td>{{ loop.index }}</td>
 						<td>{{fila.nombre}}</td>
 						<td>{{fila.puntaje}}</td>
 						<td>{{ fila.par_ganados+fila.par_empatados+fila.par_perdidos }}</td>

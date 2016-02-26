@@ -19,7 +19,7 @@
 				<tbody>
 					{% for jugadora in goleadoras %}
 						<tr>
-							<td>01</td>
+							<td>{{ loop.index }}</td>
 							<td>{{ jugadora.nombre }}</td>
 							<td>{{ jugadora.nombreEquipo }}</td>
 							<td>{{ jugadora.partidos }}</td>
