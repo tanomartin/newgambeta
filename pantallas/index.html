@@ -15,8 +15,11 @@
 	href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 <link href='https://fonts.googleapis.com/css?family=Roboto:500,700'
 	rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="css/jquery.bxslider.css"/>
 <script type="text/javascript" src="include/js/jquery-2.2.0.min.js"></script>
 <script type="text/javascript" src="include/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="include/js/jquery.bxslider.min.js"></script>
+
 
 </head>
 <body>
@@ -139,12 +142,21 @@
 				<button>Reservar</button>
 			</div>
 		</div>
-		<!-- OJO CON ESTE DIVVVV -->
+
 	</header>
 	<!-- comienzan auspiciantes !      -->
 
 	<div class="container">
 		<h3 class="auspiciante">- Auspiciantes -</h3>
+		<ul class="bxslider">
+		  <li><img src="imagenes/camisetadefutbol.jpg" /></li>
+		  <li><img src="imagenes/privilige.jpg" /></li>
+		  <li><img src="imagenes/africa.jpg"></li>
+		  <li><img src="imagenes/sushi.jpg"></li>
+		  <li><img src="imagenes/freire.jpg"></li>
+		  <li><img src="imagenes/solofutbol.jpg"></li>
+		  <li><img src="imagenes/aer.jpg"></li>
+		</ul>
 	</div>
 	<!-- Fin container !-->
 	<div class="box">
@@ -343,6 +355,17 @@
 
 <script>
 	$(document).on("ready", function() {
+
+		$('.bxslider').bxSlider({
+			  minSlides: 5,
+			  maxSlides: 5,
+			  slideWidth: 170,
+			  slideMargin: 200,
+			  ticker: true,
+			  speed: 25000,
+			  controls:false,
+			});
+
 		$("#navbar").load("include/html/navbar.html");
 		
 		$('#myModal2').on('shown.bs.modal', function() {

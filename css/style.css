@@ -203,24 +203,14 @@ nav .navbar-nav {
     background-color:#fa3e5f;
 }
 
-/* SE SACA POR AHORA (LINEAS AL LADO DE PALABRA)
 
-.auspiciante:after, .auspiciante:before {
-    content:"";
-    width:30%;
-    height:1px;
-    display:inline-block;
-    background-color:#121212;
-    position:relative;
-    top:-6px; 
-
-}*/
 .auspiciante {
     text-align:center;
     padding:40px 0;
     text-transform: uppercase;
     color:#fa3e5f;
     font-family: 'Roboto', sans-serif;
+    margin-top:35px;
 } 
 
 .box {
