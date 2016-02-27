@@ -38,6 +38,15 @@ nav .navbar-nav {
     top:145px;
 }
 
+header {
+    background-image:url("../imagenes/foto-header.jpg");
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-attachment: fixed;
+
+
+}
+
 .container {
 
 	max-width:1000px;
@@ -46,7 +55,7 @@ nav .navbar-nav {
 }
 .item-one {
 
-    background-image: url("../imagenes/pelota_fuego3.png");
+    background-image: url("../imagenes/pelota_fuego.png");
     background-repeat:no-repeat;
     background-size:cover;    
     width: 460px;

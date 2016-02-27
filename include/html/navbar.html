@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="css/yamm.css">
+
 <div class="container">
 	<!-- Brand and toggle get grouped for better mobile display -->
 	<div class="navbar-header">
@@ -9,16 +11,40 @@
 		</button>
 		<a href="index.php"><img src="imagenes/logo.png"></a>
 	</div>
-	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	<nav class="collapse yamm navbar-collapse" id="bs-example-navbar-collapse-1">
 		<ul class="nav navbar-nav navbar-right text-uppercase">
 			<li><a href="index.php">Inicio</a></li>
-			<li><a href="torneos.php">Torneos</a></li>
+			<li class="dropdown yamm-fw"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Torneos<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li>
+                  <div class="yamm-content">
+                    <div class="row">
+                      <div class="col-xs-6 col-sm-2"><a href="torneos.php" class="thumbnail"><img alt="150x190" src="logos/pri_13_SushiBoom (T).png"></a></div>
+                      <div class="col-xs-6 col-sm-2"><a href="#" class="thumbnail"><img alt="150x190" src="logos/pri_13_SushiBoom (T).png"></a></div>
+                      <div class="col-xs-6 col-sm-2"><a href="#" class="thumbnail"><img alt="150x190" src="logos/pri_13_SushiBoom (T).png"></a></div>
+                      <div class="col-xs-6 col-sm-2"><a href="#" class="thumbnail"><img alt="150x190" src="logos/pri_13_SushiBoom (T).png"></a></div>
+                      <div class="col-xs-6 col-sm-2"><a href="#" class="thumbnail"><img alt="150x190" src="logos/pri_13_SushiBoom (T).png"></a></div>
+                      <div class="col-xs-6 col-sm-2"><a href="#" class="thumbnail"><img alt="150x190" src="logos/pri_13_SushiBoom (T).png"></a></div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </li>
 			<li><a href="nosotros.php">Nosotros</a></li>
 			<li><a href="sedes.php">Sedes</a></li>
 			<li><a href="reglamento.php">Reglamento</a></li>
 			<li><a href="contacto.php">Contacto</a></li>
 		</ul>
-	</div>
+	</nav>
 	<!-- /.navbar-collapse -->
 </div>
 <!-- /.container -->
+
+<script>
+	$(function() {
+		$(document).on('click', '.yamm .dropdown-menu', function(e) {
+        	e.stopPropagation()
+    	})
+	})
+</script>
+<script src="include/js/run_prettify.js?lang=css"></script>
