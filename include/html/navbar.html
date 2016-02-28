@@ -43,7 +43,17 @@
 	
 	$.post("torneo_data.php", function(data) {
 		$("#navTorneos").html(data)
-	});
+	});	
+
+	function entrarTorneo(idTorneo){ 
+		var url = 'torneos.php';
+		var form = $('<form action="' + url + '" method="post">' +
+		  '<input type="text" name="idTorneo" value="' + idTorneo + '" />' +
+		  '<input type="text" name="idTorneoCat" value="0" />' +
+		  '</form>');
+		$('body').append(form);  // This line is not necessary
+		$(form).submit();
+	}
 	
 </script>
 <script src="include/js/run_prettify.js?lang=css"></script>
