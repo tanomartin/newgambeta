@@ -848,3 +848,32 @@ footer {
 
 .dropdown-menu {
     background-color: rgba(0,0,0,0.8)
+}
+.thumbnail {
+    background-color:transparent;
+    border-style:none;
+}
+
+.jugadoras { /* para modal en equipos */
+    margin-top: 20px;
+    background-color: #fb8153;
+    border-style: none;
+    width: 145px;
+    height: 40px;
+    color: #FFF;
+}
+
+.list_jugadoras { /*para modal en equipos */
+    padding-bottom:20px;
+
+}
+
+.modal-header h5{
+    color:#fa3e5f;
+    text-align:center;
+}
+
+.modal-header h5 .ion-android-alert {
+    font-size:20px;
+
+}
