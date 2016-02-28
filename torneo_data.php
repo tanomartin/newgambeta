@@ -5,7 +5,7 @@
 	$aTorneos = $oTorneos->get();
 	if ($aTorneos != NULL) {
 		foreach ($aTorneos as $torneo) {
-			$respuesta.="<div class='col-xs-6 col-sm-2'><img alt='".$torneo['nombre']."' src='logos/".$torneo['logoPrincipal']."'></div>";
+			$respuesta.="<div class='col-xs-6 col-sm-2'><img src='logos/".$torneo['logoPrincipal']."'><p>".$torneo['nombre']."</p></div>";
 		}
 		echo $respuesta;
 	} 

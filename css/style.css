@@ -889,3 +889,8 @@ footer {
 .col-xs-6 img {
     max-width:65px;
 }
+
+.col-xs-6 {
+    text-align:center;
+    color:#FFF;
+}
