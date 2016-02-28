@@ -885,3 +885,7 @@ footer {
 .carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail>img {
     max-width:30%;
 }
+
+.col-xs-6 img {
+    max-width:65px;
+}
