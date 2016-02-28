@@ -22,6 +22,10 @@
 
     width:160px;
     }
+    .item-three select {
+
+    width:160px;
+    }
     .item-three button {
 
         left:6px;
@@ -177,6 +181,12 @@
 
     width:100%;
     left:0;
+    }
+    .item-three select {
+
+    width:49%;
+    left:-10px;
+
     }
     .item-three input {
     left:-10px;

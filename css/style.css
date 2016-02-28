@@ -99,6 +99,11 @@ header {
     margin-top: 5px;
     width: 170px;
 }
+.item-three select {
+
+    width: 186px;
+}
+
 
 .item-three {
 
@@ -132,10 +137,10 @@ header {
 }
 
 
-.item-three input {
+.item-three input, .item-three select {
 
 	position: relative;
-    top: 2px;
+    top: 40px;
     padding: 8px;
     border-radius: 4px;
     border-style: none;
@@ -150,7 +155,7 @@ header {
 .item-three button, .item-two button {
 
     position: relative;
-    left: 27px;
+    left: 24px;
     background-color:#3a3a3a;
     color: #FFF;
     padding: 6px 57px;
@@ -164,7 +169,7 @@ header {
     left:35px;
 }
 .item-three button {
-    top:15px;
+    top:54px;
 }
 .item-one h1, .item-one h2, .item-one p {
 
