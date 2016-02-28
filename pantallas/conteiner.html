@@ -25,9 +25,9 @@
 	<div class="menu-torneos" id="menu">
 		<ul>
 			<li><button id="noticias" name="noticias">Noticias</button></li>
-			<li><button>Equipos</button></li>
+			<li><button id="equipos" name="equipos">Equipos</button></li>
 			<li><button>Fixture</button></li>
-			<li><button>Resultados</button></li>
+			<li><button id="resultados" name="resultados">Resultados</button></li>
 			<li><button id="goleadoras" name="goleadoras">Goleadoras</button></li>
 			<li><button id="posiciones" name="posiciones">Posiciones</button></li>
 			<li><button id="tarjetas" name="tarjetas">Tarjetas</button></li>
@@ -91,6 +91,26 @@ $("#noticias").click(function() {
 	var nombreCategoria = $("#nombreCat").val();
 	if (idTorneoCat != 0) {
 		var redirec = "noticias.php";
+		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
+	}
+});
+
+$("#equipos").click(function() {
+	var torneo = $("#torneo").val();
+	var idTorneoCat = $("#idTorneoCat").val();
+	var nombreCategoria = $("#nombreCat").val();
+	if (idTorneoCat != 0) {
+		var redirec = "equipos.php";
+		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
+	}
+});
+
+$("#resultados").click(function() {
+	var torneo = $("#torneo").val();
+	var idTorneoCat = $("#idTorneoCat").val();
+	var nombreCategoria = $("#nombreCat").val();
+	if (idTorneoCat != 0) {
+		var redirec = "resultados.php";
 		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
 	}
 });

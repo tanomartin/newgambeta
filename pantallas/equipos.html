@@ -1,49 +1,19 @@
-  <div class="section-torneos">
-    <span class="ion-ios-people"></span><h2>Equipos - Sushi Boom Mañana</h2>
-  </div>
+<div class="section-torneos">
+	<span class="ion-ios-people" style="color: {{ torneo.rgb }}"></span>
+	<h2 style="color: {{ torneo.rgb }}">Equipos - {{ torneo.nombre }} - {{ nombreCategoria }}</h2>
+</div>
 
   <div>
     <div class="row">
-
-      <div class="col-lg-3 col-md-4 list_jugadoras">
-        <h4>Las Picodulces</h4>
-        <img src="imagenes/equipo.jpg" style="border-color:red">
-        <button  type="button" class="btn btn-primary jugadoras" style="background-color: #fb8153" data-toggle="modal" data-target="#modal1"><span class="ion-android-arrow-dropright"></span> Jugadoras</button>
-
-        <!--small modal -->
-              <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="modal1">
-                 <div class="modal-dialog modal-sm">
-                   <div class="modal-content">
-                    <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                      <h5>Pico Dulce</h5>
-                    </div>
-                    <div class="modal-body">
-                      <ul>
-                        <li>1)Florencia Uhrich</li>
-                        <li>2)Paula Palacios</li>
-                        <li>3)Martina Baleani</li>
-                        <li>4)Jesica Tolaro</li>
-                        <li>5)Carolina Vargas</li>
-                        <li>6)Melina Daldin</li>
-                        <li>7)Daiana Lentino</li>
-                        <li>8)Nainara Sanzy</li>
-                      </ul>
-                    </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                      </div>
-                   </div>
-                </div>
-              </div>
-        <!--fin smal modal -->
-
-      </div>
-
-      <div class="col-lg-3 col-md-4 list_jugadoras">
-        <h4>Pochis</h4>
-        <img src="imagenes/default_equipo.jpg" style="border-color:red">
-        <button  type="button" class="btn btn-primary jugadoras" style="background-color: #fb8153" data-toggle="modal" data-target="#modal2"><span class="ion-android-arrow-dropright"></span> Jugadoras</button>
+	  {% for equipo in equipos %} 
+	      <div class="col-lg-3 col-md-4 list_jugadoras">
+	        <h4>{{equipo.nombre}}</h4>
+	        {% if equipo.foto != null %}
+	        	<img src="fotos_equipos/{{equipo.foto}}" style="border: 1 solid {{torneo.rgb}}">
+	        {% else %}
+	        	<img src="imagenes/default_equipo.jpg" style="border: 1 solid {{torneo.rgb}}">
+	        {% endif %}
+	       <button  type="button" class="btn btn-primary jugadoras" style="background-color: #fb8153" data-toggle="modal" data-target="#modal2"><span class="ion-android-arrow-dropright"></span> Jugadoras</button>
 
         <!--small modal -->
               <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="modal2">
@@ -72,31 +42,9 @@
                 </div>
               </div>
         <!--fin smal modal -->
-      </div>
-
-      <div class="col-lg-3 col-md-4 list_jugadoras">
-        <h4>Pulmotor</h4>
-        <img src="imagenes/equipo.jpg">
-        <button class="jugadoras"><span class="ion-android-arrow-dropright"></span>  Jugadoras</button>
-      </div>
-
-      <div class="col-lg-3 col-md-4 list_jugadoras">
-        <h4>Atorrantas</h4>
-        <img src="imagenes/equipo.jpg">
-        <button class="jugadoras"><span class="ion-android-arrow-dropright"></span> Jugadoras</button>
-      </div>
-
-      <div class="col-lg-3 col-md-4 list_jugadoras">
-        <h4>M.V.P</h4>
-        <img src="imagenes/equipo.jpg">
-        <button class="jugadoras"><span class="ion-android-arrow-dropright"></span> Jugadoras</button>
-      </div>
-
-      <div class="col-lg-3 col-md-4 list_jugadoras">
-        <h4>Gruti</h4>
-        <img src="imagenes/equipo.jpg">
-        <button class="jugadoras"><span class="ion-android-arrow-dropright"></span> Jugadoras</button>
-      </div>
+	      
+	      </div>
+	  {% endfor %}
 
    </div>
   </div>
