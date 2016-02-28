@@ -147,13 +147,13 @@
 					<span class="ion-android-checkbox-outline"></span>
 				</div>!-->
 				<form>
-					<select name="torneo" id="torneo">
+					<select name="torneoIngreso" id="torneoIngreso">
 						<option value="0">- Torneo -</option> 
 						{% for torneo in torneos %}
 							<option value="{{ torneo.id }}">{{ torneo.nombre }}</option> 
 						{% endfor %}
 					</select> 
-					<select name="categoria" id="categoria">
+					<select name="categoriaIngreso" id="categoriaIngreso">
 						<option value="0">- Categoria -</option>
 					</select>
 					<select name="equipo" id="equipo">
@@ -414,8 +414,26 @@
 				$.post("categoria_data.php", {idTorneo : idTorneo}, function(data) {
 					$("#categoria").html(data);
 				});
+			});
+		});
+			
+		$("#torneoIngreso").change(function() {
+			$("#torneoIngreso option:selected").each(function() {
+				idTorneo = $(this).val();
+				$.post("categoria_data.php", {idTorneo : idTorneo}, function(data) {
+					$("#categoriaIngreso").html(data);
 				});
-			})
+			});
+		});
+			
+		$("#categoriaIngreso").change(function() {
+			$("#categoriaIngreso option:selected").each(function() {
+				idTorneoCat = $(this).val();
+				$.post("equipo_data.php", {idTorneoCat : idTorneoCat}, function(data) {
+					$("#equipo").html(data);
+				});
+			});
+		});
 
 		$("#entrar").click(function() {
 			var idTorneo = $("#torneo").val();
