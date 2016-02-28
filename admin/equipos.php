@@ -295,7 +295,7 @@
 					                     <td align="left"><?=$datos[$i]["dt"]?></td>
 										 <td width="100">
 										  <? if($datos[$i]['foto']) { ?>
-								          	<img src="../thumb/phpThumb.php?src=../fotos_equipos/<?= $datos[$i]['foto']?>" width="100" height="69"/>
+								          	<img src="../fotos_equipos/<?= $datos[$i]['foto']?>" width="100" height="69"/>
 								          <? } else { ?>
 								          		SIN FOTO
 								          <? } ?>

@@ -99,7 +99,7 @@
 											        		<input name="foto" id="foto" class="" type="file"  <?= $disabled ?> />
 											        	<? } 
 											        	 if ($datos[0]["foto"] != "") { ?>
-											        		<img style="margin-top: 10px" src="../thumb/phpThumb.php?src=../fotos_equipos/<?= $datos[0]['foto']?>" width="100" height="69"/>
+											        		<img style="margin-top: 10px" src="../fotos_equipos/<?= $datos[0]['foto']?>" width="100" height="69"/>
 											        	<? } ?>  
 											        </td>
 											      </tr>  

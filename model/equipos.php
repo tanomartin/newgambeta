@@ -80,13 +80,11 @@ class Equipos {
 			$extension = $path_parts['extension'];
 			$name = "pre_".$this->id."_".time().".".$extension;
 			$ruta= "../fotos_equipos/".$name;	
-			if ( move_uploaded_file($_FILES['foto']['tmp_name'], $ruta))
-				echo "subio";
-			else	
-				echo "no subio";
-			$query = "update ga_equipos set  foto = '". $name."'
+			if ( move_uploaded_file($_FILES['foto']['tmp_name'], $ruta)) {
+				$query = "update ga_equipos set  foto = '". $name."'
 					  where id = ".$this->id ;
-			$db->query($query); 
+				$db->query($query); 
+			}
 		}
 	}
 	
@@ -281,9 +279,9 @@ class Equipos {
 	
 	function getPassword($idTorneoEquipo= "") {
 		$db = $this->base;
-		$query = "Select * from ga_equipos_password where id = $idTorneoEquipo";	
+		$query = "Select * from ga_equipos_password where id = $idTorneoEquipo";
 		$res = $db->getResults($query, ARRAY_A); 
-		$db->close();	
+		return $res;
 	}
 	
 	function setPassword($idTorneoEquipo= "",$idEquipo= "" , $pass="") {
