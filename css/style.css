@@ -882,6 +882,6 @@ footer {
 
 }
 
-.carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {
+.carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail>img {
     max-width:30%;
 }

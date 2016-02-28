@@ -18,25 +18,7 @@
               <ul class="dropdown-menu">
                 <li>
                   <div class="yamm-content">
-                    <div class="row">
-                      <div class="col-xs-6 col-sm-2">
-                      		<a href="torneos.php" class="thumbnail"><img alt="150x190" src="logos/pri_13_SushiBoom (T).png"></a>
-                      </div>
-                      <div class="col-xs-6 col-sm-2">
-                      		<a href="#" class="thumbnail"><img alt="150x190" src="logos/pri_13_SushiBoom (T).png"></a>
-                      </div>
-                      <div class="col-xs-6 col-sm-2">
-                      	<a href="#" class="thumbnail"><img alt="150x190" src="logos/pri_13_SushiBoom (T).png"></a>
-                      </div>
-                      <div class="col-xs-6 col-sm-2">
-                      	<a href="#" class="thumbnail"><img alt="150x190" src="logos/pri_13_SushiBoom (T).png"></a>
-                      </div>
-                      <div class="col-xs-6 col-sm-2">
-                      	<a href="#" class="thumbnail"><img alt="150x190" src="logos/pri_13_SushiBoom (T).png"></a>
-                      </div>
-                      <div class="col-xs-6 col-sm-2">
-                      	<a href="#" class="thumbnail"><img alt="150x190" src="logos/pri_13_SushiBoom (T).png"></a>
-                      </div>
+                    <div class="row" id="navTorneos">
                     </div>
                   </div>
                 </li>
@@ -58,5 +40,10 @@
         	e.stopPropagation()
     	})
 	})
+	
+	$.post("torneo_data.php", function(data) {
+		$("#navTorneos").html(data)
+	});
+	
 </script>
 <script src="include/js/run_prettify.js?lang=css"></script>
