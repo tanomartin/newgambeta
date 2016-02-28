@@ -8,6 +8,9 @@
 		</div>
 		<div>		
 			<select name="categorias" id="categorias" style="text-align-last: center;">
+				{% if idTorneoCat == 0 %}
+					<option value="{{ idTorneoCat }}" selected="selected">- Categoria -</option> 
+				{% endif %}
 				{% for categoria in categorias %}
 					{% if categoria.id == idTorneoCat %}
 						<option value="{{ categoria.id }}" selected="selected">{{ categoria.nombre }}</option> 
@@ -51,10 +54,15 @@
 
 $(document).ready(function() {
 	var torneo = $("#torneo").val();
+	var idTorneoCat = $("#idTorneoCat").val();
 	var nombreCategoria = $("#nombreCat").val();
-	
-	var redirec = "dafault.php";
-	$("#container-2").load(redirec, {nombreCategoria: nombreCategoria, torneo: torneo});
+	if (idTorneoCat != 0) {
+		var redirec = "noticias.php";
+		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
+	} else {
+		var redirec = "dafault.php";
+		$("#container-2").load(redirec, {torneo: torneo});
+	}
 });
 
 $("#categorias").change(function() {
@@ -65,9 +73,14 @@ $("#categorias").change(function() {
 
 		$("#idTorneoCat").val(idTorneoCat);
 		$("#nombreCat").val(nombreCategoria);
-			
-		var redirec = "dafault.php";
-		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
+		
+		if (idTorneoCat != 0) {
+			var redirec = "noticias.php";
+			$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
+		} else {
+			var redirec = "dafault.php";
+			$("#container-2").load(redirec, {torneo: torneo});
+		}
 	});
 });
 
@@ -76,36 +89,40 @@ $("#noticias").click(function() {
 	var torneo = $("#torneo").val();
 	var idTorneoCat = $("#idTorneoCat").val();
 	var nombreCategoria = $("#nombreCat").val();
-	
-	var redirec = "noticias.php";
-	$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
+	if (idTorneoCat != 0) {
+		var redirec = "noticias.php";
+		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
+	}
 });
 
 $("#goleadoras").click(function() {
 	var torneo = $("#torneo").val();
 	var idTorneoCat = $("#idTorneoCat").val();
 	var nombreCategoria = $("#nombreCat").val();
-	
-	var redirec = "goleadoras.php";
-	$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
+	if (idTorneoCat != 0) {
+		var redirec = "goleadoras.php";
+		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
+	}
 });
 
 $("#posiciones").click(function() {
 	var torneo = $("#torneo").val();
 	var idTorneoCat = $("#idTorneoCat").val();
 	var nombreCategoria = $("#nombreCat").val();
-	
-	var redirec = "posiciones.php";
-	$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
+	if (idTorneoCat != 0) {
+		var redirec = "posiciones.php";
+		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
+	}
 });
 
 $("#tarjetas").click(function() {
 	var torneo = $("#torneo").val();
 	var idTorneoCat = $("#idTorneoCat").val();
 	var nombreCategoria = $("#nombreCat").val();
-	
-	var redirec = "tarjetas.php";
-	$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
+	if (idTorneoCat != 0) {
+		var redirec = "tarjetas.php";
+		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
+	}
 });
 
 

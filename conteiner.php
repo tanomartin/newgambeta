@@ -9,6 +9,7 @@ $categorias = unserialize($_POST['categorias']);
 // Cargo la plantilla
 $twig->display ( 'conteiner.html', array (
 		'torneo' => $torneo,
-		'categorias' => $categorias
+		'categorias' => $categorias,
+		'idTorneoCat' => $_POST['idTorneoCat']
 ));
 ?>

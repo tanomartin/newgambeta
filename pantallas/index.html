@@ -438,7 +438,7 @@
 		$("#entrar").click(function() {
 			var idTorneo = $("#torneo").val();
 			var idTorneoCat = $("#categoria").val();
-			if (idTorneo != 0 && idTorneoCat != 0) {			
+			if (idTorneo != 0) {			
 				var url = 'torneos.php';
 				var form = $('<form action="' + url + '" method="post">' +
 				  '<input type="text" name="idTorneo" value="' + idTorneo + '" />' +
