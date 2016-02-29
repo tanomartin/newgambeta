@@ -29,7 +29,8 @@
 $("#fecha").change(function() {
 	$("#fecha option:selected").each(function() {
 		var idFecha = $(this).val();
-		$.post("fecha_data.php", {idFecha : idFecha}, function(data) {
+		var color = $("#torneoColor").val();
+		$.post("fecha_data.php", {idFecha : idFecha, color: color}, function(data) {
 			$("#tablaFixture").html(data);
 		});
 	});

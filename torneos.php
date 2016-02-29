@@ -30,11 +30,11 @@ foreach ( $aTorneoCat as $categoria ) {
 
 // Cargo la plantilla
 $twig->display ( 'torneos.html', array (
-		'idTorneo' => $idTorneo,
 		'idTorneoCat' => $idTorneoCat,
 		'torneo' => serialize ( $atorneo [0] ),
 		'categorias' => serialize ( $aTorneoCat ),
-		'nombreCategoria' => $nombreCategoriaSelect
+		'nombreCategoria' => $nombreCategoriaSelect,
+		'torneoObj' => $atorneo[0]
 ) );
 
 ?>

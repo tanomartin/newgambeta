@@ -8,15 +8,17 @@ if (isset ($_POST ['idFecha']) &&  $_POST ['idFecha'] != 0) {
 	$partidos = $oFixture->getByFecha ( $_POST ['idFecha']);
 	if ($partidos != NULL) {
 		$resultado = "<thead>
-						<th></th>
-						<th>Sede</th>
-						<th>C</th>
-						<th>Dia</th>
-						<th>Hora</th>
-						<th></th>
-						<th></th>
-						<th></th>
-						<th></th>
+						<tr class='principal-table'  style='background-color: ".$_POST ['color']." '>
+							<th></th>
+							<th>Sede</th>
+							<th>C</th>
+							<th>Dia</th>
+							<th>Hora</th>
+							<th></th>
+							<th></th>
+							<th></th>
+							<th></th>
+						</tr>
 					 </thead>";
 		$resultado .= "<tbody>";
 		$n = 1;

@@ -7,7 +7,7 @@
 		$aEquipos = $oEquipo->getByCategoria($_POST['idTorneoCat']);
 		if ($aEquipos != NULL) {
 			foreach ($aEquipos as $equipo) {
-				$respuesta.="<option value=".$equipo["id"].">".$equipo["nombre"]."</option>";
+				$respuesta.="<option value='".$equipo["id"]."-".$equipo["idEquipoTorneo"]."'>".$equipo["nombre"]."</option>";
 			}
 		}
 		echo $respuesta;
