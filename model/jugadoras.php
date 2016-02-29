@@ -238,7 +238,6 @@ class Jugadoras {
 					je.idJugadora = j.id and 
 					et.idEquipo = e.id";
 		$res = $db->getResults($query, ARRAY_A);
-		
 		return $res;
 	}
 	
