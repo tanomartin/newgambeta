@@ -440,11 +440,10 @@
 			var idTorneoCat = $("#categoria").val();
 			if (idTorneo != 0) {			
 				var url = 'torneos.php';
-				var form = $('<form action="' + url + '" method="post">' +
-				  '<input type="text" name="idTorneo" value="' + idTorneo + '" />' +
-				  '<input type="text" name="idTorneoCat" value="' + idTorneoCat + '" />' +
-				  '</form>');
-				$('body').append(form);  // This line is not necessary
+				var form = $("<form action='" + url + "' method='post' style='display: none'>" +
+				  				"<input type='hidden' name='idTorneo' value='" + idTorneo + "' />" +
+				  				"<input type='hidden' name='idTorneoCat' value='" + idTorneoCat + "' />" +
+				  			 "</form>");
 				$(form).submit();
 			} else {
 				$('#modalError').modal('show');
