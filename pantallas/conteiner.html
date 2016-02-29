@@ -44,19 +44,36 @@
 		background-color: {{ torneo.rgb }};
 	}
 	
+	.menu-torneos ul li button.active {
+		background-color: {{ torneo.rgb }};
+		color: #FFF;
+	}
+	
 	.table tr:hover{
     	background-color: {{ torneo.rgb }};
    		color:#FFF;
 	}
+	
 </style>
 
 <script>
+
+function blanquearBotones() {
+	$("#noticias").removeClass("active");
+	$("#equipos").removeClass("active");
+	$("#resultados").removeClass("active");
+	$("#goleadoras").removeClass("active");
+	$("#posiciones").removeClass("active");
+	$("#tarjetas").removeClass("active");
+}
 
 $(document).ready(function() {
 	var torneo = $("#torneo").val();
 	var idTorneoCat = $("#idTorneoCat").val();
 	var nombreCategoria = $("#nombreCat").val();
 	if (idTorneoCat != 0) {
+		blanquearBotones();
+		$("#noticias").addClass("active");
 		var redirec = "noticias.php";
 		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
 	} else {
@@ -70,14 +87,15 @@ $("#categorias").change(function() {
 		var idTorneoCat = $("#categorias option:selected").val();
 		var nombreCategoria = $("#categorias option:selected").text();
 		var torneo = $("#torneo").val();
-
 		$("#idTorneoCat").val(idTorneoCat);
-		$("#nombreCat").val(nombreCategoria);
-		
+		$("#nombreCat").val(nombreCategoria);	
 		if (idTorneoCat != 0) {
+			blanquearBotones();
+			$("#noticias").addClass("active");
 			var redirec = "noticias.php";
 			$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
 		} else {
+			blanquearBotones();
 			var redirec = "dafault.php";
 			$("#container-2").load(redirec, {torneo: torneo});
 		}
@@ -90,8 +108,11 @@ $("#noticias").click(function() {
 	var idTorneoCat = $("#idTorneoCat").val();
 	var nombreCategoria = $("#nombreCat").val();
 	if (idTorneoCat != 0) {
+		blanquearBotones();
+		$("#noticias").addClass("active");
 		var redirec = "noticias.php";
 		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
+		
 	}
 });
 
@@ -100,6 +121,8 @@ $("#equipos").click(function() {
 	var idTorneoCat = $("#idTorneoCat").val();
 	var nombreCategoria = $("#nombreCat").val();
 	if (idTorneoCat != 0) {
+		blanquearBotones();
+		$("#equipos").addClass("active");
 		var redirec = "equipos.php";
 		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
 	}
@@ -110,6 +133,8 @@ $("#resultados").click(function() {
 	var idTorneoCat = $("#idTorneoCat").val();
 	var nombreCategoria = $("#nombreCat").val();
 	if (idTorneoCat != 0) {
+		blanquearBotones();
+		$("#resultados").addClass("active");
 		var redirec = "resultados.php";
 		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
 	}
@@ -120,6 +145,8 @@ $("#goleadoras").click(function() {
 	var idTorneoCat = $("#idTorneoCat").val();
 	var nombreCategoria = $("#nombreCat").val();
 	if (idTorneoCat != 0) {
+		blanquearBotones();
+		$("#goleadoras").addClass("active");
 		var redirec = "goleadoras.php";
 		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
 	}
@@ -130,6 +157,8 @@ $("#posiciones").click(function() {
 	var idTorneoCat = $("#idTorneoCat").val();
 	var nombreCategoria = $("#nombreCat").val();
 	if (idTorneoCat != 0) {
+		blanquearBotones();
+		$("#posiciones").addClass("active");
 		var redirec = "posiciones.php";
 		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
 	}
@@ -140,6 +169,8 @@ $("#tarjetas").click(function() {
 	var idTorneoCat = $("#idTorneoCat").val();
 	var nombreCategoria = $("#nombreCat").val();
 	if (idTorneoCat != 0) {
+		blanquearBotones();
+		$("#tarjetas").addClass("active");
 		var redirec = "tarjetas.php";
 		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
 	}

@@ -1,33 +1,39 @@
- <div class="section-torneos">
-    <span class="ion-podium"></span><h2>Resultados - Sushi Boom Mañana</h2>
-  
+<div class="section-torneos">
+	<span class="ion-podium" style="color: {{ torneo.rgb }}"></span>
+	<h2 style="color: {{ torneo.rgb }}">Resultados - {{ torneo.nombre }} - {{nombreCategoria }}</h2>
+	<div class="select-equipo" style="text-align: center">
+		<select name="equipo" id="equipo" style="padding: 8px; border-radius: 4px; margin-top: 15px; width: 190px; position: relative">
+			 <option value='0'>- Seleccione Equipo -</option>
+			 {% for equipo in equipos %} 
+				 <option value="{{equipo.idEquipoTorneo}}">{{equipo.nombre}}</option>
+			 {% endfor %}
+			
+		</select>
 
-      <div class="select-equipo" style="text-align:center">
+	</div>
 
-           <select name="equipo" id="equipo" style="padding:8px;border-radius:4px;margin-top:15px;width:190px;position:relative">
-                  <option value="0">- Selecciona Equipo -</option>
-            </select>
-      
-      </div>
-
-      <div class="row">
-        <div clas="col-lg-6">
-          <table class="table ">
-            <td>
-              <th>Equipo Tal</th>
-            </td>
-            <td>
-              <th>9</th>
-            </td>
-            <td>
-              <th>5</th>
-            </td>
-            <td>
-              <th>Equipo Rival</th>
-            </td>
-          </table>
-        </div>
-      </div>
-   </div>
+	<div class="row">
+		<div class="col-lg-12">
+			<table class="table" id="tablaResultados">
+				<tbody>
+					<tr>
+						<td>Seleccione Equipo</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
 <!--ACA FINALIZA SECCION EQUIPOS-->
- 
+
+<script>
+$("#equipo").change(function() {
+	$("#equipo option:selected").each(function() {
+		var idEquipoTorneo = $(this).val();
+		var idTorneoCat = $("#idTorneoCat").val();
+		$.post("resultado_data.php", {idEquipoTorneo : idEquipoTorneo, idTorneoCat : idTorneoCat}, function(data) {
+			$("#tablaResultados").html(data);
+		});
+	});
+});
+</script>
