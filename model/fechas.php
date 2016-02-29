@@ -1,4 +1,5 @@
 <?PHP
+include_once "include/config.inc.php";
 include_once "mysql.class.php";
 
 class Fechas {
@@ -70,7 +71,6 @@ class Fechas {
 		          fechaFin = '". $this->fechaFin."'
 				  where id = ".$this->id ;				  
 		$db->query($query); 	
-			
 	}
 	
 	function get($id="") {
@@ -83,7 +83,6 @@ class Fechas {
 		}	
 		$query .= " order by e.nombre";
 		$res = $db->getResults($query, ARRAY_A); 
-				
 		return $res;	
 	}
 
@@ -101,8 +100,7 @@ class Fechas {
 			$order = " order by e.nombre";
 		}
 		$query .= $order;	
-		$res = $db->getResults($query, ARRAY_A); 	
-				
+		$res = $db->getResults($query, ARRAY_A); 		
 		return $res;	
 	}
 	
@@ -128,7 +126,6 @@ class Fechas {
 		$datos = $db->getResults($query, ARRAY_A); 		
 		$cant_reg = $db->getResults("SELECT FOUND_ROWS() cant", ARRAY_A); 	
 		$total = ceil( $cant_reg[0]["cant"] / $cant );
-		
 		return $datos;	
 	}
 
@@ -137,7 +134,6 @@ class Fechas {
 		$db = $this->base;		
 		$query = "Select f.*, c.descripcion from ga_fechas_horas f, ga_horas_cancha c where f.id_fecha = $id and f.id_horas_cancha = c.id" ;		
 		$datos = $db->getResults($query, ARRAY_A); 
-				
 		return $datos;
 	}
 	
@@ -157,14 +153,12 @@ class Fechas {
 		$db = $this->base;	
 		$query = "Insert into ga_fechas_horas(id_fecha, id_horas_cancha) values($id_fecha,$id_horas_cancha)";
 		$db->query($query); 	
-			
 	}
 	
 	function deleteHorasCancha($id_fecha="") {	
 		$db = $this->base;	
 		$query = "delete from ga_fechas_horas where id_fecha = $id_fecha";	
-		$db->query($query); 	
-			
+		$db->query($query); 		
 	}
 	
 	function puedeReservar($fechaIni) {

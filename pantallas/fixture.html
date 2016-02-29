@@ -1,0 +1,37 @@
+<div class="section-torneos">
+	<span class="ion-android-calendar" style="color: {{ torneo.rgb }}"></span>
+	<h2 style="color: {{ torneo.rgb }}">Fixture - {{ torneo.nombre }} - {{ nombreCategoria }}</h2>
+	<div class="select-equipo" style="text-align: center">
+		<select name="fecha" id="fecha" style="padding: 8px; border-radius: 4px; margin-top: 15px; width: 190px; position: relative">
+			 <option value='0'>- Seleccione Fecha -</option>
+			 {% for fecha in fechas %} 
+				 <option value="{{fecha.id}}">{{fecha.nombre}}</option>
+			 {% endfor %}
+			
+		</select>
+
+	</div>
+
+	<div class="row">
+		<div class="col-lg-12">
+			<table class="table" id="tablaFixture">
+				<tbody>
+					<tr>
+						<td>Seleccione Fecha</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+<script>
+$("#fecha").change(function() {
+	$("#fecha option:selected").each(function() {
+		var idFecha = $(this).val();
+		$.post("fecha_data.php", {idFecha : idFecha}, function(data) {
+			$("#tablaFixture").html(data);
+		});
+	});
+});
+</script>
