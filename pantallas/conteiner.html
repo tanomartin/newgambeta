@@ -26,12 +26,12 @@
 		<ul>
 			<li><button id="noticias" name="noticias">Noticias</button></li>
 			<li><button id="equipos" name="equipos">Equipos</button></li>
-			<li><button>Fixture</button></li>
+			<li><button id="fixture" name="fixture">Fixture</button></li>
 			<li><button id="resultados" name="resultados">Resultados</button></li>
 			<li><button id="goleadoras" name="goleadoras">Goleadoras</button></li>
 			<li><button id="posiciones" name="posiciones">Posiciones</button></li>
 			<li><button id="tarjetas" name="tarjetas">Tarjetas</button></li>
-			<li><button>Reservas</button></li>
+			<li><button id="reservas" name="reservas">Reservas</button></li>
 		</ul>
 	</div>
 </div>
@@ -61,10 +61,12 @@
 function blanquearBotones() {
 	$("#noticias").removeClass("active");
 	$("#equipos").removeClass("active");
+	$("#fixture").removeClass("active");
 	$("#resultados").removeClass("active");
 	$("#goleadoras").removeClass("active");
 	$("#posiciones").removeClass("active");
 	$("#tarjetas").removeClass("active");
+	$("#reservas").removeClass("active");
 }
 
 $(document).ready(function() {
@@ -128,6 +130,18 @@ $("#equipos").click(function() {
 	}
 });
 
+$("#fixture").click(function() {
+	var torneo = $("#torneo").val();
+	var idTorneoCat = $("#idTorneoCat").val();
+	var nombreCategoria = $("#nombreCat").val();
+	if (idTorneoCat != 0) {
+		blanquearBotones();
+		$("#fixture").addClass("active");
+		var redirec = "fixture.php";
+		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
+	}
+});
+
 $("#resultados").click(function() {
 	var torneo = $("#torneo").val();
 	var idTorneoCat = $("#idTorneoCat").val();
@@ -172,6 +186,18 @@ $("#tarjetas").click(function() {
 		blanquearBotones();
 		$("#tarjetas").addClass("active");
 		var redirec = "tarjetas.php";
+		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
+	}
+});
+
+$("#reservas").click(function() {
+	var torneo = $("#torneo").val();
+	var idTorneoCat = $("#idTorneoCat").val();
+	var nombreCategoria = $("#nombreCat").val();
+	if (idTorneoCat != 0) {
+		blanquearBotones();
+		$("#reservas").addClass("active");
+		var redirec = "reservas.php";
 		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
 	}
 });
