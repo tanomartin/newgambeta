@@ -7,6 +7,9 @@ if (isset ($_POST ['idEquipoTorneo']) &&  $_POST ['idEquipoTorneo'] != 0) {
 	$partidos = $oFixture->getByEquipoTorneo ( $_POST ['idTorneoCat'], $_POST ['idEquipoTorneo'] );
 	if ($partidos != NULL) {
 		$resultado = "<tbody>";
+		$resultado .= "<tr class='principal-table' style='background-color: ".$_POST ['color']."'>
+						<th colspan='8'>Si haces click en el partido podes ver el detalle</th>
+						</tr>";
 		foreach ( $partidos as $partido ) {
 			if ($partido['golesEquipo1'] == -1) {
 				$goles1 = "-";

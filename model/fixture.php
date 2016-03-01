@@ -203,7 +203,8 @@ class Fixture {
       				e2.nombre as equipo2, 
       				e2.id as idEquipo2,
       				s.nombre as sede, 
-      				f.nombre as nombreFecha
+      				f.nombre as nombreFecha,
+      				a.nombre as arbitro
 		          from 
       				ga_fixture x, 
       			    ga_fechas f,
@@ -211,18 +212,19 @@ class Fixture {
       				ga_equipos_torneos et1, 
       				ga_equipos_torneos et2, 
       				ga_equipos e1, 
-      				ga_equipos e2 
+      				ga_equipos e2,
+      				ga_arbitros a 
 				  where 
       				x.idFecha = f.id and
+      				f.id=".$fecha." and
 				  	x.idSede = s.id and
 				  	x.idEquipoTorneo1 = et1.id and
       			  	et1.idEquipo = e1.id and
 				  	x.idEquipoTorneo2 = et2.id and
       			  	et2.idEquipo = e2.id and 
-      				f.id=".$fecha;
-		$query.= " order by  fechaPartido";
+      				x.idArbitro = a.id";
+		$query.= " order by fechaPartido, horaPartido";
 		$datos = $db->getResults($query, ARRAY_A); 	
-		
 		return $datos;	
 	}
 	

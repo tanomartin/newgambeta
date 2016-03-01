@@ -31,7 +31,8 @@ $("#equipo").change(function() {
 	$("#equipo option:selected").each(function() {
 		var idEquipoTorneo = $(this).val();
 		var idTorneoCat = $("#idTorneoCat").val();
-		$.post("resultado_data.php", {idEquipoTorneo : idEquipoTorneo, idTorneoCat : idTorneoCat}, function(data) {
+		var color = $("#torneoColor").val();
+		$.post("resultado_data.php", {idEquipoTorneo : idEquipoTorneo, idTorneoCat : idTorneoCat, color : color}, function(data) {
 			$("#tablaResultados").html(data);
 		});
 	});
