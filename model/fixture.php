@@ -83,7 +83,7 @@ class Fixture {
 	}
 		
 	function insertar() {
-		$db = $$this->base;
+		$db = $this->base;
 		$query = "insert into ga_fixture(
 					idEquipoTorneo1,idFecha,idEquipoTorneo2,observaciones,fechaPartido,horaPartido,idSede,cancha,idArbitro,golesEquipo1,puntajeEquipo1,golesEquipo2,puntajeEquipo2,suspendido
 				) values (".

@@ -1,0 +1,70 @@
+<div class="section-torneos">
+	<span class="ion-android-checkbox-outline" style="color: {{ torneo.rgb }}"></span>
+	<h2 style="color: {{ torneo.rgb }}">Menu Reservas - {{ torneo.nombre }} - {{ nombreCategoria }}</h2>
+</div>
+<div class="section-torneos">
+	<h3 style="color: {{ torneo.rgb }}">{{ equipo.nombre }}</h3>
+	{% if fecha_activa != null and idReserva == 0 and partidos == null and fecha_activa.puedeReservar %}
+		{% if horas_fecha != null %}
+			{% for horas in horas_fecha %}
+				<input type='checkbox' id='horas' name='hora{{horas.id}}' value='{{horas.id}}' onclick='controlLibre()' /> {{horas.descripcion}}
+			{% endfor %}
+		{% endif %}
+		{% if not fecha_libre %}
+			<div>Fecha Libre <input type='checkbox' name='libre' id='libre' value='libre' onclick='controlHoras()'></input></div>
+		{% else %}	
+			<div>El equipo ya pidio fecha libre</div>
+		{% endif %}
+		<div><textarea name="observacion" id="observacion" placeholder="Observacion"></textarea></div>
+		<button name="reservar" id="reservar">Reservar</button>
+	{% else %}
+		{% if fecha_activa == null %}
+			<div>No hay fecha activa</div>
+		{% else %}
+			{% if partidos == null %}
+				{% if reserva.fecha_libre == 1 %}
+					<div>El equipo pidio Fecha Libre</div>
+				{% else %}	
+					{% if reserva.fecha_libre == 2 %}
+						<div>La organizacion otorgo Fecha Libre</div>
+					{% else %}	
+						{% if detalleReserva != null %}
+							<div>Horarios Pedidos</div>
+							<ol>
+							{% for detalle in detalleReserva %}
+								<li>{{detalle.descripcion}}</li>
+							{% endfor %}
+							</ol>
+							<div>Observación: {{ reserva.observacion }}</div>
+						{% else %}
+							{% if not fecha_activa.puedeReservar %}
+								<div>Ha concluido el tiempo para poder realizar la preferencia horaria</div>
+							{% else %}
+								<div>ERROR AL GRABAR LA RESERVA.<BR>POR FAVOR COMUNIQUESE CON LA ORGANIZACION.</div>
+							{% endif %}
+						{% endif %}
+					{% endif %}
+				{% endif %}
+			{% else %}
+				<div>Confirmarción de Partido</div>
+				{% for partido in partidos %}
+					<div>{{ partido.equipo1 }} vs {{ partido.equipo2 }}</div>
+					{% if partido.idEquipoTorneo1 == idsession %}
+						{% if not partido.confirmado %}
+							<button name="confirmar" id="confirmar">Confirmar</button>
+						{% else %}
+							<div>Partido Confirmado</div>
+						{% endif %}
+					{% endif %}
+					{% if partido.idEquipoTorneo2 == idsession %}
+						{% if not partido.confirmado %}
+							<button name="confirmar" id="confirmar">Confirmar</button>
+						{% else %}
+							<div>Partido Confirmado</div>
+						{% endif %}
+					{% endif %}
+				{% endfor %}
+			{% endif %}
+		{% endif %}
+	{% endif %}
+</div>

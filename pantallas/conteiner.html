@@ -59,6 +59,7 @@
 <script>
 
 function blanquearBotones() {
+	$("#acceso").val("");
 	$("#noticias").removeClass("active");
 	$("#equipos").removeClass("active");
 	$("#fixture").removeClass("active");
@@ -73,19 +74,28 @@ $(document).ready(function() {
 	var torneo = $("#torneo").val();
 	var idTorneoCat = $("#idTorneoCat").val();
 	var nombreCategoria = $("#nombreCat").val();
-	if (idTorneoCat != 0) {
+	var acceso = $("#acceso").val();
+	if (acceso == "nok" || acceso == "ok") {
 		blanquearBotones();
-		$("#noticias").addClass("active");
-		var redirec = "noticias.php";
-		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
+		$("#reservas").addClass("active");
+		var redirec = "reservas.php";
+		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, acceso : acceso});
 	} else {
-		var redirec = "dafault.php";
-		$("#container-2").load(redirec, {torneo: torneo});
+		if (idTorneoCat != 0) {
+			blanquearBotones();
+			$("#noticias").addClass("active");
+			var redirec = "noticias.php";
+			$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
+		} else {
+			var redirec = "dafault.php";
+			$("#container-2").load(redirec, {torneo: torneo});
+		}
 	}
 });
 
 $("#categorias").change(function() {
 	$("#categorias option:selected").each(function() {
+		$("#acceso").val("");
 		var idTorneoCat = $("#categorias option:selected").val();
 		var nombreCategoria = $("#categorias option:selected").text();
 		var torneo = $("#torneo").val();
@@ -194,11 +204,13 @@ $("#reservas").click(function() {
 	var torneo = $("#torneo").val();
 	var idTorneoCat = $("#idTorneoCat").val();
 	var nombreCategoria = $("#nombreCat").val();
+	var acceso = $("#acceso").val();
 	if (idTorneoCat != 0) {
 		blanquearBotones();
+		$("#acceso").val(acceso);
 		$("#reservas").addClass("active");
 		var redirec = "reservas.php";
-		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
+		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, acceso : acceso});
 	}
 });
 

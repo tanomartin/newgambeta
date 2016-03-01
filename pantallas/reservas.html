@@ -3,20 +3,60 @@
 	<h2 style="color: {{ torneo.rgb }}">Reservas - {{ torneo.nombre }} - {{ nombreCategoria }}</h2>
 </div>
 <div class="section-reservas">
+	{% if acceso == "nok" %}
+		<h3 style="color: red"><span class="ion-android-alert"></span> ERROR DE ACCESO </h3>
+	{% endif %}
 	<div class="item-reservas" style="background-color: {{ torneo.rgb }}">
 		<p>Reservá tu horario</p>
 		<div class="check">
 			<span class="ion-android-checkbox-outline"></span>
 		</div>
-		<form>
-			<select name="equipo" id="equipo">
-				<option value="0">- Equipo -</option>
-				{% for equipo in equipos %} 
-				 	<option value="{{equipo.id}}-{{equipo.idEquipoTorneo}}">{{equipo.nombre}}</option>
-				{% endfor %}
-			</select>
-			<input type="password" name="contraseña" placeholder="Ingresá tu contraseña">
-		</form>
-		<button>Reservar</button>
+		<select name="equipo" id="equipo">
+			<option value="0">- Equipo -</option>
+			{% for equipo in equipos %} 
+			 	<option value="{{equipo.id}}-{{equipo.idEquipoTorneo}}">{{equipo.nombre}}</option>
+			{% endfor %}
+		</select>
+		<input type="password" name="password" id="password" placeholder="Ingresá tu contraseña">
+		<button id="reservar">Reservar</button>
+	</div>
+	<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="modalErrorIngreso">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h5><span class="ion-android-alert"></span>  Error de Ingreso</h5>
+				</div>
+				<div class="modal-body" style="text-align: center">
+					Alguno de los datos de ingreso no son correctos, por favor verificalos
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
+
+<script>
+
+$("#reservar").click(function() {
+	var idTorneo = $("#idTorneo").val();
+	var idTorneoCat = $("#idTorneoCat").val();
+	var idEquipo = $("#equipo").val();
+	var password = $("#password").val();
+	if (idTorneo != 0 && idTorneoCat !=  0 && idEquipo != 0 && password != 0) {			
+		var url = 'controlIngreso.php';
+		var form = $("<form action='" + url + "' method='post' style='display: none'>" +
+		  				"<input type='hidden' name='idTorneo' value='" + idTorneo + "' />" +
+		  				"<input type='hidden' name='idTorneoCat' value='" + idTorneoCat + "' />" +
+		  				"<input type='hidden' name='idEquipo' value='" + idEquipo + "' />" +
+		  				"<input type='hidden' name='password' value='" + password + "' />" +
+		  			 "</form>");
+		$(form).submit();
+	} else {
+		$('#modalErrorIngreso').modal('show');
+	}		
+})
+
+</script>

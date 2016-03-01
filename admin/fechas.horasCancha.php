@@ -42,7 +42,7 @@
 		}
 	
 		function validar() {
-			$('#error').html("");
+			document.getElementById("error").innerHTML = "";
 			var grupo = document.getElementById("form_alta").horas;
 			var controlCheck = 0;
 			for (var i = 0; lcheck = grupo[i]; i++) {
@@ -51,7 +51,7 @@
 				}
 			}
 			if (controlCheck < 4) {
-				$('#error').html("* Debe seleccionar como mínimo 4 horas");
+				document.getElementById("error").innerHTML = "* Debe seleccionar como mínimo 4 horas";
 				return false;
 			} else {
 				document.form_alta.accion.value = "guardarHorasCancha";
@@ -111,7 +111,7 @@
 										<fieldset>
 											<legend>Horas de Canchas Disponibles</legend>
 											<legend><?=$datos[0]["nombre"]." - ".$datos[0]["torneo"]. " - ".$datos[0]["categoria"] ?></legend>
-											<div id="error" style="color: #CC3300; font-weight: bold"></div>
+											<div id="error" name="error" style="color: #CC3300; font-weight: bold"></div>
 											<div style="width: 490px">
 											<?	$i = 1;
 												if ($horasCargadas != NULL) {

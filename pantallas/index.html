@@ -132,7 +132,7 @@
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 								<h5><span class="ion-android-alert"></span>  Importante</h5>
 							</div>
-							<div class="modal-body">
+							<div class="modal-body" style="text-align: center">
 								Debe seleccionar un Torneo y una Categoría
 							</div>
 							<div class="modal-footer">
@@ -143,9 +143,6 @@
 				</div>
 			<div class="item-three">
 				<p>Reservá tu horario</p>
-				<!--<div class="check">
-					<span class="ion-android-checkbox-outline"></span>
-				</div>!-->
 				<form>
 					<select name="torneoIngreso" id="torneoIngreso">
 						<option value="0">- Torneo -</option> 
@@ -159,10 +156,25 @@
 					<select name="equipo" id="equipo">
 						<option value="0">- Equipo -</option>
 					</select>
-					<input type="password" name="contraseña"
-						placeholder="Ingresá tu contraseña">
+					<input type="password" name="password" id="password" placeholder="Ingresá tu contraseña" />
 				</form>
-				<button>Reservar</button>
+				<button id="reservar">Reservar</button>
+			</div>
+			<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="modalErrorIngreso">
+				<div class="modal-dialog modal-sm">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h5><span class="ion-android-alert"></span>  Error de Ingreso</h5>
+						</div>
+						<div class="modal-body" style="text-align: center">
+							Alguno de los datos de ingreso no son correctos, por favor verificalos
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 
@@ -447,6 +459,25 @@
 				$(form).submit();
 			} else {
 				$('#modalError').modal('show');
+			}		
+		})
+		
+		$("#reservar").click(function() {
+			var idTorneo = $("#torneoIngreso").val();
+			var idTorneoCat = $("#categoriaIngreso").val();
+			var idEquipo = $("#equipo").val();
+			var password = $("#password").val();
+			if (idTorneo != 0 && idTorneoCat !=  0 && idEquipo != 0 && password != 0) {			
+				var url = 'controlIngreso.php';
+				var form = $("<form action='" + url + "' method='post' style='display: none'>" +
+				  				"<input type='hidden' name='idTorneo' value='" + idTorneo + "' />" +
+				  				"<input type='hidden' name='idTorneoCat' value='" + idTorneoCat + "' />" +
+				  				"<input type='hidden' name='idEquipo' value='" + idEquipo + "' />" +
+				  				"<input type='hidden' name='password' value='" + password + "' />" +
+				  			 "</form>");
+				$(form).submit();
+			} else {
+				$('#modalErrorIngreso').modal('show');
 			}		
 		})
 		

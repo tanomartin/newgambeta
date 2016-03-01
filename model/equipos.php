@@ -94,7 +94,7 @@ class Equipos {
 		if ($id != "") {		
 			$query .= " and e.id = '$id' ";
 		}		
-		$query .= " order by e.nombre";		
+		$query .= " order by e.nombre";	
 		$res = $db->getResults($query, ARRAY_A); 		
 		return $res;	
 	}
@@ -245,7 +245,7 @@ class Equipos {
 	function accesoCorrecto($id="", $idTorneo="", $pass="") {
 		$db = $this->base;
 		$query = "Select count(*) as cantidad from ga_equipos_password e where id = '$idTorneo' and idEquipo = '$id' and password = '".$pass."'";
-		$res = $db->getRow($query); 
+		$res = $db->getRow($query);
 		if($res->cantidad == 0) {
 			return false;
 		} else {
