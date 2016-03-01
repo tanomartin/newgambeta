@@ -28,6 +28,7 @@ nav .navbar-nav {
 }
 .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
     text-align:center;
+    vertical-align:middle;
 }
 
 .cuadrado-prueba { /* es una prueba */
@@ -126,13 +127,19 @@ header {
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
 }	
-
-.ion-android-checkbox-outline, .ion-ios-football-outline {
+.ion-ios-football-outline {
 
     font-size: 80px;
     color: #FFF;
     position: relative;
     padding: 80px;
+    top: 10px;
+}
+
+.ion-android-checkbox-outline {
+    font-size: 80px;
+    color: #FFF;
+    position: relative;
     top: 10px;
 }
 
@@ -840,7 +847,7 @@ footer {
     color: #121212;
     background-color: #FFF;
     border-style:none; 
-    padding: 24px 0;
+    padding: 24px 0px;
 
 
 }
@@ -895,4 +902,62 @@ footer {
     color:#FFF;
 }
 
-.
+.item-reservas select, .item-reservas input {
+
+    width: 170px;
+    padding:6px;
+    position:relative;
+    top:5px;
+}
+.item-reservas input {
+
+    top:15px;
+}   
+.item-reservas {
+
+    width: 235px;
+    height: 290px;
+    background-color: #00bb77;
+    display: inline-block;
+    position:relative;
+    top:40px;
+}
+
+.item-reservas p {
+
+    color: #FFF;
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+    top: 30px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+}   
+
+
+.item-reservas button {
+    position: relative;
+    background-color: #3a3a3a;
+    color: #FFF;
+    top:35px;
+    padding: 6px 50px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    border-color: #FFF;
+    font-family: 'Roboto', sans-serif;
+}
+.section-reservas {
+    width: 600px;
+    text-align: center;
+}
+
+.ion-ios-location,.ion-android-time,.ion-ios-upload-outline{
+    font-size:30px;
+}
+
+.dia-fixture {
+    font-size:18px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+
+}

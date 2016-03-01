@@ -7,14 +7,14 @@
     <div class="row">
       <input type="hidden" value={{arrayEquipos}} id="arrayEquipos" name="arrayEquipos" />
 	  {% for equipo in equipos %} 
-	      <div class="col-lg-3 col-md-4 list_jugadoras">
+	      <div class="col-lg-4 list_jugadoras">
 	        <h4>{{equipo.nombre}}</h4>
 	        {% if equipo.foto != null %}
-	        	<img src="fotos_equipos/{{equipo.foto}}" style="border-color: {{torneo.rgb}}" width="165px" height="131px">
+	        	<img src="fotos_equipos/{{equipo.foto}}" style="border-color: {{torneo.rgb}}" width="165px" height="131px" padding-top:"0px">
 	        {% else %}
-	        	<img src="imagenes/default_equipo.jpg" style="border-color: {{torneo.rgb}}">
+	        	<img src="imagenes/default_equipo.jpg" style="border-color: {{torneo.rgb}}";padding-top:"0px">
 	        {% endif %}
-	       <button  type="button" class="btn btn-primary jugadoras" style="background-color: {{torneo.rgb}}" data-toggle="modal" data-target="#{{equipo.id}}">
+	       <button  type="button" class="btn btn-primary jugadoras" style="background-color: {{torneo.rgb}};margin-top: -10px;border-style: none;width: 160px;height: 40px;padding:0px;" data-toggle="modal" data-target="#{{equipo.id}}">
 	       <span class="ion-android-arrow-dropright"></span> Jugadoras</button>
 
 	        <!--small modal -->
