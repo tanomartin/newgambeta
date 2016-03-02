@@ -12,10 +12,12 @@ $nombreCategoria = $_POST ['nombreCategoria'];
 $oEquipo = new Equipos ();
 $equipos = $oEquipo->getTorneoCat ( $idTorneoCat );
 
-$oJugadora = new Jugadoras ();
-foreach ( $equipos as $key => $equipo ) {
-	$aJugadoras = $oJugadora->getByEquipoTorneo ( $equipo ['id'], $idTorneoCat );
-	$equipos [$key] ['jugadoras'] = $aJugadoras;
+if ($equipos != null) {
+	$oJugadora = new Jugadoras ();
+	foreach ( $equipos as $key => $equipo ) {
+		$aJugadoras = $oJugadora->getByEquipoTorneo ( $equipo ['id'], $idTorneoCat );
+		$equipos [$key] ['jugadoras'] = $aJugadoras;
+	}
 }
 
 // Cargo la plantilla

@@ -2,15 +2,14 @@
 	<span class="ion-clipboard" style="color: {{ torneo.rgb }}"></span>
 	<h2 style="color: {{ torneo.rgb }}">Noticias - {{ torneo.nombre }} - {{ nombreCategoria }}</h2>
 </div>
-{% for nota in noticias %}
-	<div class="section-torneos">
-		<h4>{{nota.titulo}}</h4>
-		<p>{{nota.desarrollo}}</p>
+<div class="section-torneos">
+	<div class="row">
+		{% for nota in noticias %}
+				<h4>{{nota.titulo}}</h4>
+				<p>{{nota.desarrollo}}</p>
+		{% endfor %}
+		{% if noticias == NULL %}
+				<h4>No existen notas para esta Categoria</h4>
+		{% endif %}
 	</div>
-{% endfor %}
-
-{% if noticias == NULL %}
-	<div class="section-torneos">
-		<h4>No existen notas para esta Categoria</h4>
-	</div>
-{% endif %}
+</div>
