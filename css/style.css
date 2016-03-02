@@ -31,13 +31,6 @@ nav .navbar-nav {
     vertical-align:middle;
 }
 
-.cuadrado-prueba { /* es una prueba */
-    width:450px;
-    height:250px;
-    background-color:#121212;
-    position:relative;
-    top:145px;
-}
 
 header {
     background-image:url("../imagenes/foto-header.jpg");
@@ -646,21 +639,21 @@ footer .contact p {
     padding-left:10px;
 
 }
-footer {
+/*footer {
 
-    padding-top:80px;
-}
+    padding-top:40px;
+} */
 .footer-img {
     float:left;
     position:relative;
     padding-top:25px;
 }
 
-.box-contact {
+/*.box-contact {
 
     background-color:#FFF;    
 
-}
+} */
 .box-contact .container .section-form h3,  .box-contact .container .section-locations h3 {
 
     color:#fa3e5f;
@@ -756,6 +749,7 @@ footer {
 .torneo-izq {
     padding-top:45px;
     display:inline-block;
+    padding-bottom:80px;
 }
 
 .torneo-izq .torneo select {
@@ -890,8 +884,11 @@ footer {
 }
 
 .carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail>img {
-    max-width:30%;
+    max-width:100%;
+    position:relative;
+    top:35px;
 }
+
 
 .col-xs-6 img {
     max-width:65px;
@@ -951,7 +948,7 @@ footer {
     text-align: center;
 }
 
-.ion-ios-location,.ion-android-time,.ion-ios-upload-outline{
+.ion-ios-location,.ion-android-time,.ion-ios-upload-outline,.ion-calendar{
     font-size:30px;
 }
 
@@ -959,5 +956,83 @@ footer {
     font-size:18px;
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
+
+}
+.carousel-control.left {
+    background-image: none;
+    background-image: none;
+    background-image: none;
+    background-image: none;
+    filter: none;
+    background-repeat: repeat-x;
+}
+
+.carousel-control.right {
+    right: 0;
+    left: auto;
+    background-image: none;
+    background-image: none;
+    background-image:none;
+    background-image: none;
+    filter: none;
+    background-repeat: repeat-x;
+}
+
+.carousel-indicators {
+    bottom:0px;
+}
+
+.col-lg-12 article  h3 {
+    color:#fa3e5f;
+
+}
+.col-lg-12,.col-lg-6 {
+    padding-bottom:80px;
+}
+
+#bx-pager,#bx-pager2,#bx-pager3 {
+    text-align:center;
+    position:relative;
+    top:-45px;
+}
+
+.cuadrado-prueba{
+    width:450px;
+    height:250px;
+    background-color:#121212;
+    position:relative;
+    top:124px;
+}
+.section-form2 {
+    width: 600px;
+    position: relative;
+    margin: auto;
+}
+.box-contact .container .section-form2 h3 {
+
+    color:#fa3e5f;
+    text-transform:uppercase;
+    font-family: 'Roboto', sans-serif;
+    display:block;
+    text-align:center;
+    padding-top: 30px;
+}
+
+.box-contact .container .section-form2 h6  {
+
+    color:#fa3e5f;
+    font-family: 'Roboto', sans-serif;
+    display:block;
+    text-align:center;
+    padding-bottom: 25px;
+    padding-top: 15px;
+}
+
+.contacto-back {
+    background-image:url("../imagenes/contacto.jpg");
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-attachment: fixed;
+
 
 }
