@@ -204,13 +204,12 @@ $("#reservas").click(function() {
 	var torneo = $("#torneo").val();
 	var idTorneoCat = $("#idTorneoCat").val();
 	var nombreCategoria = $("#nombreCat").val();
-	var acceso = $("#acceso").val();
 	if (idTorneoCat != 0) {
 		blanquearBotones();
 		$("#acceso").val(acceso);
 		$("#reservas").addClass("active");
 		var redirec = "reservas.php";
-		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, acceso : acceso});
+		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
 	}
 });
 

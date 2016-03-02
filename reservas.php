@@ -55,12 +55,17 @@ if ($acceso == "ok") {
 			'idsession' =>  $_SESSION ['equipoTorneo'] 
 	));
 } else {
+	if ($acceso != 'nok') {
+		$acceso = '';
+	}
+	session_start();
+	session_destroy();
 	$equipos = $oEquipo->getTorneoCat ( $idTorneoCat );
 	$twig->display ( 'reservas.html', array (
 			'torneo' => $torneo,
 			'nombreCategoria' => $nombreCategoria,
 			'equipos' => $equipos,
-			'acceso' => $acceso 
+			'acceso' => $acceso
 	));
 }
 ?>
