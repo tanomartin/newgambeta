@@ -41,7 +41,7 @@ if ($acceso == "ok") {
 		}
 	}
 	
-	$twig->display ( 'menureservas.html', array (
+	$twig->display ( 'reservasmenu.html', array (
 			'torneo' => $torneo,
 			'nombreCategoria' => $nombreCategoria,
 			'equipo' => $equipo [0],

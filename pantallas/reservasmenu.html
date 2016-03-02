@@ -52,24 +52,48 @@
 					{% endif %}
 				{% endif %}
 			{% else %}
-				<div>Confirmarción de Partido</div>
-				{% for partido in partidos %}
-					<div>{{ partido.equipo1 }} vs {{ partido.equipo2 }}</div>
-					{% if partido.idEquipoTorneo1 == idsession %}
-						{% if not partido.confirmado %}
-							<button id="confirmar" onclick="confirmarPartido('{{ partido.id }}')">Confirmar Partido</button>
-						{% else %}
-							<div>Partido Confirmado</div>
-						{% endif %}
-					{% endif %}
-					{% if partido.idEquipoTorneo2 == idsession %}
-						{% if not partido.confirmado %}
-							<button id="confirmar" onclick="confirmarPartido('{{ partido.id }}')">Confirmar Partido</button>
-						{% else %}
-							<div>Partido Confirmado</div>
-						{% endif %}
-					{% endif %}
-				{% endfor %}
+				<h4>Confirmar de Partido</h4>
+				<div class="row">
+					<div class="col-lg-12">
+						<table class="table" id="tablaFixture">
+							<thead>
+								<tr class='principal-table' style='background-color: {{torneo.rgb}}' >
+									<th><span class='ion-ios-location'></span></th>
+									<th><span class='ion-calendar'></span></th>
+									<th><span class='ion-android-time'></span></th>
+									<th>Local</th>
+									<th>vs</th>
+									<th>Visitante</th>
+									<th></th>
+								</tr>
+							</thead>
+							{% for partido in partidos %}
+								<tr style='font-size: 16px'>
+								  <td>{{ partido.sede }}</td>
+								  <td>{{ partido.fechaPartido }}</td>
+								  <td>{{ partido.horaPartido }}</td>
+								  <td>{{ partido.equipo1 }}</td>
+								  <td>vs</td>
+								  <td>{{ partido.equipo2 }}</td>
+									{% if partido.idEquipoTorneo1 == idsession %}
+										{% if not partido.confirmado %}
+											<td><button id="confirmar" onclick="confirmarPartido('{{ partido.id }}')">Confirmar Partido</button></td>
+										{% else %}
+											<td>Partido Confirmado</td>
+										{% endif %}
+									{% endif %}
+									{% if partido.idEquipoTorneo2 == idsession %}
+										{% if not partido.confirmado %}
+											<td><button id="confirmar" onclick="confirmarPartido('{{ partido.id }}')">Confirmar Partido</button></td>
+										{% else %}
+											<td><div>Partido Confirmado</div></td>
+										{% endif %}
+									{% endif %}				  
+								</tr>
+							{% endfor %}
+						</table>
+					</div>
+				</div>
 			{% endif %}
 		{% endif %}
 	{% endif %}
