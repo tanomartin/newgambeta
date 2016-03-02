@@ -8,8 +8,9 @@ include_once "model/reservas.php";
 $torneo = unserialize ( $_POST ['torneo'] );
 $idTorneoCat = $_POST ['idTorneoCat'];
 $nombreCategoria = $_POST ['nombreCategoria'];
-$acceso = $_POST ['acceso'];
 
+session_start();
+$acceso = $_SESSION ['acceso'];
 $oEquipo = new Equipos ();
 // Cargo la plantilla
 if ($acceso == "ok") {

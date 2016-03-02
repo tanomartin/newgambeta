@@ -41,19 +41,14 @@
 <script>
 
 $("#reservar").click(function() {
-	var idTorneo = $("#idTorneo").val();
+	var torneo = $("#torneo").val();
 	var idTorneoCat = $("#idTorneoCat").val();
+	var nombreCategoria = $("#nombreCat").val();
 	var idEquipo = $("#equipo").val();
 	var password = $("#password").val();
 	if (idTorneo != 0 && idTorneoCat !=  0 && idEquipo != 0 && password != 0) {			
-		var url = 'controlIngreso.php';
-		var form = $("<form action='" + url + "' method='post' style='display: none'>" +
-		  				"<input type='hidden' name='idTorneo' value='" + idTorneo + "' />" +
-		  				"<input type='hidden' name='idTorneoCat' value='" + idTorneoCat + "' />" +
-		  				"<input type='hidden' name='idEquipo' value='" + idEquipo + "' />" +
-		  				"<input type='hidden' name='password' value='" + password + "' />" +
-		  			 "</form>");
-		$(form).submit();
+		var redirec = 'controlIngresoAdentro.php';
+		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, idEquipo: idEquipo, password: password});
 	} else {
 		$('#modalErrorIngreso').modal('show');
 	}		

@@ -4,6 +4,7 @@
 </div>
 <div class="section-torneos">
 	<h3 style="color: {{ torneo.rgb }}">{{ equipo.nombre }}</h3>
+	<button id="logout">Salir</button>
 	{% if fecha_activa != null and idReserva == 0 and partidos == null and fecha_activa.puedeReservar %}
 		<form id="carga_reserva" name="carga_reserva">
 			<div>Horarios Disponibles</div>
@@ -83,8 +84,16 @@ function confirmarPartido(idPartido) {
 	var idTorneoCat = $("#idTorneoCat").val();
 	var nombreCategoria = $("#nombreCat").val();
 	var redirec = "reservasConfirmarPartido.php";
-	$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, idPartido: idPartido, acceso: "ok"});
+	$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, idPartido: idPartido});
 }
+
+$("#logout").click(function() {
+	var torneo = $("#torneo").val();
+	var idTorneoCat = $("#idTorneoCat").val();
+	var nombreCategoria = $("#nombreCat").val();
+	var redirec = "reservasLogout.php";
+	$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
+});
 
 $("#guardarReserva").click(function() {
 	$('#error').html("");
@@ -135,7 +144,7 @@ $("#guardarReserva").click(function() {
 		var observacion = $("#observacion").val();
 		if (idTorneoCat != 0) {
 			var redirec = "reservasGuardar.php";
-			$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, horas: horas, fechaLibre: fechaLibre , idFecha: idFecha, observacion: observacion, acceso: "ok"});
+			$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, horas: horas, fechaLibre: fechaLibre , idFecha: idFecha, observacion: observacion});
 		}
 	} 
 });

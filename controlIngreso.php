@@ -16,16 +16,16 @@
 		$ids = explode("-",$_POST['idEquipo']);
 		$ingresa = $oEquipos->accesoCorrecto($ids[0], $ids[1], $_POST['password']);
 		if ($ingresa) {
-			$respuesta = "ok";
 			session_start();
 			$_SESSION['equipo'] =$ids[0];
 			$_SESSION['equipoTorneo'] = $ids[1];
 			$_SESSION['idTorneoCat'] = $idTorneoCat;
+			$_SESSION['acceso'] = "ok";
 		} else { 
-			$respuesta = "nok";
+			$_SESSION['acceso'] = "nok";
 		}
 	} else {
-		$respuesta = "nok";
+		$_SESSION['acceso'] = "nok";
 	}	
 	
 	$index = 0;
@@ -52,6 +52,6 @@
 			'categorias' => serialize ( $aTorneoCat ),
 			'nombreCategoria' => $nombreCategoriaSelect,
 			'torneoObj' => $atorneo[0],
-			'acceso' => $respuesta
+			'acceso' => $_SESSION['acceso']
 	) );
 ?>
