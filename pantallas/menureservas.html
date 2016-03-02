@@ -5,18 +5,23 @@
 <div class="section-torneos">
 	<h3 style="color: {{ torneo.rgb }}">{{ equipo.nombre }}</h3>
 	{% if fecha_activa != null and idReserva == 0 and partidos == null and fecha_activa.puedeReservar %}
-		{% if horas_fecha != null %}
-			{% for horas in horas_fecha %}
-				<input type='checkbox' id='horas' name='hora{{horas.id}}' value='{{horas.id}}' onclick='controlLibre()' /> {{horas.descripcion}}
-			{% endfor %}
-		{% endif %}
-		{% if not fecha_libre %}
-			<div>Fecha Libre <input type='checkbox' name='libre' id='libre' value='libre' onclick='controlHoras()'></input></div>
-		{% else %}	
-			<div>El equipo ya pidio fecha libre</div>
-		{% endif %}
-		<div><textarea name="observacion" id="observacion" placeholder="Observacion"></textarea></div>
-		<button name="reservar" id="reservar">Reservar</button>
+		<form id="carga_reserva" name="carga_reserva">
+			<div>Horarios Disponibles</div>
+			<input type="text" id="idFecha" name="idFecha" value="{{ fecha_activa.id }}"/>
+			<div id="error" style="color:#CC3300"></div>
+			{% if horas_fecha != null %}
+				{% for horas in horas_fecha %}
+					<input type='checkbox' id='horas' name='hora{{horas.id_horas_cancha}}' value='{{horas.id_horas_cancha}}' onclick='controlLibre()' /> {{horas.descripcion}}{{horas.id}}
+				{% endfor %}
+			{% endif %}
+			{% if not fecha_libre %}
+				<div>Fecha Libre <input type='checkbox' name='libre' id='libre' value='libre' onclick='controlHoras()'></input></div>
+			{% else %}	
+				<div>El equipo ya pidio fecha libre</div>
+			{% endif %}
+			<div><textarea name="observacion" id="observacion" placeholder="Observacion"></textarea></div>
+		</form>
+		<button id="guardarReserva">Reservar</button>
 	{% else %}
 		{% if fecha_activa == null %}
 			<div>No hay fecha activa</div>
@@ -51,14 +56,14 @@
 					<div>{{ partido.equipo1 }} vs {{ partido.equipo2 }}</div>
 					{% if partido.idEquipoTorneo1 == idsession %}
 						{% if not partido.confirmado %}
-							<button name="confirmar" id="confirmar">Confirmar</button>
+							<button id="confirmar" onclick="confirmarPartido('{{ partido.id }}')">Confirmar Partido</button>
 						{% else %}
 							<div>Partido Confirmado</div>
 						{% endif %}
 					{% endif %}
 					{% if partido.idEquipoTorneo2 == idsession %}
 						{% if not partido.confirmado %}
-							<button name="confirmar" id="confirmar">Confirmar</button>
+							<button id="confirmar" onclick="confirmarPartido('{{ partido.id }}')">Confirmar Partido</button>
 						{% else %}
 							<div>Partido Confirmado</div>
 						{% endif %}
@@ -67,4 +72,115 @@
 			{% endif %}
 		{% endif %}
 	{% endif %}
+	
 </div>
+
+
+<script>
+
+function confirmarPartido(idPartido) {
+	var torneo = $("#torneo").val();
+	var idTorneoCat = $("#idTorneoCat").val();
+	var nombreCategoria = $("#nombreCat").val();
+	var redirec = "reservasConfirmarPartido.php";
+	$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, idPartido: idPartido, acceso: "ok"});
+}
+
+$("#guardarReserva").click(function() {
+	$('#error').html("");
+	var libre = document.getElementById("libre");
+	var grupo = document.getElementById("carga_reserva").horas;
+	var control = false;
+	var horas = new Array();
+	var fechaLibre = 0;
+	if (libre != null) {
+		if (libre.checked) { 	
+			control = true;
+			fechaLibre = 1;
+		} else {
+			var controlCheck = 0;
+			for (var i = 0; lcheck = grupo[i]; i++) {
+				if (lcheck.checked) {
+					horas[controlCheck] = lcheck.value;
+					controlCheck++;
+ 				}
+			}
+			if (controlCheck < 4) {
+				$('#error').html("* Debe seleccionar como mínimo 4 horas");
+				control = false;
+			} else {
+				control = true;
+			}
+		}	
+	} else {
+		var controlCheck = 0;
+		for (var i = 0; lcheck = grupo[i]; i++) {
+			if (lcheck.checked) {
+				controlCheck++;
+			}
+		}
+		if (controlCheck < 4) {
+			$('#error').html("* Debe seleccionar como mínimo 4 horas");
+			control = false;
+		} else {
+			control = true;
+		}
+	}
+	
+	if (control) {
+		var torneo = $("#torneo").val();
+		var idTorneoCat = $("#idTorneoCat").val();
+		var nombreCategoria = $("#nombreCat").val();
+		var idFecha = $("#idFecha").val();
+		var observacion = $("#observacion").val();
+		if (idTorneoCat != 0) {
+			var redirec = "reservasGuardar.php";
+			$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, horas: horas, fechaLibre: fechaLibre , idFecha: idFecha, observacion: observacion, acceso: "ok"});
+		}
+	} 
+});
+
+
+
+function controlLibre() {
+ 	$('#error').html("");
+	var grupo = document.getElementById("carga_reserva").horas;
+	var controlCheck = 0;
+	for (var i = 0; lcheck = grupo[i]; i++) {
+        if (lcheck.checked) {
+            controlCheck = 1;
+        }
+    }
+	if (controlCheck == 1) {
+		document.getElementById("libre").disabled = true;
+	} else {
+		document.getElementById("libre").disabled = false;
+	}
+}
+
+function controlHoras() {
+	$('#error').html("");
+	var libre = document.getElementById("libre");
+	var grupo = document.getElementById("carga_reserva").horas;
+	var total = grupo.length;
+	if (libre.checked) { 	
+		if (total == null) {
+			grupo.disabled = true;
+		} else {
+			for (var i = 0; lcheck = grupo[i]; i++) {
+				lcheck.disabled = true;
+			}
+		}
+	 } else {
+	 	if (total == null) {
+			grupo.disabled = false;
+		} else {
+			for (i = 0; lcheck = grupo[i]; i++) {
+				lcheck.disabled = false;
+			}
+		}
+	 }
+}
+
+
+</script>

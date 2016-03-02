@@ -107,7 +107,6 @@
 				</div>
 			</div>
 			<div class="item-two">
-
 				<p>Ingresá tu Torneo</p>
 				<div class="foot-ball">
 					<span class="ion-ios-football-outline"></span>
@@ -143,21 +142,19 @@
 				</div>
 			<div class="item-three">
 				<p>Reservá tu horario</p>
-				<form>
-					<select name="torneoIngreso" id="torneoIngreso">
-						<option value="0">- Torneo -</option> 
-						{% for torneo in torneos %}
-							<option value="{{ torneo.id }}">{{ torneo.nombre }}</option> 
-						{% endfor %}
-					</select> 
-					<select name="categoriaIngreso" id="categoriaIngreso">
-						<option value="0">- Categoria -</option>
-					</select>
-					<select name="equipo" id="equipo">
-						<option value="0">- Equipo -</option>
-					</select>
-					<input type="password" name="password" id="password" placeholder="Ingresá tu contraseña" />
-				</form>
+				<select name="torneoIngreso" id="torneoIngreso">
+					<option value="0">- Torneo -</option> 
+					{% for torneo in torneos %}
+						<option value="{{ torneo.id }}">{{ torneo.nombre }}</option> 
+					{% endfor %}
+				</select> 
+				<select name="categoriaIngreso" id="categoriaIngreso">
+					<option value="0">- Categoria -</option>
+				</select>
+				<select name="equipo" id="equipo">
+					<option value="0">- Equipo -</option>
+				</select>
+				<input type="password" name="password" id="password" placeholder="Ingresá tu contraseña" />
 				<button id="reservar">Reservar</button>
 			</div>
 			<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="modalErrorIngreso">

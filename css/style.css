@@ -86,7 +86,6 @@ header {
 }
 
 .item-two select {
-
     padding: 8px;
     border-radius: 4px;
     border-style: none;
@@ -138,17 +137,16 @@ header {
 
 
 .item-three input, .item-three select {
-
 	position: relative;
     top: 40px;
     padding: 8px;
     border-radius: 4px;
     border-style: none;
     margin-bottom:5px;
+    margin-left:25px;
 }
 
 .item-three form {
-
 	padding-left:25px;
 }
 
