@@ -55,9 +55,6 @@ if ($acceso == "ok") {
 			'idsession' =>  $_SESSION ['equipoTorneo'] 
 	));
 } else {
-	if ($acceso != 'nok') {
-		$acceso = '';
-	}
 	session_start();
 	session_destroy();
 	$equipos = $oEquipo->getTorneoCat ( $idTorneoCat );
