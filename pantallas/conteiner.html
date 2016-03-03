@@ -90,14 +90,13 @@ $(document).ready(function() {
 	var idTorneoCat = $("#idTorneoCat").val();
 	var nombreCategoria = $("#nombreCat").val();
 	var acceso = $("#acceso").val();
+	blanquearBotones();
 	if (acceso == "nok" || acceso == "ok") {
-		blanquearBotones();
 		$("#reservas").addClass("active");
 		var redirec = "reservas.php";
 		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, acceso : acceso});
 	} else {
 		if (idTorneoCat != 0) {
-			blanquearBotones();
 			$("#noticias").addClass("active");
 			var redirec = "noticias.php";
 			$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
@@ -110,19 +109,17 @@ $(document).ready(function() {
 
 $("#categorias").change(function() {
 	$("#categorias option:selected").each(function() {
-		$("#acceso").val("");
 		var idTorneoCat = $("#categorias option:selected").val();
 		var nombreCategoria = $("#categorias option:selected").text();
 		var torneo = $("#torneo").val();
 		$("#idTorneoCat").val(idTorneoCat);
 		$("#nombreCat").val(nombreCategoria);	
+		blanquearBotones();
 		if (idTorneoCat != 0) {
-			blanquearBotones();
 			$("#noticias").addClass("active");
 			var redirec = "noticias.php";
 			$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
 		} else {
-			blanquearBotones();
 			var redirec = "dafault.php";
 			$("#container-2").load(redirec, {torneo: torneo});
 		}
@@ -234,7 +231,6 @@ $("#reservas").click(function() {
 	var nombreCategoria = $("#nombreCat").val();
 	if (idTorneoCat != 0) {
 		blanquearBotones();
-		$("#acceso").val(acceso);
 		$("#reservas").addClass("active");
 		var redirec = "reservas.php";
 		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
