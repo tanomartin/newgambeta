@@ -27,6 +27,24 @@ foreach ( $aTorneoCat as $categoria ) {
 	$index ++;
 }
 
+if(isset($_POST['idEquipo']) && isset($_POST['password'])) {
+	include_once "model/equipos.php";
+	session_start();
+	if ($_POST['idEquipo'] != 0 && $_POST['password'] != "") {
+		$oEquipos = new Equipos();
+		$ids = explode("-",$_POST['idEquipo']);
+		$ingresa = $oEquipos->accesoCorrecto($ids[0], $ids[1], $_POST['password']);
+		if ($ingresa) {
+			$_SESSION['equipo'] =$ids[0];
+			$_SESSION['equipoTorneo'] = $ids[1];
+			$_SESSION['acceso'] = "ok";
+		} else {
+			$_SESSION['acceso'] = "nok";
+		}
+	} else {
+		$_SESSION['acceso'] = "nok";
+	}
+}
 
 // Cargo la plantilla
 $twig->display ( 'torneos.html', array (
@@ -34,7 +52,8 @@ $twig->display ( 'torneos.html', array (
 		'torneo' => serialize  ( $atorneo [0] ),
 		'categorias' => serialize  ( $aTorneoCat ),
 		'nombreCategoria' => $nombreCategoriaSelect,
-		'torneoObj' => $atorneo[0]
+		'torneoObj' => $atorneo[0],
+		'acceso' => $_SESSION['acceso']
 ) );
 
 ?>

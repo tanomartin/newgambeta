@@ -465,7 +465,7 @@
 			var idEquipo = $("#equipo").val();
 			var password = $("#password").val();
 			if (idTorneo != 0 && idTorneoCat !=  0 && idEquipo != 0 && password != 0) {			
-				var url = 'controlIngreso.php';
+				var url = 'torneos.php';
 				var form = $("<form action='" + url + "' method='post' style='display: none'>" +
 				  				"<input type='hidden' name='idTorneo' value='" + idTorneo + "' />" +
 				  				"<input type='hidden' name='idTorneoCat' value='" + idTorneoCat + "' />" +

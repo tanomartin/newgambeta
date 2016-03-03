@@ -47,7 +47,7 @@ $("#reservar").click(function() {
 	var idEquipo = $("#equipo").val();
 	var password = $("#password").val();
 	if (idTorneo != 0 && idTorneoCat !=  0 && idEquipo != 0 && password != 0) {			
-		var redirec = 'controlIngresoAdentro.php';
+		var redirec = 'controlIngreso.php';
 		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, idEquipo: idEquipo, password: password});
 	} else {
 		$('#modalErrorIngreso').modal('show');
