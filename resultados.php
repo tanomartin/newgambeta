@@ -2,7 +2,7 @@
 include_once "include/templateEngine.inc.php";
 include_once "model/equipos.php";
 
-$torneo = unserialize($_POST['torneo']);
+$torneo = unserialize(stripslashes($_POST['torneo']));
 $idTorneoCat = $_POST['idTorneoCat'];
 $nombreCategoria = $_POST['nombreCategoria'];
 

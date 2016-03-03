@@ -5,7 +5,7 @@ include_once "model/fechas.php";
 include_once "model/fixture.php";
 include_once "model/reservas.php";
 
-$torneo = unserialize ( $_POST ['torneo'] );
+$torneo = unserialize (stripslashes($_POST ['torneo']));
 $idTorneoCat = $_POST ['idTorneoCat'];
 $nombreCategoria = $_POST ['nombreCategoria'];
 

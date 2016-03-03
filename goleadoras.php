@@ -4,7 +4,7 @@ include_once 'model/torneos.php';
 include_once "model/torneos.categorias.php";
 include_once "model/resultados.php";
 
-$torneo = unserialize($_POST['torneo']);
+$torneo = unserialize(stripslashes($_POST['torneo']));
 $idTorneoCat = $_POST['idTorneoCat'];
 $nombreCategoria = $_POST['nombreCategoria'];
 
