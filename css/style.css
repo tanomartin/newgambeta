@@ -1034,3 +1034,97 @@ footer .contact p {
 
 
 }
+
+/* aca empieza css seccion reservas */
+
+.salir {
+    background-color:#fb8153;
+    padding:8px 20px;
+    border-radius:8px;
+    display:inline-block;
+    float:right;
+    color:#FFF;
+    position:relative;
+    top:30px;
+    border-style:none;
+
+}
+
+.container-2 .section-torneos h3 {
+    color:#fa3e5f;
+    display:inline-block;
+    position:relative;
+    top:15px;
+
+}
+
+.texto-reservas {
+    text-align:center;
+    top:100px;
+    position:relative;
+}
+.texto-horarios {
+    text-align:center;
+    top:50px;
+    position:relative;
+}
+
+.seleccion-horarios {
+    text-align:center;
+    color:red;
+}
+.container-checkbox {
+    display:inline-block;
+    position:relative;
+    top:50px;
+    padding:0px 70px;
+}
+
+.fechaLibre {
+    position:relative;
+    top:70px;
+    text-align:center;
+
+}
+.reservar {
+    text-align: center;
+    top: 90px;
+    position: relative
+
+}
+
+.reservar button {
+    background-color:#01bd73;
+    padding:8px 20px;
+    border-radius:8px;
+    color:#FFF;
+    border-style:none;
+}
+.observaciones {
+    position:relative;
+    text-align:center;
+    top:80px;
+}
+.observaciones textarea {
+    width:400px;
+    height:100px;
+}
+.ion-ios-location,.ion-calendar,.ion-android-time,.ion-checkmark {
+    top:0;
+    position:relative;
+    color:#FFF;
+    font-size:30px;
+}
+.ion-checkmark-circled {
+    font-size:40px;
+    color:#01bd73;
+}
+
+td button {
+    background-color:#01bd73;
+    padding:8px 10px;
+    border-radius:8px;
+    color:#FFF;
+    border-style:none;
+    font-size:14px;
+}

@@ -8,7 +8,7 @@
 	{% if fecha_activa != null and idReserva == 0 and partidos == null and fecha_activa.puedeReservar %}
 		<form id="carga_reserva" name="carga_reserva">
 			<div>Horarios Disponibles</div>
-			<input type="text" id="idFecha" name="idFecha" value="{{ fecha_activa.id }}"/>
+			<input type="hidden" id="idFecha" name="idFecha" value="{{ fecha_activa.id }}"/>
 			<div id="error" style="color:#CC3300"></div>
 			{% if horas_fecha != null %}
 				{% for horas in horas_fecha %}
