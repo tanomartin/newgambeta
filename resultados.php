@@ -1,6 +1,5 @@
 <?php 
 include_once "include/templateEngine.inc.php";
-include_once 'include/analyticstracking.php';
 include_once "model/equipos.php";
 
 $torneo = unserialize(stripslashes($_POST['torneo']));
