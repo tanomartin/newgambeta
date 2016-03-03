@@ -4,49 +4,58 @@
 </div>
 <div class="section-torneos">
 	<h3 style="color: {{ torneo.rgb }}">{{ equipo.nombre }}</h3>
-	<button id="logout">Salir</button>
+	<button class="salir" id="logout">Salir</button>
 	{% if fecha_activa != null and idReserva == 0 and partidos == null and fecha_activa.puedeReservar %}
 		<form id="carga_reserva" name="carga_reserva">
-			<div>Horarios Disponibles</div>
+			 <div class="texto-horarios">
+        		<p>Horarios Disponibles</p>
+        		<p class="seleccion-horarios" id="error"></p>
+      		</div>
 			<input type="hidden" id="idFecha" name="idFecha" value="{{ fecha_activa.id }}"/>
-			<div id="error" style="color:#CC3300"></div>
-			{% if horas_fecha != null %}
-				{% for horas in horas_fecha %}
-					<input type='checkbox' id='horas' name='hora{{horas.id_horas_cancha}}' value='{{horas.id_horas_cancha}}' onclick='controlLibre()' /> {{horas.descripcion}}{{horas.id}}
-				{% endfor %}
-			{% endif %}
+			<div class="container-checkbox"> 
+				{% if horas_fecha != null %}
+					{% for horas in horas_fecha %}
+						 <div class="checkbox"><label><input type='checkbox' id='horas' name='hora{{horas.id_horas_cancha}}' value='{{horas.id_horas_cancha}}' onclick='controlLibre()' /> {{horas.descripcion}}{{horas.id}}</label></div>
+					{% endfor %}
+				{% endif %}
+			</div>
 			{% if not fecha_libre %}
-				<div>Fecha Libre <input type='checkbox' name='libre' id='libre' value='libre' onclick='controlHoras()'></input></div>
+				<div class="fechaLibre checkbox"><label><input type='checkbox' name='libre' id='libre' value='libre' onclick='controlHoras()' />Fecha Libre </label></div>
 			{% else %}	
 				<div>El equipo ya pidio fecha libre</div>
 			{% endif %}
-			<div><textarea name="observacion" id="observacion" placeholder="Observacion"></textarea></div>
+			<div class="observaciones"><textarea name="observacion" id="observacion" placeholder="Observacion"></textarea></div>
 		</form>
-		<button id="guardarReserva">Reservar</button>
+		<div class="reservar"><button id="guardarReserva">Reservar</button></div>
 	{% else %}
 		{% if fecha_activa == null %}
-			<div>No hay fecha activa</div>
+			<div class="texto-reservas"><p>No hay Fecha Activa</p></div>
 		{% else %}
 			{% if partidos == null %}
 				{% if reserva.fecha_libre == 1 %}
-					<div>El equipo pidio Fecha Libre</div>
+					<div class="texto-horarios">
+						<p>El equipo pidio Fecha Libre</p>
+						<p><b>Observacion:</b></p>
+						<p>{{ reserva.observacion }}</p>
+					</div>
 				{% else %}	
 					{% if reserva.fecha_libre == 2 %}
-						<div>La organizacion otorgo Fecha Libre</div>
+						<div class="texto-horarios"><p>La organizacion otorgo Fecha Libre</p></div>
 					{% else %}	
 						{% if detalleReserva != null %}
-							<div>Horarios Pedidos</div>
-							<ol>
-							{% for detalle in detalleReserva %}
-								<li>{{detalle.descripcion}}</li>
-							{% endfor %}
-							</ol>
-							<div>Observación: {{ reserva.observacion }}</div>
+							<div class="texto-horarios">
+								<p><b>Horarios Pedidos</b></p>
+								{% for detalle in detalleReserva %}
+									<p>{{detalle.descripcion}}</p>
+								{% endfor %}
+								<p><b>Observacion:</b></p>
+								<p>{{ reserva.observacion }}</p>
+							</div>
 						{% else %}
 							{% if not fecha_activa.puedeReservar %}
-								<div>Ha concluido el tiempo para poder realizar la preferencia horaria</div>
+								<div class="texto-reservas">Ha concluido el tiempo para poder realizar la preferencia horaria</div>
 							{% else %}
-								<div>ERROR AL GRABAR LA RESERVA.<BR>POR FAVOR COMUNIQUESE CON LA ORGANIZACION.</div>
+								<div class="texto-reservas">ERROR AL GRABAR LA RESERVA.<BR>POR FAVOR COMUNIQUESE CON LA ORGANIZACION.</div>
 							{% endif %}
 						{% endif %}
 					{% endif %}
@@ -58,13 +67,14 @@
 						<table class="table" id="tablaFixture">
 							<thead>
 								<tr class='principal-table' style='background-color: {{torneo.rgb}}' >
-									<th><span class='ion-ios-location'></span></th>
-									<th><span class='ion-calendar'></span></th>
-									<th><span class='ion-android-time'></span></th>
-									<th>Local</th>
-									<th>vs</th>
-									<th>Visitante</th>
-									<th></th>
+									 <th><div class="ion-ios-location"></div></th>
+						             <th><div class="ion-calendar"></div></th>
+						             <th><div class="ion-android-time"></div></th>
+						             <th><img src="imagenes/silbato.png"></div></th>
+						             <th>Local</th>
+						             <th>vs</th>
+						             <th>Visitante</th>
+						             <th><div class="ion-checkmark"></div></th>
 								</tr>
 							</thead>
 							{% for partido in partidos %}
@@ -72,6 +82,7 @@
 								  <td>{{ partido.sede }}</td>
 								  <td>{{ partido.fechaPartido }}</td>
 								  <td>{{ partido.horaPartido }}</td>
+								  <td>{{ partido.arbitro }}</td>
 								  <td>{{ partido.equipo1 }}</td>
 								  <td>vs</td>
 								  <td>{{ partido.equipo2 }}</td>
@@ -79,16 +90,16 @@
 										{% if not partido.confirmado %}
 											<td><button id="confirmar" onclick="confirmarPartido('{{ partido.id }}')">Confirmar Partido</button></td>
 										{% else %}
-											<td>Partido Confirmado</td>
+											<td><div class="ion-checkmark-circled"></div></td>
 										{% endif %}
 									{% endif %}
 									{% if partido.idEquipoTorneo2 == idsession %}
 										{% if not partido.confirmado %}
 											<td><button id="confirmar" onclick="confirmarPartido('{{ partido.id }}')">Confirmar Partido</button></td>
 										{% else %}
-											<td><div>Partido Confirmado</div></td>
+											<td><div class="ion-checkmark-circled"></div></td>
 										{% endif %}
-									{% endif %}				  
+									{% endif %}
 								</tr>
 							{% endfor %}
 						</table>
@@ -139,7 +150,7 @@ $("#guardarReserva").click(function() {
  				}
 			}
 			if (controlCheck < 4) {
-				$('#error').html("* Debe seleccionar como mínimo 4 horas");
+				$('#error').html("* Debe seleccionar como minimo 4 horas");
 				control = false;
 			} else {
 				control = true;
@@ -153,7 +164,7 @@ $("#guardarReserva").click(function() {
 			}
 		}
 		if (controlCheck < 4) {
-			$('#error').html("* Debe seleccionar como mínimo 4 horas");
+			$('#error').html("* Debe seleccionar como minimo 4 horas");
 			control = false;
 		} else {
 			control = true;
