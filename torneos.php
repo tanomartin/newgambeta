@@ -3,7 +3,7 @@ include_once "include/templateEngine.inc.php";
 include_once 'model/torneos.php';
 include_once "model/torneos.categorias.php";
 
-if(sizeof($_POST) == 0) {
+if(sizeof($_POST) == 0 || !isset($_POST ['idTorneo']) || !isset($_POST ['idTorneoCat'])) {
 	header('Location: index.php');
 }
 
@@ -32,23 +32,31 @@ foreach ( $aTorneoCat as $categoria ) {
 }
 
 if(isset($_POST['idEquipo']) && isset($_POST['password'])) {
+	$acceso = "";
 	include_once "model/equipos.php";
-	session_start();
 	if ($_POST['idEquipo'] != 0 && $_POST['password'] != "") {
 		$oEquipos = new Equipos();
 		$ids = explode("-",$_POST['idEquipo']);
 		$ingresa = $oEquipos->accesoCorrecto($ids[0], $ids[1], $_POST['password']);
 		if ($ingresa) {
+			session_start();
 			$_SESSION['equipo'] =$ids[0];
 			$_SESSION['equipoTorneo'] = $ids[1];
-			$_SESSION['acceso'] = "ok";
+			$acceso = "ok";
 		} else {
-			$_SESSION['acceso'] = "nok";
+			$acceso = "nok";
 		}
 	} else {
-		$_SESSION['acceso'] = "nok";
+		$acceso = "nok";
 	}
-}
+} 
+
+$_SESSION["visits"] = $_SESSION["visits"] + 1;
+if ($_SESSION["visits"] > 1) {
+	unset($_SESSION['equipo']);
+	unset($_SESSION['equipoTorneo']);
+	$acceso = "";
+} 
 
 // Cargo la plantilla
 $twig->display ( 'torneos.html', array (
@@ -57,7 +65,7 @@ $twig->display ( 'torneos.html', array (
 		'categorias' => serialize  ( $aTorneoCat ),
 		'nombreCategoria' => $nombreCategoriaSelect,
 		'torneoObj' => $atorneo[0],
-		'acceso' => $_SESSION['acceso']
+		'acceso' => $acceso
 ) );
 
 ?>

@@ -10,6 +10,9 @@ $torneos = $oTorneos->get();
 $oSedes = new Sedes();
 $sedes = $oSedes->get();
 
+session_start();
+$_SESSION["visits"] = 0;
+
 // Cargo la plantilla
 $twig->display('index.html', array("torneos"=> $torneos,"sedes"=> $sedes));
 

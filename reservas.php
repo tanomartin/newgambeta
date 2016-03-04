@@ -9,8 +9,11 @@ $torneo = unserialize (stripslashes($_POST ['torneo']));
 $idTorneoCat = $_POST ['idTorneoCat'];
 $nombreCategoria = $_POST ['nombreCategoria'];
 
+if (isset($_POST ['acceso'])) {
+	$acceso = $_POST ['acceso'];
+}
+
 session_start();
-$acceso = $_SESSION ['acceso'];
 $oEquipo = new Equipos ();
 // Cargo la plantilla
 if ($acceso == "ok") {
@@ -21,7 +24,7 @@ if ($acceso == "ok") {
 	$fecha_activa = $oFechas->getFechaActiva($idTorneoCat);
 	if ($fecha_activa != NULL) {
 		$oFixture = new Fixture();
-		$partidos = $oFixture->getByFechaEquipo($fecha_activa["id"], $_SESSION ['equipoTorneo']);
+		$partidos = $oFixture->getByFechaEquipo($fecha_activa["id"],$_SESSION ['equipoTorneo']);
 		if ($partidos == NULL) {
 			$idReserva = $oEquipo->tieneReserva($fecha_activa["id"],$_SESSION['equipo']);
 			if ($idReserva == 0) {
@@ -55,8 +58,6 @@ if ($acceso == "ok") {
 			'idsession' =>  $_SESSION ['equipoTorneo'] 
 	));
 } else {
-	session_start();
-	session_destroy();
 	$equipos = $oEquipo->getTorneoCat ( $idTorneoCat );
 	$twig->display ( 'reservas.html', array (
 			'torneo' => $torneo,

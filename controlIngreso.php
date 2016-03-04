@@ -11,12 +11,12 @@
 		if ($ingresa) {
 			$_SESSION['equipo'] = $ids[0];
 			$_SESSION['equipoTorneo'] = $ids[1];
-			$_SESSION['acceso'] = "ok";
+			$acceso = "ok";
 		} else {
-			$_SESSION['acceso'] = "nok";
+			$acceso = "nok";
 		}
 	} else {
-		$_SESSION['acceso'] = "nok";
+		$acceso = "nok";
 	} 	
 	
 	include_once "reservas.php";
