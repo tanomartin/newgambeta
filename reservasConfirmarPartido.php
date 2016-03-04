@@ -10,6 +10,7 @@ $oPartido = new Fixture();
 $idPartido = $_POST['idPartido'];
 $oPartido -> confirmarPartido($idPartido, $_SESSION['equipo']);
 
+$acceso = "ok";
 include_once "reservas.php";
 
 ?>

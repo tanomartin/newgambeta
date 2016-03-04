@@ -30,6 +30,7 @@ if ($valores["id_fecha"] != 0) {
 	}
 }
 
+$acceso = "ok";
 include_once "reservas.php";
 
 ?>
