@@ -4,6 +4,7 @@ include_once "model/equipos.php";
 include_once "model/fechas.php";
 include_once "model/fixture.php";
 include_once "model/reservas.php";
+include_once "include/fechas.php";
 
 $torneo = unserialize (stripslashes($_POST ['torneo']));
 $idTorneoCat = $_POST ['idTorneoCat'];
@@ -41,6 +42,12 @@ if ($acceso == "ok") {
 			foreach ($partidos as $clave => $partido) {
 				$partidos[$clave]['confirmado'] = $oFixture->partidoConfirmado($partido['id'],$_SESSION['equipo']);
 			}
+		}
+	}
+	
+	if (sizeof($partidos) != 0) {
+		foreach($partidos as $key => $partido) {
+			$partidos[$key]['fechaPartido'] = cambiaf_a_normal($partido['fechaPartido']);
 		}
 	}
 	
