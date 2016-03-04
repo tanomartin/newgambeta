@@ -3,6 +3,10 @@ include_once "include/templateEngine.inc.php";
 include_once 'model/torneos.php';
 include_once "model/torneos.categorias.php";
 
+if(sizeof($_POST) == 0) {
+	header('Location: index.php');
+}
+
 $idTorneo = $_POST ['idTorneo'];
 $idTorneoCat = $_POST ['idTorneoCat'];
 
