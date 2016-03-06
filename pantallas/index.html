@@ -449,12 +449,19 @@
 			var idTorneo = $("#torneo").val();
 			var idTorneoCat = $("#categoria").val();
 			if (idTorneo != 0) {			
-				var url = 'torneos.php';
-				var form = $("<form action='" + url + "' method='post' style='display: none'>" +
-				  				"<input type='hidden' name='idTorneo' value='" + idTorneo + "' />" +
-				  				"<input type='hidden' name='idTorneoCat' value='" + idTorneoCat + "' />" +
-				  			 "</form>");
-				$(form).submit();
+				var form = document.createElement("form");
+			    var element1 = document.createElement("input"); 
+			    var element2 = document.createElement("input");  
+			    form.method = "POST";
+			    form.action = "torneos.php";   
+			    element1.value=idTorneo;
+			    element1.name="idTorneo";
+			    form.appendChild(element1);  
+			    element2.value=idTorneoCat;
+			    element2.name="idTorneoCat";
+			    form.appendChild(element2);
+			    document.body.appendChild(form);
+			    form.submit();	
 			} else {
 				$('#modalError').modal('show');
 			}		
@@ -466,14 +473,27 @@
 			var idEquipo = $("#equipo").val();
 			var password = $("#password").val();
 			if (idTorneo != 0 && idTorneoCat !=  0 && idEquipo != 0 && password != 0) {			
-				var url = 'torneos.php';
-				var form = $("<form action='" + url + "' method='post' style='display: none'>" +
-				  				"<input type='hidden' name='idTorneo' value='" + idTorneo + "' />" +
-				  				"<input type='hidden' name='idTorneoCat' value='" + idTorneoCat + "' />" +
-				  				"<input type='hidden' name='idEquipo' value='" + idEquipo + "' />" +
-				  				"<input type='hidden' name='password' value='" + password + "' />" +
-				  			 "</form>");
-				$(form).submit();
+				var form = document.createElement("form");
+			    var element1 = document.createElement("input"); 
+			    var element2 = document.createElement("input");
+			    var element3 = document.createElement("input");
+			    var element4 = document.createElement("input");  
+			    form.method = "POST";
+			    form.action = "torneos.php";   
+			    element1.value=idTorneo;
+			    element1.name="idTorneo";
+			    form.appendChild(element1);  
+			    element2.value=idTorneoCat;
+			    element2.name="idTorneoCat";
+			    form.appendChild(element2);
+			    element3.value=idEquipo;
+			    element3.name="idEquipo";
+			    form.appendChild(element3);
+			    element4.value=password;
+			    element4.name="password";
+			    form.appendChild(element4);
+			    document.body.appendChild(form);
+			    form.submit();	
 			} else {
 				$('#modalErrorIngreso').modal('show');
 			}		

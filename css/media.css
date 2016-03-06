@@ -43,6 +43,104 @@
     }
 } 
 
+@media screen and (max-width:991px){
+
+    .img-logo {
+        position: relative;
+        left: 140%;
+    }
+    .navbar-right{
+  
+        margin-right:30px;
+    }
+
+    .item-one {
+        width: 670px;
+        height: 300px;
+        float: none;
+        margin-right: 0px;
+        left: 35px;
+    }
+
+    .item-two{
+        width: 330px;
+        margin-top: 20px;
+        left: 35px;
+        text-align: center;
+    }
+    .item-three {
+        width: 330px;
+        margin-top:20px;
+        left:-15px;
+        text-align:center;
+    }
+    .section-locations{
+        display:none;
+    }
+    .section-form{
+        float: none;
+        position: relative;
+        margin: auto;
+    }
+    .box-logo {
+        top:15px;
+    }
+    .box-social .container .social ul li {
+        padding:20px;
+        font-size: 35px;
+        position: relative;
+        top: 10px;
+    }
+    .box-social .container p {
+        top:0px;
+    }
+    .social {
+        padding-left:0px;
+    }
+    .box-entrenamiento img {
+        position:relative;
+        left:80px;
+    }
+    .box-arbitro img {
+        position:relative;
+        left:40%;
+    }
+    .box-datos {
+        width: 255px;
+        float: none;
+        left: 45px;
+        position: relative;
+    }
+    .arbitro .box-arbitro button,.box-actividades .container .box-entrenamiento button {
+        left:115px;
+    }
+    .box-datos h3,.box-datos ul {
+        text-align:center;
+    }
+    .box-datos ul {
+        padding-bottom:30px;
+    }
+    .item-three input, .item-three select,.item-two select {
+        width:210px;
+        margin-left:0px;
+    }
+    .item-three button, .item-two button {
+
+        left: 4px;
+        padding: 7px 30px;
+    }
+    .item-two form {
+        left:0px;
+    }
+    .read,.inscription {
+        top:75px;
+    }
+    h1 {
+        font-size:48px;
+    }
+
+}
+
 @media screen and (max-width:900px){
 
 
@@ -87,6 +185,16 @@
     text-align:center;
     padding-bottom:20px;
 }
+
+}
+
+@media screen and (max-width:767px){
+
+    .img-logo {
+
+        left: 0%;
+        display:inline-block;
+    }
 
 }
 @media screen and (max-width:600px) {
@@ -135,6 +243,7 @@
     .item-one {
 
     width:100%;
+    left: 0px;
 
     }
 
@@ -156,6 +265,7 @@
 
         width:100%;
         margin-top:20px;
+        left:0px;
     }
 
     .item-two select, .item-two button {

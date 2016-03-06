@@ -47,17 +47,21 @@ header {
 	margin:auto;
 
 }
+
 .item-one {
 
-    background-image: url("../imagenes/pelota_fuego.png");
+    background-image: url("../imagenes/pelota_fuego_oscura.png");
     background-repeat:no-repeat;
-    background-size:cover;    
+    background-size:cover;
     width: 460px;
     height: 290px;
     float: left;
     position: relative;
     margin-right: 20px;
     top:40px;
+
+}
+.item-one {
 
 }
 .item-two {
@@ -174,8 +178,7 @@ header {
     color: #FFF;
     position: relative;
     top:50px;
-    left: 0px;
-    background-color: rgba(255, 62, 95, 0.5);
+    left: 15px;
     display: inline-block;
 }
 

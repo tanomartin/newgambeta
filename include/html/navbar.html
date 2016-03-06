@@ -9,7 +9,9 @@
 			<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
 			<span class="icon-bar"></span> <span class="icon-bar"></span>
 		</button>
-		<a href="index.php"><img src="imagenes/logo.png"></a>
+		<div class="img-logo">
+			<a href="index.php"><img src="imagenes/logo.png"></a>
+		</div>
 	</div>
 	<nav class="collapse yamm navbar-collapse" id="bs-example-navbar-collapse-1">
 		<ul class="nav navbar-nav navbar-right text-uppercase">
@@ -46,12 +48,19 @@
 	});	
 
 	function entrarTorneo(idTorneo){ 
-		var url = 'torneos.php';
-		var form = $("<form action='" + url + "' method='post' style='display: none'>" +
-		  				"<input type='hidden' name='idTorneo' value='" + idTorneo + "' />" +
-		  				"<input type='hidden' name='idTorneoCat' value='0' />" +
-		 			 "</form>");
-		$(form).submit();
+		var form = document.createElement("form");
+		var element1 = document.createElement("input"); 
+		var element2 = document.createElement("input");  
+		form.method = "POST";
+		form.action = "torneos.php";   
+		element1.value=idTorneo;
+		element1.name="idTorneo";
+		form.appendChild(element1);  
+		element2.value=0;
+		element2.name="idTorneoCat";
+		form.appendChild(element2);
+		document.body.appendChild(form);
+		form.submit();	
 	}
 	
 </script>
