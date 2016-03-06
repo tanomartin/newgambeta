@@ -114,9 +114,9 @@ foreach ( $listadoPartidos as $partido ) {
 	$referentes1 = $oJugadora->getReferentesByIdEquipoTorneo($partido['idEquipoTorneo1']);
 	$pdf->SetFont ( 'Arial', 'B', 12 );
 	$pdf->SetXY (5, 98 );
-	$pdf->Cell (13, 7, "Capitana: ".$referentes1[0]['nombre']);
+	$pdf->Cell (13, 7, "Capitana: ".$referentes1[0]['nombre']."   ".$referentes1[0]['telefono']);
 	$pdf->SetXY (5, 104 );
-	$pdf->Cell (13, 7, "Subcapitana: ".$referentes1[1]['nombre']);
+	$pdf->Cell (13, 7, "Subcapitana: ".$referentes1[1]['nombre']."    ".$referentes1[1]['telefono']);
 	$pdf->SetXY (5, 110 );
 	$pdf->Cell (13, 7, "DT: ".$partido['dt1']);
 	$pdf->SetXY (143, 110 );
@@ -124,9 +124,9 @@ foreach ( $listadoPartidos as $partido ) {
 	
 	$referentes2 = $oJugadora->getReferentesByIdEquipoTorneo($partido['idEquipoTorneo2']);
 	$pdf->SetXY (185, 98 );
-	$pdf->Cell (13, 7, "Capitana: ".$referentes2[0]['nombre']);
+	$pdf->Cell (13, 7, "Capitana: ".$referentes2[0]['nombre']."   ".$referentes2[0]['telefono']);
 	$pdf->SetXY (185, 104 );
-	$pdf->Cell (13, 7, "Subcapitana: ".$referentes2[1]['nombre']);
+	$pdf->Cell (13, 7, "Subcapitana: ".$referentes2[1]['nombre']."   ".$referentes2[1]['telefono']);
 	$pdf->SetXY (185, 110 );
 	$pdf->Cell (13, 7, "DT: ".$partido['dt2']);
 	$pdf->SetXY (323, 110 );
