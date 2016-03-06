@@ -126,6 +126,13 @@ class Torneos {
 		
 		return $res;
 	}
+
+	function getActivos() {
+		$db = $this->base;
+		$query = "Select t.*, c.rgb from ga_torneos t, ga_colores c where activo = 1 and t.idColor = c.id";
+		$res = $db->getResults ( $query, ARRAY_A );	
+		return $res;
+	}
 	
 	function getPaginado($filtros) {
 		$db = $this->base;

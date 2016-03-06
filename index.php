@@ -6,7 +6,7 @@ include_once 'model/sedes.php';
 
 
 $oTorneos = new Torneos();
-$torneos = $oTorneos->get();
+$torneos = $oTorneos->getActivos();
 $oSedes = new Sedes();
 $sedes = $oSedes->get();
 
