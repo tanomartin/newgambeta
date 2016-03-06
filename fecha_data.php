@@ -8,18 +8,15 @@ if (isset ($_POST ['idFecha']) &&  $_POST ['idFecha'] != 0) {
 	$partidos = $oFixture->getByFecha ( $_POST ['idFecha']);
 	if ($partidos != NULL) {
 		$resultado = "<thead>
-						<tr class='principal-table' style='background-color: ".$_POST ['color']."'>
-							<th colspan='8'>Si haces click en el partido podes ver el detalle</th>
-						</tr>
 						<tr class='principal-table' style='background-color: ".$_POST ['color']."' >
 							<th><span class='ion-pound'></span></th>
 							<th><span class='ion-ios-location'></span></th>
 							<th><span class='ion-calendar'></span></th>
 							<th><span class='ion-android-time'></span></th>
-							<th><img src='imagenes/silbato.png'></th>
-							<th>Local</th>
-							<th>vs</th>
-							<th>Visitante</th>
+							<th><span class='ion-ios-people'></span></th>
+							<th colspan='2'><span class='ion-ios-football'></th>
+							<th><span class='ion-ios-people'></span></th>
+							<th></th>
 						</tr>
 					 </thead>";
 		$resultado .= "<tbody>";
@@ -40,15 +37,15 @@ if (isset ($_POST ['idFecha']) &&  $_POST ['idFecha'] != 0) {
 							  <td>".$partido['sede']."</td>
 							  <td>".cambiaf_a_normal($partido['fechaPartido'])."</td>
 							  <td>".$partido['horaPartido']."</td>
-							  <td>".$partido['arbitro']."</td>
 							  <td>".$partido['equipo1']."</td>
-							  <td>vs</td>
+							  <td>".$goles1."</td>
+							  <td>".$goles2."</td>
 							  <td>".$partido['equipo2']."</td>
+							  <td><button onclick='detallepartido(".$partido['id'].")' style='background-color: ".$_POST ['color']."'><span title='Ver Detalle' class='ion-document-text'></span></button>
 						  </tr>";
 			$n++;
 		}
 		$resultado .= "</tbody>";
-		
 	} else {
 		$resultado.="<tbody><tr><td>No hay partidos para esta fecha</td></tr></tbody>";
 	}

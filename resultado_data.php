@@ -8,8 +8,10 @@ if (isset ($_POST ['idEquipoTorneo']) &&  $_POST ['idEquipoTorneo'] != 0) {
 	if ($partidos != NULL) {
 		$resultado = "<tbody>";
 		$resultado .= "<tr class='principal-table' style='background-color: ".$_POST ['color']."'>
-						<th colspan='8'>Si haces click en el partido podes ver el detalle</th>
-						</tr>";
+						<th><span class='ion-ios-people'></th>
+						<th colspan='2'><span class='ion-ios-football'></th>
+						<th><span class='ion-ios-people'></th>
+					   </tr>";
 		foreach ( $partidos as $partido ) {
 			if ($partido['golesEquipo1'] == -1) {
 				$goles1 = "-";

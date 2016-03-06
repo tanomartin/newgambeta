@@ -1113,11 +1113,15 @@ footer .contact p {
     width:400px;
     height:100px;
 }
-.ion-ios-location,.ion-calendar,.ion-android-time,.ion-checkmark {
+.ion-ios-location,.ion-calendar,.ion-android-time,.ion-checkmark,.ion-ios-people,.ion-ios-football {
     top:0;
     position:relative;
     color:#FFF;
     font-size:30px;
+}
+.ion-document-text {
+    color:#FFF;
+    font-size:20px;
 }
 .ion-checkmark-circled {
     font-size:40px;
