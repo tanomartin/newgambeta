@@ -246,7 +246,7 @@ $horas_fecha = $oFecha->getHorasCancha ( $_POST ['id'] );
 												} ?>							
 											</div>
 					  				<?	}
-							 			if (!$fechaLibre) { ?>
+							 			if ($fechaLibre == 0) { ?>
 							 				<br>
 											<div style="float: left">
 												<b>Fecha Libre Equipo </b><input type='checkbox' name='libre' id='libre' value='libre' onclick='controlHoras()'></input>

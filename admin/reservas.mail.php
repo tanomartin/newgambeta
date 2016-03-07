@@ -22,7 +22,6 @@ $equiposTorneo = $oEquipo->getTorneoCat ( $fecha [0] ['idTorneoCat'] );
 $equiposSinReserva = array ();
 foreach ( $equiposTorneo as $equipo ) {
 	$tiene = 0;
-	$tuvo_libre = $oEquipo->tieneFechaLibre ( $fecha [0] ['idTorneoCat'], $equipo ['id'] );
 	if ($reservas != NULL) {
 		foreach ( $reservas as $reserva ) {
 			if ($reserva ['id_equipo'] == $equipo ['id']) {

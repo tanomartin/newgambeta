@@ -24,20 +24,19 @@
 	if ($equiposTorneo != NULL) {
 		foreach($equiposTorneo as $equipo) {
 			$tiene = 0;
-			$tuvo_libre = $oEquipo-> tieneFechaLibre($fecha[0]['idTorneoCat'], $equipo['id']);
 			if ($reservas != NULL) {
 				foreach($reservas as $reserva) {
 					if ($reserva['id_equipo'] == $equipo['id']) {
 						$detalle = $oReserva -> getDetalleReservaById($reserva['id_reserva']);
 						$r = $reserva['id_equipo'];
-						$equiposConReserva[$r] = array('id_reserva' => $reserva['id_reserva'],'id_equipo' => $reserva['id_equipo'], 'nombre' => $reserva['nombre'], 'fecha_libre' => $reserva['fecha_libre'], 'observacion' =>  $reserva['observacion'] ,'tuvo_libre' => $tuvo_libre, 'detalle' => $detalle);
+						$equiposConReserva[$r] = array('id_reserva' => $reserva['id_reserva'],'id_equipo' => $reserva['id_equipo'], 'nombre' => $reserva['nombre'], 'fecha_libre' => $reserva['fecha_libre'], 'observacion' =>  $reserva['observacion'] , 'detalle' => $detalle);
 						$tiene = 1;
 					} 
 				}
 			}
 			if ($tiene == 0) {
 				$s = $equipo['id'];
-				$equiposSinReserva[$s] = array('id_equipo' => $equipo['id'], 'nombre' => $equipo['nombre'], 'tuvo_libre' => $tuvo_libre);
+				$equiposSinReserva[$s] = array('id_equipo' => $equipo['id'], 'nombre' => $equipo['nombre']);
 			}
 		}
 	}

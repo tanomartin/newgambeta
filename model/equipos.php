@@ -259,11 +259,7 @@ class Equipos {
 					from ga_reservas e, ga_fechas f 
 					where f.idTorneoCat = '$idTorneo' and f.id = e.id_fecha and e.id_equipo = '$idEquipo' and e.fecha_libre = 1";
 		$res = $db->getRow($query); 
-		if($res->cantidad == 0) {
-			return false;
-		} else {
-			return true;
-		}
+		return $res->cantidad;
 	}
 
 	function tieneReserva($idFecha="", $idEquipo= "") {
