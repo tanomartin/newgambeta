@@ -326,6 +326,7 @@ class Jugadoras {
 				  from ga_jugadoras_equipo je left join ga_resultados r on je.id = r.idJugadoraEquipo, ga_jugadoras j
 				  where (idFixture = ". $idFixture. " or idFixture is null) 
 				  and je.idEquipoTorneo = ".$idEquipoTorneo." and je.idJugadora = j.id";
+		print($query);echo"<br><br>";
 		$res = $db->getResults($query, ARRAY_A);
 		
 		return $res;

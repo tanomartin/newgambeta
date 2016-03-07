@@ -34,6 +34,11 @@ $("#fecha").change(function() {
 
 function detallepartido(idPartido) {
 	var nombre = "#myModal"+idPartido;
+	var color = $("#torneoColor").val();
+	$.post("fecha_data_detalle.php", {idPartido : idPartido, color: color}, function(data) {
+		$("#detalle").html(data);
+		$(nombre).modal('show');
+	});	
 }
 
 </script>
