@@ -95,7 +95,8 @@
         top:0px;
     }
     .social {
-        padding-left:0px;
+        padding-left: 0px;
+
     }
     .box-entrenamiento img {
         position:relative;
@@ -195,7 +196,28 @@
         left: 0%;
         display:inline-block;
     }
-
+    .item-two,.item-three {
+        width:270px;
+        left:0px;
+    }
+    .item-one{
+        width: 100%;
+        left:0px;
+    }
+    .item-one h1, .item-one h2, .item-one p {
+        display:block;
+        left:0px;
+    }
+    .box-social .container p {
+        display:none;
+    }
+    .arbitro {
+    position: relative;
+    left: -52px;
+    }
+    .entrenamiento {
+    position: relative;
+    left: -31px;
 }
 @media screen and (max-width:600px) {
 
@@ -217,6 +239,11 @@
         display:none;
     }
 
+    .social {
+
+    width: 100%;
+    text-align: center;
+    }
     .box-social .container p {
 
     display:block;
@@ -251,12 +278,13 @@
 
         color: #FFF;
         top:0px;
+        left:0px;
 
     }
 
     .read, .inscription {
 
-        top:20px;
+        top:55px;
         left:10px;
 
     }
@@ -268,10 +296,16 @@
         left:0px;
     }
 
-    .item-two select, .item-two button {
+    .item-two select, .item-two button, .item-three select, .item-three button, .item-three input {
 
-    width: 100%;
-    border-radius: 0;
+        width: 220px;
+        display: block;
+        margin: auto;
+        margin-top: 5px;
+        border-radius: 4px;
+    }
+    .item-three button {
+        left:0px;
     }
 
     .item-two form, .item-two button  {
@@ -286,22 +320,6 @@
     position:relative;
     left:0;
     }
-
-    .item-three input, .item-three button {
-
-    width:100%;
-    left:0;
-    }
-    .item-three select {
-
-    width:49%;
-    left:-10px;
-
-    }
-    .item-three input {
-    left:-10px;
-    }
-
 
     .check,.foot-ball {
 
@@ -336,7 +354,12 @@
         margin:10px 0px;
 
     }
-    
+
+    h1 {
+        font-size:35px;
+    }
+
+
 }
 
 
@@ -345,7 +368,6 @@
     .item-one h1 {
 
     font-size:24px;
-
     }
     .item-one h2 {
 
@@ -355,6 +377,7 @@
     .item-one p {
 
     font-size:14px;
+    left:0px;
 
     }
     .read, .inscription {
@@ -362,6 +385,8 @@
     display:block;
     margin-top:5px;
     width:200px;
+    top:20px;
+    left:22px;
 
     }
 
@@ -372,6 +397,11 @@
     .item-two select, .item-two button {
 
     width: 100%;
-}
+    }
+    .box-social .container .social ul li {
+    font-size: 28px;
+    padding: 18px 15px;
+    }
+
 }
 
