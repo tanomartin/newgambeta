@@ -7,6 +7,8 @@ include_once "mysql.class.php";
 class Noticias {
 	var $id;
 	var $titulo;
+	var $subtitulo;
+	var $copete;
 	var $desarrollo;
 	var $fecha;
 	var $posicion;
@@ -18,6 +20,8 @@ class Noticias {
 			$valores = $this->get ( $id );
 			$this->id = $valores [0] ["id"];
 			$this->titulo = $valores [0] ["titulo"];
+			$this->subtitulo = $valores [0] ["subtitulo"];
+			$this->copete = $valores [0] ["copete"];
 			$this->desarrollo = $valores [0] ["desarrollo"];
 			$this->fecha = $valores [0] ["fecha"];
 			$this->posicion = $valores [0] ["posicion"];
@@ -34,6 +38,8 @@ class Noticias {
 		if ($aParametro) {
 			$this->id = $aParametro ["id"];
 			$this->titulo = $aParametro ["titulo"];
+			$this->subtitulo = $aParametro ["subtitulo"];
+			$this->copete = $aParametro ["copete"];
 			$this->desarrollo = $aParametro ["desarrollo"];
 			$this->fecha = $aParametro ["fecha"];
 			$this->posicion = $aParametro ["posicion"];
@@ -54,13 +60,17 @@ class Noticias {
 		$db = $this->base;
 		$this->fecha = $this->mysql_fecha ( $this->fecha );
 		$query = "insert into ga_noticias (
-							titulo,	desarrollo,
+							titulo,	subtitulo, copete, desarrollo,
 							fecha,posicion,idTorneoCat
-						 ) values (" . "'" . $this->titulo . "', " . "'" . $this->desarrollo . "', " . "'" . $this->fecha . "', " . "'" . $this->posicion . "', " . "'" . $this->idTorneoCat . "' " . ")";
-		
+						 ) values ("."'".$this->titulo."',
+						 		   "."'".$this->subtitulo."', 
+						 		   "."'".$this->copete."',
+						 		   "."'".$this->desarrollo."', 
+						 		   "."'".$this->fecha."',
+						 		   "."'".$this->posicion."',
+						 		   "."'".$this->idTorneoCat."'".")";
 		$id_insertado = $db->query ( $query );
 		$this->id = $id_insertado;
-		
 		return $id_insertado;
 	}
 	
@@ -70,22 +80,24 @@ class Noticias {
 	function modificar() {
 		$db = $this->base;
 		$this->fecha = $this->mysql_fecha ( $this->fecha );
-		
 		$query = "update ga_noticias set 
-					titulo		    = '" . $this->titulo . "', 
+					titulo		    = '" . $this->titulo . "',
+					subtitulo	    = '" . $this->subtitulo . "',
+					copete	  		= '" . $this->copete . "', 
 					desarrollo	    = '" . $this->desarrollo . "', 
 					fecha			= '" . $this->fecha . "',
 					posicion		= '" . $this->posicion . "',					
 					idTorneoCat		= '" . $this->idTorneoCat . "'					
 				where id = '" . $this->id . "'";
-		
 		$db->query ( $query );
 	}
+	
 	function eliminar() {
 		$db = $this->base;
 		$query = "delete from ga_noticias " . " where id = '" . $this->id . "'";
 		$db->query ( $query );
 	}
+	
 	function get($id = "", $output = ARRAY_A) {
 		$db = $this->base;
 		$query = "Select u.*, date_format(fecha,'%e/%c/%Y') as fecha
@@ -96,6 +108,7 @@ class Noticias {
 		$aNovedad = $db->getResults ( $query, $output );
 		return $aNovedad;
 	}
+	
 	function getByPos($pos = 1, $cant = 1) {
 		$db = $this->base;
 		$query = "Select u.*, date_format(fecha,'%e/%c/%Y') as fecha
@@ -104,6 +117,7 @@ class Noticias {
 		$aNovedad = $db->getResults ( $query, ARRAY_A );
 		return $aNovedad;
 	}
+	
 	function getByCant($cant, $idTorneoCat = 0) {
 		$db = $this->base;
 		$query = "Select u.*, date_format(fecha,'%e/%c/%Y') as fecha
@@ -112,6 +126,7 @@ class Noticias {
 		$aNovedad = $db->getResults ( $query, ARRAY_A );
 		return $aNovedad;
 	}
+	
 	function getPaginado($filtros, $inicio, $cant, &$total) {
 		$db = $this->base;
 		$query = "Select SQL_CALC_FOUND_ROWS u.*, date_format(fecha,'%e/%c/%Y') as fecha
@@ -125,6 +140,7 @@ class Noticias {
 		$total = ceil ( $cant_reg [0] ["cant"] / $cant );
 		return $datos;
 	}
+	
 	function mysql_fecha($fech) {
 		$fech1 = explode ( "/", $fech );
 		return trim ( $fech1 [2] ) . "-" . trim ( $fech1 [1] ) . "-" . trim ( $fech1 [0] );

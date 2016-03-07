@@ -28,10 +28,9 @@
 	<header>
 		<div class="container">
 			<div class="item-one">
-				<h1>Pretemporada 2016</h1>
-				<h2>Fútbol 7 - Fútbol 5</h2>
-				<p>El fútbol sigue en verano! Nueva sede ZONA NORTE y sede
-					SALGUERO. Vení a conocerlas!</p>
+				<h1>{{ noticia.titulo }}</h1>
+				<h2>{{ noticia.subtitulo }}</h2><br>
+				<p>{{ noticia.copete }}</p><br>
 
 				<button class="read" type="button" class="btn btn-primary btn-lg"
 					data-toggle="modal" data-target="#myModal">Leer Más</button>
@@ -44,22 +43,12 @@
 									aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
-								<h4 class="modal-title" id="myModalLabel">Mas Noticias
-									Sobre Gambeta Femenina</h4>
+								<h4 class="modal-title" id="myModalLabel">{{ noticia.titulo }}</h4>
 							</div>
 							<div class="modal-body">
-								<h3>Gambeta Femenina</h3>
-								lorem impsun, breve descripcion. lorem impsun, breve
-								descripcion. lorem impsun, breve descripcion. lorem impsun,
-								breve descripcion. lorem impsun, breve descripcion. lorem
-								impsun, breve descripcion. lorem impsun, breve descripcion.
-								lorem impsun, breve descripcion. lorem impsun, breve
-								descripcion. lorem impsun, breve descripcion. lorem impsun,
-								breve descripcion. lorem impsun, breve descripcion. lorem
-								impsun, breve descripcion. lorem impsun, breve descripcion.
-								lorem impsun, breve descripcion. lorem impsun, breve
-								descripcion. lorem impsun, breve descripcion. lorem impsun,
-								breve descripcion.
+								<h3>{{ noticia.subitulo }}</h3>
+								<h4>{{ noticia.subtitulo }}</h4>
+								{{ noticia.desarrollo }}
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-default"

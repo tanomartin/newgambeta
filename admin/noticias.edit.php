@@ -152,14 +152,8 @@
         <td class="col_1 col_last"> 
 	        <input type="radio"  name="posicion" value="1" <? if( $datos[0]['posicion'] == 1 ) {?> checked="checked" <? } ?> /> Importante 	<input name="posicion"  type="radio" value="0" <? if( $datos[0]['posicion'] == 0 ) {?> checked="checked" <? } ?> /> Normal
 		</td>
-	</tr>
-        <tr class="even">
-        <td class="col_0 col_first"><label for="nombre">T&iacute;tulo</label><span class="mandatory">*</span></td>
-        <td class="col_1 col_last"> 
-			 <input type="text" name="titulo" value="<?= $datos[0]['titulo'] ?>"  size="50"/>
-		</td>
-      </tr>
-      <tr class="odd">
+		</tr>
+		<tr class="even">
         <td class="col_0 col_first"><label for="nombre">Torneo</label><span class="mandatory">*</span></td>
         <td class="col_1 col_last">
          <select name="idTorneo" id='idTorneo' <?= $disabled ?> class="validate-selection" onChange="clearCategoria('idTorneoCat');
@@ -174,7 +168,7 @@
          </td>   
       </tr>  
 
-      <tr class="even">
+      <tr class="odd">
         <td class="col_0 col_first"><label for="nombre">Categoría</label><span class="mandatory">*</span></td>
         <td class="col_1 col_last"> 
 		<span id="categoriaList">
@@ -202,7 +196,25 @@
             <span id="advice1"> </span>
 			</span>	
         </td>    
-      </tr>        
+      </tr>
+        <tr class="even">
+	        <td class="col_0 col_first"><label for="nombre">T&iacute;tulo</label><span class="mandatory">*</span></td>
+	        <td class="col_1 col_last"> 
+				 <input type="text" name="titulo" class="required text" value="<?= $datos[0]['titulo'] ?>"  size="50"/>
+			</td>
+      	</tr>
+      	<tr class="odd">
+	        <td class="col_0 col_first"><label for="nombre">Sub-T&iacute;tulo</label></td>
+	        <td class="col_1 col_last"> 
+				 <input type="text" name="subtitulo" value="<?= $datos[0]['subtitulo'] ?>"  size="50"/>
+			</td>
+      	</tr>
+      	<tr class="even">
+	        <td class="col_0 col_first"><label for="nombre">Copete</label></td>
+	        <td class="col_1 col_last"> 
+				 <textarea rows="20" name="copete"><?= $datos[0]['copete'] ?></textarea>
+			</td>
+      	</tr>        
       <tr class="odd">
         <td class="col_0 col_first"><label for="descripcion">Desarrollo</label><span class="mandatory">*</span></td>
         <td class="col_1 col_last"><textarea rows="20" name="desarrollo"><?= $datos[0]['desarrollo'] ?></textarea></td>
