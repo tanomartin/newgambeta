@@ -196,7 +196,7 @@ class Fixture {
 
 	function getByFecha($fecha){
 		$db = $this->base;
-      	$query = "Select  
+      	$query = "SELECT  
       				x.*, 
       				e1.nombre as equipo1,
       				e1.id as idEquipo1,
@@ -205,25 +205,24 @@ class Fixture {
       				s.nombre as sede, 
       				f.nombre as nombreFecha,
       				a.nombre as arbitro
-		          from 
-      				ga_fixture x, 
+		          FROM 
+      				(ga_fixture x,
       			    ga_fechas f,
       				ga_sedes s, 
       				ga_equipos_torneos et1, 
       				ga_equipos_torneos et2, 
       				ga_equipos e1, 
-      				ga_equipos e2,
-      				ga_arbitros a 
-				  where 
+      				ga_equipos e2)
+				  LEFT JOIN ga_arbitros a on a.id = x.idArbitro
+				  WHERE 
       				x.idFecha = f.id and
       				f.id=".$fecha." and
 				  	x.idSede = s.id and
 				  	x.idEquipoTorneo1 = et1.id and
       			  	et1.idEquipo = e1.id and
 				  	x.idEquipoTorneo2 = et2.id and
-      			  	et2.idEquipo = e2.id and 
-      				x.idArbitro = a.id";
-		$query.= " order by fechaPartido, horaPartido";
+      			  	et2.idEquipo = e2.id";
+		$query.= " ORDER BY fechaPartido, horaPartido";
 		$datos = $db->getResults($query, ARRAY_A); 	
 		return $datos;	
 	}
@@ -248,11 +247,12 @@ class Fixture {
 	
 	function getByFechaEquipo($fecha, $idEquipoTorneo){
 		$db = $this->base;
-       	$query = "Select  
+       	$query = "SELECT  
        				x.*, e1.nombre as equipo1, e2.nombre as equipo2, s.nombre as sede, f.nombre as nombreFecha, a.nombre as arbitro
-		          from 
-       				ga_fixture x, ga_fechas f,ga_sedes s, ga_equipos e1, ga_equipos e2, ga_equipos_torneos et1, ga_equipos_torneos et2, ga_arbitros a
-				  where 
+		          FROM 
+       				(ga_fixture x, ga_fechas f,ga_sedes s, ga_equipos e1, ga_equipos e2, ga_equipos_torneos et1, ga_equipos_torneos et2)
+				  LEFT JOIN ga_arbitros a on a.id = x.idArbitro
+       			  WHERE 
        				x.idFecha = f.id and
 				 	x.idSede = s.id and
 				 	x.idEquipoTorneo1 = et1.id and
@@ -260,7 +260,6 @@ class Fixture {
 				  	x.idEquipoTorneo2 = et2.id and 
        				et2.idEquipo = e2.id and 
        				f.id=".$fecha." and 
-       				x.idArbitro = a.id and
        				x.horaPartido != '__:__' and 
        				(x.idEquipoTorneo1 =".$idEquipoTorneo." || x.idEquipoTorneo2=".$idEquipoTorneo.")";
 		$query.= " order by  horaPartido DESC";
@@ -389,9 +388,9 @@ class Fixture {
 					t.nombre as torneo, 
 					c.nombrePagina as categoria,
 					tc.id_padre as idzona,
-					a.nombre as arbitro
-		          from 
-				    ga_fixture x, 
+					a.nombre as arbitro			 
+		          FROM 
+				    (ga_fixture x, 
 					ga_fechas f, 
 					ga_torneos_categorias tc, 
 					ga_torneos t, 
@@ -399,9 +398,9 @@ class Fixture {
 					ga_equipos_torneos et1, 
 					ga_equipos e2, 
 					ga_equipos_torneos et2, 
-					ga_categorias c,
-					ga_arbitros a
-				  where 
+					ga_categorias c)
+				  LEFT JOIN ga_arbitros a on a.id = x.idArbitro
+				  WHERE 
 				    x.fechaPartido = '$fechaPartido' and 
 				    x.idSede = $idSede and
 				    x.idFecha = f.id and
@@ -411,8 +410,7 @@ class Fixture {
 				    et2.idEquipo = e2.id and
 				    f.idTorneoCat = tc.id and
 				    tc.id_torneo = t.id and
-				    tc.id_categoria = c.id and
-				    x.idArbitro = a.id
+				    tc.id_categoria = c.id
 				  order 
 				    by x.horaPartido ASC";
 		$datos = $db->getResults($query, ARRAY_A); 

@@ -173,10 +173,8 @@
 												<td align="left"><?=$datos[$i]["nombre"]?></td>     
 												<td align="left"><?=$datos[$i]["telefono"]?></td>                        
 						                     	<td nowrap>
-						                     		<? if ($datos[$i]["id"] != 0) { ?>
-															<a href="javascript:editar(<?=$datos[$i]["id"]?>);"> <img border="0" src="images/icono-editar.gif" alt="editar" title="editar" /></a>
-															<a href="javascript:borrar(<?=$datos[$i]["id"]?>);"><img border="0" src="images/icono-eliminar.gif" alt="eliminar" title="eliminar" /></a>
-											 		<? } ?>
+													<a href="javascript:editar(<?=$datos[$i]["id"]?>);"> <img border="0" src="images/icono-editar.gif" alt="editar" title="editar" /></a>
+													<a href="javascript:borrar(<?=$datos[$i]["id"]?>);"><img border="0" src="images/icono-eliminar.gif" alt="eliminar" title="eliminar" /></a>
 											 	</td>	
 											 </tr>
 										  	<? } 
