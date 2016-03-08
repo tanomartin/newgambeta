@@ -47,7 +47,10 @@
 				<button id="equipos" name="equipos">Equipos</button>
 				<div class="conteiner-mobile" id="equiposMobile" style="border: 2px solid {{ torneo.rgb }}"></div>
 			</li>
-			<li><button id="fixture" class="fixture-menu"name="fixture">Fixture</button></li>
+			<li>
+				<button id="fixture" class="fixture-menu"name="fixture">Fixture</button>
+				<div class="conteiner-mobile" id="fixtureMobile" style="border: 2px solid {{ torneo.rgb }}"></div>
+			</li>
 			<li><button id="resultados" name="resultados">Resultados</button></li>
 			<li><button id="goleadoras" name="goleadoras">Goleadoras</button></li>
 			<li><button id="posiciones" name="posiciones">Posiciones</button></li>
@@ -86,6 +89,7 @@ function blanquearBotones() {
 	$("#equipos").removeClass("active");
 	$("#equiposMobile").html("");
 	$("#fixture").removeClass("active");
+	$("#fixtureMobile").html("");
 	$("#resultados").removeClass("active");
 	$("#goleadoras").removeClass("active");
 	$("#posiciones").removeClass("active");
@@ -176,6 +180,7 @@ $("#fixture").click(function() {
 		$("#fixture").addClass("active");
 		var redirec = "fixture.php";
 		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
+		$("#fixtureMobile").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
 	} else {
 		$('#modalCategoria').modal('show');
 	}
