@@ -143,17 +143,25 @@
     /*seccion torneos.php-- NO ME LO ESTÁ TOMANDO*/
 
     .menu-torneos {
-        width:500px;
-        background-color:red;
+        width:700px;
     }
     .menu-torneos ul li button {
         width: 100%;
+        margin-top:0px;
+        padding:20px 0px;
 
     }
     .torneo {
-        width:500px; /* NO TOMA LOS CAMBIOS */
-        background-color:red;
+        width:700px;
     }
+    .torneo-izq .torneo select {
+        left:280px;
+    }
+    .torneo-izq {
+        left:25px;
+        position:relative;
+    }
+
 }
 
 @media screen and (max-width:900px){
@@ -251,6 +259,28 @@
     .box-form-2 .enviar {
         left:auto;
     }
+
+    /* */
+    .menu-torneos {
+        width:500px;
+    }
+    .menu-torneos ul li button {
+        width: 100%;
+        margin-top:0px;
+        padding:20px 0px;
+
+    }
+    .torneo {
+        width:500px;
+    }
+    .torneo-izq .torneo select {
+        left:160px;
+    }
+    .torneo-izq {
+        left:50px;
+        position:relative;
+    }
+
 }
 @media screen and (max-width:600px) {
 
