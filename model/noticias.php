@@ -12,8 +12,10 @@ class Noticias {
 	var $desarrollo;
 	var $fecha;
 	var $posicion;
+	var $idTorneo;
 	var $idTorneoCat;
 	var $base;
+	
 	function Noticias($id = "") {
 		$this->base = new Db ();
 		if ($id != "") {
@@ -25,6 +27,7 @@ class Noticias {
 			$this->desarrollo = $valores [0] ["desarrollo"];
 			$this->fecha = $valores [0] ["fecha"];
 			$this->posicion = $valores [0] ["posicion"];
+			$this->idTorneo = $valores [0] ["idTorneo"];
 			$this->idTorneoCat = $valores [0] ["idTorneoCat"];
 		}
 	}
@@ -43,6 +46,7 @@ class Noticias {
 			$this->desarrollo = $aParametro ["desarrollo"];
 			$this->fecha = $aParametro ["fecha"];
 			$this->posicion = $aParametro ["posicion"];
+			$this->idTorneo = $aParametro ["idTorneo"];
 			$this->idTorneoCat = $aParametro ["idTorneoCat"];
 		}
 	}
@@ -61,13 +65,14 @@ class Noticias {
 		$this->fecha = $this->mysql_fecha ( $this->fecha );
 		$query = "insert into ga_noticias (
 							titulo,	subtitulo, copete, desarrollo,
-							fecha,posicion,idTorneoCat
+							fecha,posicion,idTorneo,idTorneoCat
 						 ) values ("."'".$this->titulo."',
 						 		   "."'".$this->subtitulo."', 
 						 		   "."'".$this->copete."',
 						 		   "."'".$this->desarrollo."', 
 						 		   "."'".$this->fecha."',
 						 		   "."'".$this->posicion."',
+						 		   "."'".$this->idTorneo."',
 						 		   "."'".$this->idTorneoCat."'".")";
 		$id_insertado = $db->query ( $query );
 		$this->id = $id_insertado;
@@ -87,6 +92,7 @@ class Noticias {
 					desarrollo	    = '" . $this->desarrollo . "', 
 					fecha			= '" . $this->fecha . "',
 					posicion		= '" . $this->posicion . "',					
+					idTorneo		= '" . $this->idTorneo . "',
 					idTorneoCat		= '" . $this->idTorneoCat . "'					
 				where id = '" . $this->id . "'";
 		$db->query ( $query );
@@ -122,6 +128,15 @@ class Noticias {
 		$db = $this->base;
 		$query = "Select u.*, date_format(fecha,'%e/%c/%Y') as fecha
 					  From ga_noticias u where 	idTorneoCat = " . $idTorneoCat;
+		$query .= " Order by id desc LIMIT 0,$cant";
+		$aNovedad = $db->getResults ( $query, ARRAY_A );
+		return $aNovedad;
+	}
+	
+	function getByIdTorneo($cant, $idTorneo = 0) {
+		$db = $this->base;
+		$query = "Select u.*, date_format(fecha,'%e/%c/%Y') as fecha
+					  From ga_noticias u where 	idTorneo = " . $idTorneo;
 		$query .= " Order by id desc LIMIT 0,$cant";
 		$aNovedad = $db->getResults ( $query, ARRAY_A );
 		return $aNovedad;

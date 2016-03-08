@@ -14,7 +14,7 @@
 			break;
 				
 		case "guardar":	
-			$data =   $_POST;
+			$data = $_POST;
 			$oObj = new Noticias();
 			$oObj->set($data);
 			if($_POST["id"] == "-1") {
@@ -25,7 +25,7 @@
 			break;
 	
 		case "borrar":
-			$data =   $_POST;
+			$data = $_POST;
 			$oObj = new Noticias();
 			$oObj->set($data);
 			$oObj->eliminar();

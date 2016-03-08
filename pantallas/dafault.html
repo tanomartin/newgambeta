@@ -1,9 +1,15 @@
 <div class="section-torneos">
-    <span class="ion-help" style="color: {{ torneo.rgb }}"></span>
-    <h2 style="color: {{ torneo.rgb }}"> DEFAULT - {{ torneo.nombre }}</h2>
- </div>
- <div class="section-torneos">
- 	<div class="img-torneo">
-		<img src="logos/{{torneo.logoPrincipal}}">
+    <span class="ion-clipboard" style="color: {{ torneo.rgb }}"></span>
+    <h2 style="color: {{ torneo.rgb }}"> Noticias - {{ torneo.nombre }}</h2>
+</div>
+<div class="section-torneos">
+	<div class="row">
+		{% for nota in noticias %}
+				<h4>{{nota.titulo}}</h4>
+				<p>{{nota.desarrollo}}</p>
+		{% endfor %}
+		{% if noticias == NULL %}
+				<h4>No existen notas para esta Torneo</h4>
+		{% endif %}
 	</div>
- </div>
+</div>
