@@ -21,11 +21,19 @@ if ($equipos != null) {
 }
 
 // Cargo la plantilla
-$twig->display ( 'equipos.html', array (
-		'torneo' => $torneo,
-		'nombreCategoria' => $nombreCategoria,
-		'equipos' => $equipos,
-		'arrayEquipos' => serialize ( $equipos ) 
-) );
-
+if (isset($_POST['screen'])) {
+	$twig->display ( 'equiposMobile.html', array (
+			'torneo' => $torneo,
+			'nombreCategoria' => $nombreCategoria,
+			'equipos' => $equipos,
+			'arrayEquipos' => serialize ( $equipos )
+	));
+} else {
+	$twig->display ( 'equipos.html', array (
+			'torneo' => $torneo,
+			'nombreCategoria' => $nombreCategoria,
+			'equipos' => $equipos,
+			'arrayEquipos' => serialize ( $equipos )
+	));
+}
 ?>

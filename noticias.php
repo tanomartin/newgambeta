@@ -12,6 +12,9 @@ $oNoticias = new Noticias();
 $aNoticias = $oNoticias->getByCant(5,$idTorneoCat);
 
 // Cargo la plantilla
-$twig->display('noticias.html', array('torneo'=>$torneo, 'nombreCategoria' => $nombreCategoria, 'noticias' => $aNoticias));
-
+if (isset($_POST['screen'])) {
+	$twig->display('noticiasMobile.html', array('torneo'=>$torneo, 'nombreCategoria' => $nombreCategoria, 'noticias' => $aNoticias));
+} else {
+	$twig->display('noticias.html', array('torneo'=>$torneo, 'nombreCategoria' => $nombreCategoria, 'noticias' => $aNoticias));
+}
 ?>

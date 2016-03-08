@@ -3,7 +3,7 @@
     	display: block;
     }
     
-    .noticiasMovile {
+    .conteiner-mobile {
     	display: none;
     }
 }
@@ -56,7 +56,7 @@
     	display: block;
     }
     
-    .noticiasMovile {
+    .conteiner-mobile {
     	display: none;
     }
 } 
@@ -185,7 +185,7 @@
     	display: none;
     }
     
-    .noticiasMovile {
+    .conteiner-mobile {
     	display: block;
     }
     
