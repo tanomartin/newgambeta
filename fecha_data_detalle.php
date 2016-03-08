@@ -44,45 +44,45 @@ if (isset ($_POST ['idPartido'])) {
 											<thead style='background-color: ".$_POST ['color']."'>
 												<tr>
 													<th>".$aEquipo1[0]['nombre']."</th>
-													<th><span class='ion-ios-football'>(".$partido[0]['golesEquipo1'].")</th>
-													<th><img src='imagenes/amarilla.png'></th>
-													<th><img src='imagenes/roja.png'></th>	
+													<th><span class='ion-ios-football' style='padding:0px 10px'></span></th>
+													<th><img src='imagenes/amarilla.png' style='padding:0px 10px'></th>
+													<th><img src='imagenes/roja.png' style='padding:0px 10px;'></th>	
 												</tr>
 											</thead>
 											<tbody> ";
 							foreach($aJugadoras1 as $jugadora) {
 								$resultado .= "<tr> 
-													<td>".$jugadora['nombre']."</td>
-													<td>".$aResultado[$jugadora[idJugadoraEquipo]][goles]."</td>
-													<td>".$aResultado[$jugadora[idJugadoraEquipo]][amarilla]."</td>
-													<td>".$aResultado[$jugadora[idJugadoraEquipo]][roja]."</td>
+													<td style='padding:4px 0px;border-bottom: solid 1px; border-bottom-color:".$_POST ['color']."'>".$jugadora['nombre']."</td>
+													<td style='text-align:center;padding:4px 0px;border-bottom: solid 1px; border-bottom-color:".$_POST ['color']."'>".$aResultado[$jugadora[idJugadoraEquipo]][goles]."</td>
+													<td style='text-align:center;padding:4px 0px;border-bottom: solid 1px; border-bottom-color:".$_POST ['color']."'>".$aResultado[$jugadora[idJugadoraEquipo]][amarilla]."</td>
+													<td style='text-align:center;padding:4px 0px;border-bottom: solid 1px; border-bottom-color:".$_POST ['color']."'>".$aResultado[$jugadora[idJugadoraEquipo]][roja]."</td>
 												</tr>";
 							}
 							$resultado .= "</tbody>
 										</table>
-										<table style='float: rigth;'>
+										<table style='float: right;'>
 											<thead style='background-color: ".$_POST ['color']."'>
 												<tr>
 													<th>".$aEquipo2[0]['nombre']."</th>
-													<th><span class='ion-ios-football'>(".$partido[0]['golesEquipo2'].")</th>
-													<th><img src='imagenes/amarilla.png'></th>
-													<th><img src='imagenes/roja.png'></th>
+													<th><span class='ion-ios-football' style='padding:0px 10px'></span></th>
+													<th><img src='imagenes/amarilla.png' style='padding:0px 10px'></th>
+													<th><img src='imagenes/roja.png' style='padding:0px 10px'></th>
 												</tr>
 											</thead>
 										<tbody> ";
 							foreach($aJugadoras2 as $jugadora) {
 								$resultado .= "<tr>
-													<td>".$jugadora['nombre']."</td>
-													<td>".$aResultado[$jugadora[idJugadoraEquipo]][goles]."</td>
-													<td>".$aResultado[$jugadora[idJugadoraEquipo]][amarilla]."</td>
-													<td>".$aResultado[$jugadora[idJugadoraEquipo]][roja]."</td>
+													<td style='padding:4px 0px;border-bottom: solid 1px; border-bottom-color:".$_POST ['color']."'>".$jugadora['nombre']."</td>
+													<td style='text-align:center;padding:4px 0px;border-bottom: solid 1px; border-bottom-color:".$_POST ['color']."'>".$aResultado[$jugadora[idJugadoraEquipo]][goles]."</td>
+													<td style='text-align:center;padding:4px 0px;border-bottom: solid 1px; border-bottom-color:".$_POST ['color']."'>".$aResultado[$jugadora[idJugadoraEquipo]][amarilla]."</td>
+													<td style='text-align:center;padding:4px 0px;border-bottom: solid 1px; border-bottom-color:".$_POST ['color']."'>".$aResultado[$jugadora[idJugadoraEquipo]][roja]."</td>
 												</tr>";
 							}
 							$resultado .= "</tbody>
 										</table>
 									</div>
 									<div class='modal-footer'>
-										<button type='button' class='btn btn-default' data-dismiss='modal'>Cerrar</button>
+										<button type='button' class='btn btn-default' style='display:none;' data-dismiss='modal'>Cerrar</button>
 									</div>
 								</div>
 							</div>

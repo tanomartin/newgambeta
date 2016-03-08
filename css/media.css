@@ -140,6 +140,20 @@
         font-size:48px;
     }
 
+    /*seccion torneos.php-- NO ME LO ESTÁ TOMANDO*/
+
+    .menu-torneos {
+        width:500px;
+        background-color:red;
+    }
+    .menu-torneos ul li button {
+        width: 100%;
+
+    }
+    .torneo {
+        width:500px; /* NO TOMA LOS CAMBIOS */
+        background-color:red;
+    }
 }
 
 @media screen and (max-width:900px){
@@ -218,6 +232,25 @@
     .entrenamiento {
     position: relative;
     left: -31px;
+    }
+    .section-form2 {
+     width:100%;
+     margin-bottom:20px;
+    }
+    .box-form-2 textarea {
+        top:0px;
+        right: 0px;
+        width:100%;
+        float:none;
+    }
+    .box-form-2 form input {
+        width: 100%;
+        border-radius: 0px;
+        margin: 10px 0px;
+    }
+    .box-form-2 .enviar {
+        left:auto;
+    }
 }
 @media screen and (max-width:600px) {
 

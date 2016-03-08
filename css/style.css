@@ -689,7 +689,6 @@ footer .contact p {
 
 .reglamento h4 {
     color:#fa3e5f;
-    padding:20px 0;
 }
 
 .row .col-lg-6 h2{
@@ -766,6 +765,7 @@ footer .contact p {
 
 .menu-torneos {
     display:inline-block;
+
 }
 .menu-torneos ul li button {
     list-style-type: none;
@@ -1135,4 +1135,10 @@ td button {
     color:#FFF;
     border-style:none;
     font-size:14px;
+}
+
+.slogan {
+    color:#ff3c5e;
+    text-align:right;
+    padding:40px 0px;
 }
