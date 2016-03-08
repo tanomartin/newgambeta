@@ -39,7 +39,10 @@
 	</div>
 	<div class="menu-torneos" id="menu">
 		<ul>
-			<li><button id="noticias" name="noticias">Noticias</button></li>
+			<li>
+				<button id="noticias" name="noticias">Noticias</button>
+				<div class="noticiasMovile" id="noticiasMovile"></div>
+			</li>
 			<li><button id="equipos" name="equipos">Equipos</button></li>
 			<li><button id="fixture" class="fixture-menu"name="fixture">Fixture</button></li>
 			<li><button id="resultados" name="resultados">Resultados</button></li>
@@ -136,6 +139,7 @@ $("#noticias").click(function() {
 		$("#noticias").addClass("active");
 		var redirec = "noticias.php";
 		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
+		$("#noticiasMovile").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
 	} else {
 		$('#modalCategoria').modal('show');
 	}
