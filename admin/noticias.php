@@ -156,7 +156,7 @@
 											<th width="10%">Opciones</th>
 										</tr>
 										<? if (count($datos) == 0) { ?>
-											<tr><td colspan="4" align="center">No existen Noticias</td></tr>
+											<tr><td colspan="5" align="center">No existen Noticias</td></tr>
 										<? } else { 
 												for ( $i = 0; $i < count($datos); $i++ ) { ?>
 													<tr style="vertical-align:middle" >

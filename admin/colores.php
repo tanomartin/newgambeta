@@ -165,7 +165,7 @@
 											<th width="10%">Opciones</th>
 										</tr>
 										<? if (count($datos) == 0) { ?>
-										<tr><td colspan="3" align="center">No existen Arbitros</td></tr>
+										<tr><td colspan="4" align="center">No existen Colores</td></tr>
 										<? } else { 
 												for ( $i = 0; $i < count($datos); $i++ ) { ?>
 											 <tr style="vertical-align:middle" >
