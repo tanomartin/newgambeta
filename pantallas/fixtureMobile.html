@@ -3,7 +3,7 @@
 	<h2 style="color: {{ torneo.rgb }}">Fixture - {{ torneo.nombre }} - {{ nombreCategoria }}</h2>
 	<div class="select-equipo" style="text-align: center">
 		<select name="fechaMobile" id="fechaMobile" style="padding: 8px; border-radius: 4px; margin-top: 15px; width: 190px; position: relative">
-			 <option value='0'>- Seleccione Fecha -</option>
+			 <option value='0'>- Seleccione Fecha  -</option>
 			 {% for fecha in fechas %} 
 				 <option value="{{fecha.id}}">{{fecha.nombre}}</option>
 			 {% endfor %}
@@ -26,16 +26,16 @@ $("#fechaMobile").change(function() {
 	$("#fechaMobile option:selected").each(function() {
 		var idFecha = $(this).val();
 		var color = $("#torneoColor").val();
-		$.post("fecha_data.php", {idFecha : idFecha, color: color}, function(data) {
+		$.post("fecha_data.php", {idFecha : idFecha, color: color, screen: 'mobile'}, function(data) {
 			$("#tablaFixtureMobile").html(data);
 		});
 	});
 });
 
-function detallepartido(idPartido) {
+function detallepartidoMobile(idPartido) {
 	var nombre = "#myModalMobile"+idPartido;
 	var color = $("#torneoColor").val();
-	$.post("fecha_data_detalle.php", {idPartido : idPartido, color: color}, function(data) {
+	$.post("fecha_data_detalle.php", {idPartido : idPartido, color: color, screen: 'mobile'}, function(data) {
 		$("#detalleMobile").html(data);
 		$(nombre).modal('show');
 	});	

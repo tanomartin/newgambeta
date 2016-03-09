@@ -40,9 +40,13 @@ if (isset ($_POST ['idFecha']) &&  $_POST ['idFecha'] != 0) {
 							  <td>".$partido['equipo1']."</td>
 							  <td>".$goles1."</td>
 							  <td>".$goles2."</td>
-							  <td>".$partido['equipo2']."</td>
-							  <td><button onclick='detallepartido(".$partido['id'].")' style='background-color: ".$_POST ['color']."'><span title='Ver Detalle' class='ion-document-text'></span></button>
-						  </tr>";
+							  <td>".$partido['equipo2']."</td>";
+			if (isset($_POST['screen'])) {
+			    $resultado.= "<td><button onclick='detallepartidoMobile(".$partido['id'].")' style='background-color: ".$_POST ['color']."'><span title='Ver Detalle' class='ion-document-text'></span></button>";
+			} else {
+				$resultado.= "<td><button onclick='detallepartido(".$partido['id'].")' style='background-color: ".$_POST ['color']."'><span title='Ver Detalle' class='ion-document-text'></span></button>";
+			}
+			$resultado.= "</tr>";
 			$n++;
 		}
 		$resultado .= "</tbody>";

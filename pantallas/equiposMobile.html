@@ -14,11 +14,11 @@
 	        {% else %}
 	        	<img src="imagenes/default_equipo.jpg" style="border-color: {{torneo.rgb}}";padding-top:"0px">
 	        {% endif %}
-	       <button  type="button" class="btn btn-primary jugadoras" style="background-color: {{torneo.rgb}};margin-top: -10px;border-style: none;width: 160px;height: 40px;padding:0px;" data-toggle="modal" data-target="#{{equipo.id}}">
+	       <button  type="button" class="btn btn-primary jugadoras" style="background-color: {{torneo.rgb}};margin-top: -10px;border-style: none;width: 160px;height: 40px;padding:0px;" data-toggle="modal" data-target="#mobile{{equipo.id}}">
 	       <span class="ion-android-arrow-dropright"></span> Jugadoras</button>
 
 	        <!--small modal -->
-	              <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="{{equipo.id}}">
+	              <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="mobile{{equipo.id}}">
 	                 <div class="modal-dialog modal-sm">
 	                   <div class="modal-content">
 	                        <div class="modal-header">
@@ -52,7 +52,7 @@
 $(document).on("ready",function(){	
 	var arrayEquipos = $('#arrayEquipos');
 	for (var i = 0; i < arrayEquipos.length; i++) { 
-		var modalName = '#'+arrayEquipos[i]['id'];
+		var modalName = '#mobile'+arrayEquipos[i]['id'];
 		$(modalName).on('shown.bs.modal', function() {
 			$('#myInput').focus()
 		})
