@@ -124,14 +124,8 @@ $(document).ready(function() {
 		var redirec = "reservas.php";
 		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, acceso : acceso});
 	} else {
-		//if (idTorneoCat != 0) {
-		//	$("#noticias").addClass("active");
-		//	var redirec = "noticias.php";
-		//	$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
-		//} else {
-			var redirec = "dafault.php";
-			$("#container-2").load(redirec, {torneo: torneo});
-		//}
+		var redirec = "dafault.php";
+		$("#container-2").load(redirec, {torneo: torneo});
 	}
 });
 
@@ -143,14 +137,8 @@ $("#categorias").change(function() {
 		$("#idTorneoCat").val(idTorneoCat);
 		$("#nombreCat").val(nombreCategoria);	
 		blanquearBotones();
-	//	if (idTorneoCat != 0) {
-	//		$("#noticias").addClass("active");
-	//		var redirec = "noticias.php";
-	//		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
-	//	} else {
-			var redirec = "dafault.php";
-			$("#container-2").load(redirec, {torneo: torneo});
-	//	}
+		var redirec = "dafault.php";
+		$("#container-2").load(redirec, {torneo: torneo});
 	});
 });
 
