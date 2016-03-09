@@ -1,0 +1,44 @@
+<div class="section-torneos">
+	<span class="ion-android-calendar" style="color: {{ torneo.rgb }}"></span>
+	<h2 style="color: {{ torneo.rgb }}">Fixture - {{ torneo.nombre }} - {{ nombreCategoria }}</h2>
+	<div class="select-equipo" style="text-align: center">
+		<select name="fechaMobile" id="fechaMobile" style="padding: 8px; border-radius: 4px; margin-top: 15px; width: 190px; position: relative">
+			 <option value='0'>- Seleccione Fecha -</option>
+			 {% for fecha in fechas %} 
+				 <option value="{{fecha.id}}">{{fecha.nombre}}</option>
+			 {% endfor %}
+		</select>
+	</div>
+</div>
+<!--  TODO: OJO ESTO TIENE QUE ESTAR ADENTRO DEL DIV -->
+<div class="row">
+	<div class="col-lg-12">
+		<table class="table" id="tablaFixtureMobile">
+			<tr><td>Seleccione Fecha</td></tr>
+		</table>
+		<!-- diseño de modal de deatlle de partido -->
+		<span id="detalleMobile"></span>
+	</div>
+</div>
+
+<script>
+$("#fechaMobile").change(function() {
+	$("#fechaMobile option:selected").each(function() {
+		var idFecha = $(this).val();
+		var color = $("#torneoColor").val();
+		$.post("fecha_data.php", {idFecha : idFecha, color: color}, function(data) {
+			$("#tablaFixtureMobile").html(data);
+		});
+	});
+});
+
+function detallepartido(idPartido) {
+	var nombre = "#myModalMobile"+idPartido;
+	var color = $("#torneoColor").val();
+	$.post("fecha_data_detalle.php", {idPartido : idPartido, color: color}, function(data) {
+		$("#detalleMobile").html(data);
+		$(nombre).modal('show');
+	});	
+}
+
+</script>

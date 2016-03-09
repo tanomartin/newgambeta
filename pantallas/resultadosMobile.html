@@ -1,0 +1,40 @@
+<div class="section-torneos">
+	<span class="ion-podium" style="color: {{ torneo.rgb }}"></span>
+	<h2 style="color: {{ torneo.rgb }}">Resultados - {{ torneo.nombre }} - {{nombreCategoria }}</h2>
+	<div class="select-equipo" style="text-align: center">
+		<select name="equipoMobile" id="equipoMobile" style="padding: 8px; border-radius: 4px; margin-top: 15px; width: 190px; position: relative">
+			 <option value='0'>- Seleccione Equipo -</option>
+			 {% for equipo in equipos %} 
+				 <option value="{{equipo.idEquipoTorneo}}">{{equipo.nombre}}</option>
+			 {% endfor %}
+			
+		</select>
+
+	</div>
+
+	<div class="row">
+		<div class="col-lg-12">
+			<table class="table" id="tablaResultadosMobile">
+				<tbody>
+					<tr>
+						<td>Seleccione Equipo</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<!--ACA FINALIZA SECCION EQUIPOS-->
+
+<script>
+$("#equipoMobile").change(function() {
+	$("#equipoMobile option:selected").each(function() {
+		var idEquipoTorneo = $(this).val();
+		var idTorneoCat = $("#idTorneoCat").val();
+		var color = $("#torneoColor").val();
+		$.post("resultado_data.php", {idEquipoTorneo : idEquipoTorneo, idTorneoCat : idTorneoCat, color : color}, function(data) {
+			$("#tablaResultadosMobile").html(data);
+		});
+	});
+});
+</script>

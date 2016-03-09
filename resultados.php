@@ -10,6 +10,9 @@ $oEquipos = new Equipos();
 $equipos = $oEquipos->getTorneoCat($idTorneoCat);
 
 // Cargo la plantilla
-$twig->display('resultados.html', array('torneo'=>$torneo, 'nombreCategoria' => $nombreCategoria, 'equipos' => $equipos));
-
+if (isset($_POST['screen'])) {
+	$twig->display('resultadosMobile.html', array('torneo'=>$torneo, 'nombreCategoria' => $nombreCategoria, 'equipos' => $equipos));
+} else {
+	$twig->display('resultados.html', array('torneo'=>$torneo, 'nombreCategoria' => $nombreCategoria, 'equipos' => $equipos));
+}
 ?>

@@ -51,10 +51,22 @@
 				<button id="fixture" class="fixture-menu"name="fixture">Fixture</button>
 				<div class="conteiner-mobile" id="fixtureMobile" style="border: 2px solid {{ torneo.rgb }}"></div>
 			</li>
-			<li><button id="resultados" name="resultados">Resultados</button></li>
-			<li><button id="goleadoras" name="goleadoras">Goleadoras</button></li>
-			<li><button id="posiciones" name="posiciones">Posiciones</button></li>
-			<li><button id="tarjetas" name="tarjetas">Tarjetas</button></li>
+			<li>
+				<button id="resultados" name="resultados">Resultados</button>
+				<div class="conteiner-mobile" id="resultadosMobile" style="border: 2px solid {{ torneo.rgb }}"></div>	
+			</li>
+			<li>
+				<button id="goleadoras" name="goleadoras">Goleadoras</button>
+				<div class="conteiner-mobile" id="goleadorasMobile" style="border: 2px solid {{ torneo.rgb }}"></div>	
+			</li>
+			<li>
+				<button id="posiciones" name="posiciones">Posiciones</button>
+				<div class="conteiner-mobile" id="posicionesMobile" style="border: 2px solid {{ torneo.rgb }}"></div>	
+			</li>
+			<li>
+				<button id="tarjetas" name="tarjetas">Tarjetas</button>
+				<div class="conteiner-mobile" id="tarjetasMobile" style="border: 2px solid {{ torneo.rgb }}"></div>
+			</li>
 			<li><button id="reservas" name="reservas">Reservas</button></li>
 		</ul>
 	</div>
@@ -91,9 +103,13 @@ function blanquearBotones() {
 	$("#fixture").removeClass("active");
 	$("#fixtureMobile").html("");
 	$("#resultados").removeClass("active");
+	$("#resultadosMobile").html("");
 	$("#goleadoras").removeClass("active");
+	$("#goleadorasMobile").html("");
 	$("#posiciones").removeClass("active");
+	$("#posicionesMobile").html("");
 	$("#tarjetas").removeClass("active");
+	$("#tarjetasMobile").html("");
 	$("#reservas").removeClass("active");
 }
 
@@ -108,15 +124,14 @@ $(document).ready(function() {
 		var redirec = "reservas.php";
 		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, acceso : acceso});
 	} else {
-		if (idTorneoCat != 0) {
-			$("#noticias").addClass("active");
-			var redirec = "noticias.php";
-			$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
-			$("#noticiasMobile").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria,  screen: 'mobile'});
-		} else {
+		//if (idTorneoCat != 0) {
+		//	$("#noticias").addClass("active");
+		//	var redirec = "noticias.php";
+		//	$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
+		//} else {
 			var redirec = "dafault.php";
 			$("#container-2").load(redirec, {torneo: torneo});
-		}
+		//}
 	}
 });
 
@@ -128,15 +143,14 @@ $("#categorias").change(function() {
 		$("#idTorneoCat").val(idTorneoCat);
 		$("#nombreCat").val(nombreCategoria);	
 		blanquearBotones();
-		if (idTorneoCat != 0) {
-			$("#noticias").addClass("active");
-			var redirec = "noticias.php";
-			$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
-			$("#noticiasMobile").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria,  screen: 'mobile'});
-		} else {
+	//	if (idTorneoCat != 0) {
+	//		$("#noticias").addClass("active");
+	//		var redirec = "noticias.php";
+	//		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
+	//	} else {
 			var redirec = "dafault.php";
 			$("#container-2").load(redirec, {torneo: torneo});
-		}
+	//	}
 	});
 });
 
@@ -180,7 +194,7 @@ $("#fixture").click(function() {
 		$("#fixture").addClass("active");
 		var redirec = "fixture.php";
 		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
-		$("#fixtureMobile").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
+		$("#fixtureMobile").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, screen: 'mobile'});
 	} else {
 		$('#modalCategoria').modal('show');
 	}
@@ -195,6 +209,7 @@ $("#resultados").click(function() {
 		$("#resultados").addClass("active");
 		var redirec = "resultados.php";
 		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
+		$("#resultadosMobile").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, screen: 'mobile'});
 	} else {
 		$('#modalCategoria').modal('show');
 	}
@@ -209,6 +224,7 @@ $("#goleadoras").click(function() {
 		$("#goleadoras").addClass("active");
 		var redirec = "goleadoras.php";
 		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
+		$("#goleadorasMobile").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, screen: 'mobile'});
 	} else {
 		$('#modalCategoria').modal('show');
 	}
@@ -223,6 +239,7 @@ $("#posiciones").click(function() {
 		$("#posiciones").addClass("active");
 		var redirec = "posiciones.php";
 		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
+		$("#posicionesMobile").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, screen: 'mobile'});
 	} else {
 		$('#modalCategoria').modal('show');
 	}
@@ -237,6 +254,7 @@ $("#tarjetas").click(function() {
 		$("#tarjetas").addClass("active");
 		var redirec = "tarjetas.php";
 		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
+		$("#tarjetasMobile").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, screen: 'mobile'});
 	} else {
 		$('#modalCategoria').modal('show');
 	}

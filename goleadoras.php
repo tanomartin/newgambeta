@@ -12,6 +12,9 @@ $oResultado= new Resultados();
 $goleadoras = $oResultado->goleadoras($idTorneoCat);
 
 // Cargo la plantilla
-$twig->display('goleadoras.html', array('torneo'=>$torneo, 'nombreCategoria' => $nombreCategoria, 'goleadoras' => $goleadoras));
-
+if (isset($_POST['screen'])) {
+	$twig->display('goleadorasMobile.html', array('torneo'=>$torneo, 'nombreCategoria' => $nombreCategoria, 'goleadoras' => $goleadoras));
+} else {
+	$twig->display('goleadoras.html', array('torneo'=>$torneo, 'nombreCategoria' => $nombreCategoria, 'goleadoras' => $goleadoras));
+}
 ?>

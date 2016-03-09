@@ -1,0 +1,33 @@
+<div class="section-torneos">
+	<span class="ion-ribbon-a" style="color: {{ torneo.rgb }}"></span>
+	<h2 style="color: {{ torneo.rgb }}">Goleadoras - {{ torneo.nombre }} - {{ nombreCategoria }}</h2>
+</div>
+<div class="section-torneos">
+	<div class="row">
+		<div clas="col-lg-6">
+			<table class="table">
+				<thead>
+					<tr class="principal-table"  style="background-color: {{ torneo.rgb }} ">
+						<!-- poner style y poner el color.. sacarlo del css !-->
+						<th>Puesto</th>
+						<th>Jugadora</th>
+						<th>Equipo</th>
+						<th>PJ</th>
+						<th>Goles</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for jugadora in goleadoras %}
+						<tr>
+							<td>{{ loop.index }}</td>
+							<td>{{ jugadora.nombre }}</td>
+							<td>{{ jugadora.nombreEquipo }}</td>
+							<td>{{ jugadora.partidos }}</td>
+							<td>{{ jugadora.goles }}</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

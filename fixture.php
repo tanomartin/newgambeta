@@ -10,6 +10,9 @@ $oFechas = new Fechas();
 $fechas = $oFechas->getIdTorneoCat($idTorneoCat,'fechaIni');
 
 // Cargo la plantilla
-$twig->display('fixture.html', array('torneo'=>$torneo, 'nombreCategoria' => $nombreCategoria, 'fechas' => $fechas));
-
+if (isset($_POST['screen'])) {
+	$twig->display('fixtureMobile.html', array('torneo'=>$torneo, 'nombreCategoria' => $nombreCategoria, 'fechas' => $fechas));
+} else {
+	$twig->display('fixture.html', array('torneo'=>$torneo, 'nombreCategoria' => $nombreCategoria, 'fechas' => $fechas));
+}
 ?>

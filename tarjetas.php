@@ -32,6 +32,9 @@ for($j=0;$j<count($aEquipos);$j++) {
 }
 
 // Cargo la plantilla
-$twig->display('tarjetas.html', array('torneo'=>$torneo, 'nombreCategoria' => $nombreCategoria, 'tarjetas' => $tarjetas));
-
+if (isset($_POST['screen'])) {
+	$twig->display('tarjetasMobile.html', array('torneo'=>$torneo, 'nombreCategoria' => $nombreCategoria, 'tarjetas' => $tarjetas));
+} else {
+	$twig->display('tarjetas.html', array('torneo'=>$torneo, 'nombreCategoria' => $nombreCategoria, 'tarjetas' => $tarjetas));
+}
 ?>

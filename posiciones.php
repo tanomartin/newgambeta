@@ -14,6 +14,9 @@ $oResultado= new Resultados();
 $tabla = $oResultado->armarTabla($idTorneoCat);
 
 // Cargo la plantilla
-$twig->display('posiciones.html', array('torneo'=>$torneo, 'nombreCategoria' => $nombreCategoria, 'tabla' => $tabla));
-
+if (isset($_POST['screen'])) {
+	$twig->display('posicionesMobile.html', array('torneo'=>$torneo, 'nombreCategoria' => $nombreCategoria, 'tabla' => $tabla));
+} else {
+	$twig->display('posiciones.html', array('torneo'=>$torneo, 'nombreCategoria' => $nombreCategoria, 'tabla' => $tabla));
+}
 ?>

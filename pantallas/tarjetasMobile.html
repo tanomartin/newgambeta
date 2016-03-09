@@ -1,0 +1,31 @@
+
+
+<div class="section-torneos" >
+	<span class="ion-ios-browsers-outline " style="color: {{ torneo.rgb }}"></span>
+	<h2 style="color: {{ torneo.rgb }}">Tarjetas - {{ torneo.nombre }} - {{ nombreCategoria }}</h2>
+</div>
+
+<div class="row">
+	<div clas="col-lg-6">
+		<table class="table ">
+			<thead>
+				<tr class="principal-table" style="background-color: {{ torneo.rgb }} ">
+					<th>Jugadora</th>
+					<th><img src="imagenes/amarilla.png"></th>
+					<th><img src="imagenes/roja.png"></th>
+					<th>Equipo</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for fila in tarjetas %}	
+					<tr>
+						<td>{{fila.nombre}}</td>
+						<td>{{fila.amarillas}}</td>
+						<td>{{fila.rojas}}</td>
+						<td>{{fila.equipo}}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</div>
