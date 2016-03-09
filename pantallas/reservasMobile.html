@@ -1,6 +1,5 @@
 <div class="section-torneos">
 	<span class="ion-android-checkbox-outline" style="color: {{ torneo.rgb }}"></span>
-	<h2 style="color: {{ torneo.rgb }}">Reservas - {{ torneo.nombre }} - {{ nombreCategoria }}</h2>
 </div>
 <div class="section-reservas">
 	{% if acceso == "nok" %}
@@ -11,16 +10,16 @@
 		<div class="check">
 			<span class="ion-android-checkbox-outline"></span>
 		</div>
-		<select name="equipo" id="equipo">
+		<select name="equipoMobile" id="equipoMobile">
 			<option value="0">- Equipo -</option>
 			{% for equipo in equipos %} 
 			 	<option value="{{equipo.id}}-{{equipo.idEquipoTorneo}}">{{equipo.nombre}}</option>
 			{% endfor %}
 		</select>
-		<input type="password" name="password" id="password" placeholder="Ingres&aacute tu contrase&ntilde;a">
-		<button id="reservar">Reservar</button>
+		<input type="password" name="passwordMobile" id="passwordMobile" placeholder="Ingres&aacute tu contrase&ntilde;a">
+		<button id="reservarMobile">Reservar</button>
 	</div>
-	<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="modalErrorIngreso">
+	<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="modalErrorIngresoMobile">
 		<div class="modal-dialog modal-sm">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -40,18 +39,18 @@
 
 <script>
 
-$("#reservar").click(function() {
+$("#reservarMobile").click(function() {
 	var torneo = $("#torneo").val();
 	var idTorneoCat = $("#idTorneoCat").val();
 	var nombreCategoria = $("#nombreCat").val();
-	var idEquipo = $("#equipo").val();
-	var password = $("#password").val();
+	var idEquipo = $("#equipoMobile").val();
+	var password = $("#passwordMobile").val();
 	if (idTorneo != 0 && idTorneoCat !=  0 && idEquipo != 0 && password != 0) {			
 		var redirec = 'controlIngreso.php';
 		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, idEquipo: idEquipo, password: password});
 		$("#reservasMobile").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, idEquipo: idEquipo, password: password, screen: 'mobile'});
 	} else {
-		$('#modalErrorIngreso').modal('show');
+		$('#modalErrorIngresoMobile').modal('show');
 	}		
 })
 

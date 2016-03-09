@@ -50,27 +50,51 @@ if ($acceso == "ok") {
 			$partidos[$key]['fechaPartido'] = cambiaf_a_normal($partido['fechaPartido']);
 		}
 	}
-	
-	$twig->display ( 'reservasmenu.html', array (
-			'torneo' => $torneo,
-			'nombreCategoria' => $nombreCategoria,
-			'equipo' => $equipo [0],
-			'fecha_activa' => $fecha_activa,
-			'partidos' => $partidos,
-			'horas_fecha' => $horas_fecha,
-			'fecha_libre' => $fechaLibre,
-			'reserva' => $reserva,
-			'idReserva' => $idReserva,
-			'detalleReserva' => $detalleReserva,
-			'idsession' =>  $_SESSION ['equipoTorneo'] 
-	));
+	if (isset($_POST['screen'])) {
+		$twig->display ( 'reservasmenuMobile.html', array (
+				'torneo' => $torneo,
+				'nombreCategoria' => $nombreCategoria,
+				'equipo' => $equipo [0],
+				'fecha_activa' => $fecha_activa,
+				'partidos' => $partidos,
+				'horas_fecha' => $horas_fecha,
+				'fecha_libre' => $fechaLibre,
+				'reserva' => $reserva,
+				'idReserva' => $idReserva,
+				'detalleReserva' => $detalleReserva,
+				'idsession' =>  $_SESSION ['equipoTorneo'] 
+		));
+	} else {
+		$twig->display ( 'reservasmenu.html', array (
+				'torneo' => $torneo,
+				'nombreCategoria' => $nombreCategoria,
+				'equipo' => $equipo [0],
+				'fecha_activa' => $fecha_activa,
+				'partidos' => $partidos,
+				'horas_fecha' => $horas_fecha,
+				'fecha_libre' => $fechaLibre,
+				'reserva' => $reserva,
+				'idReserva' => $idReserva,
+				'detalleReserva' => $detalleReserva,
+				'idsession' =>  $_SESSION ['equipoTorneo']
+		));
+	}
 } else {
 	$equipos = $oEquipo->getTorneoCat ( $idTorneoCat );
-	$twig->display ( 'reservas.html', array (
-			'torneo' => $torneo,
-			'nombreCategoria' => $nombreCategoria,
-			'equipos' => $equipos,
-			'acceso' => $acceso
-	));
+	if (isset($_POST['screen'])) {
+		$twig->display ( 'reservasMobile.html', array (
+				'torneo' => $torneo,
+				'nombreCategoria' => $nombreCategoria,
+				'equipos' => $equipos,
+				'acceso' => $acceso
+		));
+	} else {
+		$twig->display ( 'reservas.html', array (
+				'torneo' => $torneo,
+				'nombreCategoria' => $nombreCategoria,
+				'equipos' => $equipos,
+				'acceso' => $acceso
+		));
+	}
 }
 ?>

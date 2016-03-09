@@ -186,6 +186,7 @@
 													<td class="col_0 col_first"><label for="nombre">Arbitro</label></td>
 													<td class="col_1 col_last">
 														<select name="idArbitro" id='idArbitro' <?= $disabled ?>>
+															<option value='0' sel>Selecciones Arbitro</option>
 														<?php for($i=0;$i<count($aArbitros);$i++) { ?>	
 																<option value="<?php echo $aArbitros[$i]['id'] ?>" <?php if ($datos[0]["idArbitro"] == $aArbitros[$i]['id'] ) echo "selected"; ?>>
 																	<?php echo $aArbitros[$i]['nombre'] ?>

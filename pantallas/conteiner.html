@@ -67,7 +67,10 @@
 				<button id="tarjetas" name="tarjetas">Tarjetas</button>
 				<div class="conteiner-mobile" id="tarjetasMobile" style="border: 2px solid {{ torneo.rgb }}"></div>
 			</li>
-			<li><button id="reservas" name="reservas">Reservas</button></li>
+			<li>
+				<button id="reservas" name="reservas">Reservas</button>
+				<div class="conteiner-mobile" id="reservasMobile" style="border: 2px solid {{ torneo.rgb }}"></div>
+			</li>
 		</ul>
 	</div>
 </div>
@@ -111,6 +114,7 @@ function blanquearBotones() {
 	$("#tarjetas").removeClass("active");
 	$("#tarjetasMobile").html("");
 	$("#reservas").removeClass("active");
+	$("#reservasMobile").html("");
 }
 
 $(document).ready(function() {
@@ -257,6 +261,7 @@ $("#reservas").click(function() {
 		$("#reservas").addClass("active");
 		var redirec = "reservas.php";
 		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
+		$("#reservasMobile").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, screen: 'mobile'});
 	} else {
 		$('#modalCategoria').modal('show');
 	}
