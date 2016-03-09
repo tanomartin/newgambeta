@@ -59,6 +59,20 @@
     .conteiner-mobile {
     	display: none;
     }
+    .col-lg-6 iframe {
+        width:100%;
+        height:250px;
+    }
+    .cuadrado-prueba {
+        position:relative;
+        top: -35px;
+        margin: auto;
+    }
+    .row .col-lg-6 h2 {
+        display:block;
+        text-align:center;
+        padding-bottom:20px;
+    }
 } 
 
 @media screen and (max-width:991px){
@@ -157,8 +171,7 @@
     h1 {
         font-size:48px;
     }
-
-    /*seccion torneos.php-- NO ME LO ESTÃ� TOMANDO*/
+    /* seccion torneos.php */
 
     .menu-torneos {
         width:700px;
@@ -188,7 +201,9 @@
     .conteiner-mobile {
     	display: block;
     }
-    
+    .box-social-foot .container .social ul li {
+        padding:17px;
+    }
 }
 
 @media screen and (max-width:900px){
@@ -216,6 +231,7 @@
 
 
     padding:0px;
+    float:right;
 }
 .box-social-foot .container .social ul li {
 
@@ -449,6 +465,61 @@
         font-size:35px;
     }
 
+    .menu-torneos {
+        width:100%;
+    }
+    .menu-torneos ul li button {
+        width: 100%;
+        margin-top:0px;
+        padding:20px 0px;
+
+    }
+    .torneo {
+        width:100%;
+
+    }
+    .torneo-izq .torneo select {
+        left:0px;
+    }
+    .select-cat {
+        display: block;
+        text-align:center;
+    }
+
+    .torneo-izq {
+        left:0px;
+    }
+    .container {
+        padding:0;
+    }
+    .torneo-izq {
+        padding-top:0px;
+        width:100%;
+    }
+    .cuadrado-prueba {
+        display:none;
+    }
+    .col-lg-6 {
+        padding-bottom:20px;
+    }
+    .row .col-lg-6 h2 {
+        padding-top:0px;
+    }
+    .navbar-default .navbar-toggle {
+        right:18px;
+    }
+    body {
+    overflow-x: hidden;
+    }
+
+    footer .contact {
+        width:100%;
+        padding-top:0px;
+        float:none;
+    }
+    .contact-1 {
+        left:0px;
+    }
 
 }
 
@@ -492,6 +563,7 @@
     font-size: 28px;
     padding: 18px 15px;
     }
+
 
 }
 
