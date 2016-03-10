@@ -26,8 +26,13 @@ $("#fecha").change(function() {
 	$("#fecha option:selected").each(function() {
 		var idFecha = $(this).val();
 		var color = $("#torneoColor").val();
+		var selected = '#fechaMobile option[value="'+idFecha+'"]';
+		$(selected).attr("selected", "selected");
 		$.post("fecha_data.php", {idFecha : idFecha, color: color}, function(data) {
 			$("#tablaFixture").html(data);
+		});
+		$.post("fecha_data.php", {idFecha : idFecha, color: color, screen: 'mobile'}, function(data) {
+			$("#tablaFixtureMobile").html(data);
 		});
 	});
 });

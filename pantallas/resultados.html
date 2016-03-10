@@ -32,8 +32,13 @@ $("#equipo").change(function() {
 		var idEquipoTorneo = $(this).val();
 		var idTorneoCat = $("#idTorneoCat").val();
 		var color = $("#torneoColor").val();
+		var selected = '#equipoMobile option[value="'+idEquipoTorneo+'"]';
+		$(selected).attr("selected", "selected");
 		$.post("resultado_data.php", {idEquipoTorneo : idEquipoTorneo, idTorneoCat : idTorneoCat, color : color}, function(data) {
 			$("#tablaResultados").html(data);
+		});
+		$.post("resultado_data.php", {idEquipoTorneo : idEquipoTorneo, idTorneoCat : idTorneoCat, color : color}, function(data) {
+			$("#tablaResultadosMobile").html(data);
 		});
 	});
 });
