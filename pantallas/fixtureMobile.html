@@ -16,8 +16,6 @@
 		<table class="table" id="tablaFixtureMobile">
 			<tr><td>Seleccione Fecha</td></tr>
 		</table>
-		<!-- diseño de modal de deatlle de partido -->
-		<span id="detalleMobile"></span>
 	</div>
 </div>
 
@@ -31,14 +29,4 @@ $("#fechaMobile").change(function() {
 		});
 	});
 });
-
-function detallepartidoMobile(idPartido) {
-	var nombre = "#myModalMobile"+idPartido;
-	var color = $("#torneoColor").val();
-	$.post("fecha_data_detalle.php", {idPartido : idPartido, color: color, screen: 'mobile'}, function(data) {
-		$("#detalleMobile").html(data);
-		$(nombre).modal('show');
-	});	
-}
-
 </script>
