@@ -261,6 +261,33 @@
      display:none;
     }
 
+    .item-reservas {
+    width: 100%;
+    top: 0px;
+    }
+    .check {
+        width:100%;
+    }
+    .check, .ion-android-checkbox-outline {
+        text-align:center;
+        top:-20px;
+    }
+    .item-reservas select, .item-reservas input {
+        display:block;
+        margin:auto;
+        top: -20px;
+        margin-bottom: 5px;
+    }
+    .item-reservas p {
+        top:0px;
+    }
+    .item-reservas button {
+        top:-22px;
+        position: relative;
+        display: block;
+        margin: auto; 
+    }
+
 }
 
 @media screen and (max-width:900px){

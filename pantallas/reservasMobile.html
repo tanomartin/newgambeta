@@ -1,7 +1,4 @@
-<div class="section-torneos">
-	<span class="ion-android-checkbox-outline" style="color: {{ torneo.rgb }}"></span>
-</div>
-<div class="section-reservas">
+<div>
 	{% if acceso == "nok" %}
 		<h3 style="color: red"><span class="ion-android-alert"></span> ERROR DE ACCESO </h3>
 	{% endif %}
@@ -16,8 +13,8 @@
 			 	<option value="{{equipo.id}}-{{equipo.idEquipoTorneo}}">{{equipo.nombre}}</option>
 			{% endfor %}
 		</select>
-		<input type="password" name="passwordMobile" id="passwordMobile" placeholder="Ingres&aacute tu contrase&ntilde;a">
-		<button id="reservarMobile">Reservar</button>
+			<input type="password" name="passwordMobile" id="passwordMobile" placeholder="Ingres&aacute tu contrase&ntilde;a">
+		<button id="reservarMobile" style="width:175px; padding:10px;">Reservar</button>
 	</div>
 	<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="modalErrorIngresoMobile">
 		<div class="modal-dialog modal-sm">
