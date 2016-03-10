@@ -175,13 +175,13 @@ header {
     left:35px;
 }
 .item-three button {
-    top:54px;
+    top:50px;
 }
 .item-one h1, .item-one h2, .item-one p {
 
     color: #FFF;
     position: relative;
-    top:50px;
+    top:0px;
     left: 15px;
     display: inline-block;
 }
@@ -189,7 +189,7 @@ header {
 .inscription {
 
     position:relative;
-    top:60px;
+    top:14px;
     background-color:#fa3e5f;
     color:#FFF;
     text-transform:uppercase;
@@ -207,7 +207,7 @@ header {
 .read {
 
     position:relative;
-    top:60px;
+    top:14px;
     background-color:transparent;
     color:#FFF;
     text-transform:uppercase;

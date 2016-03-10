@@ -93,6 +93,9 @@
         margin-right: 0px;
         left: 35px;
     }
+    .item-one h1, .item-one h2, .item-one p {
+        top:0px;
+    }
 
     .item-two{
         width: 330px;
@@ -200,10 +203,64 @@
     
     .conteiner-mobile {
     	display: block;
+
     }
     .box-social-foot .container .social ul li {
         padding:17px;
     }
+
+    /*seccion noticias mobile */
+
+    .conteiner-mobile h2 {
+        font-size:25px;
+        text-align:center;
+    }
+
+    .ion-clipboard,.ion-ios-people,.ion-android-calendar,.ion-podium,.ion-ribbon-a,.ion-trophy,.ion-ios-browsers-outline {
+        font-size: 30px;
+        position: relative;
+        top: 52px;
+        left: 40px;
+    }
+    .conteiner-mobile h4 {
+        font-size: 16px;
+        display: inline-block;
+        position: relative;
+        left: 40px;
+        color:#ff3c5e;
+    }
+
+    .conteiner-mobile p{
+
+        font-size: 14px;
+        left: 0px;
+        position: relative;
+        margin: 20px 0px;
+        padding:0px 20px;
+
+    }
+    .list_jugadoras {
+        width: 165px;
+        display: inline-block;
+        position: relative;
+        left: 22px;
+        margin-top:30px;
+    }
+    .list_jugadoras h4 {
+        left:0px;
+    }
+    .section-torneos {
+        width:100%;
+    }
+
+    .row {
+        margin-left:0;
+        margin-right:0;
+    }
+    .modal-header .close {
+     display:none;
+    }
+
 }
 
 @media screen and (max-width:900px){
@@ -251,6 +308,9 @@
     text-align:center;
     padding-bottom:20px;
 }
+.modal-header .close {
+    display:none;
+    }
 
 }
 
@@ -269,9 +329,12 @@
         width: 100%;
         left:0px;
     }
+
     .item-one h1, .item-one h2, .item-one p {
         display:block;
         left:0px;
+        padding:5px 10px;
+        top:0px;
     }
     .box-social .container p {
         display:none;
@@ -322,6 +385,24 @@
     .torneo-izq {
         left:50px;
         position:relative;
+    }
+    .conteiner-mobile p{
+        left:0px;
+        width:100%;
+        padding:0px 20px;
+
+    }
+    .modal-header .close {
+        display:none;
+    }
+    .item-three button {
+        top:45px;
+    }
+    .item-two button {
+        top:14px;
+    }
+    .read, .inscription {
+        top:0px;
     }
 
 }
@@ -385,12 +466,13 @@
         color: #FFF;
         top:0px;
         left:0px;
+        padding:10px;
 
     }
 
     .read, .inscription {
 
-        top:55px;
+        top:0px;
         left:10px;
 
     }
@@ -412,12 +494,17 @@
     }
     .item-three button {
         left:0px;
+        top:45px;
     }
 
     .item-two form, .item-two button  {
 
     left:0px;
     }
+    .item-two button {
+        top:12px;
+    }
+
 
     .item-three {
 
@@ -521,6 +608,22 @@
         left:0px;
     }
 
+    .conteiner-mobile p{
+        width:100%;
+        left:0px;
+        padding:0px 10px;
+
+    }
+    .ion-clipboard,.ion-ios-people,.ion-android-calendar,.ion-podium,.ion-ribbon-a,.ion-trophy,.ion-ios-browsers-outline {
+        position: relative;
+        display:block;
+        top: 10px;
+        left: 0px;
+        text-align:center;
+    }
+        .modal-header .close {
+        display:none;
+    }
 }
 
 
@@ -529,16 +632,19 @@
     .item-one h1 {
 
     font-size:24px;
+    padding:10px;
     }
     .item-one h2 {
 
     font-size:22px;
+    padding:0px 10px;
 
     }
     .item-one p {
 
     font-size:14px;
     left:0px;
+    padding:0px 10px;
 
     }
     .read, .inscription {
@@ -546,7 +652,7 @@
     display:block;
     margin-top:5px;
     width:200px;
-    top:20px;
+    top:0px;
     left:22px;
 
     }
@@ -564,6 +670,13 @@
     padding: 18px 15px;
     }
 
-
+    .list_jugadoras {
+        left:60px;
+    }
+    .table {
+    font-size: 15px;
 }
-
+    .modal-header .close {
+        display:none;
+    }
+}
