@@ -4,7 +4,7 @@
 </div>
 <div class="section-torneos">
 	<h3 style="color: {{ torneo.rgb }}">{{ equipo.nombre }}</h3>
-	<button class="salir" id="logout">Salir</button>
+	<button class="salir" id="logout" style="background-color:{{ torneo.rgb }}">Salir</button>
 	{% if fecha_activa != null and idReserva == 0 and partidos == null and fecha_activa.puedeReservar %}
 		<form id="carga_reserva" name="carga_reserva">
 			 <h3 style="color: {{ torneo.rgb }}">{{ fecha_activa.nombre }}</h3>
@@ -16,7 +16,9 @@
 			<div class="container-checkbox"> 
 				{% if horas_fecha != null %}
 					{% for horas in horas_fecha %}
-						 <div class="checkbox"><label><input type='checkbox' id='horas' name='hora{{horas.id_horas_cancha}}' value='{{horas.id_horas_cancha}}' onclick='controlLibre()' /> {{horas.descripcion}}{{horas.id}}</label></div>
+						 <div class="checkbox">
+						 	<label><input type='checkbox' id='horas' name='hora{{horas.id_horas_cancha}}' value='{{horas.id_horas_cancha}}' onclick='controlLibre()' /> {{horas.descripcion}}{{horas.id}}</label>
+						 </div>
 					{% endfor %}
 				{% endif %}
 			</div>
