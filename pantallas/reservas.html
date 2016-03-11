@@ -11,7 +11,7 @@
 		<div class="check">
 			<span class="ion-android-checkbox-outline"></span>
 		</div>
-		<select name="equipo" id="equipo">
+		<select name="equipoSelect" id="equipoSelect">
 			<option value="0">- Equipo -</option>
 			{% for equipo in equipos %} 
 			 	<option value="{{equipo.id}}-{{equipo.idEquipoTorneo}}">{{equipo.nombre}}</option>
@@ -44,11 +44,12 @@ $("#reservar").click(function() {
 	var torneo = $("#torneo").val();
 	var idTorneoCat = $("#idTorneoCat").val();
 	var nombreCategoria = $("#nombreCat").val();
-	var idEquipo = $("#equipo").val();
+	var idEquipo = $("#equipoSelect").val();
 	var password = $("#password").val();
 	if (idTorneo != 0 && idTorneoCat !=  0 && idEquipo != 0 && password != 0) {			
 		var redirec = 'controlIngreso.php';
-		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, idEquipo: idEquipo, password: password});
+		//$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, idEquipo: idEquipo, password: password});
+		$("#reservasDesktop").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, idEquipo: idEquipo, password: password});
 		$("#reservasMobile").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, idEquipo: idEquipo, password: password, screen: 'mobile'});
 	} else {
 		$('#modalErrorIngreso').modal('show');

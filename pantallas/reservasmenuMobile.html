@@ -116,7 +116,8 @@ function confirmarPartidoMobile(idPartido) {
 	var redirec = "reservasConfirmarPartido.php";
 	$("#reservasMobile").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, idPartido: idPartido, screen: 'mobile'});
 	var redirec = "reservas.php";
-	$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria , acceso: 'ok'});
+	//$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria , acceso: 'ok'});
+	$("#reservasDesktop").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria , acceso: 'ok'});
 }
 
 $("#logoutMobile").click(function() {
@@ -126,8 +127,8 @@ $("#logoutMobile").click(function() {
 	var redirec = "reservasLogout.php";
 	$("#reservasMobile").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, screen: 'mobile'});
 	var redirec = "reservas.php";
-	$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
-	
+	//$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
+	$("#reservasDesktop").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
 });
 
 $("#guardarReservaMobile").click(function() {
@@ -181,7 +182,8 @@ $("#guardarReservaMobile").click(function() {
 			var redirec = "reservasGuardar.php";
 			$("#reservasMobile").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, horas: horas, fechaLibre: fechaLibre , idFecha: idFecha, observacion: observacion, screen: 'mobile'});
 			var redirec = "reservas.php";
-			$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, acceso: 'ok'});
+			//$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, acceso: 'ok'});
+			$("#reservasDesktop").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria , acceso: 'ok'});
 		}
 	} 
 });
