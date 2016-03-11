@@ -1,11 +1,5 @@
 @media screen and (max-width:1500px) {
-	 .container-2 {
-    	display: block;
-    }
-    
-    .conteiner-mobile {
-    	display: none;
-    }
+
     .reglamento-desktop{
         display:block;
     }
@@ -63,14 +57,6 @@
     .item-three {
         position:relative;
         right:50px;
-    }
-    
-    .container-2 {
-    	display: block;
-    }
-    
-    .conteiner-mobile {
-    	display: none;
     }
     .col-lg-6 iframe {
         width:100%;
@@ -208,16 +194,6 @@
     .torneo-izq {
         left:25px;
         position:relative;
-    }
-
-    
-    .container-2 {
-    	display:none;
-    }
-    
-    .conteiner-mobile {
-    	display: block;
-
     }
     .box-social-foot .container .social ul li {
         padding:17px;
