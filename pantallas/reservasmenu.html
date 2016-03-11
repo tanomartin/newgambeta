@@ -28,7 +28,11 @@
 				{% set display = 'none' %}
 				<div class="texto-horarios">El equipo ya pidio fecha libre</div>
 			{% endif %}
-			<div class="fechaLibre checkbox"><label style="display: {{ display }} "><input type='checkbox' name='libre' id='libre' value='libre' onclick='controlHoras()' />Fecha Libre </label></div>
+			<div class="fechaLibre">
+				 <div class="checkbox">
+					<label style="display: {{ display }} "><input type='checkbox' name='libre' id='libre' value='libre' onclick='controlHoras()' />Fecha Libre </label>
+				</div>
+			</div>
 			<div class="observaciones"><textarea name="observacion" id="observacion" placeholder="Observacion"></textarea></div>
 		</form>
 		<div class="reservar"><button id="guardarReserva">Reservar</button></div>
