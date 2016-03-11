@@ -12,8 +12,8 @@ if (isset ($_POST ['idFecha']) &&  $_POST ['idFecha'] != 0) {
 							<tr class='principal-table' style='background-color: ".$_POST ['color']."' >
 								<th><span class='ion-ios-location'></span></th>
 								<th><span class='ion-calendar'></span></th>
-								<th><span class='ion-ios-people'></span></th>
-								<th><span class='ion-ios-people'></span></th>
+								<th><span class='ion-ios-people-outline'></span></th>
+								<th><span class='ion-ios-people-outline'></span></th>
 							</tr>
 						 </thead>";
 		} else {
@@ -23,9 +23,9 @@ if (isset ($_POST ['idFecha']) &&  $_POST ['idFecha'] != 0) {
 								<th><span class='ion-ios-location'></span></th>
 								<th><span class='ion-calendar'></span></th>
 								<th><span class='ion-android-time'></span></th>
-								<th><span class='ion-ios-people'></span></th>
+								<th><span class='ion-ios-people-outline'></span></th>
 								<th colspan='2'><span class='ion-ios-football'></th>
-								<th><span class='ion-ios-people'></span></th>
+								<th><span class='ion-ios-people-outline'></span></th>
 								<th></th>
 							</tr>
 						 </thead>";

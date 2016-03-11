@@ -229,6 +229,7 @@
         top: 52px;
         left: 40px;
     }
+
     .conteiner-mobile h4 {
         font-size: 16px;
         display: inline-block;
@@ -691,6 +692,10 @@
         top: 10px;
         left: 0px;
         text-align:center;
+    }
+        span .ion-ios-people {
+        top:0px;
+        left:0px;
     }
         .modal-header .close {
         display:none;
