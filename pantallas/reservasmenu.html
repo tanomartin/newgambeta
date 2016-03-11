@@ -7,6 +7,7 @@
 	<button class="salir" id="logout">Salir</button>
 	{% if fecha_activa != null and idReserva == 0 and partidos == null and fecha_activa.puedeReservar %}
 		<form id="carga_reserva" name="carga_reserva">
+			 <h3 style="color: {{ torneo.rgb }}">{{ fecha_activa.nombre }}</h3>
 			 <div class="texto-horarios">
         		<p>Horarios Disponibles</p>
         		<p class="seleccion-horarios" id="error"></p>
@@ -33,6 +34,7 @@
 		{% if fecha_activa == null %}
 			<div class="texto-reservas"><p>No hay Fecha Activa</p></div>
 		{% else %}
+			<div><h3 style="color: {{ torneo.rgb }}">{{ fecha_activa.nombre }}</h3></div>
 			{% if partidos == null %}
 				{% if reserva.fecha_libre == 1 %}
 					<div class="texto-horarios">
@@ -121,7 +123,8 @@ function confirmarPartido(idPartido) {
 	var idTorneoCat = $("#idTorneoCat").val();
 	var nombreCategoria = $("#nombreCat").val();
 	var redirec = "reservasConfirmarPartido.php";
-	$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, idPartido: idPartido});
+	//$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, idPartido: idPartido});
+	$("#reservasDesktop").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, idPartido: idPartido});
 	var redirec = "reservas.php";
 	$("#reservasMobile").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, acceso: 'ok', screen: 'mobile'});
 }
@@ -131,7 +134,8 @@ $("#logout").click(function() {
 	var idTorneoCat = $("#idTorneoCat").val();
 	var nombreCategoria = $("#nombreCat").val();
 	var redirec = "reservasLogout.php";
-	$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
+	//$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
+	$("#reservasDesktop").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
 	var redirec = "reservas.php";
 	$("#reservasMobile").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, screen: 'mobile'});
 });
@@ -185,7 +189,8 @@ $("#guardarReserva").click(function() {
 		var observacion = $("#observacion").val();
 		if (idTorneoCat != 0) {
 			var redirec = "reservasGuardar.php";
-			$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, horas: horas, fechaLibre: fechaLibre , idFecha: idFecha, observacion: observacion});
+			//$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, horas: horas, fechaLibre: fechaLibre , idFecha: idFecha, observacion: observacion});
+			$("#reservasDesktop").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, horas: horas, fechaLibre: fechaLibre , idFecha: idFecha, observacion: observacion});
 			var redirec = "reservas.php";
 			$("#reservasMobile").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, acceso: 'ok', screen: 'mobile'});
 		}
