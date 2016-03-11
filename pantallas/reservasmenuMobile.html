@@ -1,9 +1,7 @@
-<div class="section-torneos">
-	<span class="ion-android-checkbox-outline" style="color: {{ torneo.rgb }}"></span>
-</div>
+
 <div class="section-torneos">
 	<h3 style="color: {{ torneo.rgb }}">{{ equipo.nombre }}</h3>
-	<button class="salir" id="logoutMobile">Salir</button>
+	<button class="salir" id="logoutMobile" style="width:50px;padding:6px;float:right;top:-40px;right:25px;">Salir</button>
 	{% if fecha_activa != null and idReserva == 0 and partidos == null and fecha_activa.puedeReservar %}
 		<form id="carga_reserva_mobile" name="carga_reserva_mobile">
 			 <div class="texto-horarios">
@@ -11,10 +9,12 @@
         		<p class="seleccion-horarios" id="errorMobile"></p>
       		</div>
 			<input type="hidden" id="idFecha" name="idFecha" value="{{ fecha_activa.id }}"/>
-			<div class="container-checkbox"> 
+			<div class="list-check"> 
 				{% if horas_fecha != null %}
 					{% for horas in horas_fecha %}
-						 <div class="checkbox"><label><input type='checkbox' id='horasMobile' name='hora{{horas.id_horas_cancha}}' value='{{horas.id_horas_cancha}}' onclick='controlLibreMobile()' /> {{horas.descripcion}}{{horas.id}}</label></div>
+						 <div class="checkbox">
+						 	<label><input type='checkbox' id='horasMobile' name='hora{{horas.id_horas_cancha}}' value='{{horas.id_horas_cancha}}' onclick='controlLibreMobile()' /> {{horas.descripcion}}{{horas.id}}</label>
+						 </div>
 					{% endfor %}
 				{% endif %}
 			</div>
@@ -27,7 +27,7 @@
 			<div class="fechaLibre checkbox"><label style="display: {{ display }} "><input type='checkbox' name='libreMobile' id='libreMobile' value='libre' onclick='controlHorasMobile()' />Fecha Libre </label></div>
 			<div class="observaciones"><textarea name="observacionMobile" id="observacionMobile" placeholder="Observacion"></textarea></div>
 		</form>
-		<div class="reservar"><button id="guardarReservaMobile">Reservar</button></div>
+		<div class="reservar"><button id="guardarReservaMobile" style="position:relative;top:-90px;width:80px;padding:12px;margin:20px 0px;background-color:#01bd73;color:#FFF;border-style:none;">Reservar</button></div>
 	{% else %}
 		{% if fecha_activa == null %}
 			<div class="texto-reservas"><p>No hay Fecha Activa</p></div>
@@ -71,10 +71,8 @@
 									 <th><div class="ion-ios-location"></div></th>
 						             <th><div class="ion-calendar"></div></th>
 						             <th><div class="ion-android-time"></div></th>
-						             <th><img src="imagenes/silbato.png"></div></th>
-						             <th>Local</th>
-						             <th>vs</th>
-						             <th>Visitante</th>
+						             <th><div class="ion-ios-people-outline"></div></th>
+						             <th><div class="ion-ios-people-outline"></div></th>
 						             <th><div class="ion-checkmark"></div></th>
 								</tr>
 							</thead>
@@ -83,13 +81,11 @@
 								  <td>{{ partido.sede }}</td>
 								  <td>{{ partido.fechaPartido }}</td>
 								  <td>{{ partido.horaPartido }}</td>
-								  <td>{{ partido.arbitro }}</td>
 								  <td>{{ partido.equipo1 }}</td>
-								  <td>vs</td>
 								  <td>{{ partido.equipo2 }}</td>
 									{% if partido.idEquipoTorneo1 == idsession %}
 										{% if not partido.confirmado %}
-											<td><button id="confirmar" onclick="confirmarPartidoMobile('{{ partido.id }}')">Confirmar Partido</button></td>
+											<td><button id="confirmar" onclick="confirmarPartidoMobile('{{ partido.id }}')" style="background-color:#01bd73;color:#FFF;border-style:none;">Confirmar Partido</button></td>
 										{% else %}
 											<td><div class="ion-checkmark-circled"></div></td>
 										{% endif %}

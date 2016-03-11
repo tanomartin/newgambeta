@@ -198,7 +198,7 @@
 
     
     .container-2 {
-    	display: none;
+    	display:none;
     }
     
     .conteiner-mobile {
@@ -287,7 +287,37 @@
         display: block;
         margin: auto; 
     }
-
+    .section-torneos h3 {
+        text-align:center;
+    }
+    .texto-horarios {
+        top:0px;
+    }
+    .conteiner-mobile p {
+        padding:0px 70px;
+    }
+    .texto-reservas {
+        top:15px;
+        padding-bottom:50px;
+    }
+    .conteiner-mobile h3{
+        text-align:center;
+    }
+    .checkbox{
+        display: inline-block;
+        position: relative;
+        top: 0px;
+        padding: 0px 70px;
+        height: 20px
+    }
+    .fechaLibre{
+        display:block;
+        text-align:center;
+    }
+    .observaciones textarea {
+        top:-75px;
+        position:relative;
+    }
 }
 
 @media screen and (max-width:900px){
@@ -430,6 +460,13 @@
     }
     .read, .inscription {
         top:0px;
+    }
+    .conteiner-mobile p {
+        padding:0px 70px;
+    }
+    .col-lg-12 {
+        padding-right:0px;
+        padding-left:0px;
     }
 
 }
@@ -651,6 +688,16 @@
         .modal-header .close {
         display:none;
     }
+    .conteiner-mobile p {
+        padding:0px 70px;
+    }
+    .list-check {
+        text-align:center;
+    }
+    .ion-ios-location, .ion-calendar, .ion-android-time, .ion-checkmark, .ion-ios-people, .ion-ios-football, .ion-ios-people-outline{
+        font-size:22px;
+    }
+
 }
 
 
@@ -690,7 +737,7 @@
 
     .item-two select, .item-two button {
 
-    width: 100%;
+    width: 220px;
     }
     .box-social .container .social ul li {
     font-size: 28px;
@@ -705,5 +752,11 @@
 }
     .modal-header .close {
         display:none;
+    }
+    .observaciones textarea{
+        width: 250px;
+    }
+    .list-check {
+        text-align:center;
     }
 }
