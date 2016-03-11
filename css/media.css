@@ -6,6 +6,12 @@
     .conteiner-mobile {
     	display: none;
     }
+    .reglamento-desktop{
+        display:block;
+    }
+    .reglamento-mobile {
+        display:none;
+    }
 }
 
 
@@ -73,6 +79,7 @@
         text-align:center;
         padding-bottom:20px;
     }
+
 } 
 
 @media screen and (max-width:991px){
@@ -696,6 +703,12 @@
     }
     .ion-ios-location, .ion-calendar, .ion-android-time, .ion-checkmark, .ion-ios-people, .ion-ios-football, .ion-ios-people-outline{
         font-size:22px;
+    }
+    .reglamento-desktop{
+        display:none;
+    }
+    .reglamento-mobile {
+        display:block;
     }
 
 }
