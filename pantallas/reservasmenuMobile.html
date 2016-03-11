@@ -6,6 +6,7 @@
 	<button class="salir" id="logoutMobile">Salir</button>
 	{% if fecha_activa != null and idReserva == 0 and partidos == null and fecha_activa.puedeReservar %}
 		<form id="carga_reserva_mobile" name="carga_reserva_mobile">
+			 <h3 style="color: {{ torneo.rgb }}">{{ fecha_activa.nombre }}</h3>
 			 <div class="texto-horarios">
         		<p>Horarios Disponibles</p>
         		<p class="seleccion-horarios" id="errorMobile"></p>
@@ -32,6 +33,7 @@
 		{% if fecha_activa == null %}
 			<div class="texto-reservas"><p>No hay Fecha Activa</p></div>
 		{% else %}
+			<div><h3 style="color: {{ torneo.rgb }}">{{ fecha_activa.nombre }}</h3></div>
 			{% if partidos == null %}
 				{% if reserva.fecha_libre == 1 %}
 					<div class="texto-horarios">
@@ -70,23 +72,15 @@
 								<tr class='principal-table' style='background-color: {{torneo.rgb}}' >
 									 <th><div class="ion-ios-location"></div></th>
 						             <th><div class="ion-calendar"></div></th>
-						             <th><div class="ion-android-time"></div></th>
-						             <th><img src="imagenes/silbato.png"></div></th>
-						             <th>Local</th>
-						             <th>vs</th>
-						             <th>Visitante</th>
+						             <th><div class='ion-ios-people'></div></th>
 						             <th><div class="ion-checkmark"></div></th>
 								</tr>
 							</thead>
 							{% for partido in partidos %}
 								<tr style='font-size: 16px'>
 								  <td>{{ partido.sede }}</td>
-								  <td>{{ partido.fechaPartido }}</td>
-								  <td>{{ partido.horaPartido }}</td>
-								  <td>{{ partido.arbitro }}</td>
-								  <td>{{ partido.equipo1 }}</td>
-								  <td>vs</td>
-								  <td>{{ partido.equipo2 }}</td>
+								  <td>{{ partido.fechaPartido }} - {{ partido.horaPartido }}</td>
+								  <td>{{ partido.equipo1 }} vs {{ partido.equipo2 }}</td>
 									{% if partido.idEquipoTorneo1 == idsession %}
 										{% if not partido.confirmado %}
 											<td><button id="confirmar" onclick="confirmarPartidoMobile('{{ partido.id }}')">Confirmar Partido</button></td>

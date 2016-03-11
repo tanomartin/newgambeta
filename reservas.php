@@ -45,12 +45,15 @@ if ($acceso == "ok") {
 		}
 	}
 	
-	if (sizeof($partidos) != 0) {
-		foreach($partidos as $key => $partido) {
-			$partidos[$key]['fechaPartido'] = cambiaf_a_normal($partido['fechaPartido']);
-		}
-	}
+	
 	if (isset($_POST['screen'])) {
+		
+		if (sizeof($partidos) != 0) {
+			foreach($partidos as $key => $partido) {
+				$partidos[$key]['fechaPartido'] = substr($partido['fechaPartido'],8,2)."/".substr($partido['fechaPartido'],5,2);
+			}
+		}
+		
 		$twig->display ( 'reservasmenuMobile.html', array (
 				'torneo' => $torneo,
 				'nombreCategoria' => $nombreCategoria,
@@ -65,6 +68,13 @@ if ($acceso == "ok") {
 				'idsession' =>  $_SESSION ['equipoTorneo'] 
 		));
 	} else {
+		
+		if (sizeof($partidos) != 0) {
+			foreach($partidos as $key => $partido) {
+				$partidos[$key]['fechaPartido'] = cambiaf_a_normal($partido['fechaPartido']);
+			}
+		}
+		
 		$twig->display ( 'reservasmenu.html', array (
 				'torneo' => $torneo,
 				'nombreCategoria' => $nombreCategoria,

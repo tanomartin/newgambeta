@@ -7,6 +7,7 @@
 	<button class="salir" id="logout">Salir</button>
 	{% if fecha_activa != null and idReserva == 0 and partidos == null and fecha_activa.puedeReservar %}
 		<form id="carga_reserva" name="carga_reserva">
+			 <h3 style="color: {{ torneo.rgb }}">{{ fecha_activa.nombre }}</h3>
 			 <div class="texto-horarios">
         		<p>Horarios Disponibles</p>
         		<p class="seleccion-horarios" id="error"></p>
@@ -33,6 +34,7 @@
 		{% if fecha_activa == null %}
 			<div class="texto-reservas"><p>No hay Fecha Activa</p></div>
 		{% else %}
+			<div><h3 style="color: {{ torneo.rgb }}">{{ fecha_activa.nombre }}</h3></div>
 			{% if partidos == null %}
 				{% if reserva.fecha_libre == 1 %}
 					<div class="texto-horarios">
