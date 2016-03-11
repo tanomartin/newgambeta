@@ -122,9 +122,13 @@ $(document).ready(function() {
 	var idTorneoCat = $("#idTorneoCat").val();
 	var nombreCategoria = $("#nombreCat").val();
 	var acceso = $("#acceso").val();
-	cargarDatos(idTorneoCat, nombreCategoria, torneo);
-	blanquearInformacion();
-	mostrarDesktop("#defaultDesktop");
+	cargarDatos(idTorneoCat, nombreCategoria, torneo, acceso);
+	if (acceso == "nok" || acceso == "ok") {
+		activar("reservas");
+	} else {
+		blanquearInformacion();
+		mostrarDesktop("#defaultDesktop");
+	}
 });
 
 $(document).ajaxStart(function(){
@@ -171,9 +175,10 @@ $("#categorias").change(function() {
 		var idTorneoCat = $("#categorias option:selected").val();
 		var nombreCategoria = $("#categorias option:selected").text();
 		var torneo = $("#torneo").val();
+		var acceso = $("#acceso").val();
 		$("#idTorneoCat").val(idTorneoCat);
 		$("#nombreCat").val(nombreCategoria);	
-		cargarDatos(idTorneoCat, nombreCategoria, torneo);
+		cargarDatos(idTorneoCat, nombreCategoria, torneo, acceso);
 		blanquearInformacion();
 		mostrarDesktop("#defaultDesktop");
 		$("#activo").val("default");
@@ -221,7 +226,7 @@ function desactivarBotones() {
 	$("#reservas").removeClass("active");
 }
 
-function cargarDatos(idTorneoCat, nombreCategoria, torneo) {
+function cargarDatos(idTorneoCat, nombreCategoria, torneo, acceso) {
 	$("#defaultDesktop").load("dafault.php", {torneo: torneo});
 	if (idTorneoCat != 0) {
 		$("#noticiasMobile").load("noticias.php", {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria,  screen: 'mobile'});
@@ -238,8 +243,8 @@ function cargarDatos(idTorneoCat, nombreCategoria, torneo) {
 		$("#posicionesDesktop").load("posiciones.php", {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
 		$("#tarjetasMobile").load("tarjetas.php", {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, screen: 'mobile'});
 		$("#tarjetasDesktop").load("tarjetas.php", {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
-		$("#reservasMobile").load("reservas.php", {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, screen: 'mobile'});
-		$("#reservasDesktop").load("reservas.php", {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
+		$("#reservasMobile").load("reservas.php", {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, acceso: acceso, screen: 'mobile'});
+		$("#reservasDesktop").load("reservas.php", {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, acceso:acceso });
 	}
 }
 
