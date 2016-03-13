@@ -575,24 +575,25 @@
 
     .box-form textarea, .box-form-2 textarea {
     top: 0;
-    width: 100%;
+    width: 92%;
     right: 0;
     border-radius: 0px;
+    margin:10px 25px;
 
     }
     .box-form .enviar, .box-form-2 .enviar {
     left:0px;
-    width:100%;
+    width:150px;
     padding:15px 0;
-    margin:20px 0;
+    margin:15px 30%;
 
     }
     .box-form form input, .box-form-2 form input {
 
-        width:100%;
+        width:42%;
         padding: 8px;
         border-radius: 0px;
-        margin:10px 0px;
+        margin:10px 18px;
 
     }
 
@@ -693,6 +694,17 @@
     }
 
 }
+@media screen and (max-width:500px){
+
+    .box-form form input, .box-form-2 form input {
+        width:90%;
+    }
+    .box-form textarea, .box-form-2 textarea {
+        width: 89%;
+        margin:10px 23px;
+
+    }
+}
 
 
 @media screen and (max-width:359px) {
@@ -752,5 +764,10 @@
     }
     .list-check {
         text-align:center;
+    }
+    .box-form textarea, .box-form-2 textarea {
+        width:90%;
+        margin:10px;
+
     }
 }

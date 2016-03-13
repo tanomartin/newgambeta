@@ -1089,13 +1089,11 @@ footer .contact p {
 }
 
 .fechaLibre {
-   	position: relative;
-	top: 50px;
-	width: 100%;
-	text-align: center;
+    position:relative;
+    top:70px;
+    text-align:center;
+
 }
-
-
 .reservar {
     text-align: center;
     top: 90px;
