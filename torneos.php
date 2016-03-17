@@ -16,19 +16,21 @@ $oTorneoCat = new TorneoCat ();
 $aTorneoCat = $oTorneoCat->getByTorneoSub ( $idTorneo );
 
 $index = 0;
-foreach ( $aTorneoCat as $categoria ) {
-	$nombreCompleto = $oTorneoCat->getCategoriasCompletas ( $categoria ['id'] );
-	$nombreCompleto = $nombreCompleto [0];
-	if ($nombreCompleto ['nombreCatPagina'] == NULL) {
-		$nombreCategoria = $nombreCompleto ['nombrePagina'];
-	} else {
-		$nombreCategoria = $nombreCompleto ['nombreCatPagina'] . " - " . $nombreCompleto ['nombrePagina'];
+if ($aTorneoCat != null) {
+	foreach ( $aTorneoCat as $categoria ) {
+		$nombreCompleto = $oTorneoCat->getCategoriasCompletas ( $categoria ['id'] );
+		$nombreCompleto = $nombreCompleto [0];
+		if ($nombreCompleto ['nombreCatPagina'] == NULL) {
+			$nombreCategoria = $nombreCompleto ['nombrePagina'];
+		} else {
+			$nombreCategoria = $nombreCompleto ['nombreCatPagina'] . " - " . $nombreCompleto ['nombrePagina'];
+		}
+		$aTorneoCat [$index] ['nombre'] = $nombreCategoria;
+		if ($categoria ['id'] == $idTorneoCat) {
+			$nombreCategoriaSelect = $nombreCategoria;
+		}
+		$index ++;
 	}
-	$aTorneoCat [$index] ['nombre'] = $nombreCategoria;
-	if ($categoria ['id'] == $idTorneoCat) {
-		$nombreCategoriaSelect = $nombreCategoria;
-	}
-	$index ++;
 }
 
 if(isset($_POST['idEquipo']) && isset($_POST['password'])) {
