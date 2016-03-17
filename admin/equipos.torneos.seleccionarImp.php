@@ -1,6 +1,7 @@
 <?
 include_once "include/config.inc.php";
 require_once "include/PHPExcel/PHPExcel.php";
+PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
 
 if (!isset( $_SESSION['usuario'])) {
 	header("Location: index.php");

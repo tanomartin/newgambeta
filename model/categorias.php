@@ -157,17 +157,8 @@ class Categorias {
 				  where id not in(
 					Select 	id_categoria
 				  	From ga_torneos_categorias								  
-					Where id_torneo = '".$id."'
-				 ) and id not in( 
- 					Select 	id_categoria
-				  	From ga_torneos_categorias								  
-					Where id_padre = '".$id_categoria."'
-
-				 )";
-
+					Where id_torneo = '".$id."' and id_padre = '".$id_categoria."')"; 
 		$aDatos = $db->getResults($query,ARRAY_A); 
-		
-		
 		return $aDatos;
 
 	}
