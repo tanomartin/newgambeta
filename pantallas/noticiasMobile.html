@@ -6,7 +6,8 @@
 	<div>
 		{% for nota in noticias %}
 				<h4>{{nota.titulo}}</h4>
-				<p>{{nota.desarrollo}}</p>
+				<p>{{nota.fecha}}</p>
+				{{nota.desarrollo}}
 		{% endfor %}
 		{% if noticias == NULL %}
 				<h4>No existen notas para esta Categoria</h4>
