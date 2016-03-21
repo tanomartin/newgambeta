@@ -22,6 +22,11 @@
 				$oObj->modificar();
 			}
 			break;
+			
+		case "puntaje":
+			include("arbitros.puntaje.php");
+			exit;
+			break;
 
 		case "borrar":
 			$data =   $_POST;
@@ -73,6 +78,12 @@
 	
 		function editar(id){
 			document.frm_listado.accion.value = "editar";
+			document.frm_listado.id.value = id;
+			document.frm_listado.submit();
+		}
+
+		function puntaje(id){
+			document.frm_listado.accion.value = "puntaje";
 			document.frm_listado.id.value = id;
 			document.frm_listado.submit();
 		}
@@ -174,7 +185,8 @@
 												<td align="left"><?=$datos[$i]["telefono"]?></td>                        
 						                     	<td nowrap>
 													<a href="javascript:editar(<?=$datos[$i]["id"]?>);"> <img border="0" src="images/icono-editar.gif" alt="editar" title="editar" /></a>
-													<a href="javascript:borrar(<?=$datos[$i]["id"]?>);"><img border="0" src="images/icono-eliminar.gif" alt="eliminar" title="eliminar" /></a>
+													<a href="javascript:puntaje(<?=$datos[$i]["id"]?>);"><img border="0" src="images/info_home.png" alt="puntaje" title="puntaje" width="23px" height="23px"/></a>
+													<a href="javascript:borrar(<?=$datos[$i]["id"]?>);"><img border="0" src="images/icono-eliminar.gif" alt="eliminar" title="eliminar" /></a>	
 											 	</td>	
 											 </tr>
 										  	<? } 

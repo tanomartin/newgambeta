@@ -417,6 +417,58 @@ class Fixture {
 		
 		return $datos;	
 	}
+	
+	
+	function getByIdArbitro($fechaPartido, $idArbitro){
+		$db = $this->base;
+		$query = "Select
+		x.id as idPartido,
+		x.horaPartido,
+		x.idEquipoTorneo1 as idEquipoTorneo1,
+		x.idEquipoTorneo2 as idEquipoTorneo2,
+		x.puntajeEquipo1 as puntaje1,
+		x.puntajeEquipo2 as puntaje2,
+		x.golesEquipo1 as goles1,
+		x.golesEquipo2 as goles2,
+		f.nombre as nombreFecha,
+		e1.nombre as equipo1,
+		e1.id as id1,
+		e1.dt as dt1,	
+		e2.nombre as equipo2,
+		e2.id as id2,
+		e2.dt as dt2,
+		x.cancha as cancha,
+		t.nombre as torneo,
+		c.nombrePagina as categoria,
+		tc.id_padre as idzona,
+		a.nombre as arbitro
+		FROM
+		(ga_fixture x,
+		ga_fechas f,
+		ga_torneos_categorias tc,
+		ga_torneos t,
+		ga_equipos e1,
+		ga_equipos_torneos et1,
+		ga_equipos e2,
+		ga_equipos_torneos et2,
+		ga_categorias c)
+		LEFT JOIN ga_arbitros a on a.id = x.idArbitro
+		WHERE
+		x.fechaPartido = '$fechaPartido' and
+		x.idArbitro = $idArbitro and
+		x.idFecha = f.id and
+		x.idEquipoTorneo1 = et1.id and
+		et1.idEquipo = e1.id and
+		x.idEquipoTorneo2 = et2.id and
+		et2.idEquipo = e2.id and
+		f.idTorneoCat = tc.id and
+		tc.id_torneo = t.id and
+		tc.id_categoria = c.id
+		order
+		by x.horaPartido ASC";
+		$datos = $db->getResults($query, ARRAY_A);
+		return $datos;
+	}
 }
 
 ?>
