@@ -84,7 +84,7 @@ for($i = 0; $i < sizeof ( $listadoPartidos ); $i ++) {
 							</form>
                     	<? 	if ($listadoPartidos != NULL) { ?>
 						 		<div class="ce_text block">
-									<h1>Listado de Partidos de <?php echo $arbitro[0]['nombre'] ?> </h1>
+									<h1>Listado de Partidos de <?php echo $arbitro[0]['nombre'] ?> ( <?php echo $fechaPartidos?> ) </h1>
 								</div>
 								<div class="mod_listing ce_table listing block" id="partnerlist">
 									<form name="frm_listado" id="frm_listado" action="<?=$_SERVER['PHP_SELF']?>" method="post">
