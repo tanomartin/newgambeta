@@ -1150,3 +1150,9 @@ td button {
 #bx-pager img, #bx-pager2 img, #bx-pager3 img {
     margin:0 2px;
 }
+
+.detalle-equipo {
+    position:relative;
+    left:10px;
+    color:#FFF;
+}

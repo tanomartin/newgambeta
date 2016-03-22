@@ -20,7 +20,7 @@
 				{% for fila in tabla %}
 					<tr>
 						<td>{{ loop.index }}</td>
-						<td>{{fila.nombre}}</td>
+						<td style="width:2px;">{{fila.nombre}}</td>
 						<td style="background-color: {{ torneo.rgb }}; color: white">{{fila.puntaje}}</td>
 						<td>{{ fila.par_ganados+fila.par_empatados+fila.par_perdidos }}</td>
 						<td style="color: green">{{fila.par_ganados}}</td>

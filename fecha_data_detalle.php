@@ -47,7 +47,7 @@ if (isset ($_POST ['idPartido'])) {
 										<table style='float: left;'>
 											<thead style='background-color: ".$_POST ['color']."'>
 												<tr>
-													<th>".$aEquipo1[0]['nombre']."</th>
+													<th class='detalle-equipo'>".$aEquipo1[0]['nombre']."</th>
 													<th><span class='ion-ios-football' style='padding:0px 10px'></span></th>
 													<th><img src='imagenes/amarilla.png' style='padding:0px 10px'></th>
 													<th><img src='imagenes/roja.png' style='padding:0px 10px;'></th>	
@@ -64,10 +64,10 @@ if (isset ($_POST ['idPartido'])) {
 							}
 							$resultado .= "</tbody>
 										</table>
-										<table style='float: right;'>
+										<table>
 											<thead style='background-color: ".$_POST ['color']."'>
 												<tr>
-													<th>".$aEquipo2[0]['nombre']."</th>
+													<th class='detalle-equipo'>".$aEquipo2[0]['nombre']."</th>
 													<th><span class='ion-ios-football' style='padding:0px 10px'></span></th>
 													<th><img src='imagenes/amarilla.png' style='padding:0px 10px'></th>
 													<th><img src='imagenes/roja.png' style='padding:0px 10px'></th>
