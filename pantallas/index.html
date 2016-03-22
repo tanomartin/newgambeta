@@ -336,7 +336,7 @@
 			<div class="entrenamiento">
 				<div class="box-entrenamiento">
 					<img src="imagenes/training.png">
-					<button>Entrar</button>
+					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#proximamente-entrenamiento">Entrar</button>
 				</div>
 				<div class="box-datos">
 					<h3>Clases de Entrenamiento</h3>
@@ -353,7 +353,7 @@
 			<div class="arbitro">
 				<div class="box-arbitro">
 					<img src="imagenes/arbitro.png">
-					<button>Entrar</button>
+					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#proximamente-arbitros">Entrar</button>
 				</div>
 				<div class="box-datos">
 					<h3>Escuela de Arbitros</h3>
@@ -369,6 +369,36 @@
 			</div>
 		</div>
 	</div>
+<!-- comienza modal proximamente entrenamiento!-->
+<div class="modal fade" id="proximamente-entrenamiento" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+			<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title prox" id="myModalLabel"><span class="ion-ios-stopwatch-outline"></span>Proximamente</h4>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default"data-dismiss="modal">Cerrar</button>
+					</div>
+			</div>
+	</div>
+</div>
+<!-- fin modal proximamente entrenamiento !-->
+<!-- comienda modal proximamente arbitros !-->
+<div class="modal fade" id="proximamente-arbitros" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+			<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title prox" id="myModalLabel"><span class="ion-ios-stopwatch-outline"></span>Proximamente</h4>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default"data-dismiss="modal">Cerrar</button>
+					</div>
+			</div>
+	</div>
+</div>
+<!-- fin modal proximamente arbitros !-->
 
 	<div class="sub-footer">
 		<p>GAMBETA FEMENINA</p>
@@ -406,7 +436,12 @@
 		$('#modalError').on('shown.bs.modal', function() {
 			$('#myInput').focus()
 		})
-		
+		$('#proximamente-entrenamiento').on('shown.bs.modal', function() {
+			$('#myInput').focus()
+		})
+		$('#proximamente-arbitros').on('shown.bs.modal', function() {
+			$('#myInput').focus()
+		})
 		$("#torneo").change(function() {
 			$("#torneo option:selected").each(function() {
 				idTorneo = $(this).val();

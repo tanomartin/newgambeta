@@ -1156,3 +1156,7 @@ td button {
     left:10px;
     color:#FFF;
 }
+.ion-ios-stopwatch-outline, .prox {
+    padding:0 20px;
+    color:#fa3e5f;
+}
