@@ -641,13 +641,14 @@
     .row .col-lg-6 h2 {
         padding-top:0px;
     }
-    .navbar-default .navbar-toggle {
+ /*   .navbar-default .navbar-toggle {
         right:18px;
     }
-    body {
+*/
+/*  body {
     overflow-x: hidden;
     }
-
+*/
     footer .contact {
         width:100%;
         padding-top:0px;
@@ -678,7 +679,7 @@
         display:none;
     }
     .conteiner-mobile p {
-        padding:0px 70px;
+        padding:0px 40px;
     }
     .list-check {
         text-align:center;
@@ -691,6 +692,12 @@
     }
     .reglamento-mobile {
         display:block;
+    }
+    h5 {
+        padding:0 20px;
+    }
+    .container-fluid > .navbar-collapse, .container-fluid > .navbar-header, .container > .navbar-collapse, .container > .navbar-header {
+        margin-right: 0px;
     }
 
 }
