@@ -10,7 +10,7 @@
 					<tr class="principal-table"  style="background-color: {{ torneo.rgb }} ">
 						<!-- poner style y poner el color.. sacarlo del css !-->
 						<th>Puesto</th>
-						<th>Jugadora</th>
+						<th style="text-align:left;">Jugadora</th>
 						<!--<th>Equipo</th>!-->
 						<th><div class="ion-ios-football"></div></th>
 					</tr>
@@ -19,7 +19,7 @@
 					{% for jugadora in goleadoras %}
 						<tr>
 							<td>{{ loop.index }}</td>
-							<td>{{ jugadora.nombre }}</td>
+							<td style="text-align:left;">{{ jugadora.nombre }}</td>
 							<!--<td>{{ jugadora.nombreEquipo }}</td>!-->
 							<td>{{ jugadora.goles }}</td>
 						</tr>

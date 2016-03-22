@@ -220,12 +220,12 @@
         left: 40px;
         color:#ff3c5e;
     }
-    
+/*   
     .conteiner-mobile h5 {
         position: relative;
         left: 40px;
     }
-
+*/ 
     .conteiner-mobile p{
 
         font-size: 14px;
@@ -412,7 +412,6 @@
         left:auto;
     }
 
-    /* */
     .menu-torneos {
         width:500px;
     }
@@ -456,6 +455,9 @@
     .col-lg-12 {
         padding-right:0px;
         padding-left:0px;
+    }
+    .navbar-nav>li>a {
+        padding: 10px 25px;
     }
 
 }
@@ -583,14 +585,17 @@
     width: 92%;
     right: 0;
     border-radius: 0px;
-    margin:10px 18px;
+    margin:10px;
+    float:none;
+
 
     }
+
     .box-form .enviar, .box-form-2 .enviar {
     left:0px;
     width:150px;
     padding:15px 0;
-    margin:15px 30%;
+
 
     }
     .box-form form input, .box-form-2 form input {
@@ -598,8 +603,12 @@
         width:42%;
         padding: 8px;
         border-radius: 0px;
-        margin:10px 18px;
 
+
+    }
+    .contactanos-boton{
+        width:100%;
+        text-align:center;
     }
 
     h1 {
@@ -713,7 +722,6 @@
     }
     .box-form textarea, .box-form-2 textarea {
         width: 89%;
-        margin:10px 23px;
 
     }
 }
@@ -779,7 +787,6 @@
     }
     .box-form textarea, .box-form-2 textarea {
         width:90%;
-        margin:10px;
 
     }
 }

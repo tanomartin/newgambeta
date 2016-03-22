@@ -10,19 +10,19 @@
 		<table class="table ">
 			<thead>
 				<tr class="principal-table" style="background-color: {{ torneo.rgb }} ">
-					<th>Jugadora</th>
-					<th><img src="imagenes/amarilla.png"></th>
-					<th><img src="imagenes/roja.png"></th>
-					<th>Equipo</th>
+					<th style="text-align:left;">Jugadora</th>
+					<th><img style="position: relative;left: -5px;" src="imagenes/amarilla.png"></th>
+					<th><img style="position: relative;left: -5px;" src="imagenes/roja.png"></th>
+					<th style="text-align:left;">Equipo</th>
 				</tr>
 			</thead>
 			<tbody>
 				{% for fila in tarjetas %}	
 					<tr>
-						<td>{{fila.nombre}}</td>
-						<td>{{fila.amarillas}}</td>
-						<td>{{fila.rojas}}</td>
-						<td>{{fila.equipo}}</td>
+						<td style="text-align:left;">{{fila.nombre}}</td>
+						<td style="text-align:left;">{{fila.amarillas}}</td>
+						<td style="text-align:left;">{{fila.rojas}}</td>
+						<td style="text-align:left;">{{fila.equipo}}</td>
 					</tr>
 				{% endfor %}
 			</tbody>
