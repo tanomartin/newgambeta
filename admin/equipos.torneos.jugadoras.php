@@ -140,15 +140,13 @@
 														<td style="text-align: center;"><img border="0" src="images/forbidden.ico" alt="No activa" title="No activa" style="cursor:pointer" onclick="cambiaractiva('<?=$jugadoras[$i]["idJugadoraEquipo"]?>','1')"/></td>
 												 <? } ?>
 												 <td style="text-align: center;">
-												 <? if($jugadoras[$i]["activa"] == '1') {
-													 	if($jugadoras[$i]["envioMail"] == '1') {?>
+												 <? if($jugadoras[$i]["envioMail"] == '1') {?>
 								                     		<img border="0" src="images/check.ico" alt="activa" title="activa" style="cursor:pointer" onclick="activarenvio('<?=$jugadoras[$i]["idJugadoraEquipo"]?>','0')"/>
 								                     <? } else {
 								                     		if($jugadoras[$i]["email"] != '') {?>
 																<img border="0" src="images/forbidden.ico" alt="No activa" title="No activa" style="cursor:pointer" onclick="activarenvio('<?=$jugadoras[$i]["idJugadoraEquipo"]?>','1')"/>
 													 	<? }
-								                     	} 
-													}?>
+								                     	} ?>
 												 </td>	
 												 <td style="text-align: center;"><?=$estadisticasJugadora[0]["goles"]?></td>
 												 <td style="text-align: center;"><?=$estadisticasJugadora[0]["amarillas"]?></td>

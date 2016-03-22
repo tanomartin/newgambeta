@@ -15,7 +15,7 @@ $equipos = $oEquipo->getTorneoCat ( $idTorneoCat );
 if ($equipos != null) {
 	$oJugadora = new Jugadoras ();
 	foreach ( $equipos as $key => $equipo ) {
-		$aJugadoras = $oJugadora->getByEquipoTorneo ( $equipo ['id'], $idTorneoCat );
+		$aJugadoras = $oJugadora->getByEquipoTorneoActiva ( $equipo ['id'], $idTorneoCat );
 		$equipos [$key] ['jugadoras'] = $aJugadoras;
 	}
 }

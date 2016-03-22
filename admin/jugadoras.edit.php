@@ -91,7 +91,7 @@
 											      <tr class="even">
 											        <td class="col_0 col_first"><label for="fnac">Fecha Nacimiento:</label></td>
 											        <td class="col_1 col_last">
-											            <input name="fechaNac" type="text" id="fechaNac" value="<?php echo cambiaf_a_normal($datos[0]["fechaNac"]); ?>" size="10" <?= $disabled ?> readonly="readonly" />
+											            <input name="fechaNac" type="text" id="fechaNac" value="<?php echo cambiaf_a_normal($datos[0]["fechaNac"]); ?>" size="10" <?= $disabled ?>/>
 											            <? if ( $disabled  == "" ) { ?>
 												            <a href="javascript:show_calendar('document.form_alta.fechaNac', document.form_alta.fechaNac.value);">
 												            	<img src="_js/calendario2/cal.gif" width="16" height="16" border="0" />

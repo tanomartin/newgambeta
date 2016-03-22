@@ -241,6 +241,29 @@ class Jugadoras {
 		return $res;
 	}
 	
+	
+	function getByEquipoTorneoActiva($idEquipo="", $idTorneoCat="") {
+		$db = $this->base;
+		$query = "Select
+		j.*,
+		e.nombre as equipo,
+		je.id as idJugadoraEquipo,
+		je.activa as activa,
+		je.envioMail as envioMail
+		From
+		ga_equipos_torneos et,
+		ga_jugadoras_equipo je,
+		ga_jugadoras j,
+		ga_equipos e
+		Where
+		et.idEquipo = $idEquipo and et.idTorneoCat = $idTorneoCat and
+		et.id = je.idEquipoTorneo and
+		je.idJugadora = j.id and
+		et.idEquipo = e.id and je.activa = 1";
+		$res = $db->getResults($query, ARRAY_A);
+		return $res;
+	}
+	
 	function getCantidadActivaByEquipoTorneo($idEquipo="", $idTorneoCat="") {
 		$db = $this->base;
 		$query = "Select

@@ -1,7 +1,6 @@
 <?	include_once "include/fechas.php";
 	include_once "../model/jugadoras.php";
 	include_once "../model/equipos.php";	
-	include_once "../model/posiciones.php";
 	include_once "../model/torneos.php";
 	include_once "../model/torneos.categorias.php";
 	if (!isset( $_SESSION['usuario'])) {
