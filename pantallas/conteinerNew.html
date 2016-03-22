@@ -41,6 +41,9 @@
 	<div class="menu-torneos" id="menu">
 		<ul>
 			<li>
+				<div class="conteiner-mobile" id="defaultMobile" style="border: 2px solid {{ torneo.rgb }}"></div>
+			</li>
+			<li>
 				<button id="noticias" name="noticias" onclick='activar("noticias")'>Noticias</button>
 				<div class="conteiner-mobile" id="noticiasMobile" style="border: 2px solid {{ torneo.rgb }}"></div>
 			</li>
@@ -128,6 +131,7 @@ $(document).ready(function() {
 	} else {
 		blanquearInformacion();
 		mostrarDesktop("#defaultDesktop");
+		mostrarMobile("#defaultMobile");
 	}
 });
 
@@ -138,23 +142,14 @@ $(document).ajaxStart(function(){
 });
  
 $(window).resize(function() {
-	if ($("#activo").val() == "default") {
-		var contenedorDesktop =  "#"+$("#activo").val()+"Desktop";
-		if (window.innerWidth < 991) {
-			$(contenedorDesktop).css('display','none');
-		} else {
-			$(contenedorDesktop).css('display','block');
-		}
+	var contenedorMobile = "#"+$("#activo").val()+"Mobile";
+	var contenedorDesktop =  "#"+$("#activo").val()+"Desktop";
+	if (window.innerWidth < 991) {
+		$(contenedorMobile).css('display','block');
+		$(contenedorDesktop).css('display','none');
 	} else {
-		var contenedorMobile = "#"+$("#activo").val()+"Mobile";
-		var contenedorDesktop =  "#"+$("#activo").val()+"Desktop";
-		if (window.innerWidth < 991) {
-			$(contenedorMobile).css('display','block');
-			$(contenedorDesktop).css('display','none');
-		} else {
-			$(contenedorDesktop).css('display','block');
-			$(contenedorMobile).css('display','none');
-		}
+		$(contenedorDesktop).css('display','block');
+		$(contenedorMobile).css('display','none');
 	}
 });
  
@@ -181,6 +176,7 @@ $("#categorias").change(function() {
 		cargarDatos(idTorneoCat, nombreCategoria, torneo, acceso);
 		blanquearInformacion();
 		mostrarDesktop("#defaultDesktop");
+		mostrarMobile("#defaultMobile");
 		$("#activo").val("default");
 	});
 });
@@ -193,6 +189,7 @@ function blanquearInformacion() {
 }
 
 function ocultarMobile() {
+	$("#defaultMobile").css('display','none');
 	$("#noticiasMobile").css('display','none');
 	$("#equiposMobile").css('display','none');
 	$("#fixtureMobile").css('display','none');
@@ -228,6 +225,7 @@ function desactivarBotones() {
 
 function cargarDatos(idTorneoCat, nombreCategoria, torneo, acceso) {
 	$("#defaultDesktop").load("dafault.php", {torneo: torneo});
+	$("#defaultMobile").load("dafault.php", {torneo: torneo, screen: 'mobile'});
 	if (idTorneoCat != 0) {
 		$("#noticiasMobile").load("noticias.php", {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria,  screen: 'mobile'});
 		$("#noticiasDesktop").load("noticias.php", {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});

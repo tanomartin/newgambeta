@@ -10,6 +10,10 @@ $oNoticias = new Noticias();
 $noticias = $oNoticias->getByIdTorneo(5,$torneo['id']);
 
 // Cargo la plantilla
-$twig->display('dafault.html', array('torneo'=>$torneo, 'nombreCategoria' => $nombreCategoria, 'noticias' => $noticias));
+if (isset($_POST['screen'])) {
+	$twig->display('dafaultMobile.html', array('torneo'=>$torneo, 'nombreCategoria' => $nombreCategoria, 'noticias' => $noticias));
+} else {
+	$twig->display('dafault.html', array('torneo'=>$torneo, 'nombreCategoria' => $nombreCategoria, 'noticias' => $noticias));
+}
 
 ?>

@@ -220,6 +220,11 @@
         left: 40px;
         color:#ff3c5e;
     }
+    
+    .conteiner-mobile h5 {
+        position: relative;
+        left: 40px;
+    }
 
     .conteiner-mobile p{
 
