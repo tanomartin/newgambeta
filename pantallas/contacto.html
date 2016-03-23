@@ -16,43 +16,62 @@
 </head>
 <body>
 	<nav class="navbar navbar-default" id="navbar"></nav>
-<div class="contacto-back">
-	  <div class="box-contact">
-      <div class="container">
-        <div class="section-form2">
-          <div>
-            <h3>Contactanos </h3>
-            <h6>Dejanos tu consulta y te responderemos a  la brevedad. Muchas gracias.</h6>
-          </div>
-            <div class="box-form-2">
-              <form action="send.php" method="post" name="contacto" id="contacto">
-                <p>Mensaje</p>
-                <input type="text" name"nombre" placeholder="Nombre" required>
-                <input type="text" name"apellido" placeholder="Apellido"  required>
-                <input type="email" name"email" placeholder="Dirección de E-mail" required>
-                <input type="number" name"telefono" placeholder="Teléfono" required>
-                  <div>
-                      <textarea name="mensaje" placeholder="Escribí acá tu mensaje" required></textarea>
-                  </div>
-                  <div class="contactanos-boton">
-                    <input type="submit" class="enviar" value="Enviar Mensaje">
-                  </div>
-              </form>
-          </div>
-        </div>
-      </div>
-  </div>
-</div>
-
-
-<footer id="footer"></footer>
+	<div class="contacto-back">
+		  <div class="box-contact">
+	      <div class="container">
+	        <div class="section-form2">
+	          <div>
+	            <h3>Contactanos </h3>
+	            <h6>Dejanos tu consulta y te responderemos a  la brevedad. Muchas gracias.</h6>
+	          </div>
+	            <div class="box-form-2">
+	              <form id="contacto">
+	                <p>Mensaje</p>
+	                <input type="text" name="nombre" id="nombre" placeholder="Nombre" required>
+	                <input type="text" name="apellido" id="apellido" placeholder="Apellido" required>
+	                <input type="email" name="email" id="email" placeholder="Dirección de E-mail" required>
+	                <input type="number" name="telefono" id="telefono" placeholder="Teléfono" required>
+	                <div>
+	                	<textarea name="mensaje" id="mensaje" placeholder="Escribí acá tu mensaje" required></textarea>
+	                </div>
+	                <h4 id="cartel"></h4>
+	                <div class="contactanos-boton">
+	                    <input type="submit" class="enviar" value="Enviar Mensaje">
+	                </div>
+	              </form>
+	          </div>
+	        </div>
+	      </div>
+	  </div>
+	</div>
+	<footer id="footer"></footer>
 </body>
 
 <script>
+
 $(function() {
   $("#navbar").load("include/html/navbar.html");
   $("#footer").load("include/html/footer.html");
+  
+  $("#contacto").submit(function( event ) {
+  		var nombre = $("#nombre").val();
+  		var apellido = $("#apellido").val();
+  		var email = $("#email").val();
+  		var telefono = $("#telefono").val();
+  		var mensaje = $("#mensaje").val();
+  		$.post("send.php", {nombre : nombre, apellido : apellido, email : email, telefono : telefono, mensaje : mensaje}, function(data) {
+  			$("#cartel").html(data);
+  			if (data == 1) {
+  				$("#cartel").html("Mensaje enviado Correctamente");
+  			} else {
+  				$("#cartel").html("Error al enviar el mensaje. Intente nuevamente");
+  			}
+  		});
+  		$('#contacto')[0].reset();
+		return false;
+  });
 });
+
 </script>
 
 </html>
