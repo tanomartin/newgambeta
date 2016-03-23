@@ -607,8 +607,10 @@
         width:42%;
         padding: 8px;
         border-radius: 0px;
+    }
+    .box-form-2 form input {
 
-
+        margin:10px;
     }
     .contactanos-boton{
         width:100%;
@@ -717,6 +719,10 @@
     .container-fluid > .navbar-collapse, .container-fluid > .navbar-header, .container > .navbar-collapse, .container > .navbar-header {
         margin-right: 0px;
     }
+    .col-lg-12 article p, .col-lg-12 article h3 {
+        padding:5px 10px;
+    }
+
 
 }
 @media screen and (max-width:500px){
