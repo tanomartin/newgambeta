@@ -37,11 +37,15 @@
 			document.frm_listado.submit();
 		}
 
-		function cambiaractiva(idJugadoraEquipos, activa){
-			document.frm_listado.accion.value = "cambiaractiva";
-			document.frm_listado.activa.value = activa;
-			document.frm_listado.idJugadoraEquipo.value = idJugadoraEquipos;
-			document.frm_listado.submit();	
+		function cambiaractiva(idJugadoraEquipos, activa, cantActivas){
+			if (cantActivas < 13 || activa == 0) {
+				document.frm_listado.accion.value = "cambiaractiva";
+				document.frm_listado.activa.value = activa;
+				document.frm_listado.idJugadoraEquipo.value = idJugadoraEquipos;
+				document.frm_listado.submit();	
+			} else {
+				alert("No se puede activar. Ya se alcanzo el maximo de jugadoras activas");
+			}
 		}
 
 		function activarenvio(idJugadoraEquipos, envio){
@@ -135,9 +139,9 @@
 							                     <td align="left"><?=$jugadoras[$i]["nombre"]?></td>
 							                     <td align="left"><?=$jugadoras[$i]["email"]?></td>
 												 <? if($jugadoras[$i]["activa"] == '1') { $cantidad++;?>
-							                     		<td style="text-align: center;"><img border="0" src="images/check.ico" alt="activa" title="activa" style="cursor:pointer" onclick="cambiaractiva('<?=$jugadoras[$i]["idJugadoraEquipo"]?>','0')"/></td>
+							                     		<td style="text-align: center;"><img border="0" src="images/check.ico" alt="activa" title="activa" style="cursor:pointer" onclick="cambiaractiva('<?=$jugadoras[$i]["idJugadoraEquipo"]?>','0',<?=$catidadActivas?>)"/></td>
 							                     <? } else { ?>
-														<td style="text-align: center;"><img border="0" src="images/forbidden.ico" alt="No activa" title="No activa" style="cursor:pointer" onclick="cambiaractiva('<?=$jugadoras[$i]["idJugadoraEquipo"]?>','1')"/></td>
+														<td style="text-align: center;"><img border="0" src="images/forbidden.ico" alt="No activa" title="No activa" style="cursor:pointer" onclick="cambiaractiva('<?=$jugadoras[$i]["idJugadoraEquipo"]?>','1',<?=$catidadActivas?>)"/></td>
 												 <? } ?>
 												 <td style="text-align: center;">
 												 <? if($jugadoras[$i]["envioMail"] == '1') {?>
