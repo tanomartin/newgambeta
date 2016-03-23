@@ -16,7 +16,7 @@ $equipo = $oEquipo->get ( $_POST ["id"] );
 $datosTorneo = $oEquipo->getRelacionTorneo ( $_POST ["idTorneoEquipo"] );
 
 $oJugadora = new Jugadoras ();
-for($fila = 18; $fila < 31; $fila ++) {
+for($fila = 18; $fila < 38; $fila ++) {
 	$nombre = $objPHPExcel->getActiveSheet ()->getCell ( 'A' . $fila )->getValue ();
 	$nombre = trim($nombre);
 	$apellido = $objPHPExcel->getActiveSheet ()->getCell ( 'B' . $fila )->getValue ();
