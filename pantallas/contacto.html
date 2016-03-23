@@ -25,14 +25,14 @@
             <h6>Dejanos tu consulta y te responderemos a  la brevedad. Muchas gracias.</h6>
           </div>
             <div class="box-form-2">
-              <form>
+              <form action="send.php" method="post" name="contacto" id="contacto">
                 <p>Mensaje</p>
                 <input type="text" name"nombre" placeholder="Nombre" required>
                 <input type="text" name"apellido" placeholder="Apellido" required>
                 <input type="email" name"email" placeholder="Dirección de E-mail" required>
                 <input type="number" name"telefono" placeholder="Teléfono" required>
                   <div>
-                      <textarea placeholder="Escribí acá tu mensaje" required></textarea>
+                      <textarea name="mensaje" placeholder="Escribí acá tu mensaje" required></textarea>
                   </div>
                   <div class="contactanos-boton">
                     <input type="submit" class="enviar" value="Enviar Mensaje">
