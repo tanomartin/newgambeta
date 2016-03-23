@@ -182,7 +182,7 @@ class Jugadoras {
 	function insertarequipo($datos){
 		$db = $this->base;
 		if (isset($datos['activo'])) {
-			$activo = 1;
+			$activo = $datos['activo'];
 		} else {
 			$activo = 0;
 		}

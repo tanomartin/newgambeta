@@ -42,28 +42,40 @@ foreach ( $_POST as $key => $value ) {
 }
 
 $oJugadora = new Jugadoras ();
+$catidadActivas = $oJugadora->getCantidadActivaByEquipoTorneo($_POST["id"], $_POST["idTorneoCat"]);
+$cantidadImportadas = $catidadActivas + 1;;
 foreach ( $jugadorasNuevas as $jugadora ) {
 	$oJugadora->set($jugadora);
 	$oJugadora->insertar();	
+	if ($cantidadImportadas < 14) {
+		$activa = 1;
+	} else {
+		$activa = 0;
+	}
 	$asocEquipo = array (
 			'id' => $oJugadora->id,
 			'idEquipoTorneo' => $_POST ['idTorneoEquipo'],
-			'idPosicion' => 2,
-			'activo' => 1
+			'activo' => $activa
 	);
-	$oJugadora->insertarequipo ($asocEquipo);
+	$oJugadora->insertarequipo ($asocEquipo);	
+	$cantidadImportadas++;
 }
 
 foreach ( $jugadorasExistentes as $jugadora ) {	
 	$oJugadora->set($jugadora);
 	$oJugadora->actualizar();
+	if ($cantidadImportadas < 14) {
+		$activa = 1;
+	} else {
+		$activa = 0;
+	}
 	$asocEquipo = array (
 			'id' => $oJugadora->id,
 			'idEquipoTorneo' => $_POST ['idTorneoEquipo'],
-			'idPosicion' => 2,
-			'activo' => 1
+			'activo' => $activa
 	);
 	$oJugadora->insertarequipo ($asocEquipo);
+	$cantidadImportadas++;
 }
 
 ?>
