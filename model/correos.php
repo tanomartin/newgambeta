@@ -7,9 +7,9 @@ include_once "../include/PHPMailer/class.smtp.php";
 
 class Correos {
 	
-	private $correoSalida = "gambetafemenina@gmail.com";
-	private $nombreSalida = "gambetafemenina@gmail.com";
-	private $pass = "juanijuani";
+	private $correoSalida = "XXXXXXXXXXXXXXXXXXXXXXXXX";
+	private $nombreSalida = "XXXXXXXXXXXXXXXXXXXXXXXXX";
+	private $pass = "XXXXXXXXXXXXXXXXXXXXXXXXX";
 
 	var $correo;
 	var $cuerpo;
