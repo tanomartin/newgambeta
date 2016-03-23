@@ -7,9 +7,9 @@ include_once "../include/PHPMailer/class.smtp.php";
 
 class Correos {
 	
-	private $correoSalida = "XXXXXXXXXXXXXXXXXXXXXXXXX";
-	private $nombreSalida = "XXXXXXXXXXXXXXXXXXXXXXXXX";
-	private $pass = "XXXXXXXXXXXXXXXXXXXXXXXXX";
+	private $correoSalida = "gambetafemenina@gmail.com";
+	private $nombreSalida = "gambetafemenina@gmail.com";
+	private $pass = "juanijuani";
 
 	var $correo;
 	var $cuerpo;
@@ -42,8 +42,8 @@ class Correos {
 		
 		$mail->SetFrom($this->correoSalida);
 		$mail->FromName = $this->nombreSalida; 
-		$mail->Subject = $this->asunto;
-		$mail->Body = $this->equipoNombre.": <br><br>".$this->cuerpo;
+		$mail->Subject = utf8_decode($this->asunto);
+		$mail->Body = utf8_decode($this->equipoNombre).": <br><br>".utf8_decode($this->cuerpo);
 		$mail->AltBody = $this->cuerpo;
 		$mail->AddAddress($this->correo, $this->equipoNombre); 
 		

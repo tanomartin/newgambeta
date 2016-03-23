@@ -55,7 +55,7 @@
 	
 	<? include("encabezado.php"); ?>
 	
-	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../include/js/jquery.js"></script>
 	<script>
 	
 		function eliminarReserva(reserva) {

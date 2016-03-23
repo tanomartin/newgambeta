@@ -33,7 +33,7 @@ $horas_fecha = $oFecha->getHorasCancha ( $_POST ['id'] );
 	
 	<? include("encabezado.php"); ?>
 	
-	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../include/js/jquery.js"></script>
 	<script>
 	
 		function cargarReserva(equipo,fecha) {

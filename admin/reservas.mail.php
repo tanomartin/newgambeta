@@ -69,8 +69,8 @@ foreach ( $equiposTorneo as $equipo ) {
 	
 	<? include("encabezado.php"); ?>
 	
-	<script type="text/javascript" src="../js/jquery.js"></script>
-	<script type="text/javascript" src="../js/jquery.blockUI.js"></script>
+	<script type="text/javascript" src="../include/js/jquery.js"></script>
+	<script type="text/javascript" src="../include/js/jquery.blockUI.js"></script>
 	<script>
 	
 	function volver(){
@@ -173,7 +173,7 @@ foreach ( $equiposTorneo as $equipo ) {
 													</td>
 													<td nowrap>
 													<? if ($equipo['seenvio']) { ?>
-															<img border="0" src="../img/check.ico" id="info" alt="info" width="20px" height="20px" /> 
+															<img border="0" src="images/check.ico" id="info" alt="info" width="20px" height="20px" /> 
 															<a href="javascript:eliminarEnvio(<?=$equipo['id_equipo']?>);">
 																<img border="0" title="Reenviar" src="images/reenvio.png" id="info" alt="info" width="20px" height="20px" />
 															</a>
