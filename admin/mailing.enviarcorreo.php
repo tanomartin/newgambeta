@@ -51,8 +51,8 @@ foreach ( $equiposMail as $equipo ) {
 	
 	<? include("encabezado.php"); ?>
 	
-	<script type="text/javascript" src="../js/jquery.js"></script>
-	<script type="text/javascript" src="../js/jquery.blockUI.js"></script>
+	<script type="text/javascript" src="../include/js/jquery.js"></script>
+	<script type="text/javascript" src="../include/js/jquery.blockUI.js"></script>
 	<script>
 		
 		function volver(){
@@ -112,9 +112,9 @@ foreach ( $equiposMail as $equipo ) {
 													   }  ?>
 												</td>	
 												<? if ($correos['correcto'] == 1) { ?>
-														<td><img width="17" border="0" alt="reserva" title="Con Reserva" src="../img/check.ico" /></td>
+														<td><img width="17" border="0" alt="reserva" title="Con Reserva" src="images/check.ico" /></td>
 												<? } else { ?>
-														<td><img width="17" border="0" alt="reserva" title="Con Reserva" src="../img/forbidden.ico" /></td>
+														<td><img width="17" border="0" alt="reserva" title="Con Reserva" src="images/forbidden.ico" /></td>
 												<? } ?>	
 											</tr>	
 									 <? }
