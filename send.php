@@ -1,24 +1,22 @@
 <?php
 error_reporting(0);
-$nombre = $_POST['nombre'];
-$correo= $_POST['email'];
-$telefono = $_POST['telefono'];
-$mensaje=$_POST['mensaje'];
-$header = 'From: ' . $correo . " rn";
-$header .= "X-Mailer: PHP/" . phpversion() . " rn";
-$header .= "Mime-Version: 1.0 rn";
-$header .= "Content-Type: text/plain";
 
-$mensaje = "Este mensaje fue enviado por : " . $nombre . " rn";
-$mensaje .= "Su e-mail es : " . $correo. " rn";
-$mensaje .= "Mensaje : " . $_POST['mensaje'] . " rn";
-$mensaje .= "Que opinas de nuestra pagina :" . $_POST['GrupoOpciones2'] . " rn";
-$mensaje .= "Enviado el ; " . date('d/m/Y', time());
-
-$para = 'mzuccotti93@gmail.com';
-$asunto = 'Formulario de Contacto';
-
-mail($para, $asunto, utf8_decode($mensaje), $header, $telefono);
+//$casilla_destino = "info@gambetafemenina.com.ar";
+$casilla_destino = "mzuccotti93@gmail.com";
+$nombre = (isset($_POST["nombre"]))? $_POST["nombre"] : "";
+$email = (isset($_POST["email"]))? $_POST["email"] : "";
+$telefono = (isset($_POST["telefono"]))? $_POST["telefono"] : "";
+$mensaje = (isset($_POST["mensaje"]))? $_POST["mensaje"] : "";
+	
+	
+$asunto = "Consulta - Gambeta Femenina";
+$cuerpo_mail .= "Nombre y Apellido: ".$nombre."\r\n";
+$cuerpo_mail .= "Email: ".$email."\r\n";
+$cuerpo_mail .= "Telefono: ".$telefono."\r\n";
+$cuerpo_mail .= "Mensaje: ".$mensaje."\r\n";
+	
+	
+@mail($casilla_destino, $asunto, $cuerpo_mail);
 
 echo 'mensaje enviado correctamente';
 
