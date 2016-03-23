@@ -17,7 +17,6 @@ if ($_POST ['id_torneo_categoria'] != '-1') {
 	
 	$oEquipo = new Equipos ();
 	$equipos = $oEquipo->getTorneoCat ( $_POST ['id_torneo_categoria'] );
-	
 	if ($equipos != NULL) {
 		foreach ( $equipos as $equipo ) {
 			$id = $equipo ['id'];
@@ -29,6 +28,9 @@ if ($_POST ['id_torneo_categoria'] != '-1') {
 					$arrayCorreos[$i] = $correo[email];
 					$i++;
 				}
+			}
+			if ($equipo['dtemail'] != "") {
+				$arrayCorreos[$i] = $equipo['dtemail'];
 			}
 			$equiposMail [$id] = array (
 					'id_equipo' => $id,
@@ -51,6 +53,9 @@ if ($_POST ['id_torneo_categoria'] != '-1') {
 					$arrayCorreos[$i] = $correo[email];
 					$i++;
 				}
+			}
+			if ($equipo['dtemail'] != "") {
+				$arrayCorreos[$i] = $equipo['dtemail'];
 			}
 			$equiposMail [$id] = array (
 					'id_equipo' => $id,

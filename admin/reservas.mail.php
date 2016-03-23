@@ -42,6 +42,9 @@ foreach ( $equiposTorneo as $equipo ) {
 				$i++;
 			}
 		}
+		if ($equipo['dtemail'] != "") {
+			$arrayCorreos[$i] = $equipo['dtemail'];
+		}
 		$equiposSinReserva [$s] = array (
 				'id_equipo' => $equipo ['id'],
 				'nombre' => $equipo ['nombre'],

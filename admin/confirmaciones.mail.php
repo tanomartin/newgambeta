@@ -38,6 +38,9 @@
 								$i++;
 							}
 						}
+						if ($equipo['dtemail'] != "") {
+							$arrayCorreos[$i] = $equipo['dtemail'];
+						}
 						$equiposMail[$id] = array('id_equipo' => $id, 'nombre' => $equipoOb->nombre, 'email' => $arrayCorreos, 'seenvio' => $seEnvio);
 					}
 				}

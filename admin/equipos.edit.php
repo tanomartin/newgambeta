@@ -89,9 +89,20 @@
 											        <td class="col_1 col_last"><input name="nombre" id="nombre" class="required text" maxlength="50" type="text" value="<?=$datos[0]["nombre"]?>" size="50"  <?= $disabled ?>></td>
 											      </tr> 
 											      <tr class="even">
-											        <td class="col_0 col_first"><label for="nombre">D.T.</label></td>
+											        <td class="col_0 col_first"><label for="dt">D.T.</label></td>
 											        <td class="col_1 col_last"><input name="dt" id="dt" maxlength="50" type="text" value="<?=$datos[0]["dt"]?>" size="50"  <?= $disabled ?>></td>
 											      </tr> 
+											      
+											      <tr class="odd">
+											        <td class="col_0 col_first"><label for="dtemail">D.T. Email</label></td>
+											        <td class="col_1 col_last"><input name="dtemail" id="dtemail"  maxlength="50" type="text" value="<?=$datos[0]["dtemail"]?>" size="50"  <?= $disabled ?>></td>
+											      </tr> 
+											      
+											      <tr class="even">
+											        <td class="col_0 col_first"><label for="dttelefono">D.T. Telefono</label></td>
+											        <td class="col_1 col_last"><input name="dttelefono" id="dttelefono" maxlength="50" type="text" value="<?=$datos[0]["dttelefono"]?>" size="50"  <?= $disabled ?>></td>
+											      </tr> 
+											      
 											      <tr class="odd">
 											        <td class="col_0 col_first"><label for="nombre">Foto</label></td>
 											        <td class="col_1 col_last">

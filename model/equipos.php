@@ -8,6 +8,8 @@ class Equipos {
 	var $id;
 	var $nombre;
 	var $dt;
+	var $dtemail;
+	var $dttelefono;
 	var $foto;
 	var $descripcion;
 	
@@ -20,6 +22,8 @@ class Equipos {
 			$this->id = $valores[0]["id"]; 
 			$this->nombre = $valores[0]["nombre"];		
 			$this->dt = $valores[0]["dt"];
+			$this->dtemail = $valores[0]["dtemail"];
+			$this->dttelefono = $valores[0]["dttelefono"];
 			$this->foto = $valores[0]["foto"]; 
 			$this->descripcion = $valores[0]["descripcion"];
 		}
@@ -29,6 +33,8 @@ class Equipos {
 		$this->id = $valores["id"]; 
 		$this->nombre = $valores["nombre"];		
 		$this->dt = $valores["dt"];
+		$this->dtemail = $valores["dtemail"];
+		$this->dttelefono = $valores["dttelefono"];
 		$this->descripcion = $valores["descripcion"];
 		$this->foto = $valores["foto"]; 	
 	}
@@ -40,9 +46,11 @@ class Equipos {
 		
 	function insertar($files) {
 		$db = $this->base;
-		$query = "insert into ga_equipos(nombre,dt,descripcion) values (".
+		$query = "insert into ga_equipos(nombre,dt,dtemail,dttelefono,descripcion) values (".
 				"'".$this->nombre."',".
 				"'".$this->dt."',".
+				"'".$this->dtemail."',".
+				"'".$this->dttelefono."',".
 				"'".$this->descripcion."')";
 		$this->id = $db->query($query); 
 		if(is_uploaded_file($_FILES['foto']['tmp_name'])) {
@@ -72,6 +80,8 @@ class Equipos {
 		$query = "update ga_equipos set 
 		          nombre = '". $this->nombre."',
 		          dt = '". $this->dt."',
+		          dtemail = '". $this->dtemail."',
+		          dttelefono = '". $this->dttelefono."',
 		          descripcion = '". $this->descripcion."'
 				  where id = ".$this->id ;				  
 		$db->query($query); 

@@ -118,7 +118,7 @@ foreach ( $listadoPartidos as $partido ) {
 	$pdf->SetXY (5, 104 );
 	$pdf->Cell (13, 7, "Subcapitana: ".utf8_decode($referentes1[1]['nombre'])."    ".$referentes1[1]['telefono']);
 	$pdf->SetXY (5, 110 );
-	$pdf->Cell (13, 7, "DT: ".utf8_decode($partido['dt1']));
+	$pdf->Cell (13, 7, "DT: ".utf8_decode($partido['dt1'])."    ".$partido['dttelefono1']);
 	$pdf->SetXY (143, 110 );
 	$pdf->Cell (13, 7, "Jugadoras: ".$oJugadora->getActivasByIdEquipoTorneo($partido['idEquipoTorneo1']));
 	
@@ -128,7 +128,7 @@ foreach ( $listadoPartidos as $partido ) {
 	$pdf->SetXY (185, 104 );
 	$pdf->Cell (13, 7, "Subcapitana: ".utf8_decode($referentes2[1]['nombre'])."   ".$referentes2[1]['telefono']);
 	$pdf->SetXY (185, 110 );
-	$pdf->Cell (13, 7, "DT: ".utf8_decode($partido['dt2']));
+	$pdf->Cell (13, 7, "DT: ".utf8_decode($partido['dt2'])."    ".$partido['dttelefono2']);
 	$pdf->SetXY (323, 110 );
 	$pdf->Cell (13, 7, "Jugadoras: ".$oJugadora->getActivasByIdEquipoTorneo($partido['idEquipoTorneo2']));
 	
