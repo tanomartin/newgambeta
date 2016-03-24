@@ -46,8 +46,8 @@
 								<h4 class="modal-title" id="myModalLabel">{{ noticia.titulo }}</h4>
 							</div>
 							<div class="modal-body">
-								<h3>{{ noticia.subitulo }}</h3>
-								<h4>{{ noticia.subtitulo }}</h4>
+								<h3>{{ noticia.subtitulo }}</h3>
+								<h4>{{ noticia.copete }}</h4>
 								{{ noticia.desarrollo }}
 							</div>
 							<div class="modal-footer">
@@ -74,16 +74,15 @@
 							<div class="modal-body">
 								<h3>Gambeta Femenina</h3>
 								<div class="formulario-modal">
-									<form>
-										<input type="text" name="nombre" placeholder="Nombre" required>
-										<input type="text" name="apellido" placeholder="Apellido"
-											required> <input type="email"
-											name="email" placeholder="Dirección de E-mail" required>
-										<input type="number" name="telefono" placeholder="Teléfono"
-											required>
+									<form id="inscriptionForm">
+										<input type="text" name="nombreInscrip" id="nombreInscrip" placeholder="Nombre" required>
+										<input type="text" name="apellidoInscrip" id="apellidoInscrip" placeholder="Apellido" required> 
+										<input type="email" name="emailInscrip" id="emailInscrip" placeholder="Dirección de E-mail" required>
+										<input type="number" name="telefonoInscrip" id="telefonoInscrip" placeholder="Teléfono" required>
 										<div>
-											<textarea placeholder="Escribí acá tu mensaje" required></textarea>
+											<textarea name="mensajeInscrip" id="mensajeInscrip" placeholder="Escribí acá tu mensaje" required></textarea>
 										</div>
+										<h4 id="cartelInscrip"></h4>
 										<input type="submit" class="enviar" value="Enviar Mensaje">
 									</form>
 								</div>
@@ -531,8 +530,7 @@
 	  		var email = $("#email").val();
 	  		var telefono = $("#telefono").val();
 	  		var mensaje = $("#mensaje").val();
-	  		$.post("send.php", {nombre : nombre, apellido : apellido, email : email, telefono : telefono, mensaje : mensaje}, function(data) {
-	  			$("#cartel").html(data);
+	  		$.post("send.php", {nombre : nombre, apellido : apellido, email : email, telefono : telefono, mensaje : mensaje, asunto : 'Consulta'}, function(data) {
 	  			if (data == 1) {
 	  				$("#cartel").html("Mensaje enviado Correctamente");
 	  			} else {
@@ -541,7 +539,25 @@
 	  		});
 	  		$('#contacto')[0].reset();
 			return false;
-	  });
+	  	});
+		
+		$("#inscriptionForm").submit(function( event ) {
+	  		var nombre = $("#nombreInscrip").val();
+	  		var apellido = $("#apellidoInscrip").val();
+	  		var email = $("#emailInscrip").val();
+	  		var telefono = $("#telefonoInscrip").val();
+	  		var mensaje = $("#mensajeInscrip").val();
+	  		$.post("send.php", {nombre : nombre, apellido : apellido, email : email, telefono : telefono, mensaje : mensaje, asunto : 'Inscripcion'}, function(data) {
+	  			$("#cartelInscrip").html(data);
+	  			if (data == 1) {
+	  				$("#cartelInscrip").html("Mensaje enviado Correctamente");
+	  			} else {
+	  				$("#cartelInscrip").html("Error al enviar el mensaje. Intente nuevamente");
+	  			}
+	  		});
+	  		$('#inscriptionForm')[0].reset();
+			return false;
+	  	});
 		
 	}) // fin document.on"ready"
 
