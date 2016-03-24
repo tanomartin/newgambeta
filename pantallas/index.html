@@ -30,7 +30,7 @@
 			<div class="item-one">
 				<h1>{{ noticia.titulo }}</h1>
 				<h2>{{ noticia.subtitulo }}</h2><br>
-				<p>{{ noticia.copete }}</p><br>
+				<p>{{ noticia.copete|raw }}</p><br>
 
 				<button class="read" type="button" class="btn btn-primary btn-lg"
 					data-toggle="modal" data-target="#myModal">Leer Más</button>
@@ -47,8 +47,8 @@
 							</div>
 							<div class="modal-body">
 								<h3>{{ noticia.subtitulo }}</h3>
-								<h4>{{ noticia.copete }}</h4>
-								{{ noticia.desarrollo }}
+								<h4>{{ noticia.copete|raw }}</h4>
+								{{ noticia.desarrollo|raw }}
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-default"

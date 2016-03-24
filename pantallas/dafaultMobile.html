@@ -7,7 +7,7 @@
 		{% for nota in noticias %}
 				<h4>{{nota.titulo}}</h4>
 				<h5>{{nota.fecha}}</h5>
-				<h5>{{nota.desarrollo}}</h5>
+				<h5>{{nota.desarrollo|raw}}</h5>
 		{% endfor %}
 		{% if noticias == NULL %}
 				<h4>No existen notas para esta Torneo</h4>
