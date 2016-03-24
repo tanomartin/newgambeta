@@ -94,7 +94,6 @@
         left: 35px;
     }
     .item-one h1, .item-one h2, .item-one p {
-        top:30px;
         padding:5px 10px;
     }
 
@@ -169,8 +168,9 @@
     .item-two form {
         left:0px;
     }
+/
     .read,.inscription {
-        top:75px;
+        top:0px;
     }
     h1 {
         font-size:48px;
@@ -387,6 +387,9 @@
         padding:5px 10px;
         top:10px;
     }
+    .item-one h1 {
+        font-size:35px;
+    }
     .box-social .container p {
         display:none;
     }
@@ -532,7 +535,7 @@
 
     .read, .inscription {
 
-        top:-38px;
+        top:-25px;
     }
 
     .item-two {
@@ -733,6 +736,9 @@
         width: 89%;
 
     }
+    .item-one h1, .item-one h2, .item-one p {
+        padding:5px 10px;
+    }
 }
 
 
@@ -758,11 +764,10 @@
     }
     .read, .inscription {
 
-    display:block;
+    display:inline-block;
     margin-top:5px;
-    width:200px;
     top:0px;
-    left:22px;
+    left:10px;
 
     }
 

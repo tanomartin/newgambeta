@@ -182,10 +182,12 @@ header {
     color: #FFF;
     position: relative;
     top:0px;
-    padding:0 10px;
+    padding:4px 8px;
     display: inline-block;
 }
-
+.item-one h2{
+    font-size:20px;
+}
 .inscription {
 
     position:relative;
