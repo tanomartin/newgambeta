@@ -182,7 +182,7 @@ header {
     color: #FFF;
     position: relative;
     top:0px;
-    left: 15px;
+    padding:0 10px;
     display: inline-block;
 }
 

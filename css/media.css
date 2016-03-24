@@ -94,7 +94,8 @@
         left: 35px;
     }
     .item-one h1, .item-one h2, .item-one p {
-        top:0px;
+        top:30px;
+        padding:5px 10px;
     }
 
     .item-two{
@@ -384,7 +385,7 @@
         display:block;
         left:0px;
         padding:5px 10px;
-        top:0px;
+        top:10px;
     }
     .box-social .container p {
         display:none;
