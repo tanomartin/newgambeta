@@ -82,7 +82,9 @@
 										<div>
 											<textarea name="mensajeInscrip" id="mensajeInscrip" placeholder="Escribí acá tu mensaje" required></textarea>
 										</div>
-										<h4 id="cartelInscrip"></h4>
+	                					<div class="mensaje-enviado-home">
+											<h4 id="cartelInscrip"></h4>
+										</div>
 										<input type="submit" class="enviar" value="Enviar Mensaje">
 									</form>
 								</div>
@@ -197,7 +199,9 @@
 	                	<div>
 	                		<textarea name="mensaje" id="mensaje" placeholder="Escribí acá tu mensaje" required></textarea>
 	                	</div>
-						<h4 id="cartel"></h4>
+	                	<div class="mensaje-enviado-home">
+	                		<h4 id="cartel"></h4>
+	                	</div>
 						<div class="contactanos-boton">
 							<input type="submit" class="enviar" value="Enviar Mensaje">
 						</div>
@@ -532,9 +536,9 @@
 	  		var mensaje = $("#mensaje").val();
 	  		$.post("send.php", {nombre : nombre, apellido : apellido, email : email, telefono : telefono, mensaje : mensaje, asunto : 'Consulta'}, function(data) {
 	  			if (data == 1) {
-	  				$("#cartel").html("Mensaje enviado Correctamente");
+	  				$("#cartel").html("<span class='ion-checkmark-round'></span> Mensaje enviado Correctamente");
 	  			} else {
-	  				$("#cartel").html("Error al enviar el mensaje. Intente nuevamente");
+	  				$("#cartel").html("<span class='ion-close-round'></span> Error al enviar el mensaje. Intente nuevamente");
 	  			}
 	  		});
 	  		$('#contacto')[0].reset();
@@ -550,9 +554,9 @@
 	  		$.post("send.php", {nombre : nombre, apellido : apellido, email : email, telefono : telefono, mensaje : mensaje, asunto : 'Inscripcion'}, function(data) {
 	  			$("#cartelInscrip").html(data);
 	  			if (data == 1) {
-	  				$("#cartelInscrip").html("Mensaje enviado Correctamente");
+	  				$("#cartelInscrip").html("<span class='ion-checkmark-round'></span> Mensaje enviado Correctamente");
 	  			} else {
-	  				$("#cartelInscrip").html("Error al enviar el mensaje. Intente nuevamente");
+	  				$("#cartelInscrip").html("<span class='ion-close-round'></span> Error al enviar el mensaje. Intente nuevamente");
 	  			}
 	  		});
 	  		$('#inscriptionForm')[0].reset();

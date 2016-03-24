@@ -1168,3 +1168,11 @@ td button {
     padding:0 20px;
     color:#fa3e5f;
 }
+.mensaje-enviado {
+    text-align: center;
+    color: #fff;
+}
+.mensaje-enviado-home {
+    text-align: center;
+    color: #fa3e5f;
+}

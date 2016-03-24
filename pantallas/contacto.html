@@ -34,7 +34,9 @@
 	                <div>
 	                	<textarea name="mensaje" id="mensaje" placeholder="Escribí acá tu mensaje" required></textarea>
 	                </div>
-	                <h4 id="cartel"></h4>
+	                <div class="mensaje-enviado">
+	                	<h4 id="cartel"></h4>
+	                </div>
 	                <div class="contactanos-boton">
 	                    <input type="submit" class="enviar" value="Enviar Mensaje">
 	                </div>
@@ -62,9 +64,9 @@ $(function() {
   		$.post("send.php", {nombre : nombre, apellido : apellido, email : email, telefono : telefono, mensaje : mensaje, asunto : 'Consulta'}, function(data) {
   			$("#cartel").html(data);
   			if (data == 1) {
-  				$("#cartel").html("Mensaje enviado Correctamente");
+  				$("#cartel").html("<span class='ion-checkmark'></span> Mensaje enviado Correctamente");
   			} else {
-  				$("#cartel").html("Error al enviar el mensaje. Intente nuevamente");
+  				$("#cartel").html("<span class='ion-close'></span> Error al enviar el mensaje. Intente nuevamente");
   			}
   		});
   		$('#contacto')[0].reset();
