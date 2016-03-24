@@ -800,12 +800,18 @@ footer .contact p {
 
 .modal-body h3{
     text-align:center;
-    color:#fa3e5f;
-
+    font-size:20px;
 }
+.modal-body h4{
+    font-size:14px;
+    margin-top:25px;
+}
+
 
 .modal-title {
     text-align:center;
+    font-size:25px;
+    color:#fa3e5f;
 }
 
 .modal-body input {
