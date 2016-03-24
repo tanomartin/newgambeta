@@ -59,7 +59,7 @@ $(function() {
   		var email = $("#email").val();
   		var telefono = $("#telefono").val();
   		var mensaje = $("#mensaje").val();
-  		$.post("send.php", {nombre : nombre, apellido : apellido, email : email, telefono : telefono, mensaje : mensaje}, function(data) {
+  		$.post("send.php", {nombre : nombre, apellido : apellido, email : email, telefono : telefono, mensaje : mensaje, asunto : 'Consulta'}, function(data) {
   			$("#cartel").html(data);
   			if (data == 1) {
   				$("#cartel").html("Mensaje enviado Correctamente");
