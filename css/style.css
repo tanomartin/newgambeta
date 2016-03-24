@@ -377,7 +377,7 @@ header {
 
 .sedes h2 {
 
-    font-size:25px;
+    font-size:28px;
     text-transform:uppercase;
     font-weight: 700;
     font-family: 'Roboto', sans-serif;
@@ -1164,9 +1164,8 @@ td button {
     left:10px;
     color:#FFF;
 }
-.ion-ios-stopwatch-outline, .prox {
+.ion-ios-stopwatch-outline {
     padding:0 20px;
-    color:#fa3e5f;
 }
 .mensaje-enviado {
     text-align: center;
@@ -1175,4 +1174,9 @@ td button {
 .mensaje-enviado-home {
     text-align: center;
     color: #fa3e5f;
+}
+
+.imagen-prox {
+    width:100%;
+    text-align:center;
 }
