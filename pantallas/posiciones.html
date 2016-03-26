@@ -8,7 +8,7 @@
 			<thead>
 				<tr class="principal-table" style="background-color: {{ torneo.rgb }} ">
 					<th>P</th>
-					<th>Equipo</th>
+					<th style="text-align:left;">Equipo</th>
 					<th>PTS</th>
 					<th>PJ</th>
 					<th>PG</th>
@@ -23,7 +23,7 @@
 				{% for fila in tabla %}
 					<tr>
 						<td>{{ loop.index }}</td>
-						<td>{{fila.nombre}}</td>
+						<td style="text-align:left;">{{fila.nombre}}</td>
 						<td style="background-color: {{ torneo.rgb }}; color: white">{{fila.puntaje}}</td>
 						<td>{{ fila.par_ganados+fila.par_empatados+fila.par_perdidos }}</td>
 						<td style="color: green">{{fila.par_ganados}}</td>
