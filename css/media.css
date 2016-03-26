@@ -149,6 +149,7 @@
     }
     .arbitro .box-arbitro button,.box-actividades .container .box-entrenamiento button {
         left:115px;
+        z-index:10;
     }
     .box-datos h3,.box-datos ul {
         text-align:center;
