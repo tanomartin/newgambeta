@@ -137,11 +137,11 @@
 											      </tr>  
 											      <tr class="even">
 											        <td class="col_0 col_first"><label for="activa">Activa</label></td>
-											        <td class="col_1 col_last"><input type="checkbox"  <? if ($datos[0]["activa"] == "1" ) { ?> checked="checked" <? } ?> name="activo" id="activo" <?= $disabled ?> ></td>
+											        <td class="col_1 col_last"><input type="checkbox"  <? if ($datos[0]["activa"] == "1" ) { ?> checked="checked"  <? } ?> name="activo" id="activo" value="1" <?= $disabled ?> ></td>
 											      </tr>
 											      <tr class="even">
 											        <td class="col_0 col_first"><label for="correo">Email</label></td>
-											        <td class="col_1 col_last"><input type="checkbox"  <? if ($datos[0]["email"] == "1" ) { ?> checked="checked" <? } ?> name="email" id="email" <?= $disabled ?> ></td>
+											        <td class="col_1 col_last"><input type="checkbox"  <? if ($datos[0]["email"] == "1" ) { ?> checked="checked" <? } ?> name="email" id="email" value="1" <?= $disabled ?> ></td>
 											      </tr> 
 												</tbody>
 											</table>
