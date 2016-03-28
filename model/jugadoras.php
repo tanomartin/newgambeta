@@ -398,6 +398,18 @@ class Jugadoras {
 			return true;
 		}
 	}
+	
+	function existePorDni($dni="") {
+		$db = $this->base;
+		$query = "Select count(*) as cantidad from ga_jugadoras where dni = '$dni'";
+		$res = $db->getRow($query);
+	
+		if($res->cantidad == 0) {
+			return false;
+		} else {
+			return true;
+		}
+	}
 }
 
 ?>

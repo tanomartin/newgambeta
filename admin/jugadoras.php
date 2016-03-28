@@ -69,13 +69,19 @@
 			
 		case "guardar":	
 			$data = $_POST;
-			$files = $_FILES;
 			$oObj = new Jugadoras();
 			$oObj->set($data);
 			if($_POST["id"] == "-1") {
-				$oObj->insertar($files);
+				$existe = $oObj->existePorDni($data['dni']);
+				if (!$existe) {
+					$oObj->insertar();
+				} else {
+					$datos[0] = $_POST;
+					$error = "La jugadora ya existe";
+					include("jugadoras.edit.php");
+				}
 			} else {
-				$oObj->actualizar($files);
+				$oObj->actualizar();
 			}
 			break;
 			

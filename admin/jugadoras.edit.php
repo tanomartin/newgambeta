@@ -73,7 +73,8 @@
 								<div class="formbody">
 									<div class="ce_table">
 										<fieldset>
-											<legend>Datos del Equipo</legend>
+											<legend>Datos de Jugadora</legend>
+											<span style="color: red;"><b><?=$error?></b></span>
 											<table summary="Personal data">
 											  	<tbody>
 											      <tr class="even">
