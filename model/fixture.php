@@ -169,7 +169,8 @@ class Fixture {
 						e1.nombre as equipo1,
 						e2.nombre as equipo2, 
 						t.nombre as torneo, 
-						c.nombrePagina as categoria
+						c.nombrePagina as categoria,
+						c1.nombrePagina as zona
 		          FROM 	ga_fixture x
 				 		left join ga_equipos_torneos et1 on x.idEquipoTorneo1 = et1.id 
 						left join ga_equipos e1 on et1.idEquipo = e1.id 
@@ -179,6 +180,7 @@ class Fixture {
 				  		left join ga_torneos_categorias tc on f.idTorneoCat = tc.id
 				  		left join ga_torneos t on tc.id_torneo = t.id
 				 		left join ga_categorias c on tc.id_categoria = c.id 
+						left join ga_categorias c1 on tc.id_padre = c1.id 
 				  WHERE 1 = 1 ";
 		if (trim($filtros["fnombre"]) != "")		 
 			$query.= " and e1.nombre like '%".strtoupper($filtros["fnombre"])."%'";		  

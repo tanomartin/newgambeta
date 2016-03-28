@@ -201,8 +201,8 @@ $esultimo = (count ( $datos ) == 1) ? "S" : "N";
 											<th>Nombre</th>
 											<th>Fecha I.</th>
 											<th>Fecha F.</th>
-											<th width="15%">Torneo</th>
-											<th width="15%">Categor&iacute;a</th>
+											<th>Torneo</th>
+											<th>Categor&iacute;a</th>
 											<th width="3%"></th>
 										</tr>
 										<? if (count($datos) == 0) { ?>	
@@ -216,7 +216,7 @@ $esultimo = (count ( $datos ) == 1) ? "S" : "N";
 														<td align="left"><?=cambiaf_a_normal($datos[$i]["fechaIni"])?></td>
 														<td align="left"><?=cambiaf_a_normal($datos[$i]["fechaFin"])?></td>
 														<td align="left"><?=$datos[$i]["torneo"]?></td>
-														<td align="left"><?=$datos[$i]["categoria"]?></td>
+														<td align="left"><? if ($datos[$i]["zona"] != "") { echo $datos[$i]["zona"]." - ".$datos[$i]["categoria"]; } else { echo $datos[$i]["categoria"]; }?></td>
 														<td nowrap>
 															<a href="javascript:verConfirmaciones(<?=$datos[$i]["id"]?>);">
 																<img border="0" src="images/confirmacion-icon.png" alt="Confirmaciones" title="Confirmaciones" width="20px" height="20px" />

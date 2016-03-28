@@ -285,7 +285,7 @@
 											for($i = 0; $i < $total; $i ++) { ?>
 												<tr>
 													<td align="left"><?=$datos[$i]["torneo"]?></td>
-													<td align="left"><?=$datos[$i]["categoria"]?></td>
+													<td align="left"><? if ($datos[$i]["zona"] != "") { echo $datos[$i]["zona"]." - ".$datos[$i]["categoria"]; } else { echo $datos[$i]["categoria"]; }?></td>
 													<td align="left"><?=$datos[$i]["equipo1"]?></td>
 													<? if ($datos[$i]["golesEquipo1"] != -1 and $datos[$i]["golesEquipo2"] != -1) { ?>
 														<td style="text-align: center;"><?=$datos[$i]["golesEquipo1"]?> - <?=$datos[$i]["golesEquipo2"]?></td>

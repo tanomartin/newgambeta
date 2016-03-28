@@ -231,7 +231,7 @@
 								                     <td align="left"><?=cambiaf_a_normal($datos[$i]["fechaIni"])?></td>
 								                     <td align="left"><?=cambiaf_a_normal($datos[$i]["fechaFin"])?></td>
 								                     <td align="left"><?=$datos[$i]["torneo"]?></td>
-								                     <td align="left"><?=$datos[$i]["categoria"]?></td>
+								                     <td align="left"><? if ($datos[$i]["zona"] != "") { echo $datos[$i]["zona"]." - ".$datos[$i]["categoria"]; } else { echo $datos[$i]["categoria"]; }?></td>
 								                     <td nowrap>
 								                     	<a href="javascript:ver(<?=$datos[$i]["id"]?>);"> <img border="0" src="images/find-icon.png" alt="ver" title="ver" width="20px" height="20px" /></a>
 								                        <a href="javascript:editar(<?=$datos[$i]["id"]?>);"> <img border="0" src="images/icono-editar.gif" alt="editar" title="editar" /></a>

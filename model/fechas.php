@@ -111,9 +111,20 @@ class Fechas {
 
 	function getPaginado($filtros, $inicio, $cant, &$total) {
 		$db = $this->base;
-		$query = "Select SQL_CALC_FOUND_ROWS  e.*, t.nombre as torneo, c.nombrePagina as categoria
-		          from ga_fechas e, ga_torneos t, ga_torneos_categorias tc, ga_categorias c
-				  where e.idTorneoCat = tc.id and tc.id_torneo = t.id and tc.id_categoria = c.id ";
+		$query = "Select 
+					SQL_CALC_FOUND_ROWS  e.*, 
+					t.nombre as torneo, 
+					c.nombrePagina as categoria,
+					c1.nombrePagina as zona
+		          from 
+					ga_fechas e, 
+					ga_torneos t, 
+					ga_torneos_categorias tc left join ga_categorias c1 on tc.id_padre = c1.id,
+					ga_categorias c
+				  where 
+					e.idTorneoCat = tc.id and 
+					tc.id_torneo = t.id and 
+					tc.id_categoria = c.id ";
 		if (trim($filtros["fnombre"]) != "")		 
 			$query.= " and e.nombre like '%".strtoupper($filtros["fnombre"])."%'";		  
 
