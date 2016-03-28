@@ -45,7 +45,7 @@ for($i = 0; $i < sizeof ( $listadoPartidos ); $i ++) {
 	$listadoPartidos [$i] ['confirmacion'] = $confirmacion;
 	if ($listadoPartidos [$i] ['idzona'] != - 1 && $listadoPartidos [$i] ['idzona'] != 0) {
 		$categoria = $oCetegoria->get ( $listadoPartidos [$i] ['idzona'] );
-		$listadoPartidos [$i] ['zona'] = "-" . $categoria [0] ['nombrePagina'];
+		$listadoPartidos [$i] ['zona'] = " - " . $categoria [0] ['nombrePagina'];
 	} else {
 		$listadoPartidos [$i] ['zona'] = "";
 	}
@@ -136,7 +136,7 @@ for($i = 0; $i < sizeof ( $listadoPartidos ); $i ++) {
 											<? foreach ($listadoPartidos as $partido) {?>
 												<tr>
 													<td><?=$partido["horaPartido"]?></td>
-													<td><?=$partido["torneo"]."-".$partido["categoria"].$partido["zona"]?></td>
+													<td><?=$partido["torneo"].$partido["zona"]." - ".$partido["categoria"]?></td>
 													<td style="text-align: center;"><?=$partido["equipo1"]." vs ".$partido["equipo2"]?></td>
 													<td style="text-align: center"><?=$partido["cancha"]?></td>
 													<td><?=$partido["arbitro"]?></td>
