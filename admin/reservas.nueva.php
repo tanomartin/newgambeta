@@ -33,7 +33,6 @@ $horas_fecha = $oFecha->getHorasCancha ( $_POST ['id'] );
 	
 	<? include("encabezado.php"); ?>
 	
-	<script type="text/javascript" src="../include/js/jquery.js"></script>
 	<script>
 	
 		function cargarReserva(equipo,fecha) {
@@ -86,13 +85,11 @@ $horas_fecha = $oFecha->getHorasCancha ( $_POST ['id'] );
 		}
 	
 		function controlHoras() {
-			document.getElementById("error").innerHTML="";
 			var libre = document.getElementById("libre");
 			var libregambeta = document.getElementById("libregambeta");
 			var grupo = document.getElementById("form_alta").horas;
 			var selectall = document.getElementById("form_alta").selectall;
-			var total = grupo.length;
-			
+
 			var libreChecked = 0;
 			if (libre != null) {	
 				if (libre.checked || libregambeta.checked) { 
@@ -105,15 +102,18 @@ $horas_fecha = $oFecha->getHorasCancha ( $_POST ['id'] );
 			}
 			
 			if(libreChecked != 0) {
-				selectall.disabled = true;
-				if (total == null) {
-					grupo.disabled = true;
-				} else {
-					for (var i = 0; lcheck = grupo[i]; i++) {
-						lcheck.disabled = true;
+				if (grupo != null) {
+					var total = grupo.length;
+					document.getElementById("error").innerHTML="";
+					selectall.disabled = true;
+					if (total == null) {
+						grupo.disabled = true;
+					} else {
+						for (var i = 0; lcheck = grupo[i]; i++) {
+							lcheck.disabled = true;
+						}
 					}
 				}
-					
 				if (libreChecked == 1) {
 					if (libre.checked) {
 						libregambeta.disabled = true;
@@ -126,19 +126,22 @@ $horas_fecha = $oFecha->getHorasCancha ( $_POST ['id'] );
 					libre.disabled = false;
 				}
 				libregambeta.disabled = false;
-				selectall.disabled = false;
-				if (total == null) {
-					grupo.disabled = false;
-				} else {
-					for (i = 0; lcheck = grupo[i]; i++) {
-						lcheck.disabled = false;
+				if (grupo != null) {
+					var total = grupo.length;
+					document.getElementById("error").innerHTML="";
+					selectall.disabled = false;
+					if (total == null) {
+						grupo.disabled = false;
+					} else {
+						for (i = 0; lcheck = grupo[i]; i++) {
+							lcheck.disabled = false;
+						}
 					}
 				}
 			}
 		}
 		
 		function validar() {
-			document.getElementById("error").innerHTML="";
 			var libre = document.getElementById("libre");
 			var grupo = document.getElementById("form_alta").horas;
 			var libregambeta = document.getElementById("libregambeta");
@@ -153,8 +156,29 @@ $horas_fecha = $oFecha->getHorasCancha ( $_POST ['id'] );
 					document.form_alta.submit();
 					return true;
 				} else {
+					if (grupo != null) {
+						document.getElementById("error").innerHTML="";
+						var controlCheck = 0;
+						for (var i = 0; lcheck = grupo[i]; i++) {
+							if (lcheck.checked) {
+								controlCheck++;
+							}
+						}
+						if (controlCheck < 1) {
+							document.getElementById("error").innerHTML="* Debe seleccionar como mínimo 1 horas";
+							return false;
+						} else {
+							document.form_alta.accion.value = "guardarNueva";		
+							document.form_alta.submit();
+							return true;
+						}
+					}
+				}	
+			} else {
+				if (grupo != null) {
+					document.getElementById("error").innerHTML="";
 					var controlCheck = 0;
-					for (var i = 0; lcheck = grupo[i]; i++) {
+					for (i = 0; lcheck = grupo[i]; i++) {
 						if (lcheck.checked) {
 							controlCheck++;
 						}
@@ -167,21 +191,6 @@ $horas_fecha = $oFecha->getHorasCancha ( $_POST ['id'] );
 						document.form_alta.submit();
 						return true;
 					}
-				}	
-			} else {
-				var controlCheck = 0;
-				for (i = 0; lcheck = grupo[i]; i++) {
-					if (lcheck.checked) {
-						controlCheck++;
-					}
-				}
-				if (controlCheck < 1) {
-					document.getElementById("error").innerHTML="* Debe seleccionar como mínimo 1 horas";
-					return false;
-				} else {
-					document.form_alta.accion.value = "guardarNueva";		
-					document.form_alta.submit();
-					return true;
 				}
 			}
 		}
