@@ -5,7 +5,7 @@ require_once "include/fechas.php";
 include_once "../model/fixture.php";
 include_once "../model/sedes.php";
 include_once "../model/jugadoras.php";
-
+include_once "../model/categorias.php";
 
 if (!isset( $_SESSION['usuario'])) {
 	header("Location: index.php");
@@ -19,7 +19,7 @@ $oFixture = new Fixture ();
 $listadoPartidos = $oFixture->getByFechaPartidoSede ( $fechaPartidosSql, $id_sede );
 $oSede = new Sedes ();
 $sede = $oSede->get ( $id_sede );
-
+$oCetegoria = new Categorias ();
 $oJugadora = new Jugadoras();
 // 216 x 356 mm
 $pdf = new FPDF ( 'L', 'mm', 'Legal' );
@@ -43,11 +43,19 @@ foreach ( $listadoPartidos as $partido ) {
 	$pdf->SetXY ( 215, 25 );
 	$pdf->Cell ( 80, 15, "Gambeta Femenina" );
 	
+	
+	if ($partido ['idzona'] != - 1 && $partido ['idzona'] != 0) {
+		$categoria = $oCetegoria->get ( $partido ['idzona'] );
+		$partido ['zona'] = " - " . $categoria [0] ['nombrePagina'];
+	} else {
+		$partido ['zona'] = "";
+	}
+	
 	$pdf->SetFont ( 'Arial', 'B', 25 );
-	$pdf->SetXY ( 35, 35 );
-	$torneo = $partido ["torneo"] . " - " . $partido ["categoria"] . $partido ["zona"];
+	$pdf->SetXY ( 15, 35 );
+	$torneo = $partido ["torneo"] . $partido ["zona"]." - ".$partido ["categoria"];
 	$pdf->Cell ( 80, 15, $torneo );
-	$pdf->SetXY ( 215, 35 );
+	$pdf->SetXY ( 200, 35 );
 	$pdf->Cell ( 80, 15, $torneo );
 	
 	$pdf->SetFont ( 'Arial', 'B', 15 );
