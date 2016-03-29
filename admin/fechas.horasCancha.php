@@ -42,7 +42,8 @@
 		}
 	
 		function validar() {
-			document.getElementById("error").innerHTML = "";
+			//sacamos el control de 4 horas para el admin
+			/* document.getElementById("error").innerHTML = "";
 			var grupo = document.getElementById("form_alta").horas;
 			var controlCheck = 0;
 			for (var i = 0; lcheck = grupo[i]; i++) {
@@ -53,10 +54,10 @@
 			if (controlCheck < 4) {
 				document.getElementById("error").innerHTML = "* Debe seleccionar como mínimo 4 horas";
 				return false;
-			} else {
+			} else { */
 				document.form_alta.accion.value = "guardarHorasCancha";
 				document.form_alta.submit();
-			}
+			//}
 		}
 		
 		function seleccionarTodo() {
