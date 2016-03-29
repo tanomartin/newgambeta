@@ -71,8 +71,12 @@
 			$data = $_POST;
 			$oObj = new Jugadoras();
 			$oObj->set($data);
+			
 			if($_POST["id"] == "-1") {
-				$existe = $oObj->existePorDni($data['dni']);
+				$existe = false;
+				if ($_POST["dni"] != "11111111") {
+					$existe = $oObj->existePorDni($data['dni']);
+				}
 				if (!$existe) {
 					$oObj->insertar();
 				} else {
