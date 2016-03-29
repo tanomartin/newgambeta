@@ -15,9 +15,16 @@ foreach ( $_POST as $key => $value ) {
 		$facnac = "fecnan" . $value;
 		$email = "emailn" . $value;
 		$telefono = "telefonon" . $value;
+		
+		if ($_POST [$dni] == '') {
+			$dniValue = '11111111';
+		} else {
+			$dniValue = $_POST [$dni];
+		}
+		
 		$jugadorasNuevas [$value] = array (
 				'nombre' => $_POST [$nombre],
-				'dni' => $_POST [$dni],
+				'dni' => $dniValue,
 				'fecnac' => $_POST [$fecnac],
 				'email' => $_POST [$email],
 				'telefono' => $_POST [$telefono] 
@@ -30,10 +37,17 @@ foreach ( $_POST as $key => $value ) {
 		$facnac = "fecnac" . $value;
 		$email = "email" . $value;
 		$telefono = "telefono" . $value;
+		
+		if ($_POST [$dni] == '') {
+			$dniValue = '11111111';
+		} else {
+			$dniValue = $_POST [$dni];
+		}
+		
 		$jugadorasExistentes [$value] = array (
 				'id' => $value,
 				'nombre' => $_POST [$nombre],
-				'dni' => $_POST [$dni],
+				'dni' => $dniValue,
 				'fecnac' => $_POST [$fecnac],
 				'email' => $_POST [$email],
 				'telefono' => $_POST [$telefono] 
