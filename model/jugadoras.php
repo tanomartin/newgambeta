@@ -399,7 +399,7 @@ class Jugadoras {
 	
 	function cargarNumero($idJugadorasEquipos, $numero="") {
 		$db = $this->base;
-		$query = "update ga_jugadoras_equipo set numero = ".$numero." where id = ".$idJugadorasEquipos;
+		$query = "update ga_jugadoras_equipo set numero = '".$numero."' where id = ".$idJugadorasEquipos;
 		$db->query($query);
 	}
 	
