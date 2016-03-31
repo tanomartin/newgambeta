@@ -202,7 +202,11 @@ foreach ( $listadoPartidos as $partido ) {
 				$pdf->SetXY(5, $fila);
 				$pdf->Cell(80, 5, utf8_decode($jugadora['nombre']),1,1,"C");
 				$pdf->SetXY(85, $fila);
-				$pdf->Cell(30, 5, $jugadora['dni'],1,1,"C");
+				if ($jugadora['dni'] != '11111111') {
+					$pdf->Cell(30, 5, $jugadora['dni'],1,1,"C");
+				} else {
+					$pdf->Cell(30, 5, "",1,1,"C");
+				}
 				$pdf->SetXY(115, $fila);
 				$pdf->Cell(10, 5, $jugadora['numero'],1,1,"C");
 				$pdf->SetXY(125, $fila);
@@ -224,7 +228,11 @@ foreach ( $listadoPartidos as $partido ) {
 				$pdf->SetXY(185, $fila);
 				$pdf->Cell(80, 5, utf8_decode($jugadora['nombre']),1,1,"C");
 				$pdf->SetXY(265, $fila);
-				$pdf->Cell(30, 5, $jugadora['dni'],1,1,"C");
+				if ($jugadora['dni'] != '11111111') {
+					$pdf->Cell(30, 5, $jugadora['dni'],1,1,"C");
+				} else {
+					$pdf->Cell(30, 5, "",1,1,"C");
+				}
 				$pdf->SetXY(295, $fila);
 				$pdf->Cell(10, 5, $jugadora['numero'],1,1,"C");
 				$pdf->SetXY(305, $fila);
