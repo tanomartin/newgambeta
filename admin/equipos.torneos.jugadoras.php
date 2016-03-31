@@ -66,6 +66,11 @@
 		function importarJugadoras(){
 			document.frm_listado.accion.value = "importarJugadoras";
 			document.frm_listado.submit();	
+		}
+
+		function cargarNumeros(){
+			document.frm_listado.accion.value = "cargarNumeros";
+			document.frm_listado.submit();	
 		}	
 
 	</script>
@@ -93,8 +98,8 @@
 							 <font color="#e4790f"><?=$equipo[0]['nombre']." [".$datosTorneo[0]['torneo'] ." - ".$datosTorneo[0]['categoria']."]" ?></font> - Activas: <font color="#e4790f"><?=$catidadActivas?></font></h1>
 						</div>
 						<div align="right" style="margin-right:20px" >
-						
             				<input class="button" onclick="javascript:importarJugadoras()" type="button" value="Importar Jugadoras Desde Ficha" />
+            				<input class="button" onclick="javascript:cargarNumeros()" type="button" value="Cargar Numeros" />
            				</div>
 						<div class="mod_listing ce_table listing block" id="partnerlist">
 							<form name="frm_listado" id="frm_listado" action="<?=$_SERVER['PHP_SELF']?>" method="post">
@@ -117,6 +122,7 @@
 			                    
 			                    <table style="width: 928px">
 			                    	<tr>
+			                    		<th>Nro</th>
 										<th>Nombre</th>
 										<th>Mail</th>
 										<th>Activa</th>
@@ -128,7 +134,7 @@
 									</tr>
 			                    	<? if (count($jugadoras) == 0) { ?>
 									<tr>
-											<td colspan="8" align="center">Este equipo no tiene jugadoras asignadas</td>
+											<td colspan="9" align="center">Este equipo no tiene jugadoras asignadas</td>
 								    </tr>
 									<? } else { 
 										 	$total = count($jugadoras);	
@@ -136,6 +142,7 @@
 											for ( $i = 0; $i < $total; $i++ ) {
 												$estadisticasJugadora =  $oJugadora->getEstadisticas($jugadoras[$i]["idJugadoraEquipo"]);?>
 												<tr>
+												 <td style="text-align: center;"><?=$jugadoras[$i]["numero"]?></td>
 							                     <td align="left"><?=$jugadoras[$i]["nombre"]?></td>
 							                     <td align="left"><?=$jugadoras[$i]["email"]?></td>
 												 <? if($jugadoras[$i]["activa"] == '1') { $cantidad++;?>

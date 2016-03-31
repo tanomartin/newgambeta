@@ -130,7 +130,8 @@ class Jugadoras {
       					 e.nombre as nombreEquipo,
        					 t.nombre as torneo,
        					 c.nombrePagina as categoria,
-      					 je.activa
+      					 je.activa,
+      					 je.numero
 		        from ga_jugadoras j, 
 		        	 ga_jugadoras_equipo je, 
 		        	 ga_equipos_torneos et, 
@@ -159,7 +160,8 @@ class Jugadoras {
 						 e.id as idEquipo,
 						 t.id as idTorneo,
 						 c.id as idCategoria,
-						 je.activa
+						 je.activa,
+						 je.numero
 				  from  ga_jugadoras j,
 						ga_jugadoras_equipo je,
 						ga_equipos_torneos et,
@@ -194,6 +196,7 @@ class Jugadoras {
 		$query = "insert into ga_jugadoras_equipo values ('DEFAULT',".
 				"'".$datos['id']."',".
 				"'".$datos['idEquipoTorneo']."',".
+				"'".$datos['numero']."',".
 				"'".$activo."',".
 				"'".$envioMail."')";
 		$db->query($query);
@@ -212,9 +215,12 @@ class Jugadoras {
 		} else {
 			$envioMail = 0;
 		}
-		$query = "update ga_jugadoras_equipo 
-					set idEquipoTorneo = ".$datos['idEquipoTorneo'].", activa = ".$activo.", envioMail = ".$envioMail." 
-							where id = ".$datos['idJugadoraEquipo']." and idJugadora = ".$datos['id'];
+		$query = "update ga_jugadoras_equipo set 
+					idEquipoTorneo = ".$datos['idEquipoTorneo'].",
+					numero = ".$datos['numero'].", 
+					activa = ".$activo.", 
+					envioMail = ".$envioMail." 
+				  where id = ".$datos['idJugadoraEquipo']." and idJugadora = ".$datos['id'];
 		$db->query($query);
 		
 	}
@@ -225,6 +231,7 @@ class Jugadoras {
 					j.*, 
 					e.nombre as equipo, 
 					je.id as idJugadoraEquipo, 
+					je.numero as numero, 
 					je.activa as activa,
 					je.envioMail as envioMail
 				  From 
@@ -248,6 +255,7 @@ class Jugadoras {
 		j.*,
 		e.nombre as equipo,
 		je.id as idJugadoraEquipo,
+		je.numero as numero,
 		je.activa as activa,
 		je.envioMail as envioMail
 		From
@@ -287,6 +295,7 @@ class Jugadoras {
 		$query = "Select
 					j.*,
 					je.id as idJugadoraEquipo,
+					je.numero as numero,
 					je.activa as activa
 				  From
 					ga_jugadoras_equipo je,
@@ -313,6 +322,7 @@ class Jugadoras {
 		$query = "Select
 					j.*,
 					je.id as idJugadoraEquipo,
+					je.numero as numero,
 					je.activa as activa
 				  From
 					ga_jugadoras_equipo je,
@@ -386,6 +396,13 @@ class Jugadoras {
 		$db->query($query);
 		
 	}
+	
+	function cargarNumero($idJugadorasEquipos, $numero="") {
+		$db = $this->base;
+		$query = "update ga_jugadoras_equipo set numero = ".$numero." where id = ".$idJugadorasEquipos;
+		$db->query($query);
+	}
+	
 	
 	function jugadoraEnEquipo($idJugadora="", $idEquipoTorneo="") {
 		$db = $this->base;

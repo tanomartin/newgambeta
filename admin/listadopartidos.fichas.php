@@ -204,7 +204,7 @@ foreach ( $listadoPartidos as $partido ) {
 				$pdf->SetXY(85, $fila);
 				$pdf->Cell(30, 5, $jugadora['dni'],1,1,"C");
 				$pdf->SetXY(115, $fila);
-				$pdf->Cell(10, 5, "",1,1,"C");
+				$pdf->Cell(10, 5, $jugadora['numero'],1,1,"C");
 				$pdf->SetXY(125, $fila);
 				$pdf->Cell(37, 5, "",1,1,"C");
 				$pdf->SetXY(162, $fila);
@@ -226,7 +226,7 @@ foreach ( $listadoPartidos as $partido ) {
 				$pdf->SetXY(265, $fila);
 				$pdf->Cell(30, 5, $jugadora['dni'],1,1,"C");
 				$pdf->SetXY(295, $fila);
-				$pdf->Cell(10, 5, "",1,1,"C");
+				$pdf->Cell(10, 5, $jugadora['numero'],1,1,"C");
 				$pdf->SetXY(305, $fila);
 				$pdf->Cell(37, 5, "",1,1,"C");
 				$pdf->SetXY(342, $fila);

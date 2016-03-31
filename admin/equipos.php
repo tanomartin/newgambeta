@@ -123,6 +123,25 @@
 			exit;
 			break;	
 			
+		case "cargarNumeros":
+			include("equipos.torneos.jugadoras.numeros.php");
+			exit;
+			break;
+			
+		case "guardarNumeros":
+			$oJugadora = new Jugadoras();
+			foreach ( $_POST as $key => $value ) {
+				$inputNum = strpos ( $key, "numero" );
+				if ($inputNum !== false) {
+					$keyArray = explode("-",$key);
+					$idJugadoraEquipo = $keyArray[1];
+					$oJugadora->cargarNumero($idJugadoraEquipo,$value);
+				}
+			}
+			include("equipos.torneos.jugadoras.php");
+			exit;
+			break;
+			
 		case "importar":
 			include("equipos.torneos.seleccionarImp.php");
 			exit;

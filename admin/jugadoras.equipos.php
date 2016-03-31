@@ -113,12 +113,13 @@
 										<tr>
 											<th>Torneo</th>
 											<th>Categoria</th>                                        
-											<th>Equipo</th>                                         
+											<th>Equipo</th> 
+											<th>Nro.</th>                                         
 											<th>Activa</th>   
 											<th width="10%">Opciones</th>
 										</tr>
 									<? if (count($datos) == 0) { ?>	
-											<tr><td colspan="5" align="center">No tiene equipos asignados</td> </tr>
+											<tr><td colspan="6" align="center">No tiene equipos asignados</td> </tr>
 									<? } else { 
 										 	$total = count($datos);	
 											$tt = $total - 1;
@@ -127,6 +128,7 @@
 							                     <td align="left"><?=$datos[$i]["torneo"]?></td>
 							                     <td align="left"><?=$datos[$i]["categoria"]?></td>
 							                     <td align="left"><?=$datos[$i]["nombreEquipo"]?></td>
+							                     <td align="left"><?=$datos[$i]["numero"]?></td>
 							                     <? if($datos[$i]["activa"] == '1') {?>
 							                     		<td style="text-align: center;"><img border="0" src="images/check.ico" alt="activa" title="activa" style="cursor:pointer" onclick="cambiaractiva('<?=$datos[$i]["idJugadoraEquipo"]?>','0')"/></td>
 							                     <? } else { ?>

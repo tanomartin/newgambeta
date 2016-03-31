@@ -134,7 +134,11 @@
 												        	 <span id="advice2"> </span>
 												       </span>												        
 												     </td>
-											      </tr>  
+											      </tr> 
+											      <tr class="even">
+											        <td class="col_0 col_first"><label for="numero">Numero</label></td>
+											        <td class="col_1 col_last"><input type="text" name="numero" id="numero" value="<?= $datos[0]["numero"]?>" size="4" <?= $disabled ?>/></td>
+											      </tr> 
 											      <tr class="even">
 											        <td class="col_0 col_first"><label for="activa">Activa</label></td>
 											        <td class="col_1 col_last"><input type="checkbox"  <? if ($datos[0]["activa"] == "1" ) { ?> checked="checked"  <? } ?> name="activo" id="activo" value="1" <?= $disabled ?> ></td>

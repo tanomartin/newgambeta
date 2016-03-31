@@ -7,11 +7,13 @@ if (!isset( $_SESSION['usuario'])) {
 
 $jugadorasNuevas = array();
 $jugadorasExistentes = array();
+
 foreach ( $_POST as $key => $value ) {
 	$posNu = strpos ( $key, "idn" );
 	if ($posNu !== false) {
 		$nombre = "nombreyapellidon" . $value;
 		$dni = "dnin" . $value;
+		$numero = "nron" . $value;
 		$facnac = "fecnan" . $value;
 		$email = "emailn" . $value;
 		$telefono = "telefonon" . $value;
@@ -25,6 +27,7 @@ foreach ( $_POST as $key => $value ) {
 		$jugadorasNuevas [$value] = array (
 				'nombre' => $_POST [$nombre],
 				'dni' => $dniValue,
+				'numero' => $_POST [$numero],
 				'fecnac' => $_POST [$fecnac],
 				'email' => $_POST [$email],
 				'telefono' => $_POST [$telefono] 
@@ -69,6 +72,7 @@ foreach ( $jugadorasNuevas as $jugadora ) {
 	$asocEquipo = array (
 			'id' => $oJugadora->id,
 			'idEquipoTorneo' => $_POST ['idTorneoEquipo'],
+			'numero' => $jugadora ['numero'],
 			'activo' => $activa
 	);
 	$oJugadora->insertarequipo ($asocEquipo);	

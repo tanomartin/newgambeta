@@ -23,6 +23,8 @@ for($fila = 18; $fila < 38; $fila ++) {
 	$apellido = trim($apellido);
 	$dni = $objPHPExcel->getActiveSheet ()->getCell ( 'C' . $fila )->getValue ();
 	$dni = trim($dni);
+	$numero = $objPHPExcel->getActiveSheet ()->getCell ( 'D' . $fila )->getValue ();
+	$numero = trim($numero);
 	$fecnac = $objPHPExcel->getActiveSheet ()->getCell ( 'E' . $fila )->getFormattedValue ();
 	$fecnac = trim($fecnac);
 	$telefono = $objPHPExcel->getActiveSheet ()->getCell ( 'F' . $fila )->getValue ();
@@ -34,6 +36,7 @@ for($fila = 18; $fila < 38; $fila ++) {
 				'id' => $fila,
 				'nombre' => $nombre . " " . $apellido,
 				'dni' => $dni,
+				'numero' => $numero,
 				'fecnac' => $fecnac,
 				'telefono' => $telefono,
 				'email' => $email
@@ -99,6 +102,7 @@ for($fila = 18; $fila < 38; $fila ++) {
 			var idname = "idn"+id;
 			var name = "nombreyapellidon"+id;
 			var dni = "dnin"+id;
+			var numero = "nron"+id;
 			var fecnac = "fecnan"+id;
 			var email = "emailn"+id;
 			var telefono = "telefonon"+id;
@@ -119,6 +123,9 @@ for($fila = 18; $fila < 38; $fila ++) {
 			document.getElementById(fecnac).disabled = false;
 			document.getElementById(email).disabled = false;
 			document.getElementById(telefono).disabled = false;
+			if (tipo == 'n') { 
+				document.getElementById(numero).disabled = false;
+			}
 		} else {
 			document.getElementById(idname).disabled = true;
 			document.getElementById(name).disabled = true;
@@ -126,6 +133,9 @@ for($fila = 18; $fila < 38; $fila ++) {
 			document.getElementById(fecnac).disabled = true;
 			document.getElementById(email).disabled = true;
 			document.getElementById(telefono).disabled = true;
+			if (tipo == 'n') { 
+				document.getElementById(numero).disabled = true;
+			}
 		}	
 	}
 	
@@ -184,6 +194,7 @@ for($fila = 18; $fila < 38; $fila ++) {
 												<th>Id</th>
 												<th>Nombre</th>
 												<th>D.N.I.</th>
+												<th>Nro.</th>
 												<th>Fecha Nacimiento</th>
 												<th>Email</th>
 												<th>Telefono</th>
@@ -194,6 +205,7 @@ for($fila = 18; $fila < 38; $fila ++) {
 												<td>X<input size=3 type="hidden" disabled="disabled" name="idn<? echo $jugadora['id']?>" id="idn<? echo $jugadora['id']?>" value="<?=$jugadora['id']?>"/></td>
 												<td align="left"><?=$jugadora['nombre']?><input type="hidden" disabled="disabled" name="nombreyapellidon<? echo $jugadora['id']?>" id="nombreyapellidon<? echo $jugadora['id']?>" value="<?=$jugadora['nombre']?>"/> </td>
 												<td align="left"><?=$jugadora['dni']?><input size=1  type="hidden" disabled="disabled" name="dnin<? echo $jugadora['id']?>" id="dnin<? echo $jugadora['id']?>" value="<?=$jugadora['dni'] ?>"/> </td>
+												<td align="left"><?=$jugadora['numero']?><input size=1  type="hidden" disabled="disabled" name="nron<? echo $jugadora['id']?>" id="nron<? echo $jugadora['id']?>" value="<?=$jugadora['numero'] ?>"/> </td>
 												<td align="left"><?=$jugadora['fecnac']?><input type="hidden" disabled="disabled" name="fecnan<? echo $jugadora['id']?>" id="fecnan<? echo $jugadora['id']?>" value="<?=$jugadora['fecnac']?>"/> </td>
 												<td align="left"><?=$jugadora['email']?><input type="hidden" disabled="disabled" name="emailn<? echo $jugadora['id']?>" id="emailn<? echo $jugadora['id']?>" value="<?=$jugadora['email']?>"/> </td>
 												<td align="left"><?=$jugadora['telefono']?><input type="hidden" disabled="disabled" name="telefonon<? echo $jugadora['id']?>" id="telefonon<? echo $jugadora['id']?>" value="<?=$jugadora['telefono']?>"/> </td>
