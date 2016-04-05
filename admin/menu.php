@@ -87,16 +87,16 @@
 	        </li>        
 			<li >
 		      <a href="#" title="Listado Fecha"  class="first"  onclick="this.blur(); ir('Listado Fecha', '', 'listadopartidos.php', 'listadopartidos.php')">Listado de Partidos</a>
-	        </li>        
+	        </li>
+	         <li >
+		      <a href="#" title="Listado Libre-WO"  class="first"  onclick="this.blur(); ir('Listado Libre', '', 'libreswo.php', 'libreswo.php')">Listado Libre y W.O.</a>
+	        </li>           
 	      </ul>
 	    </li> 
 		<li class="<? if( $_POST["menu"]== "Gestion") echo "active"; ?>  submenu "><span class="submenu">Gesti&oacute;n del Torneo</span>
 		  <ul style="visibility: visible; opacity: 1;" class="level_2">
 		    <li class="first">
 		      <a href="#" title="Fixture"  class="first"  onclick="this.blur(); ir('Fixture', '', 'fixture.php', 'fixture.php')">Fixture</a>
-	        </li>   
-	        <li >
-		      <a href="#" title="Listado Libre-WO"  class="first"  onclick="this.blur(); ir('Listado Libre', '', 'libreswo.php', 'libreswo.php')">Listado Libre y W.O.</a>
 	        </li>     
 	      </ul>
 	    </li> 
