@@ -475,6 +475,28 @@ class Fixture {
 		$datos = $db->getResults($query, ARRAY_A);
 		return $datos;
 	}
+	
+	function tienewo($equipoTorneo = "", $idFecha = "") {
+		$db = $this->base;
+		$query = "SELECT *
+				  FROM 
+					ga_fixture p
+				  WHERE 
+					idFecha = $idFecha and 
+					(idEquipoTorneo1 = $equipoTorneo or idEquipoTorneo2 = $equipoTorneo) and
+					suspendido = 1";
+		$res = $db->getResults($query, ARRAY_A); 
+		if ($res != null) {
+			if ($res[0]['golesEquipo1'] < $res[0]['golesEquipo2'] && $equipoTorneo == $res[0]['idEquipoTorneo1']) {
+				return true;
+			} 
+			if ($res[0]['golesEquipo1'] > $res[0]['golesEquipo2'] && $equipoTorneo == $res[0]['idEquipoTorneo2']) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
 }
 
 ?>

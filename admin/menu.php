@@ -94,7 +94,10 @@
 		  <ul style="visibility: visible; opacity: 1;" class="level_2">
 		    <li class="first">
 		      <a href="#" title="Fixture"  class="first"  onclick="this.blur(); ir('Fixture', '', 'fixture.php', 'fixture.php')">Fixture</a>
-	        </li>        
+	        </li>   
+	        <li >
+		      <a href="#" title="Listado Libre-WO"  class="first"  onclick="this.blur(); ir('Listado Libre', '', 'libreswo.php', 'libreswo.php')">Listado Libre y W.O.</a>
+	        </li>     
 	      </ul>
 	    </li> 
 	 <? } ?>
