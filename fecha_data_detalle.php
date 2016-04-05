@@ -54,13 +54,15 @@ if (isset ($_POST ['idPartido'])) {
 												</tr>
 											</thead>
 											<tbody> ";
-							foreach($aJugadoras1 as $jugadora) {
-								$resultado .= "<tr> 
-													<td style='padding:5px;border-bottom: solid 1px; border-bottom-color:".$_POST ['color']."'>".$jugadora['nombre']."</td>
-													<td style='text-align:center;padding:4px 0px;border-bottom: solid 1px; border-bottom-color:".$_POST ['color']."'>".$aResultado[$jugadora[idJugadoraEquipo]][goles]."</td>
-													<td style='text-align:center;padding:4px 0px;border-bottom: solid 1px; border-bottom-color:".$_POST ['color']."'>".$aResultado[$jugadora[idJugadoraEquipo]][amarilla]."</td>
-													<td style='text-align:center;padding:4px 0px;border-bottom: solid 1px; border-bottom-color:".$_POST ['color']."'>".$aResultado[$jugadora[idJugadoraEquipo]][roja]."</td>
-												</tr>";
+							if ($aJugadoras1 != null) {
+								foreach($aJugadoras1 as $jugadora) {
+									$resultado .= "<tr> 
+														<td style='padding:5px;border-bottom: solid 1px; border-bottom-color:".$_POST ['color']."'>".$jugadora['nombre']."</td>
+														<td style='text-align:center;padding:4px 0px;border-bottom: solid 1px; border-bottom-color:".$_POST ['color']."'>".$aResultado[$jugadora[idJugadoraEquipo]][goles]."</td>
+														<td style='text-align:center;padding:4px 0px;border-bottom: solid 1px; border-bottom-color:".$_POST ['color']."'>".$aResultado[$jugadora[idJugadoraEquipo]][amarilla]."</td>
+														<td style='text-align:center;padding:4px 0px;border-bottom: solid 1px; border-bottom-color:".$_POST ['color']."'>".$aResultado[$jugadora[idJugadoraEquipo]][roja]."</td>
+													</tr>";
+								}
 							}
 							$resultado .= "</tbody>
 										</table>
@@ -74,13 +76,15 @@ if (isset ($_POST ['idPartido'])) {
 												</tr>
 											</thead>
 										<tbody> ";
-							foreach($aJugadoras2 as $jugadora) {
-								$resultado .= "<tr>
-													<td style='padding:5px;border-bottom: solid 1px; border-bottom-color:".$_POST ['color']."'>".$jugadora['nombre']."</td>
-													<td style='text-align:center;padding:4px 0px;border-bottom: solid 1px; border-bottom-color:".$_POST ['color']."'>".$aResultado[$jugadora[idJugadoraEquipo]][goles]."</td>
-													<td style='text-align:center;padding:4px 0px;border-bottom: solid 1px; border-bottom-color:".$_POST ['color']."'>".$aResultado[$jugadora[idJugadoraEquipo]][amarilla]."</td>
-													<td style='text-align:center;padding:4px 0px;border-bottom: solid 1px; border-bottom-color:".$_POST ['color']."'>".$aResultado[$jugadora[idJugadoraEquipo]][roja]."</td>
-												</tr>";
+							if ($aJugadoras2 != null) {
+								foreach($aJugadoras2 as $jugadora) {
+									$resultado .= "<tr>
+														<td style='padding:5px;border-bottom: solid 1px; border-bottom-color:".$_POST ['color']."'>".$jugadora['nombre']."</td>
+														<td style='text-align:center;padding:4px 0px;border-bottom: solid 1px; border-bottom-color:".$_POST ['color']."'>".$aResultado[$jugadora[idJugadoraEquipo]][goles]."</td>
+														<td style='text-align:center;padding:4px 0px;border-bottom: solid 1px; border-bottom-color:".$_POST ['color']."'>".$aResultado[$jugadora[idJugadoraEquipo]][amarilla]."</td>
+														<td style='text-align:center;padding:4px 0px;border-bottom: solid 1px; border-bottom-color:".$_POST ['color']."'>".$aResultado[$jugadora[idJugadoraEquipo]][roja]."</td>
+													</tr>";
+								}
 							}
 							$resultado .= "</tbody>
 										</table>
