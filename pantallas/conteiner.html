@@ -229,17 +229,16 @@ function desactivarBotones() {
 }
 
 function activar(contenedor) {
-	if ($("#activo").val() != contenedor) {
-		var torneo = $("#torneo").val();
-		var idTorneoCat = $("#idTorneoCat").val();
-		var nombreCategoria = $("#nombreCat").val();
-		var acceso = $("#acceso").val();
-		
-		var button = "#"+contenedor;
-		var contenedorMobile = "#"+contenedor+"Mobile";
-		var contenedorDesktop = "#"+contenedor+"Desktop";
-		var pagina = contenedor+".php";
+	var torneo = $("#torneo").val();
+	var idTorneoCat = $("#idTorneoCat").val();
+	var nombreCategoria = $("#nombreCat").val();
+	var acceso = $("#acceso").val();
+	var button = "#"+contenedor;
+	var contenedorMobile = "#"+contenedor+"Mobile";
+	var contenedorDesktop = "#"+contenedor+"Desktop";
+	var pagina = contenedor+".php";
 	
+	if ($("#activo").val() != contenedor) {
 		if (idTorneoCat != 0) {
 			blanquearInformacion();
 			cargarMobile(contenedorMobile, pagina, idTorneoCat, nombreCategoria, torneo, acceso);
@@ -250,6 +249,14 @@ function activar(contenedor) {
 			$('#modalCategoria').modal('show');
 		}
 		resize();
+	} else {
+		if (window.innerWidth < 991) {
+			if ($(contenedorMobile).css('display') == 'block') {
+				$(contenedorMobile).css('display','none');
+			} else {
+				$(contenedorMobile).css('display','block');
+			}
+		}
 	}
 }
 
