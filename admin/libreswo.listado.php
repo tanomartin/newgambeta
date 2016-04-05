@@ -84,7 +84,7 @@
 											<table id="cruces" style="font-size: 11px">
 												<tr>
 													<td style="background-color: #CE6C2B; color: #FFFFFF"><b>FECHA\EQUIPOS</b></td>
-													<? foreach ($equipos as $equipo) { ?>
+													<? foreach ($equipos as $equipo) {  ?>
 														  <td style="background-color: #CE6C2B; color: #FFFFFF"><?=$equipo['nombre'] ?></td>
 													<? } ?>
 												</tr>
@@ -96,7 +96,7 @@
 															 	if ($wo) { ?>
 															 		<td>W.O.</td>	
 													  		<?  } else { 
-													  				$reserva = $oReserva->getReservaByIdFechaIdEquipo($fecha['id'], $equipo['idEquipoTorneo']);
+													  				$reserva = $oReserva->getReservaByIdFechaIdEquipo($fecha['id'], $equipo['id']);
 													  				if ($reserva == null) {?>
 													  					<td></td>	
 													  			<?  } else {
@@ -104,9 +104,9 @@
 													  					 	<td></td>
 																    <?  } else { 
 																    		if ($reserva[0][fecha_libre] == 1) { ?>
-																			<td>Libre Equipo</td>	
+																				<td>Libre Equipo</td>	
 																   		 <?	} else { ?>
-																   		 	<td>Libre Gambeta</td>	
+																   		 		<td>Libre Gambeta</td>	
 																   	    <? }
 																    	}	
 																    } ?>
