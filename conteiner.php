@@ -7,7 +7,7 @@ $torneo = unserialize (stripslashes($_POST['torneo']));
 $categorias = unserialize (stripslashes($_POST['categorias']));
 
 // Cargo la plantilla
-$twig->display ( 'conteinerNew.html', array (
+$twig->display ( 'conteiner.html', array (
 		'torneo' => $torneo,
 		'categorias' => $categorias,
 		'idTorneoCat' => $_POST['idTorneoCat']

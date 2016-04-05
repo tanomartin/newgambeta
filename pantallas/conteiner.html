@@ -4,6 +4,7 @@
 			<img src="logos/{{torneo.logoPrincipal}}" width="85px" height="85px">
 		</div>
 		<div>
+			<input type="hidden" id="activo" value="default"/>
 			<h4>{{ torneo.nombre }}</h4>
 		</div>
 		<div class="select-cat">		
@@ -21,7 +22,7 @@
 			</select>
 		</div>
 	</div>
-	<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="modalCategoria">
+	<div class="modal fade bs-example-modal-sm" tabindex="-1" id="modalCategoria">
 		<div class="modal-dialog modal-sm">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -40,42 +41,63 @@
 	<div class="menu-torneos" id="menu">
 		<ul>
 			<li>
-				<button id="noticias" name="noticias">Noticias</button>
+				<div class="conteiner-mobile" id="defaultMobile" style="border: 2px solid {{ torneo.rgb }}"></div>
+			</li>
+			<li>
+				<button id="noticias" name="noticias" onclick='activar("noticias")'>Noticias</button>
 				<div class="conteiner-mobile" id="noticiasMobile" style="border: 2px solid {{ torneo.rgb }}"></div>
 			</li>
 			<li>
-				<button id="equipos" name="equipos">Equipos</button>
+				<button id="equipos" name="equipos" onclick='activar("equipos")'>Equipos</button>
 				<div class="conteiner-mobile" id="equiposMobile" style="border: 2px solid {{ torneo.rgb }}"></div>
 			</li>
 			<li>
-				<button id="fixture" class="fixture-menu"name="fixture">Fixture</button>
+				<button id="fixture" class="fixture-menu" name="fixture" onclick='activar("fixture")'>Fixture</button>
 				<div class="conteiner-mobile" id="fixtureMobile" style="border: 2px solid {{ torneo.rgb }}"></div>
 			</li>
 			<li>
-				<button id="resultados" name="resultados">Resultados</button>
+				<button id="resultados" name="resultados" onclick='activar("resultados")'>Resultados</button>
 				<div class="conteiner-mobile" id="resultadosMobile" style="border: 2px solid {{ torneo.rgb }}"></div>	
 			</li>
 			<li>
-				<button id="goleadoras" name="goleadoras">Goleadoras</button>
+				<button id="goleadoras" name="goleadoras" onclick='activar("goleadoras")'>Goleadoras</button>
 				<div class="conteiner-mobile" id="goleadorasMobile" style="border: 2px solid {{ torneo.rgb }}"></div>	
 			</li>
 			<li>
-				<button id="posiciones" name="posiciones">Posiciones</button>
+				<button id="posiciones" name="posiciones" onclick='activar("posiciones")'>Posiciones</button>
 				<div class="conteiner-mobile" id="posicionesMobile" style="border: 2px solid {{ torneo.rgb }}"></div>	
 			</li>
 			<li>
-				<button id="tarjetas" name="tarjetas">Tarjetas</button>
+				<button id="tarjetas" name="tarjetas" onclick='activar("tarjetas")'>Tarjetas</button>
 				<div class="conteiner-mobile" id="tarjetasMobile" style="border: 2px solid {{ torneo.rgb }}"></div>
 			</li>
 			<li>
-				<button id="reservas" name="reservas">Reservas</button>
+				<button id="reservas" name="reservas" onclick='activar("reservas")'>Reservas</button>
 				<div class="conteiner-mobile" id="reservasMobile" style="border: 2px solid {{ torneo.rgb }}"></div>
 			</li>
 		</ul>
 	</div>
 </div>
 
-<div class="container-2" id="container-2">
+<div class="container-2" id="defaultDesktop"></div>
+<div class="container-2" id="noticiasDesktop"></div>
+<div class="container-2" id="equiposDesktop"></div>
+<div class="container-2" id="fixtureDesktop"></div>
+<div class="container-2" id="resultadosDesktop"></div>
+<div class="container-2" id="goleadorasDesktop"></div>
+<div class="container-2" id="posicionesDesktop"></div>
+<div class="container-2" id="tarjetasDesktop"></div>
+<div class="container-2" id="reservasDesktop"></div>
+
+<div id="modalCargando" class="modal fade bs-example-modal-sm" data-backdrop="static" data-keyboard="false" style="color: white;">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-body" style="text-align: center; background-color: #fa3e5f">
+				<img src="imagenes/logo.png"><br>
+				Cargando informacion<br>Esto puede tardar unos segundos...
+			</div>
+		</div>
+	</div>
 </div>
 
 <style>
@@ -97,216 +119,138 @@
 
 <script>
 
-function blanquearBotones() {
-	$("#acceso").val("");
-	$("#noticias").removeClass("active");
-	$("#noticiasMobile").html("");
-	$("#equipos").removeClass("active");
-	$("#equiposMobile").html("");
-	$("#fixture").removeClass("active");
-	$("#fixtureMobile").html("");
-	$("#resultados").removeClass("active");
-	$("#resultadosMobile").html("");
-	$("#goleadoras").removeClass("active");
-	$("#goleadorasMobile").html("");
-	$("#posiciones").removeClass("active");
-	$("#posicionesMobile").html("");
-	$("#tarjetas").removeClass("active");
-	$("#tarjetasMobile").html("");
-	$("#reservas").removeClass("active");
-	$("#reservasMobile").html("");
+$(document).ready(function() {
+	$('#modalCargando').modal('show');
+	var torneo = $("#torneo").val();
+	var acceso = $("#acceso").val();
+	if (acceso == "nok" || acceso == "ok") {
+		activar("reservas");
+	} else {
+		blanquearInformacion();
+		$("#defaultDesktop").load("dafault.php", {torneo: torneo});
+		cargarDesktop("#defaultDesktop");
+		$("#defaultMobile").load("dafault.php", {torneo: torneo, screen: 'mobile'});
+		cargarMobile("#defaultMobile");
+	}
+	resize();
+});
+
+$(document).ajaxStart(function(){
+	$('#modalCargando').modal('show');
+}).ajaxStop(function(){
+	$('#modalCargando').modal('hide');
+});
+ 
+$(window).resize(function() {
+	resize();
+});
+ 
+function resize() {
+	var contenedorMobile = "#"+$("#activo").val()+"Mobile";
+	var contenedorDesktop =  "#"+$("#activo").val()+"Desktop";
+	if (window.innerWidth < 991) {
+		$(contenedorMobile).css('display','block');
+		$(contenedorDesktop).css('display','none');
+	} else {
+		$(contenedorDesktop).css('display','block');
+		$(contenedorMobile).css('display','none');
+	}
+} 
+
+function cargarMobile(contendor, pagina, idTorneoCat, nombreCategoria, torneo, acceso) {
+	$(contendor).load(pagina, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, acceso: acceso, screen: 'mobile'});
+	$(contendor).css('display','block');
 }
 
-$(document).ready(function() {
-	var torneo = $("#torneo").val();
-	var idTorneoCat = $("#idTorneoCat").val();
-	var nombreCategoria = $("#nombreCat").val();
-	var acceso = $("#acceso").val();
-	blanquearBotones();
-	if (acceso == "nok" || acceso == "ok") {
-		$("#reservas").addClass("active");
-		var redirec = "reservas.php";
-		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, acceso : acceso});
-	} else {
-		var redirec = "dafault.php";
-		$("#container-2").load(redirec, {torneo: torneo});
-	}
-});
+function cargarDesktop(contendor,  pagina, idTorneoCat, nombreCategoria, torneo, acceso) {
+	$(contendor).load(pagina, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, acceso: acceso});
+	$(contendor).css('display','block');
+}
 
 $("#categorias").change(function() {
 	$("#categorias option:selected").each(function() {
 		var idTorneoCat = $("#categorias option:selected").val();
 		var nombreCategoria = $("#categorias option:selected").text();
 		var torneo = $("#torneo").val();
+		var acceso = $("#acceso").val();
 		$("#idTorneoCat").val(idTorneoCat);
 		$("#nombreCat").val(nombreCategoria);	
-		blanquearBotones();
-		var redirec = "dafault.php";
-		$("#container-2").load(redirec, {torneo: torneo});
+		blanquearInformacion();
+		var contenedorMobile = "#defaultMobile";
+		var contenedorDesktop = "#defaultDesktop";
+		var pagina = "default.php";
+		cargarMobile(contenedorMobile, pagina, idTorneoCat, nombreCategoria, torneo, acceso);
+		cargarDesktop(contenedorDesktop, pagina, idTorneoCat, nombreCategoria, torneo, acceso);
+		$("#activo").val("default");
+		resize();
 	});
 });
 
+function blanquearInformacion() {
+	$("#acceso").val("");
+	desactivarBotones();
+	ocultarDesktop();
+	ocultarMobile();
+}
 
-$("#noticias").click(function() {
-	var torneo = $("#torneo").val();
-	var idTorneoCat = $("#idTorneoCat").val();
-	var nombreCategoria = $("#nombreCat").val();
-	var contendorMobile = $("#noticiasMobile").html();
-	if (idTorneoCat != 0) {
-		blanquearBotones();
-		$("#noticias").addClass("active");
-		var redirec = "noticias.php";
-		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
-		if (contendorMobile == "") {
-			$("#noticiasMobile").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria,  screen: 'mobile'});
+function ocultarMobile() {
+	$("#defaultMobile").css('display','none');
+	$("#noticiasMobile").css('display','none');
+	$("#equiposMobile").css('display','none');
+	$("#fixtureMobile").css('display','none');
+	$("#resultadosMobile").css('display','none');
+	$("#goleadorasMobile").css('display','none');
+	$("#posicionesMobile").css('display','none');
+	$("#tarjetasMobile").css('display','none');
+	$("#reservasMobile").css('display','none');
+}
+
+function ocultarDesktop() {
+	$("#defaultDesktop").css('display','none');
+	$("#noticiasDesktop").css('display','none');
+	$("#equiposDesktop").css('display','none');
+	$("#fixtureDesktop").css('display','none');
+	$("#resultadosDesktop").css('display','none');
+	$("#goleadorasDesktop").css('display','none');
+	$("#posicionesDesktop").css('display','none');
+	$("#tarjetasDesktop").css('display','none');
+	$("#reservasDesktop").css('display','none');
+}
+
+function desactivarBotones() {
+	$("#noticias").removeClass("active");
+	$("#equipos").removeClass("active");
+	$("#fixture").removeClass("active");
+	$("#resultados").removeClass("active");
+	$("#goleadoras").removeClass("active");
+	$("#posiciones").removeClass("active");
+	$("#tarjetas").removeClass("active");
+	$("#reservas").removeClass("active");
+}
+
+function activar(contenedor) {
+	if ($("#activo").val() != contenedor) {
+		var torneo = $("#torneo").val();
+		var idTorneoCat = $("#idTorneoCat").val();
+		var nombreCategoria = $("#nombreCat").val();
+		var acceso = $("#acceso").val();
+		
+		var button = "#"+contenedor;
+		var contenedorMobile = "#"+contenedor+"Mobile";
+		var contenedorDesktop = "#"+contenedor+"Desktop";
+		var pagina = contenedor+".php";
+	
+		if (idTorneoCat != 0) {
+			blanquearInformacion();
+			cargarMobile(contenedorMobile, pagina, idTorneoCat, nombreCategoria, torneo, acceso);
+			cargarDesktop(contenedorDesktop, pagina, idTorneoCat, nombreCategoria, torneo, acceso);
+			$(button).addClass("active");
+			$("#activo").val(contenedor);
 		} else {
-			$("#noticiasMobile").html("");
+			$('#modalCategoria').modal('show');
 		}
-	} else {
-		$('#modalCategoria').modal('show');
+		resize();
 	}
-});
-
-$("#equipos").click(function() {
-	var torneo = $("#torneo").val();
-	var idTorneoCat = $("#idTorneoCat").val();
-	var nombreCategoria = $("#nombreCat").val();
-	var contendorMobile = $("#equiposMobile").html();
-	if (idTorneoCat != 0) {
-		blanquearBotones();
-		$("#equipos").addClass("active");
-		var redirec = "equipos.php";
-		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
-		if (contendorMobile == "") {
-			$("#equiposMobile").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, screen: 'mobile'});
-		} else {
-			$("#equiposMobile").html("");
-		}
-	} else {
-		$('#modalCategoria').modal('show');
-	}
-});
-
-$("#fixture").click(function() {
-	var torneo = $("#torneo").val();
-	var idTorneoCat = $("#idTorneoCat").val();
-	var nombreCategoria = $("#nombreCat").val();
-	var contendorMobile = $("#fixtureMobile").html();
-	if (idTorneoCat != 0) {
-		blanquearBotones();
-		$("#fixture").addClass("active");
-		var redirec = "fixture.php";
-		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
-		if (contendorMobile == "") {
-			$("#fixtureMobile").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, screen: 'mobile'});
-		} else {
-			$("#fixtureMobile").html("");
-		}
-	} else {
-		$('#modalCategoria').modal('show');
-	}
-});
-
-$("#resultados").click(function() {
-	var torneo = $("#torneo").val();
-	var idTorneoCat = $("#idTorneoCat").val();
-	var nombreCategoria = $("#nombreCat").val();
-	var contendorMobile = $("#resultadosMobile").html();
-	if (idTorneoCat != 0) {
-		blanquearBotones();
-		$("#resultados").addClass("active");
-		var redirec = "resultados.php";
-		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
-		if (contendorMobile == "") {
-			$("#resultadosMobile").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, screen: 'mobile'});
-		} else {
-			$("#resultadosMobile").html("");
-		}
-	} else {
-		$('#modalCategoria').modal('show');
-	}
-});
-
-$("#goleadoras").click(function() {
-	var torneo = $("#torneo").val();
-	var idTorneoCat = $("#idTorneoCat").val();
-	var nombreCategoria = $("#nombreCat").val();
-	var contendorMobile = $("#goleadorasMobile").html();
-	if (idTorneoCat != 0) {
-		blanquearBotones();
-		$("#goleadoras").addClass("active");
-		var redirec = "goleadoras.php";
-		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
-		if (contendorMobile == "") {
-			$("#goleadorasMobile").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, screen: 'mobile'});
-		} else {
-			$("#goleadorasMobile").html("");
-		}
-	} else {
-		$('#modalCategoria').modal('show');
-	}
-});
-
-$("#posiciones").click(function() {
-	var torneo = $("#torneo").val();
-	var idTorneoCat = $("#idTorneoCat").val();
-	var nombreCategoria = $("#nombreCat").val();
-	var contendorMobile = $("#posicionesMobile").html();
-	if (idTorneoCat != 0) {
-		blanquearBotones();
-		$("#posiciones").addClass("active");
-		var redirec = "posiciones.php";
-		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
-		if (contendorMobile == "") {
-			$("#posicionesMobile").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, screen: 'mobile'});
-		} else {
-			$("#posicionesMobile").html("");
-		}
-	} else {
-		$('#modalCategoria').modal('show');
-	}
-});
-
-$("#tarjetas").click(function() {
-	var torneo = $("#torneo").val();
-	var idTorneoCat = $("#idTorneoCat").val();
-	var nombreCategoria = $("#nombreCat").val();
-	var contendorMobile = $("#tarjetasMobile").html();
-	if (idTorneoCat != 0) {
-		blanquearBotones();
-		$("#tarjetas").addClass("active");
-		var redirec = "tarjetas.php";
-		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
-		if (contendorMobile == "") {
-			$("#tarjetasMobile").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, screen: 'mobile'});
-		} else {
-			$("#tarjetasMobile").html("");
-		}
-	} else {
-		$('#modalCategoria').modal('show');
-	}
-});
-
-$("#reservas").click(function() {
-	var torneo = $("#torneo").val();
-	var idTorneoCat = $("#idTorneoCat").val();
-	var nombreCategoria = $("#nombreCat").val();
-	var contendorMobile = $("#reservasMobile").html();
-	if (idTorneoCat != 0) {
-		blanquearBotones();
-		$("#reservas").addClass("active");
-		var redirec = "reservas.php";
-		$("#container-2").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria});
-		if (contendorMobile == "") {
-			$("#reservasMobile").load(redirec, {torneo: torneo, idTorneoCat: idTorneoCat, nombreCategoria: nombreCategoria, screen: 'mobile'});
-		} else {
-			$("#reservasMobile").html("");
-		}
-	} else {
-		$('#modalCategoria').modal('show');
-	}
-});
-
-
+}
 
 </script>
