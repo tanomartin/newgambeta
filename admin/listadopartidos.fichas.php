@@ -164,7 +164,7 @@ foreach ( $listadoPartidos as $partido ) {
 	
 	$pdf->SetFont ( 'Arial', 'B', 10 );
 	$fila = 125;
-	for ($i=0; $i<14; $i++) {
+	for ($i=0; $i<13; $i++) {
 		$pdf->SetXY(5, $fila);
 		$pdf->Cell(80, 5, "",1,1,"C");
 		$pdf->SetXY(85, $fila);
@@ -179,7 +179,7 @@ foreach ( $listadoPartidos as $partido ) {
 	}
 	
 	$fila = 125;
-	for ($i=0; $i<14; $i++) {
+	for ($i=0; $i<13; $i++) {
 		$pdf->SetXY(185, $fila);
 		$pdf->Cell(80, 5, "",1,1,"C");
 		$pdf->SetXY(265, $fila);
@@ -196,9 +196,8 @@ foreach ( $listadoPartidos as $partido ) {
 	$fila = 125;
 	$jugadoras = $oJugadora->getByIdEquipoTorneo($partido['idEquipoTorneo1']);
 	if ($jugadoras != NULL) {
-		$limite = 0;
 		foreach ($jugadoras as $jugadora) {
-			if ($jugadora['activa'] == 1 && $limite < 14) {
+			if ($jugadora['activa'] == 1) {
 				$pdf->SetXY(5, $fila);
 				$pdf->Cell(80, 5, utf8_decode($jugadora['nombre']),1,1,"C");
 				$pdf->SetXY(85, $fila);
@@ -214,7 +213,6 @@ foreach ( $listadoPartidos as $partido ) {
 				$pdf->SetXY(162, $fila);
 				$pdf->Cell(10, 5, "",1,1,"C");
 				$fila = $fila + 5;
-				$limite++;
 			}
 		}
 	}
@@ -222,9 +220,8 @@ foreach ( $listadoPartidos as $partido ) {
 	$fila = 125;
 	$jugadoras2 = $oJugadora->getByIdEquipoTorneo($partido['idEquipoTorneo2']);
 	if ($jugadoras2 != NULL) {
-		$limite = 0;
 		foreach ($jugadoras2 as $jugadora) {
-			if ($jugadora['activa'] == 1 && $limite < 14) {
+			if ($jugadora['activa'] == 1) {
 				$pdf->SetXY(185, $fila);
 				$pdf->Cell(80, 5, utf8_decode($jugadora['nombre']),1,1,"C");
 				$pdf->SetXY(265, $fila);
@@ -240,7 +237,6 @@ foreach ( $listadoPartidos as $partido ) {
 				$pdf->SetXY(342, $fila);
 				$pdf->Cell(10, 5, "",1,1,"C");
 				$fila = $fila + 5;
-				$limite++;
 			}
 		}
 	}
