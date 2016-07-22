@@ -488,13 +488,19 @@ class Fixture {
 		$res = $db->getResults($query, ARRAY_A); 
 		if ($res != null) {
 			if ($res[0]['golesEquipo1'] < $res[0]['golesEquipo2'] && $equipoTorneo == $res[0]['idEquipoTorneo1']) {
-				return true;
+				return 1;
 			} 
 			if ($res[0]['golesEquipo1'] > $res[0]['golesEquipo2'] && $equipoTorneo == $res[0]['idEquipoTorneo2']) {
-				return true;
+				return 1;
+			}
+			if ($res[0]['golesEquipo1'] > $res[0]['golesEquipo2'] && $equipoTorneo == $res[0]['idEquipoTorneo1']) {
+				return 2;
+			}
+			if ($res[0]['golesEquipo1'] < $res[0]['golesEquipo2'] && $equipoTorneo == $res[0]['idEquipoTorneo2']) {
+				return 2;
 			}
 		}
-		return false;
+		return 0;
 	}
 	
 }

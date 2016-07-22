@@ -93,9 +93,13 @@
 														<td style="background-color: #CE6C2B; color: #FFFFFF"><?=$fecha['nombre']."<br> (".cambiaf_a_normal($fecha['fechaIni'])." al<br>".cambiaf_a_normal($fecha['fechaFin']).")" ?></td>
 														<? foreach ( $equipos as $equipo ) { 
 																$wo = $oFixture->tienewo($equipo['idEquipoTorneo'], $fecha['id']);
-															 	if ($wo) { ?>
-															 		<td>W.O.</td>	
-													  		<?  } else { 
+															 	if ($wo == 1 || $wo == 2) { 
+															 		if ($wo == 1) {?>
+															 			<td style="font-size: 13px"> + W.O.</td>
+															 <? 	} else { ?>
+															 			<td style="font-size: 13px"> - W.O.</td>
+															<? 		}
+													  		 	} else { 
 													  				$reserva = $oReserva->getReservaByIdFechaIdEquipo($fecha['id'], $equipo['id']);
 													  				if ($reserva == null) {?>
 													  					<td></td>	

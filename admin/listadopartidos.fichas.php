@@ -147,9 +147,9 @@ foreach ( $listadoPartidos as $partido ) {
 	$pdf->SetXY(115, 118);
 	$pdf->Cell(10, 7, "Nº",1,1,"C");
 	$pdf->SetXY(125, 118);
-	$pdf->Cell(37, 7, "FIRMA",1,1,"C");
+	$pdf->Cell(37, 7, "TELEFONO",1,1,"C");
 	$pdf->SetXY(162, 118);
-	$pdf->Cell(10, 7, "P",1,1,"C");
+	$pdf->Cell(10, 7, "G",1,1,"C");
 
 	$pdf->SetXY(185, 118);
 	$pdf->Cell(80, 7, "NOMBRE",1,1,"C");
@@ -158,9 +158,9 @@ foreach ( $listadoPartidos as $partido ) {
 	$pdf->SetXY(295, 118);
 	$pdf->Cell(10, 7, "Nº",1,1,"C");
 	$pdf->SetXY(305, 118);
-	$pdf->Cell(37, 7, "FIRMA",1,1,"C");
+	$pdf->Cell(37, 7, "TELEFONO",1,1,"C");
 	$pdf->SetXY(342, 118);
-	$pdf->Cell(10, 7, "P",1,1,"C");
+	$pdf->Cell(10, 7, "G",1,1,"C");
 	
 	$pdf->SetFont ( 'Arial', 'B', 10 );
 	$fila = 125;
@@ -209,7 +209,7 @@ foreach ( $listadoPartidos as $partido ) {
 				$pdf->SetXY(115, $fila);
 				$pdf->Cell(10, 5, $jugadora['numero'],1,1,"C");
 				$pdf->SetXY(125, $fila);
-				$pdf->Cell(37, 5, "",1,1,"C");
+				$pdf->Cell(37, 5, $jugadora['telefono'],1,1,"C");
 				$pdf->SetXY(162, $fila);
 				$pdf->Cell(10, 5, "",1,1,"C");
 				$fila = $fila + 5;
@@ -233,7 +233,7 @@ foreach ( $listadoPartidos as $partido ) {
 				$pdf->SetXY(295, $fila);
 				$pdf->Cell(10, 5, $jugadora['numero'],1,1,"C");
 				$pdf->SetXY(305, $fila);
-				$pdf->Cell(37, 5, "",1,1,"C");
+				$pdf->Cell(37, 5, $jugadora['telefono'],1,1,"C");
 				$pdf->SetXY(342, $fila);
 				$pdf->Cell(10, 5, "",1,1,"C");
 				$fila = $fila + 5;
