@@ -52,7 +52,7 @@ header {
 
 .item-one {
 
-    background-image: url("../imagenes/pelota_fuego_oscura.png");
+    background-image: url("../imagenes/fondo-copa-america.png");
     background-repeat:no-repeat;
     background-size:cover;
     width: 460px;
@@ -179,7 +179,7 @@ header {
 }
 .item-one h1, .item-one h2, .item-one p {
 
-    color: #FFF;
+   /* color: #FFF; */
     position: relative;
     top:0px;
     padding:4px 8px;
@@ -191,7 +191,7 @@ header {
 .inscription {
 
     position:relative;
-    top:14px;
+    top:-35px;
     background-color:#fa3e5f;
     color:#FFF;
     text-transform:uppercase;
@@ -209,8 +209,8 @@ header {
 .read {
 
     position:relative;
-    top:14px;
-    background-color:transparent;
+    top:-35px;
+    background-color:#fa3e5f;
     color:#FFF;
     text-transform:uppercase;
     border-radius: 5px;

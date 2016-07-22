@@ -528,7 +528,7 @@
 
     .item-one h1, .item-one h2, .item-one p {
 
-        color: #FFF;
+        /*color: #FFF;*/
         top:0px;
         left:0px;
         padding:10px;
@@ -772,6 +772,7 @@
     margin-top:5px;
     top:0px;
     left:10px;
+    padding: 10px 30px;
 
     }
 
