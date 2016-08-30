@@ -63,9 +63,15 @@
 			}
 		}	
 
-		function importarJugadoras(){
-			document.frm_listado.accion.value = "importarJugadoras";
-			document.frm_listado.submit();	
+		function importarJugadoras(lugar){
+			if (lugar == 'ficha') {
+				document.frm_listado.accion.value = "importarJugadoras";
+				document.frm_listado.submit();
+			} 
+			if (lugar == 'torneo') {
+				document.frm_listado.accion.value = "importarJugadorasTorneo";
+				document.frm_listado.submit();
+			}	
 		}
 
 		function cargarNumeros(){
@@ -98,7 +104,8 @@
 							 <font color="#e4790f"><?=$equipo[0]['nombre']." [".$datosTorneo[0]['torneo'] ." - ".$datosTorneo[0]['categoria']."]" ?></font> - Activas: <font color="#e4790f"><?=$catidadActivas?></font></h1>
 						</div>
 						<div align="right" style="margin-right:20px" >
-            				<input class="button" onclick="javascript:importarJugadoras()" type="button" value="Importar Jugadoras Desde Ficha" />
+							<input class="button" onclick="javascript:importarJugadoras('torneo')" type="button" value="Importar Jugadoras Desde Torneo" />
+            				<input class="button" onclick="javascript:importarJugadoras('ficha')" type="button" value="Importar Jugadoras Desde Ficha" />
             				<input class="button" onclick="javascript:cargarNumeros()" type="button" value="Cargar Numeros" />
            				</div>
 						<div class="mod_listing ce_table listing block" id="partnerlist">

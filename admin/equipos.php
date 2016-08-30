@@ -121,7 +121,12 @@
 		case "importarJugadoras":
 			include("equipos.torneos.importar.php");
 			exit;
-			break;	
+			break;
+		
+		case "importarJugadorasTorneo":
+			include("equipos.torneos.importarTorneo.php");
+			exit;
+			break;
 			
 		case "cargarNumeros":
 			include("equipos.torneos.jugadoras.numeros.php");
@@ -149,6 +154,12 @@
 			
 		case "guardarImportar":
 			include("equipos.torneos.guardarImp.php");
+			include("equipos.torneos.jugadoras.php");
+			exit;
+			break;
+			
+		case "guardarImportarTorneo":
+			include("equipos.torneos.guardarImpTorneo.php");
 			include("equipos.torneos.jugadoras.php");
 			exit;
 			break;
