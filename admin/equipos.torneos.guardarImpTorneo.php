@@ -20,4 +20,11 @@ foreach ( $jugadoras as $jugadora ) {
 	$oJugadora->insertarequipo ($asocEquipo);
 	$cantidadImportadas++;
 }
+
+$oEquipo = new Equipos();
+$datosPass = $oEquipo->getPassword($_POST["idTorneoEquipoSeleccionado"]);
+if ($datosPass != NULL) {
+	$oEquipo->setPassword($_POST['idTorneoEquipo'],$datosPass[0]['idEquipo'],$datosPass[0]['password']);
+}
+
 ?>
