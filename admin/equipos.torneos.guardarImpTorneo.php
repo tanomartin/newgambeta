@@ -10,16 +10,12 @@ $jugadoras = $oJugadora->getByIdEquipoTorneo($_POST["idTorneoEquipoSeleccionado"
 
 $cantidadImportadas = 1;
 foreach ( $jugadoras as $jugadora ) {
-	if ($cantidadImportadas < 14) {
-		$activa = 1;
-	} else {
-		$activa = 0;
-	}
 	$asocEquipo = array (
 			'id' => $jugadora['id'],
 			'idEquipoTorneo' => $_POST ['idTorneoEquipo'],
-			'numero' => '',
-			'activo' => $activa
+			'numero' => $jugadora['numero'],
+			'activo' => $jugadora['activa'],
+			'email' => $jugadora['envio']
 	);
 	$oJugadora->insertarequipo ($asocEquipo);
 	$cantidadImportadas++;

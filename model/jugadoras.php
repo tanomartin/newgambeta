@@ -189,7 +189,7 @@ class Jugadoras {
 			$activo = 0;
 		}
 		if (isset($datos['email'])) {
-			$envioMail = 1;
+			$envioMail = $datos['email'];
 		} else {
 			$envioMail = 0;
 		}
@@ -296,7 +296,8 @@ class Jugadoras {
 					j.*,
 					je.id as idJugadoraEquipo,
 					je.numero as numero,
-					je.activa as activa
+					je.activa as activa,
+					je.envioMail as envio
 				  From
 					ga_jugadoras_equipo je,
 					ga_jugadoras j
