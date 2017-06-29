@@ -51,8 +51,7 @@ header {
 }
 
 .item-one {
-
-    background-image: url("../imagenes/portada-clausura-2017.jpg");
+    background-image: url("../imagenes/portada.jpg");
     background-repeat:no-repeat;
     background-size:cover;
     width: 460px;
